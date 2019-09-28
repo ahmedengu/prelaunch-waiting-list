@@ -28,7 +28,7 @@ class Signup extends React.Component {
 
     let { email } = this.state;
     if (!email || !validateEmail(email)) {
-      this.setState({ error: 'enter valid email' });
+      this.setState({ error: 'invalid-email' });
       return;
     }
     this.setState({
@@ -64,7 +64,6 @@ class Signup extends React.Component {
   }
 
   loggedIn(user) {
-    return;
     const { setUserHandler } = this.props;
     const { query, pathname } = Router;
     const userJson = user && user.toJSON();
