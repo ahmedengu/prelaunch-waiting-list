@@ -51,11 +51,14 @@ class MyApp extends App {
       Component, pageProps, reduxStore,
     } = this.props;
 
-    Parse.User.currentAsync().then((user) => {
-      const userJson = user && user.toJSON();
+    Parse.User.currentAsync().then(async (user) => {
+      let userJson = user && user.toJSON();
       reduxStore.dispatch(setUser(userJson));
 
       if (userJson) {
+        cookie.set('user', userJson);
+        userJson = (await Parse.User.current().fetch()).toJSON();
+        reduxStore.dispatch(setUser(userJson));
         cookie.set('user', userJson);
       } else {
         cookie.remove('user');

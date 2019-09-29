@@ -16,9 +16,7 @@ const Gifts = ({ t, user }) => (
             {({ accomplished }) => (
               <div
                 className={`indexedStep ${accomplished ? 'accomplished' : null}`}
-              >
-                0
-              </div>
+              />
             )}
           </Step>
 
