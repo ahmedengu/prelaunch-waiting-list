@@ -9,7 +9,9 @@ import * as qs from 'qs';
 import { appWithTranslation } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
 import { setUser } from '../store';
-import { countries } from '../constants';
+import {
+  countries, javaScriptKey, applicationId, serverURL,
+} from '../constants';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -42,9 +44,8 @@ class MyApp extends App {
   }
 
   render() {
-    Parse.initialize('xxxxx', 'xxxxx', 'xxxxx');
-
-    Parse.serverURL = 'http://localhost:3000/api';
+    Parse.initialize(applicationId, javaScriptKey);
+    Parse.serverURL = serverURL;
 
     const {
       Component, pageProps, reduxStore,

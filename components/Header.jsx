@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../static/app.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import '../node_modules/froala-design-blocks/dist/css/froala_blocks.css';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 

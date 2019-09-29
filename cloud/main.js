@@ -16,6 +16,9 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     const count = await query.startsWith('ref', prefix).count({ useMasterKey: true });
 
     request.object.set('ref', `${prefix}${padToThree(count + 1)}`);
+    request.object.set('referrals', 0);
+  } else if (!request.master) {
+    throw 'not-allowed';
   }
 });
 
