@@ -36,7 +36,8 @@ const Share = ({ t, user }) => {
             </p>
             <div className="input-group">
               <input
-                type="email"
+                onChange={() => {}}
+                type="text"
                 className="form-control"
                 ref={(input) => {
                   copyInput = input;

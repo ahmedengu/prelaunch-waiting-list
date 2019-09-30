@@ -2,6 +2,7 @@ const express = require('express');
 const { ParseServer } = require('parse-server');
 const next = require('next');
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
+const http = require('http');
 
 const port = process.env.PORT || 3000;
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
@@ -27,7 +28,7 @@ const api = new ParseServer({
   publicServerURL: process.env.SERVER_URL || `http://localhost:${port}/api`,
   appName: 'Parse App',
   liveQuery: {
-    classNames: [],
+    classNames: ['_User'],
   },
   websocketTimeout: 10 * 1000,
   cacheTimeout: 60 * 600 * 1000,
@@ -41,8 +42,8 @@ const api = new ParseServer({
   emailAdapter: {
     module: 'parse-smtp-template',
     options: {
-      port: 587,
-      host: 'smtp.mail.com',
+      port: 1025,
+      host: 'localhost',
       user: 'name@domain.com',
       password: 'SecurePassword',
       fromAddress: 'app@domain.com',
@@ -117,9 +118,11 @@ const dashboard = new ParseDashboard({
 
   server.get('*', (req, res) => handle(req, res));
 
-  await server.listen(port);
+  const httpServer = http.createServer(server);
+
+  await httpServer.listen(port);
   console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
-  ParseServer.createLiveQueryServer(server);
+  ParseServer.createLiveQueryServer(httpServer);
 })();
 
 const aCron = new CronJob('0 17 * * *', (() => {
