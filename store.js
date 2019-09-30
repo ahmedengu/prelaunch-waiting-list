@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const exampleInitialState = {
-  user: false,
+  user: {},
   country: 'egypt',
   title: 'MerQuant',
   meta: {
@@ -21,7 +21,7 @@ export const reducer = (state = exampleInitialState, action) => {
     case actionTypes.USER:
       return {
         ...state,
-        user: action.user || false,
+        user: action.user || {},
       };
     case actionTypes.COUNTRY:
       return { ...state, country: action.country };

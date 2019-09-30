@@ -10,7 +10,7 @@ const HomePage = ({
   t, user,
 }) => (
   <PageWrapper t={t}>
-    {user ? <LoggedIn t={t} /> : <Signup t={t} />}
+    {user && user.objectId ? <LoggedIn t={t} /> : <Signup t={t} />}
   </PageWrapper>
 );
 
