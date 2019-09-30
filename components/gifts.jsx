@@ -11,7 +11,10 @@ const Gifts = ({ t, user }) => (
         <div className="col-12" style={{ zIndex: 10000 }}><h1>{t('gifts-h1')}</h1></div>
       </div>
       <div className="m-4">
-        <ProgressBar percent={(user.referrals || 0) * 2} stepPositions={[0, 10, 25, 50, 100]}>
+        <ProgressBar
+          percent={Math.min((user.referrals || 0) * 2, 100)}
+          stepPositions={[0, 10, 25, 50, 100]}
+        >
           <Step>
             {({ accomplished }) => (
               <div
