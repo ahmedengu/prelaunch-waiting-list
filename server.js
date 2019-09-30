@@ -33,7 +33,7 @@ const api = new ParseServer({
   websocketTimeout: 10 * 1000,
   cacheTimeout: 60 * 600 * 1000,
   sessionLength: 3110400000,
-  userSensitiveFields: [],
+  protectedFields: [],
   auth: {
     facebook: {
       appIds: '1394780183887567',

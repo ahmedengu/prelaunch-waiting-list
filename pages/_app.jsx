@@ -6,7 +6,7 @@ import nextCookie from 'next-cookies';
 import cookie from 'js-cookie';
 import Router from 'next/router';
 import * as qs from 'qs';
-import { appWithTranslation } from '../i18n';
+import { appWithTranslation, i18n } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
 import { setUser } from '../store';
 import {
@@ -16,7 +16,7 @@ import {
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const {
-      reduxStore, res, pathname, query,
+      reduxStore, res, pathname, query, req,
     } = ctx;
     let { user } = (nextCookie(ctx));
     user = user && JSON.parse(user);
@@ -39,8 +39,9 @@ class MyApp extends App {
     }
 
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+    const lang = (req ? req.language : i18n.language);
 
-    return { pageProps };
+    return { pageProps, lang };
   }
 
   render() {

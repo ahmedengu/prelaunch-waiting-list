@@ -7,9 +7,9 @@ import Signup from './signup';
 import LoggedIn from './loggedIn';
 
 const HomePage = ({
-  t, user,
+  t, user, lang,
 }) => (
-  <PageWrapper t={t}>
+  <PageWrapper t={t} lang={lang}>
     {user && user.objectId ? <LoggedIn t={t} /> : <Signup t={t} />}
   </PageWrapper>
 );
@@ -17,6 +17,7 @@ const HomePage = ({
 HomePage.propTypes = {
   t: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

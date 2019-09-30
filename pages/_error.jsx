@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withTranslation } from '../i18n';
+import { i18n, withTranslation } from '../i18n';
 import PageWrapper from '../components/pageWrapper';
 
-const Error = ({ statusCode, t }) => (
-  <PageWrapper t={t}>
+const Error = ({ statusCode, t, lang }) => (
+  <PageWrapper t={t} lang={lang}>
     <div className="container">
       <div className="row align-items-center">
         <div className="col-12 col-md-6 col-lg-5" style={{ zIndex: 10000 }}>
@@ -30,16 +30,20 @@ const Error = ({ statusCode, t }) => (
   </PageWrapper>
 );
 
-Error.getInitialProps = async ({ res, err }) => {
+Error.getInitialProps = async ({ req, res, err }) => {
   let statusCode = null;
   if (res) {
     ({ statusCode } = res);
   } else if (err) {
     ({ statusCode } = err);
   }
+
+  const lang = (req ? req.language : i18n.language) || 'ar';
+
   return {
     namespacesRequired: ['error'],
     statusCode,
+    lang,
   };
 };
 
@@ -50,6 +54,7 @@ Error.defaultProps = {
 Error.propTypes = {
   statusCode: PropTypes.number,
   t: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
 export default withTranslation('error')(Error);

@@ -8,15 +8,14 @@ import '../static/app.css';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
-import { i18n } from '../i18n';
 
 const PageWrapper = ({
-  t, children,
+  t, children, lang,
 }) => (
   <>
     <main>
       <Header t={t} />
-      <div className={i18n.language === 'ar' ? 'rtl' : ''}>
+      <div className={lang === 'ar' ? 'rtl' : ''}>
         {children}
       </div>
     </main>
@@ -27,6 +26,7 @@ const PageWrapper = ({
 PageWrapper.propTypes = {
   t: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
 
