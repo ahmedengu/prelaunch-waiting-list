@@ -59,9 +59,19 @@ class MyApp extends App {
 
       if (userJson) {
         cookie.set('user', userJson);
-        userJson = (await Parse.User.current().fetch()).toJSON();
+        try {
+          userJson = (await Parse.User.current()
+            .fetch()).toJSON();
+        } catch (e) {
+          Parse.User.logOut();
+          userJson = undefined;
+        }
         reduxStore.dispatch(setUser(userJson));
-        cookie.set('user', userJson);
+        if (userJson) {
+          cookie.set('user', userJson);
+        } else {
+          cookie.remove('user');
+        }
       } else {
         cookie.remove('user');
       }

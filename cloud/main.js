@@ -38,14 +38,13 @@ async function assignRef(request) {
     .replace('.', '')
     .slice(0, 5);
 
-  const users = await query.startsWith('ref', prefix)
+  const user = await query.startsWith('ref', prefix)
     .descending('createdAt')
-    .limit(1)
-    .find({ useMasterKey: true });
+    .first({ useMasterKey: true });
 
   let count = 0;
-  if (users && users[0]) {
-    count = parseInt(users[0].get('ref').replace(prefix, ''), 10);
+  if (user) {
+    count = parseInt(user.get('ref').replace(prefix, ''), 10);
   }
 
   request.object.set('ref', `${prefix}${count + 1}`);
@@ -76,11 +75,11 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
   const referred = request.object.get('referred');
   if (referred && !request.object.existed() && !request.master) {
     const query = new Parse.Query(Parse.User);
-    const users = await query.equalTo('ref', referred)
-      .find({ useMasterKey: true });
-    if (users && users[0] && users[0].get('country') === request.object.get('country')) {
-      users[0].increment('referrals');
-      await users[0].save(null, { useMasterKey: true });
+    const user = await query.equalTo('ref', referred)
+      .first({ useMasterKey: true });
+    if (user && user.get('country') === request.object.get('country')) {
+      user.increment('referrals');
+      await user.save(null, { useMasterKey: true });
     } else {
       request.object.set('invalidReferred', request.object.get('referred'));
       request.object.unset('referred');
