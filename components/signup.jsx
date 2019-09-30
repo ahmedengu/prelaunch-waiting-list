@@ -35,7 +35,8 @@ class Signup extends React.Component {
       loading: true,
       error: '',
     });
-    email = email.toLowerCase().trim();
+    email = email.toLowerCase()
+      .trim();
     const atSplit = email.split('@');
     if (email.includes('gmail')) {
       email = `${atSplit[0].split('+')[0].replace('.', '')}@${atSplit[1]}`;
@@ -75,6 +76,13 @@ class Signup extends React.Component {
     query.ref = userJson.ref;
 
     Router.push(pathname, `${pathname}?${qs.stringify(query)}`);
+  }
+
+  componentDidMount() {
+    const { query: { email } } = Router;
+    if (email) {
+      this.setState({ email: decodeURIComponent(email) }, this.register);
+    }
   }
 
   render() {
