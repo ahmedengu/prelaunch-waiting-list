@@ -57,7 +57,9 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
       request.object.set('invalidReferred', request.object.get('referred'));
       request.object.unset('referred');
     }
-  } else if (!request.master) {
+  } else if (!request.master && !(request.object.dirtyKeys()
+    && request.object.dirtyKeys().length === 1
+    && request.object.dirtyKeys()[0] === 'lang')) {
     throw 'not-allowed';
   }
 });

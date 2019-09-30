@@ -2,12 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Link from 'next/link';
+import Parse from 'parse';
 
 import Head from 'next/head';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { i18n } from '../i18n';
 
-const changeLang = () => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
+const changeLang = (user) => () => {
+  const newLang = i18n.language === 'en' ? 'ar' : 'en';
+  i18n.changeLanguage(newLang);
+  if (user && user.objectId) {
+    const newUser = { ...user };
+    newUser.className = '_User';
+    const current = Parse.User.fromJSON(newUser);
+    current.set('lang', newLang);
+    current.save();
+  }
+};
 const Header = ({
   t, title, country, meta, user,
 }) => (
@@ -146,7 +157,7 @@ const Header = ({
               <button
                 type="button"
                 className="btn btn-outline-primary ml-md-3"
-                onClick={changeLang}
+                onClick={changeLang(user)}
               >
                 {t('lang')}
               </button>

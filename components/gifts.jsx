@@ -5,7 +5,7 @@ import 'react-step-progress-bar/styles.css';
 import { ProgressBar, Step } from 'react-step-progress-bar';
 
 const Gifts = ({ t, user }) => (
-  <section className="fdb-block" data-block-type="features" data-id="8">
+  <section className="fdb-block" data-block-type="features" data-id="8" dir="ltr">
     <div className="container">
       <div className="row text-center">
         <div className="col-12" style={{ zIndex: 10000 }}><h1>{t('gifts-h1')}</h1></div>

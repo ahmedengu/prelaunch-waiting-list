@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { i18n } from './i18n';
 
 const exampleInitialState = {
   user: {},
@@ -19,9 +20,14 @@ export const actionTypes = {
 export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
     case actionTypes.USER:
+      // eslint-disable-next-line no-case-declarations
+      const user = action.user || {};
+      if (user && user.lang && user.lang !== i18n.language) {
+        i18n.changeLanguage(user.lang);
+      }
       return {
         ...state,
-        user: action.user || {},
+        user,
       };
     case actionTypes.COUNTRY:
       return { ...state, country: action.country };

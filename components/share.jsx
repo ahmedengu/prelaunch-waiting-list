@@ -34,7 +34,7 @@ const Share = ({ t, user }) => {
             <p className="lead">
               {t('share-l2')}
             </p>
-            <div className="input-group">
+            <div className="input-group mb-2">
               <input
                 onChange={() => {}}
                 type="text"
