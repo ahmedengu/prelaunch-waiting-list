@@ -64,7 +64,7 @@ const Header = ({
             <ul className="navbar-nav col-5">
               <li
                 className={`nav-item ${(country === 'egypt' ? 'active' : '')}`}
-                hidden={user && user.country !== 'egypt'}
+                hidden={user && user.country && user.country !== 'egypt'}
               >
                 <Link href="/egypt">
                   <a
@@ -80,7 +80,7 @@ const Header = ({
               </li>
               <li
                 className={`nav-item ${(country === 'emirates' ? 'active' : '')}`}
-                hidden={user && user.country !== 'emirates'}
+                hidden={user && user.country && user.country !== 'emirates'}
               >
                 <Link href="/emirates">
                   <a
@@ -96,7 +96,7 @@ const Header = ({
               </li>
               <li
                 className={`nav-item ${(country === 'saudi' ? 'active' : '')}`}
-                hidden={user && user.country !== 'saudi'}
+                hidden={user && user.country && user.country !== 'saudi'}
               >
                 <Link href="/saudi">
                   <a

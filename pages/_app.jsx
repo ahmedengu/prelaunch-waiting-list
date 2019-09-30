@@ -44,9 +44,10 @@ class MyApp extends App {
   }
 
   render() {
-    Parse.initialize(applicationId, javaScriptKey);
-    Parse.serverURL = serverURL;
-
+    if (process.browser) {
+      Parse.initialize(applicationId, javaScriptKey);
+      Parse.serverURL = serverURL;
+    }
     const {
       Component, pageProps, reduxStore,
     } = this.props;
