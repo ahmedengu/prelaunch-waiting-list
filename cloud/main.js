@@ -1,7 +1,6 @@
 const _ = require('lodash');
 const disposableEmail = require('rendrr-disposable-email-list');
 
-const padToThree = (number) => (number <= 999 ? `00${number}`.slice(-3) : number);
 const requiredFields = ['username', 'email', 'country', 'lang'];
 
 function checkRequired(request, fields) {
@@ -21,7 +20,7 @@ function checkEmail(request) {
   const email = request.object.get('email');
   const emailCheck = disposableEmail.isDisposable(email);
 
-  if (!emailCheck.isEmail || emailCheck.isDisposable || !emailCheck.isWebmail) {
+  if (!emailCheck.isEmail) {
     throw 'invalid-email';
   }
   if (emailCheck.isDisposable) {
@@ -38,10 +37,18 @@ async function assignRef(request) {
     .replace('@', '')
     .replace('.', '')
     .slice(0, 5);
-  const count = await query.startsWith('ref', prefix)
-    .count({ useMasterKey: true });
 
-  request.object.set('ref', `${prefix}${padToThree(count + 1)}`);
+  const users = await query.startsWith('ref', prefix)
+    .descending('createdAt')
+    .limit(1)
+    .find({ useMasterKey: true });
+
+  let count = 0;
+  if (users && users[0]) {
+    count = parseInt(users[0].get('ref').replace(prefix, ''), 10);
+  }
+
+  request.object.set('ref', `${prefix}${count + 1}`);
 }
 
 Parse.Cloud.beforeSave(Parse.User, async (request) => {
@@ -71,7 +78,7 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
     const query = new Parse.Query(Parse.User);
     const users = await query.equalTo('ref', referred)
       .find({ useMasterKey: true });
-    if (users && users[0]) {
+    if (users && users[0] && users[0].get('country') === request.object.get('country')) {
       users[0].increment('referrals');
       await users[0].save(null, { useMasterKey: true });
     } else {
