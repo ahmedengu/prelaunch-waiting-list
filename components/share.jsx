@@ -23,10 +23,10 @@ const Share = ({ t, user }) => {
               src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/draws/email.svg"
             />
             <h2>
-              {t('you-invited')}
+              {t('your-points')}
               {': '}
               <br />
-              {user.referrals || 0}
+              {user.points || 0}
             </h2>
           </div>
           <div className="col-12 ml-auto col-md-6 col-lg-5">

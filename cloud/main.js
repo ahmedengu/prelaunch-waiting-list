@@ -55,7 +55,7 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     checkRequired(request, requiredFields);
     checkEmail(request);
 
-    request.object.set('referrals', 0);
+    request.object.set('points', 0);
 
     await assignRef(request);
 
@@ -77,13 +77,14 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
     const query = new Parse.Query(Parse.User);
     const user = await query.equalTo('ref', referred)
       .first({ useMasterKey: true });
-    if (user && user.get('country') === request.object.get('country')) {
-      user.increment('referrals');
+    if (user) {
+      user.increment('points');
       await user.save(null, { useMasterKey: true });
+      request.object.set('points', 1);
     } else {
       request.object.set('invalidReferred', request.object.get('referred'));
       request.object.unset('referred');
-      request.object.save(null, { useMasterKey: true });
     }
+    request.object.save(null, { useMasterKey: true });
   }
 });

@@ -12,7 +12,7 @@ const Gifts = ({ t, user }) => (
       </div>
       <div className="m-4">
         <ProgressBar
-          percent={Math.min((user.referrals || 0) * 2, 100)}
+          percent={Math.min((user.points || 0) * 2, 100)}
           stepPositions={[0, 10, 25, 50, 100]}
         >
           <Step>
