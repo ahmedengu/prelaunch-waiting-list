@@ -13,3 +13,11 @@ npm i
 # run project
 npm run dev
 ```
+
+# ToDo:
+- [ ] UI
+- [ ] Test Mails
+- [ ] Achievements mails
+- [ ] Translation files
+- [ ] SEO
+- [ ] Sever deployment
