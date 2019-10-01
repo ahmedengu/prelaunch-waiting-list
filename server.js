@@ -18,7 +18,7 @@ const api = new ParseServer({
   appId: process.env.APP_ID || 'xxxxx',
   masterKey: process.env.MASTER_KEY || 'xxxxx', // Add your master key here. Keep it secret!
   javascriptKey: process.env.JAVASCRIPT_KEY || 'xxxxx',
-  clientKey: process.env.JAVASCRIPT_KEY || 'xxxxx',
+  clientKey: process.env.CLIENT_KEY || 'xxxxx',
   serverURL: process.env.SERVER_URL || `http://localhost:${port}/api`, // Don't forget to change to https if needed
   logLevel: 'VERBOSE',
   allowClientClassCreation: true,
@@ -26,7 +26,7 @@ const api = new ParseServer({
   emailVerifyTokenValidityDuration: 48 * 60 * 60, // in seconds (2 hours = 7200 seconds)
   preventLoginWithUnverifiedEmail: false, // defaults to false
   publicServerURL: process.env.SERVER_URL || `http://localhost:${port}/api`,
-  appName: 'Parse App',
+  appName: process.env.APP_NAME || 'MerQuant',
   liveQuery: {
     classNames: ['_User'],
   },
@@ -63,7 +63,7 @@ const api = new ParseServer({
         },
         fr: {
           subject: 'Mail de confirmation',
-          body: "Courriel de confirmation du corps de l'e-mail",
+          body: 'Courriel de confirmation du corps de l\'e-mail',
           btn: 'confirmez votre email',
         },
       },
@@ -92,15 +92,15 @@ const dashboard = new ParseDashboard({
   allowInsecureHTTP: true,
   apps: [{
     serverURL: process.env.SERVER_URL || `http://localhost:${port}/api`,
-    appId: 'xxxxx',
-    masterKey: 'xxxxx',
-    javascriptKey: 'js',
-    appName: 'xxxxx',
+    appId: process.env.APP_ID || 'xxxxx',
+    masterKey: process.env.MASTER_KEY || 'xxxxx',
+    javascriptKey: process.env.JAVASCRIPT_KEY || 'xxxxx',
+    appName: process.env.APP_NAME || 'MerQuant',
   }],
   users: [
     {
-      user: 'x',
-      pass: 'x',
+      user: process.env.DASHBOARD_USER || 'x',
+      pass: process.env.DASHBOARD_PASS || 'x',
     },
   ],
 }, {

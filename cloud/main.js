@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const disposableEmail = require('rendrr-disposable-email-list');
+const { applicationId, serverURL } = require('../constants');
 
 const requiredFields = ['username', 'email', 'country', 'lang'];
 
@@ -44,7 +45,8 @@ async function assignRef(request) {
 
   let count = 0;
   if (user) {
-    count = parseInt(user.get('ref').replace(prefix, ''), 10);
+    count = parseInt(user.get('ref')
+      .replace(prefix, ''), 10);
   }
 
   request.object.set('ref', `${prefix}${count + 1}`);
@@ -86,5 +88,29 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
       request.object.unset('referred');
     }
     request.object.save(null, { useMasterKey: true });
+  }
+});
+
+
+Parse.Cloud.define('resendVerification', async (request, response) => {
+  const { email } = request.params;
+
+  if (!email || !disposableEmail.isDisposable(email).isEmail) {
+    throw 'invalid-email';
+  }
+  try {
+    await Parse.Cloud.httpRequest({
+      method: 'POST',
+      url: `${serverURL}/verificationEmailRequest`,
+      headers: {
+        'x-parse-application-id': applicationId,
+        'x-parse-master-key': process.env.MASTER_KEY || 'xxxxx',
+      },
+      body: { email },
+    });
+    return 'email-sent';
+  } catch (e) {
+    const errorJson = JSON.parse(e.text);
+    throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
   }
 });

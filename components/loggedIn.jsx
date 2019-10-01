@@ -7,6 +7,7 @@ import cookie from 'js-cookie';
 import Share from './share';
 import Gifts from './gifts';
 import { setUser } from '../store';
+import Unverified from './unverified';
 
 class LoggedIn extends React.Component {
   constructor(props) {
@@ -44,15 +45,7 @@ class LoggedIn extends React.Component {
     return (
       <>
         {user && !user.emailVerified && (
-          <section className="bg-dark">
-            <div className="container">
-              <div className="row text-center">
-                <div className="col-12 text-white">
-                  <h4>{t('check-mail')}</h4>
-                </div>
-              </div>
-            </div>
-          </section>
+          <Unverified t={t} email={user.email} />
         )}
         <Share t={t} />
         <Gifts t={t} />
