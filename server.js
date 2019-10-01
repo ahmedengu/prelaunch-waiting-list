@@ -42,16 +42,16 @@ const api = new ParseServer({
   emailAdapter: {
     module: 'parse-smtp-template',
     options: {
-      port: 1025,
-      host: 'localhost',
-      user: 'name@domain.com',
-      password: 'SecurePassword',
-      fromAddress: 'app@domain.com',
+      port: 2525,
+      host: 'smtp.mailtrap.io',
+      user: 'f2ef551b118f58',
+      password: 'bdb83c37ee7151',
+      fromAddress: 'e9cf477a87-4a141f@inbox.mailtrap.io',
       multiTemplate: true,
       multiLang: true,
       confirmTemplatePath: 'views/templates/confirmTemplate.html',
       multiLangConfirm: {
-        es: {
+        ar: {
           subject: 'Confirmación de Correo',
           body: 'Cuerpo del correo de confirmación de correo',
           btn: 'confirma tu correo',
@@ -61,16 +61,16 @@ const api = new ParseServer({
           body: 'Mail confirmation email body',
           btn: 'confirm your email',
         },
-        fr: {
-          subject: 'Mail de confirmation',
-          body: 'Courriel de confirmation du corps de l\'e-mail',
-          btn: 'confirmez votre email',
-        },
       },
       confirmOptions: {
         subject: 'E-mail confirmation',
         body: 'Custome email confirmation body',
         btn: 'confirm your email',
+      },
+      passwordOptions: {
+        subject: 'Password recovery',
+        body: 'Custome pasword recovery email body',
+        btn: 'Recover your password',
       },
     },
   },
