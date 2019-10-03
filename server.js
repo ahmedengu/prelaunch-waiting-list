@@ -42,11 +42,11 @@ const api = new ParseServer({
   emailAdapter: {
     module: 'parse-smtp-template',
     options: {
-      port: 2525,
-      host: 'smtp.mailtrap.io',
-      user: 'f2ef551b118f58',
-      password: 'bdb83c37ee7151',
-      fromAddress: 'e9cf477a87-4a141f@inbox.mailtrap.io',
+      port: process.env.MAIL_PORT || 2525,
+      host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
+      user: process.env.MAIL_USER || 'f2ef551b118f58',
+      password: process.env.MAIL_PASS || 'bdb83c37ee7151',
+      fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
       multiTemplate: true,
       multiLang: true,
       confirmTemplatePath: 'views/templates/confirmTemplate.html',
