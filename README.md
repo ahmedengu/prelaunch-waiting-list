@@ -18,3 +18,5 @@ npm run dev
 - [ ] SEO
 - [ ] Sever deployment
 - [ ] Mail templates
+- [ ] Social Share Content
+
