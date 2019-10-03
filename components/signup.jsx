@@ -18,10 +18,12 @@ class Signup extends React.Component {
       loading: false,
     };
     if (process.browser) {
-      const { query: { email } } = Router;
+      const { query: { email, ref } } = Router;
       if (email) {
         this.state.email = decodeURIComponent(email);
         this.register(true);
+      } else if (ref) {
+        cookie.set('ref', ref);
       }
     }
   }
@@ -74,7 +76,7 @@ class Signup extends React.Component {
       user.set('email', email);
       user.set('country', country);
       user.set('lang', i18n.language);
-      user.set('referred', ref);
+      user.set('referred', ref || cookie.get('ref'));
 
       try {
         await user.signUp();
