@@ -41,7 +41,10 @@ class MyApp extends App {
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
     const lang = (req ? req.language : i18n.language);
 
-    return { pageProps, lang };
+    return {
+      pageProps,
+      lang,
+    };
   }
 
   render() {
@@ -50,34 +53,42 @@ class MyApp extends App {
       Parse.serverURL = serverURL;
     }
     const {
-      Component, pageProps, reduxStore,
+      Component, pageProps, reduxStore, lang,
     } = this.props;
 
-    Parse.User.currentAsync().then(async (user) => {
-      let userJson = user && user.toJSON();
-      reduxStore.dispatch(setUser(userJson));
-
-      if (userJson) {
-        cookie.set('user', userJson);
-        try {
-          userJson = (await Parse.User.current()
-            .fetch()).toJSON();
-        } catch (e) {
-          Parse.User.logOut();
-          userJson = undefined;
-        }
+    Parse.User.currentAsync()
+      .then(async (user) => {
+        let userJson = user && user.toJSON();
         reduxStore.dispatch(setUser(userJson));
+
         if (userJson) {
           cookie.set('user', userJson);
+          try {
+            if (userJson.lang === lang) {
+              userJson = (await Parse.User.current()
+                .fetch()).toJSON();
+            } else {
+              user.set('lang', lang);
+              userJson = (await user.save())
+                .toJSON();
+            }
+          } catch (e) {
+            Parse.User.logOut();
+            userJson = undefined;
+          }
+          reduxStore.dispatch(setUser(userJson));
+          if (userJson) {
+            cookie.set('user', userJson);
+          } else {
+            cookie.remove('user');
+          }
         } else {
           cookie.remove('user');
         }
-      } else {
-        cookie.remove('user');
-      }
-    });
+      });
     return (
       <Provider store={reduxStore}>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </Provider>
     );
