@@ -20,11 +20,45 @@ const changeLang = (user) => () => {
   }
 };
 const Header = ({
-  t, title, country, meta, user,
+  t, country, user,
 }) => (
   <>
     <Head>
-      <title>{title || `${t('merquant')} - ${t(country)}`}</title>
+      <title>{t('title')}</title>
+      <meta name="title" content={t('title')} />
+      <meta
+        name="description"
+        content={t('description')}
+      />
+      <meta
+        name="keywords"
+        content={t('keywords')}
+      />
+
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={t('url')} />
+      <meta property="og:title" content={t('title')} />
+      <meta
+        property="og:description"
+        content={t('description')}
+      />
+      <meta
+        property="og:image"
+        content={t('og-image')}
+      />
+
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:url" content={t('url')} />
+      <meta property="twitter:title" content={t('title')} />
+      <meta
+        property="twitter:description"
+        content={t('description')}
+      />
+      <meta
+        property="twitter:image"
+        content={t('og-image')}
+      />
+      <meta name="twitter:site" content="@MerQuant" />
       <link rel="shortcut icon" type="image/png" href="../static/assets/favicon.ico" />
     </Head>
     <header data-block-type="headers" data-id="1">
@@ -174,13 +208,13 @@ const Header = ({
 
 Header.propTypes = {
   t: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  country: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  title: state.title,
   country: state.country,
-  meta: state.meta,
 });
 
 export default connect(mapStateToProps)(Header);
