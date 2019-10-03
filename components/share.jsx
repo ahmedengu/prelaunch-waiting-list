@@ -6,6 +6,7 @@ import { domain } from '../constants';
 const Share = ({ t, user }) => {
   let copyInput = null;
   const userLink = `${domain}/${user.country}?ref=${user.ref}`;
+  const shareLink = encodeURIComponent(userLink);
 
   const copy = () => {
     copyInput.select();
@@ -36,7 +37,8 @@ const Share = ({ t, user }) => {
             </p>
             <div className="input-group mb-2">
               <input
-                onChange={() => {}}
+                onChange={() => {
+                }}
                 type="text"
                 className="form-control"
                 ref={(input) => {
@@ -58,7 +60,7 @@ const Share = ({ t, user }) => {
             <div dir="ltr">
               <a
                 className="resp-sharing-button__link"
-                href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsharingbuttons.io"
+                href={`https://facebook.com/sharer/sharer.php?u=${shareLink}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -82,7 +84,7 @@ const Share = ({ t, user }) => {
 
               <a
                 className="resp-sharing-button__link"
-                href="https://twitter.com/intent/tweet/?text=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.&amp;url=http%3A%2F%2Fsharingbuttons.io"
+                href={`https://twitter.com/intent/tweet/?text=${encodeURIComponent(t('twt_share'))}&amp;url=${shareLink}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
@@ -106,7 +108,9 @@ const Share = ({ t, user }) => {
 
               <a
                 className="resp-sharing-button__link"
-                href="mailto:?subject=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.&amp;body=http%3A%2F%2Fsharingbuttons.io"
+                href={`mailto:?subject=${encodeURIComponent(t('mail-subject'))}&amp;body=${encodeURIComponent(
+                  t('mail-text'),
+                )}${shareLink}`}
                 target="_self"
                 rel="noopener noreferrer"
                 aria-label="E-Mail"
@@ -130,7 +134,11 @@ const Share = ({ t, user }) => {
 
               <a
                 className="resp-sharing-button__link"
-                href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fsharingbuttons.io&amp;title=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.&amp;summary=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.&amp;source=http%3A%2F%2Fsharingbuttons.io"
+                href={`https://www.linkedin.com/shareArticle?mini=true&amp;url=${shareLink}&amp;title=${encodeURIComponent(
+                  t(
+                    'lnkd-title',
+                  ),
+                )}&amp;summary=${encodeURIComponent(t('lnkd-summary'))}&amp;source=${shareLink}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -154,7 +162,7 @@ const Share = ({ t, user }) => {
 
               <a
                 className="resp-sharing-button__link"
-                href="whatsapp://send?text=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.%20http%3A%2F%2Fsharingbuttons.io"
+                href={`whatsapp://send?text=${encodeURIComponent(t('whats-txt'))}${shareLink}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
