@@ -17,9 +17,16 @@ class Signup extends React.Component {
       error: '',
       loading: false,
     };
+    if (process.browser) {
+      const { query: { email } } = Router;
+      if (email) {
+        this.state.email = decodeURIComponent(email);
+        this.register(true);
+      }
+    }
   }
 
-  async register() {
+  async register(notMounted = false) {
     const validateEmail = (email) => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email)
@@ -28,13 +35,26 @@ class Signup extends React.Component {
 
     let { email } = this.state;
     if (!email || !validateEmail(email)) {
-      this.setState({ error: 'invalid-email' });
+      if (notMounted) {
+        this.state = { ...this.state, error: 'invalid-email' };
+      } else {
+        this.setState({ error: 'invalid-email' });
+      }
       return;
     }
-    this.setState({
-      loading: true,
-      error: '',
-    });
+    if (notMounted) {
+      this.state = {
+        ...this.state,
+        loading: true,
+        error: '',
+      };
+    } else {
+      this.setState({
+        loading: true,
+        error: '',
+      });
+    }
+
     email = email.toLowerCase()
       .trim();
     const atSplit = email.split('@');
@@ -60,10 +80,19 @@ class Signup extends React.Component {
         await user.signUp();
         this.loggedIn(user);
       } catch (error) {
-        this.setState({ error: error.message });
+        if (notMounted) {
+          this.state = {
+            ...this.state, error: error.message, loading: false,
+
+          };
+        } else {
+          this.setState({
+            error: error.message, loading: false,
+
+          });
+        }
       }
     }
-    this.setState({ loading: false });
   }
 
   loggedIn(user) {
@@ -76,13 +105,6 @@ class Signup extends React.Component {
     query.ref = userJson.ref;
 
     Router.push(pathname, `${pathname}?${qs.stringify(query)}`);
-  }
-
-  componentDidMount() {
-    const { query: { email } } = Router;
-    if (email) {
-      this.setState({ email: decodeURIComponent(email) }, this.register);
-    }
   }
 
   render() {

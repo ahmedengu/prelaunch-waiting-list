@@ -15,7 +15,7 @@ npm run dev
 - [x] Test Mails
 - [ ] Achievements mails
 - [ ] Translation files
-- [ ] SEO
+- [X] SEO
 - [ ] Sever deployment
 - [ ] Mail templates
 - [ ] Social Share Content
