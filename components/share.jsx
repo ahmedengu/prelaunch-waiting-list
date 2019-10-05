@@ -5,7 +5,7 @@ import { domain } from '../constants';
 
 const Share = ({ t, user }) => {
   let copyInput = null;
-  const userLink = `${domain}/${user.country}?ref=${user.ref}`;
+  const userLink = `${domain}?ref=${user.ref}`;
   const shareLink = encodeURIComponent(userLink);
 
   const copy = () => {

@@ -15,7 +15,7 @@ const Emirates = ({ t, lang }) => {
 };
 
 Emirates.getInitialProps = async ({ req }) => {
-  const lang = (req ? req.language : i18n.language);
+  const lang = (req ? req.language : i18n.language) || 'en';
 
   return {
     namespacesRequired: ['common', 'emirates'],

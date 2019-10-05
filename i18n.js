@@ -9,8 +9,8 @@ module.exports = new NextI18Next({
   ignoreRoutes: ['api', 'dashboard'],
   browserLanguageDetection: true,
   serverLanguageDetection: true,
-  otherLanguages: ['en'],
-  defaultLanguage: 'ar',
+  otherLanguages: ['ar'],
+  defaultLanguage: 'en',
   localeSubpaths: {
     ar: 'ar',
     en: 'en',

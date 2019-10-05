@@ -111,7 +111,7 @@ const dashboard = new ParseDashboard({
 (async () => {
   await app.prepare();
   const server = express();
-
+  server.set('trust proxy', true)
   server.use(process.env.PARSE_MOUNT || '/api', api);
   server.use(process.env.DASHBOARD_MOUNT || '/dashboard', dashboard);
   server.use(nextI18NextMiddleware(nextI18next));
