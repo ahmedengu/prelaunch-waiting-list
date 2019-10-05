@@ -48,7 +48,7 @@ class LoggedIn extends React.Component {
           <Unverified t={t} email={user.email} />
         )}
         <Share t={t} />
-        <Gifts t={t} />
+        {/* <Gifts t={t} /> */}
       </>
     );
   }
