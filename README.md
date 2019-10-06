@@ -13,10 +13,10 @@ npm run dev
 # ToDo:
 - [ ] UI
 - [x] Test Mails
-- [ ] Achievements mails
+- [X] Achievements mails
 - [ ] Translation files
 - [X] SEO
 - [ ] Sever deployment
-- [ ] Mail templates
+- [X] Mail templates
 - [X] Social Share Content
 
