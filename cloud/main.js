@@ -4,6 +4,7 @@ const parseSmtp = require('parse-smtp-template');
 const qs = require('qs');
 const uuid = require('uuid');
 const { applicationId, serverURL } = require('../constants');
+const { emailConfig } = require('../serverConstants');
 
 const requiredFields = ['username', 'email', 'country', 'lang'];
 const achievementsPoints = [5, 10, 25, 50];
@@ -56,40 +57,15 @@ async function assignRef(request) {
   request.object.set('ref', `${prefix}${count + 1}`);
 }
 
-function sendAchievementMail(user, message, subject) {
+function sendAchievementMail(user) {
   if (user.get('email') && (!user.get('options') || user.get('options').sendEmails !== false)) {
     const sendSmtpMail = parseSmtp({
-      port: process.env.MAIL_PORT || 2525,
-      host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
-      user: process.env.MAIL_USER || 'f2ef551b118f58',
-      password: process.env.MAIL_PASS || 'bdb83c37ee7151',
-      fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
-      multiTemplate: true,
-      multiLang: true,
+      ...emailConfig,
       confirmTemplatePath: 'views/templates/achievement.html',
-      multiLangConfirm: {
-        ar: {
-          subject: 'Confirmación de Correo',
-          body: 'Cuerpo del correo de confirmación de correo',
-          btn: 'confirma tu correo',
-        },
-        en: {
-          subject: 'E-mail confirmation',
-          body: 'Mail confirmation email body',
-          btn: 'confirm your email',
-        },
-      },
-      confirmOptions: {
-        subject: 'E-mail confirmation',
-        body: 'Custome email confirmation body',
-        btn: 'confirm your email',
-      },
     }).sendVerificationEmail;
 
     sendSmtpMail({
-      to: user.get('email'),
-      text: message,
-      subject,
+      user: user.get('email'),
     });
   }
 }
@@ -100,10 +76,7 @@ function createNotification(user, event) {
   notification.set('user', user);
   notification.set('event', event);
   notification.set('description', `You have earned ${event}`);
-
-  const subject = `Congrats, You have earned ${event}`;
-  const message = 'You have unlocked a new gift ';
-  sendAchievementMail(user, message, subject);
+  sendAchievementMail(user);
 }
 
 Parse.Cloud.beforeSave(Parse.User, async (request) => {

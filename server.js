@@ -10,6 +10,7 @@ const handle = app.getRequestHandler();
 const { CronJob } = require('cron');
 const Parse = require('parse');
 const ParseDashboard = require('parse-dashboard');
+const { emailConfig } = require('./serverConstants');
 const nextI18next = require('./i18n');
 
 const api = new ParseServer({
@@ -36,50 +37,7 @@ const api = new ParseServer({
   protectedFields: { _User: ['token'] },
   emailAdapter: {
     module: 'parse-smtp-template',
-    options: {
-      port: process.env.MAIL_PORT || 2525,
-      host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
-      user: process.env.MAIL_USER || 'f2ef551b118f58',
-      password: process.env.MAIL_PASS || 'bdb83c37ee7151',
-      fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
-      multiTemplate: true,
-      multiLang: true,
-      confirmTemplatePath: 'views/templates/confirmTemplate.html',
-      multiLangConfirm: {
-        ar: {
-          subject: 'Confirmación de Correo',
-          body: {
-            body: 'Cuerpo del correo de confirmación de correo',
-            body1: 'Mail confirmation email body1',
-            footer1: 'Mail confirmation email body1',
-            footer2: 'Mail confirmation email body1',
-            link: process.env.PUBLIC_URL || `http://localhost:${port}`,
-          },
-          btn: 'confirma tu correo',
-        },
-        en: {
-          subject: 'E-mail confirmation',
-          body: {
-            body: 'Cuerpo del correo de confirmación de correo',
-            body1: 'Mail confirmation email body1',
-            footer1: 'Mail confirmation email body1',
-            footer2: 'Mail confirmation email body1',
-            link: process.env.PUBLIC_URL || `http://localhost:${port}`,
-          },
-          btn: 'confirm your email',
-        },
-      },
-      confirmOptions: {
-        subject: 'E-mail confirmation',
-        body: 'Custome email confirmation body',
-        btn: 'confirm your email',
-      },
-      passwordOptions: {
-        subject: 'Password recovery',
-        body: 'Custome pasword recovery email body',
-        btn: 'Recover your password',
-      },
-    },
+    options: emailConfig,
   },
   customPages: {
     parseFrameURL: process.env.PUBLIC_URL || `http://localhost:${port}`,
