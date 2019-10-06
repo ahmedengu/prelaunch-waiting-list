@@ -1,20 +1,11 @@
 const _ = require('lodash');
 const disposableEmail = require('rendrr-disposable-email-list');
 const parseSmtp = require('parse-smtp-template');
+const qs = require('qs');
 const { applicationId, serverURL } = require('../constants');
 
 const requiredFields = ['username', 'email', 'country', 'lang'];
 const achievementsPoints = [5, 10, 25, 50];
-
-
-const sendSmtpMail = parseSmtp({
-  port: process.env.MAIL_PORT || 2525,
-  host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
-  user: process.env.MAIL_USER || 'f2ef551b118f58',
-  password: process.env.MAIL_PASS || 'bdb83c37ee7151',
-  fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
-}).sendMail;
-
 
 function checkRequired(request, fields) {
   const missing = [];
@@ -64,8 +55,36 @@ async function assignRef(request) {
   request.object.set('ref', `${prefix}${count + 1}`);
 }
 
-function sendMailToUser(user, message, subject) {
+function sendAchievementMail(user, message, subject) {
   if (user.get('email') && (!user.get('options') || user.get('options').sendEmails !== false)) {
+    const sendSmtpMail = parseSmtp({
+      port: process.env.MAIL_PORT || 2525,
+      host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
+      user: process.env.MAIL_USER || 'f2ef551b118f58',
+      password: process.env.MAIL_PASS || 'bdb83c37ee7151',
+      fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
+      multiTemplate: true,
+      multiLang: true,
+      confirmTemplatePath: 'views/templates/achievement.html',
+      multiLangConfirm: {
+        ar: {
+          subject: 'Confirmación de Correo',
+          body: 'Cuerpo del correo de confirmación de correo',
+          btn: 'confirma tu correo',
+        },
+        en: {
+          subject: 'E-mail confirmation',
+          body: 'Mail confirmation email body',
+          btn: 'confirm your email',
+        },
+      },
+      confirmOptions: {
+        subject: 'E-mail confirmation',
+        body: 'Custome email confirmation body',
+        btn: 'confirm your email',
+      },
+    }).sendVerificationEmail;
+
     sendSmtpMail({
       to: user.get('email'),
       text: message,
@@ -79,17 +98,11 @@ function createNotification(user, event) {
   const notification = new Notification();
   notification.set('user', user);
   notification.set('event', event);
-  let subject;
-  let message;
-  switch (event) {
-    case '5 Points':
-      notification.set('description', 'You have unlocked a new gift');
+  notification.set('description', `You have earned ${event}`);
 
-      subject = 'You have unlocked a new gift';
-      message = 'You have unlocked a new gift ';
-      break;
-  }
-  sendMailToUser(user, message, subject);
+  const subject = `Congrats, You have earned ${event}`;
+  const message = 'You have unlocked a new gift ';
+  sendAchievementMail(user, message, subject);
 }
 
 Parse.Cloud.beforeSave(Parse.User, async (request) => {
@@ -127,7 +140,7 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
         }
       } else if (request.original.get('points') < request.object.get('points')
         && achievementsPoints.includes(request.object.get('points'))) {
-        createNotification(request.object, `${request.object.get('points')} Points`);
+        createNotification(request.object, `${request.object.get('points')} Shares`);
       }
     }
   } else if (referred && !request.object.existed()) {
@@ -164,6 +177,29 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
       body: { email },
     });
     return 'email-sent';
+  } catch (e) {
+    const errorJson = JSON.parse(e.text);
+    throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
+  }
+});
+
+Parse.Cloud.define('verifyEmail', async (request, response) => {
+  const { token, username } = request.params;
+
+  if (!token || !username) {
+    throw 'invalid-request';
+  }
+
+  try {
+    await Parse.Cloud.httpRequest({
+      method: 'GET',
+      url: `${serverURL}/apps/${applicationId}/verify_email?${qs.stringify({ token, username })}`,
+      headers: {
+        'x-parse-application-id': applicationId,
+        'x-parse-master-key': process.env.MASTER_KEY || 'xxxxx',
+      },
+    });
+    return 'verified';
   } catch (e) {
     const errorJson = JSON.parse(e.text);
     throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;

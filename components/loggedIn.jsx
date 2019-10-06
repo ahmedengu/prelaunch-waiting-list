@@ -45,7 +45,7 @@ class LoggedIn extends React.Component {
     return (
       <>
         {user && !user.emailVerified && (
-          <Unverified t={t} email={user.email} />
+          <Unverified t={t} email={user.email || user.username} />
         )}
         <Share t={t} />
         {/* <Gifts t={t} /> */}

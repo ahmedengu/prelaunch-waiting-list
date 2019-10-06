@@ -14,6 +14,55 @@ import {
 } from '../constants';
 
 class MyApp extends App {
+  constructor(props) {
+    super(props);
+    const {
+      reduxStore, lang, router: { pathname, query: { token, link, username } },
+    } = props;
+    console.log(props);
+    if (process.browser) {
+      Parse.initialize(applicationId, javaScriptKey);
+      Parse.serverURL = serverURL;
+
+      if (token && link && username && link.includes('verify_email')) {
+        Parse.Cloud.run('verifyEmail', { username, token }).then((value) => {
+          Router.push(pathname);
+        });
+      }
+
+      Parse.User.currentAsync()
+        .then(async (user) => {
+          let userJson = user && user.toJSON();
+          reduxStore.dispatch(setUser(userJson));
+
+          if (userJson) {
+            cookie.set('user', userJson);
+            try {
+              if (userJson.lang === lang) {
+                userJson = (await Parse.User.current()
+                  .fetch()).toJSON();
+              } else {
+                user.set('lang', lang);
+                userJson = (await user.save())
+                  .toJSON();
+              }
+            } catch (e) {
+              Parse.User.logOut();
+              userJson = undefined;
+            }
+            reduxStore.dispatch(setUser(userJson));
+            if (userJson) {
+              cookie.set('user', userJson);
+            } else {
+              cookie.remove('user');
+            }
+          } else {
+            cookie.remove('user');
+          }
+        });
+    }
+  }
+
   static async getInitialProps({ Component, ctx }) {
     const {
       reduxStore, res, pathname, query, req,
@@ -48,44 +97,10 @@ class MyApp extends App {
   }
 
   render() {
-    if (process.browser) {
-      Parse.initialize(applicationId, javaScriptKey);
-      Parse.serverURL = serverURL;
-    }
     const {
-      Component, pageProps, reduxStore, lang,
+      Component, pageProps, reduxStore,
     } = this.props;
 
-    Parse.User.currentAsync()
-      .then(async (user) => {
-        let userJson = user && user.toJSON();
-        reduxStore.dispatch(setUser(userJson));
-
-        if (userJson) {
-          cookie.set('user', userJson);
-          try {
-            if (userJson.lang === lang) {
-              userJson = (await Parse.User.current()
-                .fetch()).toJSON();
-            } else {
-              user.set('lang', lang);
-              userJson = (await user.save())
-                .toJSON();
-            }
-          } catch (e) {
-            Parse.User.logOut();
-            userJson = undefined;
-          }
-          reduxStore.dispatch(setUser(userJson));
-          if (userJson) {
-            cookie.set('user', userJson);
-          } else {
-            cookie.remove('user');
-          }
-        } else {
-          cookie.remove('user');
-        }
-      });
     return (
       <Provider store={reduxStore}>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
