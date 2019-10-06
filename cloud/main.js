@@ -7,7 +7,22 @@ const { applicationId, serverURL } = require('../constants');
 const { emailConfig } = require('../serverConstants');
 
 const requiredFields = ['username', 'email', 'country', 'lang'];
-const achievementsPoints = [5, 10, 25, 50];
+const achievementsPoints = [
+  5,
+  10,
+  25,
+  50,
+  100,
+  250,
+  500,
+  1000,
+  2000,
+  5000,
+  10000,
+  25000,
+  50000,
+  100000,
+];
 
 function checkRequired(request, fields) {
   const missing = [];
@@ -57,7 +72,7 @@ async function assignRef(request) {
   request.object.set('ref', `${prefix}${count + 1}`);
 }
 
-function sendAchievementMail(user) {
+function sendAchievementMail(user, data) {
   if (user.get('email') && (!user.get('options') || user.get('options').sendEmails !== false)) {
     const sendSmtpMail = parseSmtp({
       ...emailConfig,
@@ -65,18 +80,20 @@ function sendAchievementMail(user) {
     }).sendVerificationEmail;
 
     sendSmtpMail({
-      user: user.get('email'),
+      ...data,
+      user,
     });
   }
 }
 
-function createNotification(user, event) {
+function createNotification(user, event, data) {
   const Notification = Parse.Object.extend('Notification');
   const notification = new Notification();
   notification.set('user', user);
   notification.set('event', event);
   notification.set('description', `You have earned ${event}`);
-  sendAchievementMail(user);
+  notification.save(null, { useMasterKey: true });
+  sendAchievementMail(user, data);
 }
 
 Parse.Cloud.beforeSave(Parse.User, async (request) => {
@@ -115,7 +132,7 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
         }
       } else if (request.original.get('points') < request.object.get('points')
         && achievementsPoints.includes(request.object.get('points'))) {
-        createNotification(request.object, `${request.object.get('points')} Shares`);
+        createNotification(request.object, `${request.object.get('points')} Shares`, { points: request.object.get('points') });
       }
     }
   } else if (referred && !request.object.existed()) {

@@ -483,15 +483,15 @@
 
         @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
             .fblike {
-                background-image: url(http://localhost:3000/static/assets/mail/fblike@2x.png) !important;
+                background-image: url(${body.link}/static/assets/mail/fblike@2x.png) !important;
             }
 
             .tweet {
-                background-image: url(http://localhost:3000/static/assets/mail/tweet@2x.png) !important;
+                background-image: url(${body.link}/static/assets/mail/tweet@2x.png) !important;
             }
 
             .linkedinshare {
-                background-image: url(http://localhost:3000/static/assets/mail/lishare@2x.png) !important;
+                background-image: url(${body.link}/static/assets/mail/lishare@2x.png) !important;
             }
 
         }
@@ -797,20 +797,20 @@
                          align="center">
                         <div class="logo-center" align="center" id="emb-email-header"><img
                                 style="display: block;height: auto;width: 100%;border: 0;max-width: 270px;"
-                                src="http://localhost:3000/static/assets/logo-white.png" alt="" width="270"/></div>
+                                src="${body.link}/static/assets/logo-white.png" alt="" width="270"/></div>
                     </div>
                     <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
                 </div>
             </div>
             <div>
-                <div style="background-color: #2679d2;background-position: 0px 0px;background-image: url(http://localhost:3000/static/assets/mail/giftbg_ds2.png);background-repeat: repeat;">
+                <div style="background-color: #2679d2;background-position: 0px 0px;background-image: url(${body.link}/static/assets/mail/giftbg_ds2.png);background-repeat: repeat;">
                     <div class="layout one-col"
                          style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
                         <div class="layout__inner" style="border-collapse: collapse;display: table;width: 100%;">
                             <!--[if (mso)|(IE)]>
                             <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr class="layout-full-width"
-                                    style="background-color: #2679d2;background-position: 0px 0px;background-image: url(http://localhost:3000/static/assets/mail/giftbg_ds2.png);background-repeat: repeat;">
+                                    style="background-color: #2679d2;background-position: 0px 0px;background-image: url(${body.link}/static/assets/mail/giftbg_ds2.png);background-repeat: repeat;">
                                     <td class="layout__edges">&nbsp;</td>
                                     <td style="width: 600px" class="w560"><![endif]-->
                             <div class="column"
@@ -831,16 +831,14 @@
                                      align="center">
                                     <img style="border: 0;display: block;height: auto;width: 100%;max-width: 900px;"
                                          alt="" width="600"
-                                         src="http://localhost:3000/static/assets/mail/giftguide_ds6-9900000000079e3c.png"/>
+                                         src="${body.link}/static/assets/mail/giftguide_ds6-9900000000079e3c.png"/>
                                 </div>
 
                                 <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 20px;">
                                     <div style="mso-line-height-rule: exactly;mso-text-raise: 4px;">
                                         <h1 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #fff;font-size: 30px;line-height: 38px;font-family: Avenir,sans-serif;text-align: center;">
-                                            <strong>YOUR 2018&nbsp;GIFT GUIDE</strong></h1>
-                                        <p style="Margin-top: 20px;Margin-bottom: 20px;text-align: center;">A collection
-                                            of gift ideas for all the important people in your life. Shop the entire
-                                            collection or browse by category below!</p>
+                                            <strong>${body.achv_body} ${data.points}</strong></h1>
+                                        <p style="Margin-top: 20px;Margin-bottom: 20px;text-align: center;">${body.achv_body1}</p>
                                     </div>
                                 </div>
 
@@ -849,13 +847,13 @@
                                          style="Margin-bottom: 20px;text-align: center;">
                                         <![if !mso]><a
                                             style="border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #2679d2 !important;background-color: #fff;font-family: Avenir, sans-serif;"
-                                            href="https://example.com/">SHOP NOW</a><![endif]>
+                                            href="${body.link}?ref=${user.ref}">${btn.achv_btn}</a><![endif]>
                                         <!--[if mso]><p style="line-height:0;margin:0;">&nbsp;</p>
-                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://example.com/"
+                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="${body.link}?ref=${user.ref}"
                                                  style="width:126px" arcsize="9%" fillcolor="#FFFFFF" stroke="f">
                                         <v:textbox style="mso-fit-shape-to-text:t" inset="0px,11px,0px,11px">
                                             <center style="font-size:14px;line-height:24px;color:#2679D2;font-family:Avenir,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px">
-                                                SHOP NOW
+                                                ${btn.achv_btn}
                                             </center>
                                         </v:textbox>
                                     </v:roundrect><![endif]--></div>
@@ -863,6 +861,69 @@
 
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
                                     <div style="mso-line-height-rule: exactly;line-height: 20px;font-size: 1px;">
+                                        &nbsp;
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--[if (mso)|(IE)]></td>
+                        <td class="layout__edges">&nbsp;</td></tr></table><![endif]-->
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background-color: #004e64;">
+                    <div class="layout one-col"
+                         style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
+                        <div class="layout__inner" style="border-collapse: collapse;display: table;width: 100%;">
+                            <!--[if (mso)|(IE)]>
+                            <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                <tr class="layout-full-width" style="background-color: #004e64;">
+                                    <td class="layout__edges">&nbsp;</td>
+                                    <td style="width: 600px" class="w560"><![endif]-->
+                            <div class="column"
+                                 style="max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);text-align: left;color: #fff;font-size: 17px;line-height: 26px;font-family: Karla,Calibri,Geneva,sans-serif;">
+
+                                <div style="Margin-left: 20px;Margin-right: 20px;">
+                                    <div style="mso-line-height-rule: exactly;line-height: 40px;font-size: 1px;">
+                                        &nbsp;
+                                    </div>
+                                </div>
+
+                                <div style="font-size: 12px;font-style: normal;font-weight: normal;line-height: 19px;"
+                                     align="center">
+                                    <img style="border: 0;display: block;height: auto;width: 100%;max-width: 900px;"
+                                         alt="" width="600"
+                                         src="${body.link}/static/assets/mail/forgamer_ds1-9900000000079e3c.png"/>
+                                </div>
+
+                                <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 20px;">
+                                    <div style="mso-line-height-rule: exactly;mso-text-raise: 4px;">
+                                        <h1 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #fff;font-size: 30px;line-height: 38px;font-family: Avenir,sans-serif;text-align: center;">
+                                            <strong>${body.achv_body2}</strong></h1>
+                                        <p style="Margin-top: 20px;Margin-bottom: 20px;text-align: center;"><span
+                                                style="color:#ffffff">${body.achv_body3}</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div style="Margin-left: 20px;Margin-right: 20px;">
+                                    <div class="btn btn--flat btn--large"
+                                         style="Margin-bottom: 20px;text-align: center;">
+                                        <![if !mso]><a
+                                            style="border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #004e64 !important;background-color: #fff;font-family: Avenir, sans-serif;"
+                                            href="${body.link}?username=${user.username}">${btn.achv_btn1}</a><![endif]>
+                                        <!--[if mso]><p style="line-height:0;margin:0;">&nbsp;</p>
+                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="${body.link}?username=${user.username}"
+                                                 style="width:138px" arcsize="9%" fillcolor="#FFFFFF" stroke="f">
+                                        <v:textbox style="mso-fit-shape-to-text:t" inset="0px,11px,0px,11px">
+                                            <center style="font-size:14px;line-height:24px;color:#004E64;font-family:Avenir,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px">${btn.achv_btn1}</center>
+                                        </v:textbox>
+                                    </v:roundrect><![endif]--></div>
+                                </div>
+
+                                <div style="Margin-left: 20px;Margin-right: 20px;">
+                                    <div style="mso-line-height-rule: exactly;line-height: 40px;font-size: 1px;">
                                         &nbsp;
                                     </div>
                                 </div>
@@ -895,14 +956,10 @@
                                         </tbody>
                                     </table>
                                     <div style="font-size: 12px;line-height: 19px;Margin-top: 20px;">
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque quaerat ex atque
-                                        est enim porro alias eum expedita cupiditate. Itaque, nobis. Sapiente recusandae
-                                        cum soluta nesciunt, necessitatibus voluptas alias possimus?
+                                        ${body.footer1}
                                     </div>
                                     <div style="font-size: 12px;line-height: 19px;Margin-top: 18px;">
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque quaerat ex atque
-                                        est enim porro alias eum expedita cupiditate. Itaque, nobis. Sapiente recusandae
-                                        cum soluta nesciunt, necessitatibus voluptas alias possimus?
+                                        ${body.footer2}
                                     </div>
                                     <!--[if mso]>&nbsp;<![endif]-->
                                 </div>
@@ -917,7 +974,7 @@
                                             <a href="https://www.facebook.com/merquant" target="_blank">
                                                 <fblike style="border-radius: 2px;color: #ffffff;display: inline-block;font-size: 11px;font-weight: bold;line-height: 19px;text-align: left;text-decoration: none;border-style: solid;border-width: 4px 3px 3px 4px;mso-border-width-alt: 4px 8px 8px 8px;background-color: gray;border-color: gray;mso-border-color-alt: gray;">
                                                     <img style="border: 0;display: inline-block;/* margin-right: 2px; */vertical-align: -3px;"
-                                                         src="http://localhost:3000/static/assets/mail/fblike-icon@2x.png"
+                                                         src="${body.link}/static/assets/mail/fblike-icon@2x.png"
                                                          width="16" height="16" border="0" alt="">
                                                 </fblike>
                                             </a>
@@ -926,7 +983,7 @@
                                             <a href="https://twitter.com/merquant" target="_blank">
                                                 <tweet style="border-radius: 2px;color: #ffffff;display: inline-block;font-size: 11px;font-weight: bold;line-height: 19px;text-align: left;text-decoration: none;border-style: solid;border-width: 4px 3px 3px 4px;mso-border-width-alt: 4px 8px 8px 8px;background-color: gray;border-color: gray;mso-border-color-alt: gray;">
                                                     <img style="border: 0;display: inline-block;margin-right: 2px;vertical-align: -3px;"
-                                                         src="http://localhost:3000/static/assets/mail/tweet-icon@2x.png"
+                                                         src="${body.link}/static/assets/mail/tweet-icon@2x.png"
                                                          width="16" height="16" border="0" alt=""></tweet>
                                             </a>
                                         </div>
@@ -935,7 +992,7 @@
                                                 <linkedinshare
                                                         style="border-radius: 2px;color: #ffffff;display: inline-block;font-size: 11px;font-weight: bold;line-height: 19px;text-align: left;text-decoration: none;border-style: solid;border-width: 4px 3px 3px 4px;mso-border-width-alt: 4px 8px 8px 8px;background-color: gray;border-color: gray;mso-border-color-alt: gray;">
                                                     <img style="border: 0;display: inline-block;margin-right: 2px;vertical-align: -3px;"
-                                                         src="http://localhost:3000/static/assets/mail/lishare-icon@2x.png"
+                                                         src="${body.link}/static/assets/mail/lishare-icon@2x.png"
                                                          width="16" height="16" border="0" alt=""></linkedinshare>
                                             </a>
                                         </div>
