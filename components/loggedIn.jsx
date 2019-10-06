@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Parse from 'parse';
 import cookie from 'js-cookie';
 import Share from './share';
-import Gifts from './gifts';
 import { setUser } from '../store';
 import Unverified from './unverified';
 

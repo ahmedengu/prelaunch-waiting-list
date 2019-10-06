@@ -33,7 +33,7 @@ const api = new ParseServer({
   websocketTimeout: 10 * 1000,
   cacheTimeout: 60 * 600 * 1000,
   sessionLength: 3110400000,
-  protectedFields: [],
+  protectedFields: { _User: ['token'] },
   emailAdapter: {
     module: 'parse-smtp-template',
     options: {
@@ -53,6 +53,7 @@ const api = new ParseServer({
             body1: 'Mail confirmation email body1',
             footer1: 'Mail confirmation email body1',
             footer2: 'Mail confirmation email body1',
+            link: process.env.PUBLIC_URL || `http://localhost:${port}`,
           },
           btn: 'confirma tu correo',
         },
@@ -63,6 +64,7 @@ const api = new ParseServer({
             body1: 'Mail confirmation email body1',
             footer1: 'Mail confirmation email body1',
             footer2: 'Mail confirmation email body1',
+            link: process.env.PUBLIC_URL || `http://localhost:${port}`,
           },
           btn: 'confirm your email',
         },

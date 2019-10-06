@@ -947,8 +947,12 @@
                              style="text-align: left;font-size: 12px;line-height: 19px;color: #2679d2;font-family: Avenir,sans-serif;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">
                             <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 10px;Margin-bottom: 10px;">
                                 <div style="font-size: 12px;line-height: 19px;">
-                                    <a href="http://localhost:3000?unsub=ahmedengu@gmail.com&token=dgsdgsdgfsdfgs">
+                                    <a href="${body.link}?link=unsub&username=${user.username}&token=${user.token}">
                                         <unsubscribe style="text-decoration: underline;">Unsubscribe</unsubscribe>
+                                    </a>
+                                    <span>&nbsp; | &nbsp;</span>
+                                    <a href="${body.link}?link=resub&username=${user.username}&token=${user.token}">
+                                        <unsubscribe style="text-decoration: underline;">Resubscribe</unsubscribe>
                                     </a>
                                 </div>
                             </div>

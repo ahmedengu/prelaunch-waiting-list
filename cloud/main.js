@@ -2,6 +2,7 @@ const _ = require('lodash');
 const disposableEmail = require('rendrr-disposable-email-list');
 const parseSmtp = require('parse-smtp-template');
 const qs = require('qs');
+const uuid = require('uuid');
 const { applicationId, serverURL } = require('../constants');
 
 const requiredFields = ['username', 'email', 'country', 'lang'];
@@ -111,6 +112,7 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     checkEmail(request);
 
     request.object.set('points', 0);
+    request.object.set('token', uuid.v4());
 
     await assignRef(request);
 
@@ -204,4 +206,25 @@ Parse.Cloud.define('verifyEmail', async (request, response) => {
     const errorJson = JSON.parse(e.text);
     throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
   }
+});
+
+Parse.Cloud.define('manageSub', async (request, response) => {
+  const { token, username, sendEmails } = request.params;
+
+  if (!token || !username) {
+    throw 'invalid-request';
+  }
+  const query = new Parse.Query(Parse.User);
+
+  const user = await query.equalTo('username', username)
+    .equalTo('token', token)
+    .first({ useMasterKey: true });
+
+  if (user && user.get('token') === token && user.get('username') === username) {
+    user.set('sendEmails', sendEmails === true);
+    user.save(null, { useMasterKey: true });
+    return 'successful';
+  }
+
+  throw 'not-found';
 });
