@@ -1,4 +1,8 @@
 {
+  "Egypt": "مصر",
+  "Emirates": "الإمارات",
+  "Saudi": "السعودية",
+  "lang": "English",
   "merquant": "merquant",
   "line1": "line1",
   "line2": "line2",
@@ -19,7 +23,7 @@
   "lnkd-title": "lnkd-title",
   "lnkd-summary": "lnkd-summary",
   "whats-txt": "whats-txt",
-  "header": "header",
+  "header": "عنوان",
   "enter_email": "enter_email",
   "submit": "submit",
   "check-mail": "check-mail"

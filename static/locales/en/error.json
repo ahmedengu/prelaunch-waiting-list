@@ -1,4 +1,8 @@
 {
+  "Egypt": "Egypt",
+  "Emirates": "Emirates",
+  "Saudi": "Saudi",
+  "lang": "العربية",
   "ops": "ops",
   "error-with-status": "error-with-status",
   "error-without-status": "error-without-status",

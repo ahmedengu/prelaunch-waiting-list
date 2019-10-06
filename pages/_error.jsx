@@ -41,7 +41,7 @@ Error.getInitialProps = async ({ req, res, err }) => {
   const lang = (req ? req.language : i18n.language) || 'en';
 
   return {
-    namespacesRequired: ['common', 'error'],
+    namespacesRequired: ['error'],
     statusCode,
     lang,
   };
