@@ -107,7 +107,7 @@ const Header = ({
 }) => (
   <>
     <Head>
-      {cookie.get('ref') ? refHead(t) : normalHead(t)}
+      {cookie.get('ref') && Object.keys(user).length === 0 ? refHead(t) : normalHead(t)}
       <meta name="twitter:site" content="@MerQuant" />
       <link rel="shortcut icon" type="image/png" href="../static/assets/favicon.ico" />
       <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet" />
