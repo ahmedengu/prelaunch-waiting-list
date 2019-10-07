@@ -27,17 +27,17 @@ class Unverified extends Component {
     const { t } = this.props;
     const { loading, message } = this.state;
     return (
-      <section className="bg-dark">
+      <section className="checkMail_section">
         <div className="container">
           <div className="row text-center">
-            <div className="col-12 text-white">
-              <h4>
-                {t('check-mail')}
+            <div className="col-12 text-white extraMargin">
+              <h4 className="spacing lighter">
+                {t('Please check your email for verification')}
                 {' - '}
                 <button
                   disabled={loading}
                   type="button"
-                  className="btn btn-success pt-0 pb-0"
+                  className="btn checkMail_section-btn pt-0 pb-0 spacing"
                   onClick={() => {
                     this.resend();
                   }}

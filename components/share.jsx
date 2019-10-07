@@ -26,7 +26,6 @@ const Share = ({ t, user }) => {
             <h2>
               {t('your-points')}
               {': '}
-              <br />
               {user.points || 0}
             </h2>
           </div>

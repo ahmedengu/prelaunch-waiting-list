@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Footer = ({ t }) => (
-  <footer className="fdb-block footer-large fp-active" data-block-type="footers" data-id="2">
-    <div className="container">
+  <footer className="footer" data-block-type="footers" data-id="2">
+    <div className="container-full">
       <div className="row text-center">
         <div className="col fr-box fr-inline" role="application" style={{ zIndex: 10000 }}>
           <div className="fr-wrapper" dir="auto">
@@ -14,28 +14,17 @@ const Footer = ({ t }) => (
               aria-disabled="false"
               spellCheck="true"
             >
-              <h3>{t('merquant')}</h3>
-              <p>
-                {t('line1')}
-                <br />
-                {t('line2')}
-              </p>
-              <p>
-                {t('line3')}
-              </p>
-              <p>
-                {t('line4')}
-              </p>
+              <h3>{t('MerQuant')}</h3>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="row mt-4">
+      <div className="row">
         <div className="col text-center fr-box" role="application" style={{ zIndex: 10000 }}>
           <div className="fr-wrapper" dir="auto">
             <div
-              className="fr-element fr-view"
+              className="fr-element fr-view white-icon"
               dir="auto"
               aria-disabled="false"
               spellCheck="true"
@@ -46,21 +35,21 @@ const Footer = ({ t }) => (
                   className="mx-2"
                   href="https://www.facebook.com/merquant"
                 >
-                  <FiFacebook />
+                  <FiFacebook className="white-icon"/>
                 </a>
                 <a
                   title="Twitter"
                   className="mx-2"
                   href="https://twitter.com/merquant"
                 >
-                  <FiTwitter />
+                  <FiTwitter className="white-icon"/>
                 </a>
                 <a
                   title="Linkedin"
                   className="mx-2"
                   href="https://www.linkedin.com/company/merquant"
                 >
-                  <FiLinkedin />
+                  <FiLinkedin className="white-icon" />
                 </a>
               </p>
             </div>

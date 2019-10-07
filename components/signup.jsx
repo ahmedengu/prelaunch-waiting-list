@@ -146,7 +146,7 @@ class Signup extends React.Component {
                 {t('description')}
               </p>
               <form
-                className="input-group"
+                className="input-group signup_form"
                 noValidate
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -155,7 +155,7 @@ class Signup extends React.Component {
               >
                 <input
                   type="email"
-                  className={`form-control ${error ? 'is-invalid' : ''}`}
+                  className={`form-control ${error ? 'is-invalid' : ''} signup_form-email spacing`}
                   placeholder={t('enter_email')}
                   value={email}
                   onChange={(event) => {
@@ -167,9 +167,9 @@ class Signup extends React.Component {
                 />
                 <div className="input-group-append">
                   <input
-                    className="btn btn-primary"
+                    className="btn btn-primary spacing"
                     type="submit"
-                    value={t('submit')}
+                    value={t('Submit')}
                     disabled={loading}
                   />
                 </div>

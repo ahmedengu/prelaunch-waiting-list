@@ -12,6 +12,7 @@ import { setUser } from '../store';
 import {
   countries, javaScriptKey, applicationId, serverURL,
 } from '../constants';
+import Layout from '../components/Layout'
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -88,8 +89,10 @@ class MyApp extends App {
       });
     return (
       <Provider store={reduxStore}>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
+        <Layout>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <Component {...pageProps} />
+        </Layout>
       </Provider>
     );
   }
