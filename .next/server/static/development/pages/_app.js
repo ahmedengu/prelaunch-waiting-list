@@ -132,6 +132,7 @@ function Layout(props) {
 
 module.exports = {
   countries: ['egypt', 'saudi', 'emirates'],
+  codes: ['EG', 'SA', 'AE'],
   domain: 'http://localhost:3000',
   serverURL: process.env.SERVER_URL || 'http://localhost:3000/api',
   applicationId: process.env.APP_ID || 'xxxxx',
@@ -157,8 +158,8 @@ module.exports = new NextI18Next({
   ignoreRoutes: ['api', 'dashboard'],
   browserLanguageDetection: true,
   serverLanguageDetection: true,
-  otherLanguages: ['en'],
-  defaultLanguage: 'ar',
+  otherLanguages: ['ar'],
+  defaultLanguage: 'en',
   localeSubpaths: {
     ar: 'ar',
     en: 'en'
@@ -7962,30 +7963,32 @@ function withTranslation(ns) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! parse */ "parse");
-/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(parse__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next-cookies */ "next-cookies");
-/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-cookie */ "js-cookie");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! qs */ "qs");
-/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
-/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _lib_with_redux_store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/with-redux-store */ "./lib/with-redux-store.jsx");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../store */ "./store.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../constants */ "./constants.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_constants__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.jsx");
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! parse */ "parse");
+/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(parse__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next-cookies */ "next-cookies");
+/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! qs */ "qs");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _lib_with_redux_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/with-redux-store */ "./lib/with-redux-store.jsx");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store */ "./store.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../constants */ "./constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_constants__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.jsx");
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
@@ -8000,7 +8003,59 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
+class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
+  constructor(props) {
+    super(props);
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "refreshUser", (reduxStore, lang) => {
+      parse__WEBPACK_IMPORTED_MODULE_3___default.a.User.currentAsync().then(async user => {
+        let userJson = user && user.toJSON();
+        reduxStore.dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_11__["setUser"])(userJson));
+
+        if (userJson) {
+          js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.set('user', userJson);
+
+          try {
+            if (userJson.lang === lang) {
+              userJson = (await parse__WEBPACK_IMPORTED_MODULE_3___default.a.User.current().fetch()).toJSON();
+            } else {
+              user.set('lang', lang);
+              userJson = (await user.save()).toJSON();
+            }
+          } catch (e) {
+            parse__WEBPACK_IMPORTED_MODULE_3___default.a.User.logOut();
+            userJson = undefined;
+          }
+
+          reduxStore.dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_11__["setUser"])(userJson));
+
+          if (userJson) {
+            js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.set('user', userJson);
+          } else {
+            js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.remove('user');
+          }
+        } else {
+          js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.remove('user');
+        }
+      });
+    });
+
+    const {
+      reduxStore: _reduxStore,
+      lang: _lang,
+      router: {
+        pathname,
+        query: {
+          token,
+          link,
+          username
+        }
+      }
+    } = props;
+
+    if (false) {}
+  }
+
   static async getInitialProps({
     Component,
     ctx
@@ -8014,29 +8069,29 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
     } = ctx;
     let {
       user
-    } = next_cookies__WEBPACK_IMPORTED_MODULE_4___default()(ctx);
+    } = next_cookies__WEBPACK_IMPORTED_MODULE_5___default()(ctx);
     user = user && JSON.parse(user);
 
     if (user) {
-      reduxStore.dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_10__["setUser"])(user));
+      reduxStore.dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_11__["setUser"])(user));
       const myCountry = `/${user.country}`;
 
-      if ((!query || query.ref !== user.ref) && myCountry === pathname || myCountry !== pathname && _constants__WEBPACK_IMPORTED_MODULE_11__["countries"].includes(pathname.replace('/', ''))) {
+      if ((!query || query.ref !== user.ref) && myCountry === pathname || myCountry !== pathname && _constants__WEBPACK_IMPORTED_MODULE_12__["countries"].includes(pathname.replace('/', ''))) {
         query.ref = user.ref;
 
         if (res) {
           res.writeHead(302, {
-            Location: `${myCountry}?${qs__WEBPACK_IMPORTED_MODULE_7__["stringify"](query)}`
+            Location: `${myCountry}?${qs__WEBPACK_IMPORTED_MODULE_8__["stringify"](query)}`
           });
           res.end();
         } else {
-          next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push(`${myCountry}?${qs__WEBPACK_IMPORTED_MODULE_7__["stringify"](query)}`);
+          next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push(`${myCountry}?${qs__WEBPACK_IMPORTED_MODULE_8__["stringify"](query)}`);
         }
       }
     }
 
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-    const lang = req ? req.language : _i18n__WEBPACK_IMPORTED_MODULE_8__["i18n"].language;
+    const lang = req ? req.language : _i18n__WEBPACK_IMPORTED_MODULE_9__["i18n"].language;
     return {
       pageProps,
       lang
@@ -8044,52 +8099,19 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
   }
 
   render() {
-    if (false) {}
-
     const {
       Component,
       pageProps,
-      reduxStore,
-      lang
+      reduxStore
     } = this.props;
-    parse__WEBPACK_IMPORTED_MODULE_2___default.a.User.currentAsync().then(async user => {
-      let userJson = user && user.toJSON();
-      reduxStore.dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_10__["setUser"])(userJson));
-
-      if (userJson) {
-        js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.set('user', userJson);
-
-        try {
-          if (userJson.lang === lang) {
-            userJson = (await parse__WEBPACK_IMPORTED_MODULE_2___default.a.User.current().fetch()).toJSON();
-          } else {
-            user.set('lang', lang);
-            userJson = (await user.save()).toJSON();
-          }
-        } catch (e) {
-          parse__WEBPACK_IMPORTED_MODULE_2___default.a.User.logOut();
-          userJson = undefined;
-        }
-
-        reduxStore.dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_10__["setUser"])(userJson));
-
-        if (userJson) {
-          js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.set('user', userJson);
-        } else {
-          js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.remove('user');
-        }
-      } else {
-        js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.remove('user');
-      }
-    });
-    return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
+    return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_4__["Provider"], {
       store: reduxStore
-    }, __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_12__["default"], null, __jsx(Component, pageProps)));
+    }, __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_13__["default"], null, __jsx(Component, pageProps)));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_with_redux_store__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_i18n__WEBPACK_IMPORTED_MODULE_8__["appWithTranslation"])(MyApp)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_with_redux_store__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_i18n__WEBPACK_IMPORTED_MODULE_9__["appWithTranslation"])(MyApp)));
 
 /***/ }),
 
