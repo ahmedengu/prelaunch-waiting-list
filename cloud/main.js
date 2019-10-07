@@ -1,20 +1,28 @@
 const _ = require('lodash');
 const disposableEmail = require('rendrr-disposable-email-list');
 const parseSmtp = require('parse-smtp-template');
+const qs = require('qs');
+const uuid = require('uuid');
 const { applicationId, serverURL } = require('../constants');
+const { emailConfig } = require('../serverConstants');
 
 const requiredFields = ['username', 'email', 'country', 'lang'];
-const achievementsPoints = [5, 10, 25, 50];
-
-
-const sendSmtpMail = parseSmtp({
-  port: process.env.MAIL_PORT || 2525,
-  host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
-  user: process.env.MAIL_USER || 'f2ef551b118f58',
-  password: process.env.MAIL_PASS || 'bdb83c37ee7151',
-  fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
-}).sendMail;
-
+const achievementsPoints = [
+  5,
+  10,
+  25,
+  50,
+  100,
+  250,
+  500,
+  1000,
+  2000,
+  5000,
+  10000,
+  25000,
+  50000,
+  100000,
+];
 
 function checkRequired(request, fields) {
   const missing = [];
@@ -64,32 +72,28 @@ async function assignRef(request) {
   request.object.set('ref', `${prefix}${count + 1}`);
 }
 
-function sendMailToUser(user, message, subject) {
+function sendAchievementMail(user, data) {
   if (user.get('email') && (!user.get('options') || user.get('options').sendEmails !== false)) {
+    const sendSmtpMail = parseSmtp({
+      ...emailConfig,
+      confirmTemplatePath: 'views/templates/achievement.html',
+    }).sendVerificationEmail;
+
     sendSmtpMail({
-      to: user.get('email'),
-      text: message,
-      subject,
+      ...data,
+      user,
     });
   }
 }
 
-function createNotification(user, event) {
+function createNotification(user, event, data) {
   const Notification = Parse.Object.extend('Notification');
   const notification = new Notification();
   notification.set('user', user);
   notification.set('event', event);
-  let subject;
-  let message;
-  switch (event) {
-    case '5 Points':
-      notification.set('description', 'You have unlocked a new gift');
-
-      subject = 'You have unlocked a new gift';
-      message = 'You have unlocked a new gift ';
-      break;
-  }
-  sendMailToUser(user, message, subject);
+  notification.set('description', `You have earned ${event}`);
+  notification.save(null, { useMasterKey: true });
+  sendAchievementMail(user, data);
 }
 
 Parse.Cloud.beforeSave(Parse.User, async (request) => {
@@ -98,6 +102,7 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     checkEmail(request);
 
     request.object.set('points', 0);
+    request.object.set('token', uuid.v4());
 
     await assignRef(request);
 
@@ -127,7 +132,7 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
         }
       } else if (request.original.get('points') < request.object.get('points')
         && achievementsPoints.includes(request.object.get('points'))) {
-        createNotification(request.object, `${request.object.get('points')} Points`);
+        createNotification(request.object, `${request.object.get('points')} Shares`, { points: request.object.get('points') });
       }
     }
   } else if (referred && !request.object.existed()) {
@@ -168,4 +173,48 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
     const errorJson = JSON.parse(e.text);
     throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
   }
+});
+
+Parse.Cloud.define('verifyEmail', async (request, response) => {
+  const { token, username } = request.params;
+
+  if (!token || !username) {
+    throw 'invalid-request';
+  }
+
+  try {
+    await Parse.Cloud.httpRequest({
+      method: 'GET',
+      url: `${serverURL}/apps/${applicationId}/verify_email?${qs.stringify({ token, username })}`,
+      headers: {
+        'x-parse-application-id': applicationId,
+        'x-parse-master-key': process.env.MASTER_KEY || 'xxxxx',
+      },
+    });
+    return 'verified';
+  } catch (e) {
+    const errorJson = JSON.parse(e.text);
+    throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
+  }
+});
+
+Parse.Cloud.define('manageSub', async (request, response) => {
+  const { token, username, sendEmails } = request.params;
+
+  if (!token || !username) {
+    throw 'invalid-request';
+  }
+  const query = new Parse.Query(Parse.User);
+
+  const user = await query.equalTo('username', username)
+    .equalTo('token', token)
+    .first({ useMasterKey: true });
+
+  if (user && user.get('token') === token && user.get('username') === username) {
+    user.set('sendEmails', sendEmails === true);
+    user.save(null, { useMasterKey: true });
+    return 'successful';
+  }
+
+  throw 'not-found';
 });

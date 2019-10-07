@@ -10,6 +10,7 @@ const handle = app.getRequestHandler();
 const { CronJob } = require('cron');
 const Parse = require('parse');
 const ParseDashboard = require('parse-dashboard');
+const { emailConfig } = require('./serverConstants');
 const nextI18next = require('./i18n');
 
 const api = new ParseServer({
@@ -25,7 +26,7 @@ const api = new ParseServer({
   verifyUserEmails: true,
   emailVerifyTokenValidityDuration: 48 * 60 * 60, // in seconds (2 hours = 7200 seconds)
   preventLoginWithUnverifiedEmail: false, // defaults to false
-  publicServerURL: process.env.SERVER_URL || `http://localhost:${port}/api`,
+  publicServerURL: process.env.PUBLIC_URL || `http://localhost:${port}`,
   appName: process.env.APP_NAME || 'MerQuant',
   liveQuery: {
     classNames: ['_User'],
@@ -33,70 +34,28 @@ const api = new ParseServer({
   websocketTimeout: 10 * 1000,
   cacheTimeout: 60 * 600 * 1000,
   sessionLength: 3110400000,
-  protectedFields: [],
-  auth: {
-    facebook: {
-      appIds: '1394780183887567',
-    },
-  },
+  protectedFields: { _User: ['token'] },
   emailAdapter: {
     module: 'parse-smtp-template',
-    options: {
-      port: process.env.MAIL_PORT || 2525,
-      host: process.env.MAIL_HOST || 'smtp.mailtrap.io',
-      user: process.env.MAIL_USER || 'f2ef551b118f58',
-      password: process.env.MAIL_PASS || 'bdb83c37ee7151',
-      fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
-      multiTemplate: true,
-      multiLang: true,
-      confirmTemplatePath: 'views/templates/confirmTemplate.html',
-      multiLangConfirm: {
-        ar: {
-          subject: 'Confirmación de Correo',
-          body: 'Cuerpo del correo de confirmación de correo',
-          btn: 'confirma tu correo',
-        },
-        en: {
-          subject: 'E-mail confirmation',
-          body: 'Mail confirmation email body',
-          btn: 'confirm your email',
-        },
-      },
-      confirmOptions: {
-        subject: 'E-mail confirmation',
-        body: 'Custome email confirmation body',
-        btn: 'confirm your email',
-      },
-      passwordOptions: {
-        subject: 'Password recovery',
-        body: 'Custome pasword recovery email body',
-        btn: 'Recover your password',
-      },
-    },
+    options: emailConfig,
   },
   customPages: {
-    passwordResetSuccess: 'http://yourapp.com/passwordResetSuccess',
-    verifyEmailSuccess: 'http://yourapp.com/verifyEmailSuccess',
-    parseFrameURL: 'http://yourapp.com/parseFrameURL',
-    linkSendSuccess: 'http://yourapp.com/linkSendSuccess',
-    linkSendFail: 'http://yourapp.com/linkSendFail',
-    invalidLink: 'http://yourapp.com/invalidLink',
-    invalidVerificationLink: 'http://yourapp.com/invalidVerificationLink',
-    choosePassword: 'http://yourapp.com/choosePassword',
+    parseFrameURL: process.env.PUBLIC_URL || `http://localhost:${port}`,
   },
-
 });
 
 
 const dashboard = new ParseDashboard({
   allowInsecureHTTP: true,
-  apps: [{
-    serverURL: process.env.SERVER_URL || `http://localhost:${port}/api`,
-    appId: process.env.APP_ID || 'xxxxx',
-    masterKey: process.env.MASTER_KEY || 'xxxxx',
-    javascriptKey: process.env.JAVASCRIPT_KEY || 'xxxxx',
-    appName: process.env.APP_NAME || 'MerQuant',
-  }],
+  apps: [
+    {
+      serverURL: process.env.SERVER_URL || `http://localhost:${port}/api`,
+      appId: process.env.APP_ID || 'xxxxx',
+      masterKey: process.env.MASTER_KEY || 'xxxxx',
+      javascriptKey: process.env.JAVASCRIPT_KEY || 'xxxxx',
+      appName: process.env.APP_NAME || 'MerQuant',
+    },
+  ],
   users: [
     {
       user: process.env.DASHBOARD_USER || 'x',
@@ -111,7 +70,7 @@ const dashboard = new ParseDashboard({
 (async () => {
   await app.prepare();
   const server = express();
-
+  server.set('trust proxy', true);
   server.use(process.env.PARSE_MOUNT || '/api', api);
   server.use(process.env.DASHBOARD_MOUNT || '/dashboard', dashboard);
   server.use(nextI18NextMiddleware(nextI18next));

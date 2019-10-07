@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Parse from 'parse';
 import cookie from 'js-cookie';
 import Share from './share';
-import Gifts from './gifts';
 import { setUser } from '../store';
 import Unverified from './unverified';
 
@@ -45,10 +44,10 @@ class LoggedIn extends React.Component {
     return (
       <>
         {user && !user.emailVerified && (
-          <Unverified t={t} email={user.email} />
+          <Unverified t={t} email={user.email || user.username} />
         )}
         <Share t={t} />
-        <Gifts t={t} />
+        {/* <Gifts t={t} /> */}
       </>
     );
   }

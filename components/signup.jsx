@@ -18,9 +18,9 @@ class Signup extends React.Component {
       loading: false,
     };
     if (process.browser) {
-      const { query: { email, ref } } = Router;
-      if (email) {
-        this.state.email = decodeURIComponent(email);
+      const { query: { email, username, ref } } = Router;
+      if (email || username) {
+        this.state.email = decodeURIComponent(email || username);
         this.register(true);
       } else if (ref) {
         cookie.set('ref', ref);
