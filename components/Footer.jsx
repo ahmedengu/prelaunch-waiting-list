@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Footer = ({ t }) => (
-  <footer className="fdb-block footer-large fp-active" data-block-type="footers" data-id="2">
+  <footer
+    className="fdb-block footer-padding fp-active bg-dark"
+    data-block-type="footers"
+    data-id="2"
+  >
     <div className="container">
       <div className="row text-center">
         <div className="col fr-box fr-inline" role="application" style={{ zIndex: 10000 }}>
@@ -15,31 +19,6 @@ const Footer = ({ t }) => (
               spellCheck="true"
             >
               <h3>{t('merquant')}</h3>
-              <p>
-                {t('line1')}
-                <br />
-                {t('line2')}
-              </p>
-              <p>
-                {t('line3')}
-              </p>
-              <p>
-                {t('line4')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row mt-4">
-        <div className="col text-center fr-box" role="application" style={{ zIndex: 10000 }}>
-          <div className="fr-wrapper" dir="auto">
-            <div
-              className="fr-element fr-view"
-              dir="auto"
-              aria-disabled="false"
-              spellCheck="true"
-            >
               <p className="lead">
                 <a
                   title="Facebook"
@@ -62,6 +41,17 @@ const Footer = ({ t }) => (
                 >
                   <FiLinkedin />
                 </a>
+              </p>
+              <p className="small">
+                {t('line1')}
+                <br />
+                {t('line2')}
+              </p>
+              <p className="small">
+                {t('line3')}
+              </p>
+              <p className="small">
+                {t('line4')}
               </p>
             </div>
           </div>

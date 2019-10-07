@@ -7,6 +7,7 @@ import cookie from 'js-cookie';
 import Share from './share';
 import { setUser } from '../store';
 import Unverified from './unverified';
+import Resubscribe from './resubscribe';
 
 class LoggedIn extends React.Component {
   constructor(props) {
@@ -45,6 +46,9 @@ class LoggedIn extends React.Component {
       <>
         {user && !user.emailVerified && (
           <Unverified t={t} email={user.email || user.username} />
+        )}
+        {user && user.emailVerified && user.sendEmails === false && (
+          <Resubscribe t={t} user={user} />
         )}
         <Share t={t} />
         {/* <Gifts t={t} /> */}
