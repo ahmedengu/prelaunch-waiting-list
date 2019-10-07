@@ -12,3 +12,5 @@ dist
 
 # Logs
 runtime.log
+.next
+logs
