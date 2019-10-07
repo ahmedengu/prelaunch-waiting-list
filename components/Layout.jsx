@@ -29,7 +29,11 @@ function Layout(props) {
         .select,
         .label {
             color: #414141;
-            font: 400 17px/2em 'Signika', sans-serif;
+            font: 400 13.3333px Arial;
+            margin: 0;
+            padding: 0;
+            text-align: start;
+            align-items: center;
         }
         
         .select {
@@ -47,11 +51,14 @@ function Layout(props) {
           }
 
         .header_selectBox {
-            left: 5%;
+            left: 3%;
+            line-height: 1.15;
+            border-radius: 25px;
+            padding: 0px 6px;
         }
 
         .header_social {
-            right: 5%;
+            right: 3%;
         }
 
         .spacing {
@@ -107,6 +114,12 @@ function Layout(props) {
             color: white;
             text-align: center;
             margin-left: 3%;
+        }
+        
+        .checkMail_section h2 {
+            text-size-adjust: auto;
+            word-break: break-word;
+            font-size: x-large;
         }
         
 
