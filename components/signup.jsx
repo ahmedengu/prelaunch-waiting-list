@@ -24,6 +24,7 @@ class Signup extends React.Component {
         this.register(true);
       } else if (ref) {
         cookie.set('ref', ref, { expires: 1 });
+        this.state.ref = cookie.get('ref');
       }
     }
   }
@@ -68,7 +69,7 @@ class Signup extends React.Component {
       this.loggedIn(user);
     } catch (e) {
       const { country } = this.props;
-      const { query: { ref } } = Router;
+      const { ref } = this.state;
 
       const user = new Parse.User();
       user.set('username', email);
@@ -76,7 +77,7 @@ class Signup extends React.Component {
       user.set('email', email);
       user.set('country', country);
       user.set('lang', i18n.language);
-      user.set('referred', ref || cookie.get('ref'));
+      user.set('referred', ref);
 
       try {
         await user.signUp();
@@ -111,7 +112,9 @@ class Signup extends React.Component {
 
   render() {
     const { t } = this.props;
-    const { email, loading, error } = this.state;
+    const {
+      email, loading, error, ref,
+    } = this.state;
 
     return (
       <section className="fdb-block" data-block-type="contents" data-id="3">
@@ -141,9 +144,9 @@ class Signup extends React.Component {
                   src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs//icons/gift.svg"
                 />
               </p>
-              <h1>{t('header')}</h1>
+              <h1>{ref ? t('ref-header') : t('header')}</h1>
               <p className="lead">
-                {t('description')}
+                {ref ? t('ref-description') : t('description')}
               </p>
               <form
                 className="input-group"
