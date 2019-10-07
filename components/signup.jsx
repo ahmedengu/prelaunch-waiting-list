@@ -23,7 +23,7 @@ class Signup extends React.Component {
         this.state.email = decodeURIComponent(email || username);
         this.register(true);
       } else if (ref) {
-        cookie.set('ref', ref);
+        cookie.set('ref', ref, { expires: 1 });
       }
     }
   }

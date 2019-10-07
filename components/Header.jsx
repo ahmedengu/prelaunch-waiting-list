@@ -6,6 +6,7 @@ import Parse from 'parse';
 
 import Head from 'next/head';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import cookie from 'js-cookie';
 import { i18n } from '../i18n';
 
 const changeLang = (user) => () => {
@@ -19,11 +20,10 @@ const changeLang = (user) => () => {
     current.save();
   }
 };
-const Header = ({
-  t, country, user,
-}) => (
-  <>
-    <Head>
+
+function normalHead(t) {
+  return (
+    <>
       <title>{t('title')}</title>
       <meta name="title" content={t('title')} />
       <meta
@@ -58,6 +58,56 @@ const Header = ({
         property="twitter:image"
         content={t('og-image')}
       />
+    </>
+  );
+}
+function refHead(t) {
+  return (
+    <>
+      <title>{t('ref-title')}</title>
+      <meta name="title" content={t('ref-title')} />
+      <meta
+        name="description"
+        content={t('ref-description')}
+      />
+      <meta
+        name="keywords"
+        content={t('ref-keywords')}
+      />
+
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={t('ref-url')} />
+      <meta property="og:title" content={t('ref-title')} />
+      <meta
+        property="og:description"
+        content={t('ref-description')}
+      />
+      <meta
+        property="og:image"
+        content={t('ref-og-image')}
+      />
+
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:url" content={t('ref-url')} />
+      <meta property="twitter:title" content={t('ref-title')} />
+      <meta
+        property="twitter:description"
+        content={t('ref-description')}
+      />
+      <meta
+        property="twitter:image"
+        content={t('ref-og-image')}
+      />
+    </>
+  );
+}
+
+const Header = ({
+  t, country, user,
+}) => (
+  <>
+    <Head>
+      {cookie.get('ref') ? refHead(t) : normalHead(t)}
       <meta name="twitter:site" content="@MerQuant" />
       <link rel="shortcut icon" type="image/png" href="../static/assets/favicon.ico" />
       <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet" />
