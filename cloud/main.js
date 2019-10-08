@@ -74,10 +74,14 @@ async function assignRef(request) {
 
 function sendAchievementMail(user, data) {
   if (user.get('email') && (!user.get('options') || user.get('options').sendEmails !== false)) {
-    const sendSmtpMail = parseSmtp({
-      ...emailConfig,
+    const mailOptions = {
+      ..._.cloneDeep(emailConfig),
       confirmTemplatePath: 'views/templates/achievement.html',
-    }).sendVerificationEmail;
+    };
+    mailOptions.multiLangConfirm.ar.subject = mailOptions.multiLangConfirm.ar.achv_subject;
+    mailOptions.confirmOptions.subject = mailOptions.confirmOptions.achv_subject;
+
+    const sendSmtpMail = parseSmtp(mailOptions).sendVerificationEmail;
 
     sendSmtpMail({
       ...data,
@@ -132,7 +136,11 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
         }
       } else if (request.original.get('points') < request.object.get('points')
         && achievementsPoints.includes(request.object.get('points'))) {
-        createNotification(request.object, `${request.object.get('points')} Shares`, { points: request.object.get('points') });
+        createNotification(
+          request.object,
+          `${request.object.get('points')} Shares`,
+          { points: request.object.get('points') },
+        );
       }
     }
   } else if (referred && !request.object.existed()) {

@@ -23,7 +23,7 @@ npm run dev
 - [X] json in all pages
 - [ ] arabic translation
 - [ ] icons for features
-- [ ] emails text
+- [X] emails text
 - [X] video styling
 - [ ] video creation
 - [X] nav menu mobile fix
