@@ -4,7 +4,7 @@ h1, .lead, .checkMail_section h4, h3 {
 }
 
 input:focus {
-  transition:all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
 }
 
@@ -19,35 +19,35 @@ input:focus {
 }
 
 .checkMail_section-btn {
-  background-color:white;
+  background-color: white;
   border-radius: 6px;
   color: #343a40;
-  transition:all .5s ease-in-out;
+  transition: all .5s ease-in-out;
 
   &:hover {
     background-color: #ff7700;
-    color:white;
-    font-weight:bold;
-    transition:all .5s ease-in-out;
+    color: white;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
 
-}
+  }
 }
 
 .full-width {
   width: 100%;
-  color:white;
+  color: white;
 
 }
 
 .white-icon {
-  color:white;
+  color: white;
 
 }
 
 .checkMail_section h2 {
-  text-size-adjust:auto;
-  word-break:break-word;
-  font-size:x-large;
+  text-size-adjust: auto;
+  word-break: break-word;
+  font-size: x-large;
 
 }
 
@@ -59,4 +59,11 @@ input:focus {
 .lead a:hover {
   opacity: 0.7;
 
+}
+
+.fdb-block {
+  padding: 6rem 0px;
+  @media (max-width: map-get($grid-breakpoints, "md")) {
+    padding: 1rem 0px;
+  }
 }

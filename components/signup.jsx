@@ -122,19 +122,20 @@ class Signup extends React.Component {
           <div className="container">
             <div className="row align-items-center">
               <div
-                className="col-10 col-sm-6 col-md-5 col-lg-4 m-auto pb-5 pb-md-0"
-                style={{ zIndex: 10000 }}
+                className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
               >
-                <iframe
-                  title="video"
-                  src={t('youtube-video')}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                />
+                <div className="embed-responsive embed-responsive-16by9 m-2">
+                  <iframe
+                    title="video"
+                    src={t('youtube-video')}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  />
+                </div>
               </div>
 
               <div
-                className="col-12 ml-md-auto col-md-7 col-lg-6 pb-5 pb-md-0"
+                className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
                 style={{ zIndex: 10000 }}
               >
                 <p>
