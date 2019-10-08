@@ -46,11 +46,9 @@ const Footer = ({ t }) => (
                 {t('line1')}
                 <br />
                 {t('line2')}
-              </p>
-              <p className="small">
+                <br />
                 {t('line3')}
-              </p>
-              <p className="small">
+                <br />
                 {t('line4')}
               </p>
             </div>

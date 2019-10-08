@@ -21,12 +21,11 @@ const Share = ({ t, user }) => {
             <img
               alt="chatting"
               className="img-fluid rounded-0"
-              src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/draws/email.svg"
+              src={t('share-img')}
             />
             <h2>
               {t('your-points')}
               {': '}
-              <br />
               {user.points || 0}
             </h2>
           </div>

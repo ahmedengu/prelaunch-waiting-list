@@ -117,81 +117,162 @@ class Signup extends React.Component {
     } = this.state;
 
     return (
-      <section className="fdb-block" data-block-type="contents" data-id="3">
-        <div className="container">
-          <div className="row align-items-center">
-            <div
-              className="col-10 col-sm-6 col-md-5 col-lg-4 m-auto pb-5 pb-md-0"
-              style={{ zIndex: 10000 }}
-            >
-              <p>
-                <img
-                  alt="App"
-                  className="img-fluid rounded-0 fr-fic fr-dii"
-                  src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs//draws/iphone-hand.svg"
-                />
-              </p>
-            </div>
-
-            <div
-              className="col-12 ml-md-auto col-md-7 col-lg-6 pb-5 pb-md-0"
-              style={{ zIndex: 10000 }}
-            >
-              <p>
-                <img
-                  alt="Gift"
-                  className="fdb-icon fr-fic fr-dii"
-                  src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs//icons/gift.svg"
-                />
-              </p>
-              <h1>{ref ? t('ref-header') : t('header')}</h1>
-              <p className="lead">
-                {ref ? t('ref-description') : t('description')}
-              </p>
-              <form
-                className="input-group"
-                noValidate
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  this.register();
-                }}
+      <>
+        <section className="fdb-block" data-block-type="contents" data-id="3">
+          <div className="container">
+            <div className="row align-items-center">
+              <div
+                className="col-10 col-sm-6 col-md-5 col-lg-4 m-auto pb-5 pb-md-0"
+                style={{ zIndex: 10000 }}
               >
-                <input
-                  type="email"
-                  className={`form-control ${error ? 'is-invalid' : ''}`}
-                  placeholder={t('enter_email')}
-                  value={email}
-                  onChange={(event) => {
-                    this.setState({
-                      email: event.target.value,
-                      error: '',
-                    });
-                  }}
+                <iframe
+                  title="video"
+                  src={t('youtube-video')}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 />
-                <div className="input-group-append">
-                  <input
-                    className="btn btn-primary"
-                    type="submit"
-                    value={t('submit')}
-                    disabled={loading}
+              </div>
+
+              <div
+                className="col-12 ml-md-auto col-md-7 col-lg-6 pb-5 pb-md-0"
+                style={{ zIndex: 10000 }}
+              >
+                <p>
+                  <img
+                    alt="Gift"
+                    className="fdb-icon fr-fic fr-dii"
+                    src={t('country-pic')}
                   />
-                </div>
-              </form>
+                </p>
+                <h1>{ref ? t('ref-header') : t('header')}</h1>
+                <p className="lead">
+                  {ref ? t('ref-description') : t('description')}
+                </p>
+                <form
+                  className="input-group"
+                  noValidate
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    this.register();
+                  }}
+                >
+                  <input
+                    type="email"
+                    className={`form-control ${error ? 'is-invalid' : ''}`}
+                    placeholder={t('enter_email')}
+                    value={email}
+                    onChange={(event) => {
+                      this.setState({
+                        email: event.target.value,
+                        error: '',
+                      });
+                    }}
+                  />
+                  <div className="input-group-append">
+                    <input
+                      className="btn btn-primary"
+                      type="submit"
+                      value={t('submit')}
+                      disabled={loading}
+                    />
+                  </div>
+                </form>
 
-              <Animated
-                animationIn="fadeIn"
-                animationInDuration={3000}
-                animationOutDuration={3000}
-                animationOut="fadeOut"
-                isVisible={error !== ''}
-              >
-                <p className="text-danger" style={{ marginTop: 10 }}>{error}</p>
-              </Animated>
+                <Animated
+                  animationIn="fadeIn"
+                  animationInDuration={3000}
+                  animationOutDuration={3000}
+                  animationOut="fadeOut"
+                  isVisible={error !== ''}
+                >
+                  <p className="text-danger" style={{ marginTop: 10 }}>{error}</p>
+                </Animated>
 
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="fdb-block pt-0">
+          <div className="container">
+            <div className="row text-center">
+              <div className="col-12">
+                <h1>Features</h1>
+              </div>
+            </div>
+            <div className="row text-left mt-5">
+              <div className="col-12 col-md-4">
+                <div className="row">
+                  <div className="col-3">
+                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/gift.svg" />
+                  </div>
+                  <div className="col-9">
+                    <h3>Zero Commission</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+                <div className="row">
+                  <div className="col-3">
+                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/cloud.svg" />
+                  </div>
+                  <div className="col-9">
+                    <h3>Easy to use</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+                <div className="row">
+                  <div className="col-3">
+                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/map-pin.svg" />
+                  </div>
+                  <div className="col-9">
+                    <h3>Privacy</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row text-left pt-3 pt-sm-4 pt-md-5">
+              <div className="col-12 col-md-4">
+                <div className="row">
+                  <div className="col-3">
+                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layers.svg" />
+                  </div>
+                  <div className="col-9">
+                    <h3>Free Advisory</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+                <div className="row">
+                  <div className="col-3">
+                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/life-buoy.svg" />
+                  </div>
+                  <div className="col-9">
+                    <h3>Account Protection</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+                <div className="row">
+                  <div className="col-3">
+                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layout.svg" />
+                  </div>
+                  <div className="col-9">
+                    <h3>Fast</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </>
     );
   }
 }

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Signika&display=swap');
 @import "variables";
-@import "custom";
 
 @import "../node_modules/bootstrap-v4-rtl/scss/functions";
 @import "../node_modules/bootstrap-v4-rtl/scss/variables";
@@ -48,3 +47,4 @@
 @import "froala/mixins";
 @import "froala/froala_blocks";
 @import url(~animate.css/animate.css);
+@import "custom";

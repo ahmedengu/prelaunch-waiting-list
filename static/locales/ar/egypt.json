@@ -26,5 +26,22 @@
   "header": "عنوان",
   "enter_email": "enter_email",
   "submit": "submit",
-  "check-mail": "check-mail"
+  "check-mail": "check-mail",
+  "resubscribe": "resubscribe",
+  "you-are-not-subscribed": "you-are-not-subscribed",
+  "not-found": "not-found",
+  "invalid-request": "invalid-request",
+  "successful": "successful",
+  "verified": "verified",
+  "email-sent": "email-sent",
+  "invalid-email": "invalid-email",
+  "not-allowed": "not-allowed",
+  "not-webmail-email": "not-webmail-email",
+  "disposable-email": "disposable-email",
+  "youtube-video": "https://www.youtube.com/embed/X40MPQXah9U?controls=0&autoplay=1",
+  "country-pic": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs//icons/gift.svg",
+  "share-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/draws/email.svg",
+  "addthis-title": "addthis-title",
+  "addthis-description": "addthis-description",
+  "addthis-media": "addthis-media"
 }
