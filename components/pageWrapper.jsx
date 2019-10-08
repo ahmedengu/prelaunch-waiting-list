@@ -1,9 +1,5 @@
 import React from 'react';
-import '../node_modules/bootstrap-v4-rtl/dist/css/bootstrap.css';
-import '../node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.css';
-import '../node_modules/froala-design-blocks/dist/css/froala_blocks.css';
-import '../node_modules/animate.css/animate.css';
-import '../static/app.css';
+import '../scss/main.scss';
 
 import PropTypes from 'prop-types';
 import Header from './Header';
