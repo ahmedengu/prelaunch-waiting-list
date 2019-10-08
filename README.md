@@ -11,12 +11,17 @@ npm run dev
 ```
 
 # ToDo:
-- [ ] UI
+- [X] UI
 - [x] Test Mails
 - [X] Achievements mails
-- [ ] Translation files
+- [X] Translation files
 - [X] SEO
 - [ ] Sever deployment
 - [X] Mail templates
 - [X] Social Share Content
-
+- [ ] free stock image
+- [ ] json in all pages
+- [ ] icons for features
+- [ ] emails text
+- [ ] video
+- [ ] nav menu mobile fix
