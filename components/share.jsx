@@ -56,7 +56,7 @@ const Share = ({ t, user }) => {
                 </button>
               </div>
             </div>
-            <div className="addthis_inline_share_toolbox" data-url={userLink} data-title={t('addthis-title')} data-description={t('addthis-description')} data-media={t('addthis-media')} />
+            <div className="addthis_inline_share_toolbox" data-url={userLink} data-title={t('addthis-title')} data-description={t('addthis-description')}/>
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05" />
           </div>
         </div>

@@ -28,7 +28,7 @@ function normalHead(t) {
       <meta name="title" content={t('title')} />
       <meta
         name="description"
-        content={t('description')}
+        content={t('meta-description')}
       />
       <meta
         name="keywords"
@@ -36,11 +36,10 @@ function normalHead(t) {
       />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={t('url')} />
       <meta property="og:title" content={t('title')} />
       <meta
         property="og:description"
-        content={t('description')}
+        content={t('meta-description')}
       />
       <meta
         property="og:image"
@@ -48,11 +47,10 @@ function normalHead(t) {
       />
 
       <meta property="twitter:card" content="summary" />
-      <meta property="twitter:url" content={t('url')} />
       <meta property="twitter:title" content={t('title')} />
       <meta
         property="twitter:description"
-        content={t('description')}
+        content={t('meta-description')}
       />
       <meta
         property="twitter:image"
@@ -69,7 +67,7 @@ function refHead(t) {
       <meta name="title" content={t('ref-title')} />
       <meta
         name="description"
-        content={t('ref-description')}
+        content={t('ref-meta-description')}
       />
       <meta
         name="keywords"
@@ -77,11 +75,10 @@ function refHead(t) {
       />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={t('ref-url')} />
       <meta property="og:title" content={t('ref-title')} />
       <meta
         property="og:description"
-        content={t('ref-description')}
+        content={t('ref-meta-description')}
       />
       <meta
         property="og:image"
@@ -89,11 +86,10 @@ function refHead(t) {
       />
 
       <meta property="twitter:card" content="summary" />
-      <meta property="twitter:url" content={t('ref-url')} />
       <meta property="twitter:title" content={t('ref-title')} />
       <meta
         property="twitter:description"
-        content={t('ref-description')}
+        content={t('ref-meta-description')}
       />
       <meta
         property="twitter:image"

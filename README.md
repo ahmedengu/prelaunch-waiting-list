@@ -20,8 +20,10 @@ npm run dev
 - [X] Mail templates
 - [X] Social Share Content
 - [ ] free stock image
-- [ ] json in all pages
+- [X] json in all pages
+- [ ] arabic translation
 - [ ] icons for features
 - [ ] emails text
-- [ ] video
-- [ ] nav menu mobile fix
+- [X] video styling
+- [ ] video creation
+- [X] nav menu mobile fix

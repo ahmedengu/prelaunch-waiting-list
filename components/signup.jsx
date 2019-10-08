@@ -8,6 +8,7 @@ import Router from 'next/router';
 import * as qs from 'qs';
 import { i18n } from '../i18n';
 import { setUser } from '../store';
+import HomeFeatures from './homeFeatures';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class Signup extends React.Component {
         this.register(true);
       } else if (ref) {
         cookie.set('ref', ref, { expires: 1 });
-        this.state.ref = cookie.get('ref');
       }
+      this.state.ref = cookie.get('ref');
     }
   }
 
@@ -193,86 +194,7 @@ class Signup extends React.Component {
             </div>
           </div>
         </section>
-
-        <section className="fdb-block pt-0">
-          <div className="container">
-            <div className="row text-center">
-              <div className="col-12">
-                <h1>Features</h1>
-              </div>
-            </div>
-            <div className="row text-left mt-5">
-              <div className="col-12 col-md-4">
-                <div className="row">
-                  <div className="col-3">
-                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/gift.svg" />
-                  </div>
-                  <div className="col-9">
-                    <h3>Zero Commission</h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
-                <div className="row">
-                  <div className="col-3">
-                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/cloud.svg" />
-                  </div>
-                  <div className="col-9">
-                    <h3>Easy to use</h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
-                <div className="row">
-                  <div className="col-3">
-                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/map-pin.svg" />
-                  </div>
-                  <div className="col-9">
-                    <h3>Privacy</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row text-left pt-3 pt-sm-4 pt-md-5">
-              <div className="col-12 col-md-4">
-                <div className="row">
-                  <div className="col-3">
-                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layers.svg" />
-                  </div>
-                  <div className="col-9">
-                    <h3>Free Advisory</h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
-                <div className="row">
-                  <div className="col-3">
-                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/life-buoy.svg" />
-                  </div>
-                  <div className="col-9">
-                    <h3>Account Protection</h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
-                <div className="row">
-                  <div className="col-3">
-                    <img alt="image" className="fdb-icon" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layout.svg" />
-                  </div>
-                  <div className="col-9">
-                    <h3>Fast</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <HomeFeatures t={t} />
       </>
     );
   }
