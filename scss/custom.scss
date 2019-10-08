@@ -1,0 +1,62 @@
+h1, .lead, .checkMail_section h4, h3 {
+  font-family: 'Signika', sans-serif;
+
+}
+
+input:focus {
+  transition:all 0.3s ease-in-out;
+
+}
+
+.spacing {
+  letter-spacing: .5px;
+
+}
+
+.checkMail_section {
+  background-color: #ff7700;
+
+}
+
+.checkMail_section-btn {
+  background-color:white;
+  border-radius: 6px;
+  color: #343a40;
+  transition:all .5s ease-in-out;
+
+  &:hover {
+    background-color: #ff7700;
+    color:white;
+    font-weight:bold;
+    transition:all .5s ease-in-out;
+
+}
+}
+
+.full-width {
+  width: 100%;
+  color:white;
+
+}
+
+.white-icon {
+  color:white;
+
+}
+
+.checkMail_section h2 {
+  text-size-adjust:auto;
+  word-break:break-word;
+  font-size:x-large;
+
+}
+
+.footer-padding {
+  padding-bottom: 12vh !important;
+
+}
+
+.lead a:hover {
+  opacity: 0.7;
+
+}
