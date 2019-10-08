@@ -24,6 +24,8 @@ const Footer = ({ t }) => (
                   title="Facebook"
                   className="mx-2"
                   href="https://www.facebook.com/merquant"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FiFacebook />
                 </a>
@@ -31,6 +33,8 @@ const Footer = ({ t }) => (
                   title="Twitter"
                   className="mx-2"
                   href="https://twitter.com/merquant"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FiTwitter />
                 </a>
@@ -38,6 +42,8 @@ const Footer = ({ t }) => (
                   title="Linkedin"
                   className="mx-2"
                   href="https://www.linkedin.com/company/merquant"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FiLinkedin />
                 </a>
