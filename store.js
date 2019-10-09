@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const exampleInitialState = {
   user: {},
   country: 'egypt',
+  referral: '',
+  lang: 'en',
 };
 
 export const actionTypes = {
-  USER: 'USER', COUNTRY: 'COUNTRY', T: 'T', LANG: 'LANG',
+  USER: 'USER', COUNTRY: 'COUNTRY', T: 'T', LANG: 'LANG', REFERRAL: 'REFERRAL',
 };
 
 // REDUCERS
@@ -21,6 +23,10 @@ export const reducer = (state = exampleInitialState, action) => {
       };
     case actionTypes.COUNTRY:
       return { ...state, country: action.country };
+    case actionTypes.REFERRAL:
+      return { ...state, referral: action.referral };
+    case actionTypes.LANG:
+      return { ...state, lang: action.lang };
     default:
       return state;
   }
@@ -29,6 +35,8 @@ export const reducer = (state = exampleInitialState, action) => {
 // ACTIONS
 export const setCountry = (country) => ({ type: actionTypes.COUNTRY, country });
 export const setUser = (user) => ({ type: actionTypes.USER, user });
+export const setReferral = (referral) => ({ type: actionTypes.REFERRAL, referral });
+export const setLang = (lang) => ({ type: actionTypes.LANG, lang });
 
 export function initializeStore(initialState = exampleInitialState) {
   return createStore(

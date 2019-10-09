@@ -2,6 +2,7 @@ import React from 'react';
 import '../scss/main.scss';
 
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -25,5 +26,8 @@ PageWrapper.propTypes = {
   lang: PropTypes.string.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  lang: state.lang,
+});
 
-export default PageWrapper;
+export default connect(mapStateToProps)(PageWrapper);

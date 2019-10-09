@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import cookie from 'js-cookie';
 import Router from 'next/router';
 import * as qs from 'qs';
-import { i18n } from '../i18n';
 import { setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 
@@ -18,6 +17,7 @@ class Signup extends React.Component {
       error: '',
       loading: false,
     };
+
     if (process.browser) {
       const { query: { email, username, ref } } = Router;
       if (email || username) {
@@ -26,7 +26,6 @@ class Signup extends React.Component {
       } else if (ref) {
         cookie.set('ref', ref, { expires: 1 });
       }
-      this.state.ref = cookie.get('ref');
     }
   }
 
@@ -69,16 +68,15 @@ class Signup extends React.Component {
       const user = await Parse.User.logIn(email, email);
       this.loggedIn(user);
     } catch (e) {
-      const { country } = this.props;
-      const { ref } = this.state;
+      const { country, lang, referral } = this.props;
 
       const user = new Parse.User();
       user.set('username', email);
       user.set('password', email);
       user.set('email', email);
       user.set('country', country);
-      user.set('lang', i18n.language);
-      user.set('referred', ref);
+      user.set('lang', lang);
+      user.set('referred', referral);
 
       try {
         await user.signUp();
@@ -112,9 +110,9 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const { t, referral } = this.props;
     const {
-      email, loading, error, ref,
+      email, loading, error,
     } = this.state;
 
     return (
@@ -146,9 +144,9 @@ class Signup extends React.Component {
                     src={t('country-pic')}
                   />
                 </p>
-                <h1>{ref ? t('ref-header') : t('header')}</h1>
+                <h1>{referral ? t('ref-header') : t('header')}</h1>
                 <p className="lead">
-                  {ref ? t('ref-description') : t('description')}
+                  {referral ? t('ref-description') : t('description')}
                 </p>
                 <form
                   className="input-group"
@@ -205,10 +203,14 @@ Signup.propTypes = {
   t: PropTypes.func.isRequired,
   setUserHandler: PropTypes.func.isRequired,
   country: PropTypes.string.isRequired,
+  referral: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   country: state.country,
+  referral: state.referral,
+  lang: state.lang,
 });
 
 const mapDispatchToProps = {

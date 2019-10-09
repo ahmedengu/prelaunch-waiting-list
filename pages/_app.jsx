@@ -8,7 +8,7 @@ import Router from 'next/router';
 import * as qs from 'qs';
 import { appWithTranslation, i18n } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
-import { setUser } from '../store';
+import { setReferral, setUser } from '../store';
 import {
   countries, javaScriptKey, applicationId, serverURL,
 } from '../constants';
@@ -85,6 +85,11 @@ class MyApp extends App {
     const {
       reduxStore, res, pathname, query, req,
     } = ctx;
+
+    const { ref: cookieRef } = (nextCookie(ctx));
+    const { ref } = query;
+    reduxStore.dispatch(setReferral(ref || cookieRef));
+
     let { user } = (nextCookie(ctx));
     user = user && JSON.parse(user);
     if (user) {

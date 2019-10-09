@@ -22,6 +22,7 @@ HomePage.propTypes = {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  lang: state.lang,
 });
 
 export default connect(mapStateToProps)(HomePage);
