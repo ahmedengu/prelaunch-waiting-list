@@ -12,6 +12,7 @@ import { setUser } from '../store';
 import {
   countries, javaScriptKey, applicationId, serverURL,
 } from '../constants';
+import { initGA, logPageView } from '../utils/analytics';
 
 class MyApp extends App {
   constructor(props) {
@@ -112,6 +113,15 @@ class MyApp extends App {
       lang,
     };
   }
+
+  componentDidMount() {
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+  }
+
 
   render() {
     const {
