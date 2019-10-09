@@ -1,17 +1,11 @@
 const express = require('express');
 const { ParseServer } = require('parse-server');
-const next = require('next');
-const nextI18NextMiddleware = require('next-i18next/middleware').default;
 const http = require('http');
 
-const port = process.env.PORT || 3000;
-const app = next({ dev: process.env.NODE_ENV !== 'production' });
-const handle = app.getRequestHandler();
+const port = process.env.PORT || 4000;
 const { CronJob } = require('cron');
-const Parse = require('parse');
 const ParseDashboard = require('parse-dashboard');
 const { emailConfig } = require('./serverConstants');
-const nextI18next = require('./i18n');
 
 const api = new ParseServer({
   databaseURI: process.env.DATABASE_URI || 'mongodb://localhost:27017/dev',
@@ -68,14 +62,10 @@ const dashboard = new ParseDashboard({
 
 
 (async () => {
-  await app.prepare();
   const server = express();
   server.set('trust proxy', true);
   server.use(process.env.PARSE_MOUNT || '/api', api);
   server.use(process.env.DASHBOARD_MOUNT || '/dashboard', dashboard);
-  server.use(nextI18NextMiddleware(nextI18next));
-
-  server.get('*', (req, res) => handle(req, res));
 
   const httpServer = http.createServer(server);
 
