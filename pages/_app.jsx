@@ -6,9 +6,10 @@ import nextCookie from 'next-cookies';
 import cookie from 'js-cookie';
 import Router from 'next/router';
 import * as qs from 'qs';
+import { PageTransition } from 'next-page-transitions';
 import { appWithTranslation, i18n } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
-import { setReferral, setUser } from '../store';
+import { setLang, setReferral, setUser } from '../store';
 import {
   countries, javaScriptKey, applicationId, serverURL,
 } from '../constants';
@@ -112,6 +113,7 @@ class MyApp extends App {
 
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
     const lang = (req ? req.language : i18n.language);
+    reduxStore.dispatch(setLang(lang || 'en'));
 
     return {
       pageProps,
@@ -135,8 +137,28 @@ class MyApp extends App {
 
     return (
       <Provider store={reduxStore}>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
+        <PageTransition timeout={100} classNames="page-transition">
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <Component {...pageProps} />
+        </PageTransition>
+        <style jsx global>
+          {`
+          .page-transition-enter {
+            opacity: 0;
+          }
+          .page-transition-enter-active {
+            opacity: 1;
+            transition: opacity 100ms;
+          }
+          .page-transition-exit {
+            opacity: 1;
+          }
+          .page-transition-exit-active {
+            opacity: 0;
+            transition: opacity 100ms;
+          }
+        `}
+        </style>
       </Provider>
     );
   }

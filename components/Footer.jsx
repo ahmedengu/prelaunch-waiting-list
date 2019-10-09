@@ -4,7 +4,7 @@ import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Footer = ({ t }) => (
   <footer
-    className="fdb-block footer-padding fp-active bg-dark"
+    className="fdb-block fp-active bg-dark"
     data-block-type="footers"
     data-id="2"
   >

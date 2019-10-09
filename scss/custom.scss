@@ -1,3 +1,7 @@
+body{
+  background-color: #343a40;
+}
+
 h1, .lead, .checkMail_section h4, h3 {
   font-family: 'Signika', sans-serif;
 
@@ -48,11 +52,6 @@ input:focus {
   text-size-adjust: auto;
   word-break: break-word;
   font-size: x-large;
-
-}
-
-.footer-padding {
-  padding-bottom: 12vh !important;
 
 }
 
