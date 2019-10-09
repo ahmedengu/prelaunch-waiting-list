@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
@@ -199,11 +200,12 @@ class Signup extends React.Component {
   }
 }
 
+Signup.defaultProps = { referral: '' };
 Signup.propTypes = {
   t: PropTypes.func.isRequired,
   setUserHandler: PropTypes.func.isRequired,
   country: PropTypes.string.isRequired,
-  referral: PropTypes.string.isRequired,
+  referral: PropTypes.string,
   lang: PropTypes.string.isRequired,
 };
 

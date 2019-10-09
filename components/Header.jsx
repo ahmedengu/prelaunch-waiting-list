@@ -282,13 +282,14 @@ class Header extends Component {
   }
 }
 
-
+Header.defaultProps = { referral: '' };
 Header.propTypes = {
   t: PropTypes.func.isRequired,
   setLangHandler: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   user: PropTypes.object.isRequired,
   country: PropTypes.string.isRequired,
-  referral: PropTypes.string.isRequired,
+  referral: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
