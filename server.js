@@ -20,7 +20,7 @@ const api = new ParseServer({
   verifyUserEmails: true,
   emailVerifyTokenValidityDuration: 48 * 60 * 60, // in seconds (2 hours = 7200 seconds)
   preventLoginWithUnverifiedEmail: false, // defaults to false
-  publicServerURL: process.env.PUBLIC_URL || `http://localhost:${port}`,
+  publicServerURL: process.env.PUBLIC_URL || 'http://localhost:3000',
   appName: process.env.APP_NAME || 'MerQuant',
   liveQuery: {
     classNames: ['_User'],
@@ -34,7 +34,7 @@ const api = new ParseServer({
     options: emailConfig,
   },
   customPages: {
-    parseFrameURL: process.env.PUBLIC_URL || `http://localhost:${port}`,
+    parseFrameURL: process.env.PUBLIC_URL || 'http://localhost:3000',
   },
 });
 

@@ -199,6 +199,16 @@ Parse.Cloud.define('verifyEmail', async (request, response) => {
         'x-parse-master-key': process.env.MASTER_KEY || 'xxxxx',
       },
     });
+
+    const query = new Parse.Query(Parse.User);
+    const user = await query.equalTo('username', username)
+      .first({ useMasterKey: true });
+
+    if (user) {
+      user.set('emailVerified', true);
+      user.save(null, { useMasterKey: true });
+    }
+
     return 'verified';
   } catch (e) {
     const errorJson = JSON.parse(e.text);
