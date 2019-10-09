@@ -159,6 +159,7 @@ class Signup extends React.Component {
                   }}
                 >
                   <input
+                    autoFocus
                     type="email"
                     className={`form-control ${error ? 'is-invalid' : ''}`}
                     placeholder={t('enter_email')}
