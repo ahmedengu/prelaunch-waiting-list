@@ -187,7 +187,7 @@ class Signup extends React.Component {
                   animationOut="fadeOut"
                   isVisible={error !== ''}
                 >
-                  <p className="text-danger" style={{ marginTop: 10 }}>{error}</p>
+                  <p className="text-danger" style={{ marginTop: 10 }}>{t(error)}</p>
                 </Animated>
 
               </div>
