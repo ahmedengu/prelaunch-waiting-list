@@ -16,7 +16,7 @@ npm run dev
 - [X] Achievements mails
 - [X] Translation files
 - [X] SEO
-- [ ] Sever deployment
+- [X] Sever deployment
 - [X] Mail templates
 - [X] Social Share Content
 - [ ] free stock image
@@ -27,3 +27,15 @@ npm run dev
 - [X] video styling
 - [ ] video creation
 - [X] nav menu mobile fix
+- [ ] Cron mails
+- [ ] welcome mail
+- [ ] ipad design 
+- [ ] we not gonna spam you under the mail
+- [X] 3 max resend
+- [X] Separate sever from nextjs
+- [X] Google analytics
+- [X] Loading spinner
+- [X] Ref check server side & honey badger
+- [X] video controls
+- [X] sharing adblock
+- [X] toast
