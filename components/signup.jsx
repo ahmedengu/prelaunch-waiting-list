@@ -99,7 +99,7 @@ class Signup extends React.Component {
   }
 
   loggedIn(user) {
-    const { setUserHandler } = this.props;
+    const { setUserHandler, lang } = this.props;
     const { query, pathname } = Router;
     const userJson = user && user.toJSON();
     setUserHandler(userJson);
@@ -107,7 +107,7 @@ class Signup extends React.Component {
 
     query.ref = userJson.ref;
 
-    Router.push(pathname, `${pathname}?${qs.stringify(query)}`);
+    Router.push(pathname, `/${lang}${pathname}?${qs.stringify(query)}`);
   }
 
   render() {
@@ -136,7 +136,6 @@ class Signup extends React.Component {
 
               <div
                 className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-                style={{ zIndex: 10000 }}
               >
                 <p>
                   <img

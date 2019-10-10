@@ -102,7 +102,7 @@ class Header extends Component {
 
   render() {
     const {
-      t, country, user, referral,
+      t, country, user, referral, lang,
     } = this.props;
     return (
       <>
@@ -128,10 +128,9 @@ class Header extends Component {
 
               <div
                 className="col-4 col-md-2 text-right text-md-center order-lg-6 d-lg-none mr-md-2 m-auto"
-                style={{ zIndex: 10000 }}
               >
                 <p>
-                  <Link href={`/${country}`}>
+                  <Link href={`/${country}`} as={`/${lang}/${country}`}>
                     <a>
                       <img
                         src="../static/assets/logo.png"
@@ -147,10 +146,9 @@ class Header extends Component {
               <div className="collapse navbar-collapse" id="navbarNav2">
                 <div
                   className="col-4 col-md-2 text-right text-md-center order-lg-6 d-none d-lg-block d-xl-block"
-                  style={{ zIndex: 10000 }}
                 >
                   <p>
-                    <Link href={`/${country}`}>
+                    <Link href={`/${country}`} as={`/${lang}/${country}`}>
                       <a>
                         <img
                           src="../static/assets/logo.png"
@@ -168,7 +166,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'egypt' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'egypt'}
                     >
-                      <Link href="/egypt">
+                      <Link href="/egypt" as={`/${lang}/egypt`}>
                         <a
                           className="nav-link"
                           style={{
@@ -184,7 +182,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'emirates' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'emirates'}
                     >
-                      <Link href="/emirates">
+                      <Link href="/emirates" as={`/${lang}/emirates`}>
                         <a
                           className="nav-link"
                           style={{
@@ -200,7 +198,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'saudi' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'saudi'}
                     >
-                      <Link href="/saudi">
+                      <Link href="/saudi" as={`/${lang}/saudi`}>
                         <a
                           className="nav-link"
                           style={{
@@ -289,6 +287,7 @@ Header.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   user: PropTypes.object.isRequired,
   country: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
   referral: PropTypes.string,
 };
 
@@ -296,6 +295,7 @@ const mapStateToProps = (state) => ({
   user: state.user,
   country: state.country,
   referral: state.referral,
+  lang: state.lang,
 });
 
 const mapDispatchToProps = {

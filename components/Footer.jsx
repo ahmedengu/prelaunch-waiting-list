@@ -10,7 +10,7 @@ const Footer = ({ t }) => (
   >
     <div className="container">
       <div className="row text-center">
-        <div className="col fr-box fr-inline" role="application" style={{ zIndex: 10000 }}>
+        <div className="col fr-box fr-inline" role="application">
           <div className="fr-wrapper" dir="auto">
             <div
               className="fr-element fr-view"

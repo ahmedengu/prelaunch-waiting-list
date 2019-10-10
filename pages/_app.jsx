@@ -87,6 +87,10 @@ class MyApp extends App {
       reduxStore, res, pathname, query, req,
     } = ctx;
 
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+    const lang = (req ? req.language : i18n.language);
+    reduxStore.dispatch(setLang(lang || 'en'));
+
     const { ref: cookieRef } = (nextCookie(ctx));
     const { ref } = query;
     reduxStore.dispatch(setReferral(ref || cookieRef));
@@ -106,14 +110,10 @@ class MyApp extends App {
           });
           res.end();
         } else {
-          Router.push(`${myCountry}?${qs.stringify(query)}`);
+          Router.push(`${myCountry}?${qs.stringify(query)}`, `/${lang}${myCountry}?${qs.stringify(query)}`);
         }
       }
     }
-
-    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-    const lang = (req ? req.language : i18n.language);
-    reduxStore.dispatch(setLang(lang || 'en'));
 
     return {
       pageProps,
@@ -127,6 +127,8 @@ class MyApp extends App {
       window.GA_INITIALIZED = true;
     }
     logPageView();
+
+    Router.events.on('routeChangeComplete', () => { window.scrollTo(0, 0); });
   }
 
 
@@ -137,25 +139,25 @@ class MyApp extends App {
 
     return (
       <Provider store={reduxStore}>
-        <PageTransition timeout={100} classNames="page-transition">
+        <PageTransition timeout={300} classNames="page-transition">
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...pageProps} />
         </PageTransition>
         <style jsx global>
           {`
           .page-transition-enter {
-            opacity: 0;
+            opacity: 0.5;
           }
           .page-transition-enter-active {
             opacity: 1;
-            transition: opacity 100ms;
+            transition: opacity 300ms;
           }
           .page-transition-exit {
             opacity: 1;
           }
           .page-transition-exit-active {
-            opacity: 0;
-            transition: opacity 100ms;
+            opacity: 0.5;
+            transition: opacity 300ms;
           }
         `}
         </style>

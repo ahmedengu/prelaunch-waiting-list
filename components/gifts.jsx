@@ -8,7 +8,7 @@ const Gifts = ({ t, user }) => (
   <section className="fdb-block" data-block-type="features" data-id="8" dir="ltr">
     <div className="container">
       <div className="row text-center">
-        <div className="col-12" style={{ zIndex: 10000 }}><h1>{t('gifts-h1')}</h1></div>
+        <div className="col-12"><h1>{t('gifts-h1')}</h1></div>
       </div>
       <div className="m-4">
         <ProgressBar
@@ -66,7 +66,7 @@ const Gifts = ({ t, user }) => (
 
       </div>
       <div className="row text-center justify-content-center mt-5">
-        <div className="col-12 col-sm-6 col-lg-2" style={{ zIndex: 10000 }}>
+        <div className="col-12 col-sm-6 col-lg-2">
           <p>
             <img
               alt="monitor"
@@ -80,7 +80,7 @@ const Gifts = ({ t, user }) => (
           </p>
         </div>
 
-        <div className="col-12 col-sm-6 col-lg-2" style={{ zIndex: 10000 }}>
+        <div className="col-12 col-sm-6 col-lg-2">
           <p>
             <img
               alt="map-pin"
@@ -94,7 +94,7 @@ const Gifts = ({ t, user }) => (
           </p>
         </div>
 
-        <div className="col-12 col-sm-6 col-lg-2" style={{ zIndex: 10000 }}>
+        <div className="col-12 col-sm-6 col-lg-2">
           <p>
             <img
               alt="life-buoy"
@@ -108,7 +108,7 @@ const Gifts = ({ t, user }) => (
           </p>
         </div>
 
-        <div className="col-12 col-sm-6 col-lg-2" style={{ zIndex: 10000 }}>
+        <div className="col-12 col-sm-6 col-lg-2">
           <p>
             <img
               alt="package"
