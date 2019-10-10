@@ -86,6 +86,9 @@ function sendAchievementMail(user, data) {
     sendSmtpMail({
       ...data,
       user,
+    }).then(() => {
+      user.set('lastMailSent', new Date());
+      user.save(null, { useMasterKey: true });
     });
   }
 }
