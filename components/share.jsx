@@ -95,7 +95,7 @@ class Share extends Component {
                   className="resp-sharing-button__link"
                   href={`https://twitter.com/intent/tweet/?text=${encodeURIComponent(t(
                     'addthis-title',
-                  ))}&amp;url=${shareLink}`}
+                  ))}&url=${shareLink}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter"
@@ -119,7 +119,7 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`mailto:?subject=${encodeURIComponent(t('addthis-title'))}&amp;body=${encodeURIComponent(
+                  href={`mailto:?subject=${encodeURIComponent(t('addthis-title'))}&body=${encodeURIComponent(
                     t('addthis-description'),
                   )}${shareLink}`}
                   target="_self"
@@ -145,9 +145,9 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`https://www.linkedin.com/shareArticle?mini=true&amp;url=${shareLink}&amp;title=${encodeURIComponent(
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}&title=${encodeURIComponent(
                     t('addthis-title'),
-                  )}&amp;summary=${encodeURIComponent(t('addthis-description'))}&amp;source=${shareLink}`}
+                  )}&summary=${encodeURIComponent(t('addthis-description'))}&source=${shareLink}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
