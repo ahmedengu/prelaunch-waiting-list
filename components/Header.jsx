@@ -109,7 +109,7 @@ class Header extends Component {
         <Head>
           {referral && Object.keys(user).length === 0 ? this.refHead(t) : this.normalHead(t)}
           <meta name="twitter:site" content="@MerQuant" />
-          <link rel="shortcut icon" type="image/png" href="../static/assets/favicon.ico" />
+          <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.ico" />
         </Head>
         <header data-block-type="headers" data-id="1">
           <div className="container">
