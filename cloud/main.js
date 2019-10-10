@@ -3,6 +3,7 @@ const disposableEmail = require('rendrr-disposable-email-list');
 const parseSmtp = require('parse-smtp-template');
 const qs = require('qs');
 const uuid = require('uuid');
+const cache = require('memory-cache');
 const { applicationId, serverURL } = require('../constants');
 const { emailConfig } = require('../serverConstants');
 
@@ -169,6 +170,14 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
   if (!email || !disposableEmail.isDisposable(email).isEmail) {
     throw 'invalid-email';
   }
+
+  const cacheKey = `resendVerification_${email}`;
+  const trials = cache.get(cacheKey) || 0;
+
+  if (trials > 3) {
+    throw 'send-limit';
+  }
+
   try {
     await Parse.Cloud.httpRequest({
       method: 'POST',
@@ -179,6 +188,9 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
       },
       body: { email },
     });
+
+    cache.put(cacheKey, trials + 1, 1000 * 60 * 60 * 24);
+
     return 'email-sent';
   } catch (e) {
     const errorJson = JSON.parse(e.text);

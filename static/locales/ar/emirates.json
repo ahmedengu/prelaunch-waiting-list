@@ -56,5 +56,6 @@
   "feature3-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/map-pin.svg",
   "feature4-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layers.svg",
   "feature5-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/life-buoy.svg",
-  "feature6-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layout.svg"
+  "feature6-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/icons/layout.svg",
+  "send-limit": "Send Limit"
 }
