@@ -21,7 +21,7 @@ npm run dev
 - [X] Social Share Content
 - [ ] free stock image
 - [X] json in all pages
-- [ ] arabic translation
+- [X] arabic translation
 - [X] icons for features
 - [X] emails text
 - [X] video styling
