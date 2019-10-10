@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
+import { toast } from 'react-toastify';
 
 class Resubscribe extends Component {
   constructor(props) {
@@ -13,12 +14,13 @@ class Resubscribe extends Component {
   }
 
   resend() {
-    const { user } = this.props;
+    const { user, t } = this.props;
     this.setState({ loading: true });
 
     Parse.Cloud.run('manageSub', { username: user.username, token: user.token, sendEmails: true })
       .then((reponse) => {
         this.setState({ message: reponse });
+        toast(t(reponse));
       }).catch((reason) => {
         this.setState({ message: reason.message });
       });

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import cookie from 'js-cookie';
 import Router from 'next/router';
 import * as qs from 'qs';
+import { toast } from 'react-toastify';
 import { setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 
@@ -81,7 +82,7 @@ class Signup extends React.Component {
 
       try {
         await user.signUp();
-        this.loggedIn(user);
+        this.loggedIn(user, true);
       } catch (error) {
         if (notMounted) {
           this.state = {
@@ -98,8 +99,8 @@ class Signup extends React.Component {
     }
   }
 
-  loggedIn(user) {
-    const { setUserHandler, lang } = this.props;
+  loggedIn(user, isNew = false) {
+    const { setUserHandler, lang, t } = this.props;
     const { query, pathname } = Router;
     const userJson = user && user.toJSON();
     setUserHandler(userJson);
@@ -108,6 +109,7 @@ class Signup extends React.Component {
     query.ref = userJson.ref;
 
     Router.push(pathname, `/${lang}${pathname}?${qs.stringify(query)}`);
+    toast(t(isNew ? 'welcome' : 'welcome-back'));
   }
 
   render() {

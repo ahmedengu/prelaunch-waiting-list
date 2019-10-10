@@ -7,6 +7,7 @@ import cookie from 'js-cookie';
 import Router from 'next/router';
 import * as qs from 'qs';
 import { PageTransition } from 'next-page-transitions';
+import { toast } from 'react-toastify';
 import { appWithTranslation, i18n } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
 import { setLang, setReferral, setUser } from '../store';
@@ -23,6 +24,8 @@ class MyApp extends App {
     } = props;
 
     if (process.browser) {
+      toast.configure();
+
       const Honeybadger = require('honeybadger-js');
       Honeybadger.configure({
         apiKey: 'd4871a0d',
