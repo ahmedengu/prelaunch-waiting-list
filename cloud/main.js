@@ -67,7 +67,7 @@ async function assignRef(request) {
   let count = 0;
   if (user) {
     count = parseInt(user.get('ref')
-      .replace(prefix, ''), 10);
+      .replace(prefix, ''), 10) || 0;
   }
 
   request.object.set('ref', `${prefix}${count + 1}`);
