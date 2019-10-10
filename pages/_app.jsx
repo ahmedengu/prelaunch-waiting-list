@@ -23,6 +23,11 @@ class MyApp extends App {
     } = props;
 
     if (process.browser) {
+      const Honeybadger = require('honeybadger-js');
+      Honeybadger.configure({
+        apiKey: 'd4871a0d',
+      });
+
       Parse.initialize(applicationId, javaScriptKey);
       Parse.serverURL = serverURL;
 

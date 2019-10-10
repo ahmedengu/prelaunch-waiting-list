@@ -1,6 +1,9 @@
 const express = require('express');
 const { ParseServer } = require('parse-server');
 const http = require('http');
+const Honeybadger = require('honeybadger').configure({
+  apiKey: '9c499114',
+});
 
 const port = process.env.PORT || 4000;
 const { CronJob } = require('cron');
@@ -64,8 +67,10 @@ const dashboard = new ParseDashboard({
 (async () => {
   const server = express();
   server.set('trust proxy', true);
+  server.use(Honeybadger.requestHandler);
   server.use(process.env.PARSE_MOUNT || '/api', api);
   server.use(process.env.DASHBOARD_MOUNT || '/dashboard', dashboard);
+  server.use(Honeybadger.errorHandler);
 
   const httpServer = http.createServer(server);
 
