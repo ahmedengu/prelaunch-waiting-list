@@ -10,6 +10,8 @@ const { CronJob } = require('cron');
 const ParseDashboard = require('parse-dashboard');
 const { emailConfig } = require('./serverConstants');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const api = new ParseServer({
   databaseURI: process.env.DATABASE_URI || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || `${__dirname}/cloud/main.js`,
