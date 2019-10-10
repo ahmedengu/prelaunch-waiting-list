@@ -11,7 +11,7 @@ export default class extends React.Component {
 
     if (!process.browser) {
       const geoip = require('geoip-country');
-      const geo = geoip.lookup(req.ip);
+      const geo = geoip.lookup((req.ip || '').split(':')[0]);
       country = geo && geo.country && codes.includes(geo.country)
         ? countries[codes.indexOf(geo.country)]
         : 'egypt';
