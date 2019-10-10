@@ -7,7 +7,7 @@ class Share extends Component {
   componentDidMount() {
     setTimeout(() => {
       const addthisScript = document.createElement('script');
-      addthisScript.setAttribute('src', 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05');
+      addthisScript.setAttribute('src', 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05');
       if (document.body) document.body.appendChild(addthisScript);
     });
   }
