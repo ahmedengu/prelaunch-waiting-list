@@ -22,7 +22,7 @@ npm run dev
 - [ ] free stock image
 - [X] json in all pages
 - [ ] arabic translation
-- [ ] icons for features
+- [X] icons for features
 - [X] emails text
 - [X] video styling
 - [ ] video creation
