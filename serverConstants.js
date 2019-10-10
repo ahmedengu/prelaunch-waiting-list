@@ -18,7 +18,7 @@ module.exports = {
           footer1: 'يتم الحصول علي الاسهم المالية المجانية بعد تفعيل الحسابات المشارة اليها عن طريقك و بعد بدأ MerQuant',
           footer2: 'تنظيم و تسجيل MerQuant لا تزال جارية.',
           link: process.env.PUBLIC_URL || 'http://localhost:3000',
-          achv_body: 'كنت قد كسبت',
+          achv_body: 'مبروك كسبت',
           achv_body0: 'أسهم',
           achv_body1: 'استمر في ذلك ، استخدم الأزرار أدناه لتسجيل الدخول والاستمرار في المشاركة.',
         },
