@@ -15,4 +15,4 @@ runtime.log
 .next
 logs
 .idea
-!/.env
+.env
