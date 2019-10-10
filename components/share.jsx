@@ -119,9 +119,7 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`mailto:?subject=${encodeURIComponent(t('addthis-title'))}&body=${encodeURIComponent(
-                    t('addthis-description'),
-                  )}${shareLink}`}
+                  href={`mailto:?subject=${encodeURIComponent(t('addthis-title'))}&body=${encodeURIComponent(`${t('addthis-description')} `)}${shareLink}`}
                   target="_self"
                   rel="noopener noreferrer"
                   aria-label="E-Mail"
@@ -145,9 +143,7 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}&title=${encodeURIComponent(
-                    t('addthis-title'),
-                  )}&summary=${encodeURIComponent(t('addthis-description'))}&source=${shareLink}`}
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}&title=${encodeURIComponent(t('addthis-title'))}&summary=${encodeURIComponent(t('addthis-description'))}&source=${shareLink}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -171,7 +167,7 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`whatsapp://send?text=${encodeURIComponent(t('addthis-title'))}${shareLink}`}
+                  href={`whatsapp://send?text=${encodeURIComponent(`${t('addthis-title')} `)}${shareLink}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
