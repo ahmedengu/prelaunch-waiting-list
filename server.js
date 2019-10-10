@@ -73,7 +73,9 @@ const dashboard = new ParseDashboard({
   server.use(process.env.PARSE_MOUNT || '/api', api);
   server.use(process.env.DASHBOARD_MOUNT || '/dashboard', dashboard);
   server.use(Honeybadger.errorHandler);
-
+  server.get('/', ({ res }) => {
+    res.redirect('https://merquant.com');
+  });
   const httpServer = http.createServer(server);
 
   await httpServer.listen(port);
