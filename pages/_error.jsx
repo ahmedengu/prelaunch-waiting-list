@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { i18n, withTranslation } from '../i18n';
+import { withTranslation } from '../i18n';
 import PageWrapper from '../components/pageWrapper';
 
-const Error = ({ statusCode, t, lang }) => (
-  <PageWrapper t={t} lang={lang}>
+const Error = ({ statusCode, t }) => (
+  <PageWrapper t={t}>
     <div className="fdb-block">
       <div className="container">
         <div className="row align-items-center">
@@ -32,7 +32,7 @@ const Error = ({ statusCode, t, lang }) => (
   </PageWrapper>
 );
 
-Error.getInitialProps = async ({ req, res, err }) => {
+Error.getInitialProps = async ({ res, err }) => {
   let statusCode = null;
   if (res) {
     ({ statusCode } = res);
@@ -40,12 +40,9 @@ Error.getInitialProps = async ({ req, res, err }) => {
     ({ statusCode } = err);
   }
 
-  const lang = (req ? req.language : i18n.language) || 'en';
-
   return {
     namespacesRequired: ['error'],
     statusCode,
-    lang,
   };
 };
 

@@ -5,9 +5,9 @@ import Parse from 'parse';
 import { Animated } from 'react-animated-css';
 import { connect } from 'react-redux';
 import cookie from 'js-cookie';
-import Router from 'next/router';
 import * as qs from 'qs';
 import { toast } from 'react-toastify';
+import { Router } from '../i18n';
 import { setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 
@@ -100,15 +100,15 @@ class Signup extends React.Component {
   }
 
   loggedIn(user, isNew = false) {
-    const { setUserHandler, lang, t } = this.props;
-    const { query, pathname } = Router;
+    const { setUserHandler, t } = this.props;
+    const { query: { lng, subpath, ...query }, pathname } = Router;
     const userJson = user && user.toJSON();
     setUserHandler(userJson);
     cookie.set('user', userJson);
 
     query.ref = userJson.ref;
 
-    Router.push(pathname, `/${lang}${pathname}?${qs.stringify(query)}`);
+    Router.push(`${pathname}?${qs.stringify(query)}`);
     toast(t(isNew ? 'welcome' : 'welcome-back'));
   }
 

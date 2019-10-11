@@ -5,7 +5,7 @@ const exampleInitialState = {
   user: {},
   country: 'egypt',
   referral: '',
-  lang: 'en',
+  lang: 'ar',
 };
 
 export const actionTypes = {

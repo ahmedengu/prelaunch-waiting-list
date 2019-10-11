@@ -4,11 +4,10 @@ import Parse from 'parse';
 import { Provider } from 'react-redux';
 import nextCookie from 'next-cookies';
 import cookie from 'js-cookie';
-import Router from 'next/router';
 import * as qs from 'qs';
 import { PageTransition } from 'next-page-transitions';
 import { toast } from 'react-toastify';
-import { appWithTranslation, i18n } from '../i18n';
+import { appWithTranslation, i18n, Router } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
 import { setLang, setReferral, setUser } from '../store';
 import {
@@ -92,12 +91,12 @@ class MyApp extends App {
 
   static async getInitialProps({ Component, ctx }) {
     const {
-      reduxStore, res, pathname, query, req,
+      reduxStore, res, pathname, query: { lng, subpath, ...query }, req,
     } = ctx;
 
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
     const lang = (req ? req.language : i18n.language);
-    reduxStore.dispatch(setLang(lang || 'en'));
+    reduxStore.dispatch(setLang(lang || 'ar'));
 
     const { ref: cookieRef } = (nextCookie(ctx));
     const { ref } = query;
@@ -118,7 +117,7 @@ class MyApp extends App {
           });
           res.end();
         } else {
-          Router.push(`${myCountry}?${qs.stringify(query)}`, `/${lang}${myCountry}?${qs.stringify(query)}`);
+          Router.push(`${myCountry}?${qs.stringify(query)}`);
         }
       }
     }
@@ -136,7 +135,9 @@ class MyApp extends App {
     }
     logPageView();
 
-    Router.events.on('routeChangeComplete', () => { window.scrollTo(0, 0); });
+    Router.events.on('routeChangeComplete', () => {
+      window.scrollTo(0, 0);
+    });
   }
 
 

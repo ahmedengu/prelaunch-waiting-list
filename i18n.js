@@ -6,11 +6,15 @@
 const NextI18Next = require('next-i18next').default;
 
 module.exports = new NextI18Next({
-  ignoreRoutes: ['api', 'dashboard'],
   browserLanguageDetection: true,
   serverLanguageDetection: true,
-  otherLanguages: ['ar'],
-  defaultLanguage: 'en',
+  otherLanguages: ['en'],
+  defaultLanguage: 'ar',
+  detection: {
+    lookupCookie: 'next-i18next',
+    order: ['cookie', 'querystring', 'localStorage', 'path', 'subdomain'],
+    caches: ['cookie'],
+  },
   localeSubpaths: {
     ar: 'ar',
     en: 'en',

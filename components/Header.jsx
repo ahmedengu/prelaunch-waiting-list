@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Link from 'next/link';
 import Parse from 'parse';
 
 import Head from 'next/head';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
-import { i18n } from '../i18n';
+import { i18n, Link } from '../i18n';
 import { setLang } from '../store';
 
 class Header extends Component {
@@ -130,7 +129,7 @@ class Header extends Component {
                 className="col-4 col-md-2 text-right text-md-center order-lg-6 d-lg-none mr-md-2 m-auto"
               >
                 <p>
-                  <Link href={`/${country}`} as={`/${lang}/${country}`}>
+                  <Link href={`/${(user && user.country) || country}`}>
                     <a>
                       <img
                         src="../static/assets/logo.png"
@@ -148,7 +147,7 @@ class Header extends Component {
                   className="col-4 col-md-2 text-right text-md-center order-lg-6 d-none d-lg-block d-xl-block"
                 >
                   <p>
-                    <Link href={`/${country}`} as={`/${lang}/${country}`}>
+                    <Link href={`/${(user && user.country) || country}`}>
                       <a>
                         <img
                           src="../static/assets/logo.png"
@@ -166,7 +165,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'egypt' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'egypt'}
                     >
-                      <Link href="/egypt" as={`/${lang}/egypt`}>
+                      <Link href="/egypt">
                         <a
                           className="nav-link"
                           style={{
@@ -182,7 +181,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'emirates' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'emirates'}
                     >
-                      <Link href="/emirates" as={`/${lang}/emirates`}>
+                      <Link href="/emirates">
                         <a
                           className="nav-link"
                           style={{
@@ -198,7 +197,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'saudi' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'saudi'}
                     >
-                      <Link href="/saudi" as={`/${lang}/saudi`}>
+                      <Link href="/saudi">
                         <a
                           className="nav-link"
                           style={{
