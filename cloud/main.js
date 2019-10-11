@@ -110,6 +110,7 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     checkEmail(request);
 
     request.object.set('points', 0);
+    request.object.set('pendingRefPoints', 0);
     request.object.set('token', uuid.v4());
 
     await assignRef(request);
@@ -129,14 +130,16 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
   const referred = request.object.get('referred');
   if (request.master) {
     if (request.object.existed()) {
-      if (request.object.get('emailVerified') && !request.original.get('emailVerified') && referred) {
+      if (request.object.get('emailVerified') && referred) {
         const query = new Parse.Query(Parse.User);
         const user = await query.equalTo('ref', referred)
           .first({ useMasterKey: true });
-        if (user && user.get('pendingPoints') > 0) {
+        if (user && user.get('pendingPoints') > 0 && request.object.get('pendingRefPoints') > 0) {
           user.increment('pendingPoints', -1);
-          user.increment('points');
+          request.object.increment('pendingRefPoints', -1);
+          user.increment('points', 1);
           await user.save(null, { useMasterKey: true });
+          request.object.save(null, { useMasterKey: true });
         }
       } else if (request.original.get('points') < request.object.get('points')
         && achievementsPoints.includes(request.object.get('points'))) {
@@ -155,6 +158,7 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
       user.increment('pendingPoints');
       await user.save(null, { useMasterKey: true });
       request.object.set('points', 1);
+      request.object.set('pendingRefPoints', 1);
     } else {
       request.object.set('invalidReferred', request.object.get('referred'));
       request.object.unset('referred');
@@ -179,7 +183,7 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
   }
 
   try {
-    await Parse.Cloud.httpRequest({
+    const httpResponse = await Parse.Cloud.httpRequest({
       method: 'POST',
       url: `${serverURL}/verificationEmailRequest`,
       headers: {
@@ -188,6 +192,10 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
       },
       body: { email },
     });
+
+    if (!httpResponse.text.includes('{}')) {
+      return 'link-send-failed';
+    }
 
     cache.put(cacheKey, trials + 1, 1000 * 60 * 60 * 24);
 
@@ -206,7 +214,7 @@ Parse.Cloud.define('verifyEmail', async (request, response) => {
   }
 
   try {
-    await Parse.Cloud.httpRequest({
+    const httpResponse = await Parse.Cloud.httpRequest({
       method: 'GET',
       url: `${serverURL}/apps/${applicationId}/verify_email?${qs.stringify({ token, username })}`,
       headers: {
@@ -214,6 +222,9 @@ Parse.Cloud.define('verifyEmail', async (request, response) => {
         'x-parse-master-key': process.env.MASTER_KEY || 'xxxxx',
       },
     });
+    if (!httpResponse.text.includes('verify_email_success.html')) {
+      return 'invalid-verification';
+    }
 
     const query = new Parse.Query(Parse.User);
     const user = await query.equalTo('username', username)
