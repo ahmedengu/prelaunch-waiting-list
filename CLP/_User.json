@@ -1,0 +1,17 @@
+{
+  "get" : {
+    "requiresAuthentication" : true
+  },
+  "find" : {},
+  "count" : {},
+  "create" : {
+    "*" : true
+  },
+  "update" : {
+    "requiresAuthentication" : true
+  },
+  "delete" : {},
+  "addField" : {
+    "*" : true
+  }
+}

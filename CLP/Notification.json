@@ -1,0 +1,19 @@
+{
+  "get" : {},
+  "find" : {},
+  "count" : {},
+  "create" : {
+    "*" : true
+  },
+  "update" : {},
+  "delete" : {},
+  "addField" : {
+    "*" : true
+  },
+  "readUserFields" : [
+    "user"
+  ],
+  "writeUserFields" : [
+    "user"
+  ]
+}

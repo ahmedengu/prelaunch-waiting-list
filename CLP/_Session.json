@@ -1,0 +1,17 @@
+{
+  "get" : {
+    "*" : true
+  },
+  "find" : {},
+  "count" : {},
+  "create" : {
+    "*" : true
+  },
+  "update" : {},
+  "delete" : {
+    "*" : true
+  },
+  "addField" : {
+    "*" : true
+  }
+}

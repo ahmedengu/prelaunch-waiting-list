@@ -118,6 +118,19 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     if (request.object.get('referred') === request.object.get('ref')) {
       request.object.set('invalidReferred', request.object.get('referred'));
       request.object.unset('referred');
+    } else {
+      const query = new Parse.Query(Parse.User);
+      const user = await query.equalTo('ref', request.object.get('referred'))
+        .first({ useMasterKey: true });
+      if (user) {
+        user.increment('pendingPoints');
+        user.save(null, { useMasterKey: true });
+        request.object.set('points', 1);
+        request.object.set('pendingRefPoints', 1);
+      } else {
+        request.object.set('invalidReferred', request.object.get('referred'));
+        request.object.unset('referred');
+      }
     }
   } else if (!request.master && !(request.object.dirtyKeys()
     && request.object.dirtyKeys().length === 1
@@ -150,20 +163,6 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
         );
       }
     }
-  } else if (referred && !request.object.existed()) {
-    const query = new Parse.Query(Parse.User);
-    const user = await query.equalTo('ref', referred)
-      .first({ useMasterKey: true });
-    if (user) {
-      user.increment('pendingPoints');
-      await user.save(null, { useMasterKey: true });
-      request.object.set('points', 1);
-      request.object.set('pendingRefPoints', 1);
-    } else {
-      request.object.set('invalidReferred', request.object.get('referred'));
-      request.object.unset('referred');
-    }
-    request.object.save(null, { useMasterKey: true });
   }
 });
 

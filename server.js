@@ -33,7 +33,11 @@ const api = new ParseServer({
   websocketTimeout: 10 * 1000,
   cacheTimeout: 60 * 600 * 1000,
   sessionLength: 3110400000,
-  protectedFields: { _User: ['token'] },
+  protectedFields: {
+    _User: {
+      '*': ['email', 'token', 'username', 'objectId'],
+    },
+  },
   emailAdapter: {
     module: 'parse-smtp-template',
     options: emailConfig,
