@@ -1,22 +1,12 @@
 {
-  "get" : {
-    "*" : true
-  },
-  "find" : {
-    "*" : true
-  },
-  "count" : {
-    "*" : true
-  },
+  "get" : {},
+  "find" : {},
+  "count" : {},
   "create" : {
     "*" : true
   },
-  "update" : {
-    "*" : true
-  },
-  "delete" : {
-    "*" : true
-  },
+  "update" : {},
+  "delete" : {},
   "addField" : {
     "*" : true
   }
