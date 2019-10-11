@@ -7,6 +7,7 @@ import cookie from 'js-cookie';
 import * as qs from 'qs';
 import { PageTransition } from 'next-page-transitions';
 import { toast } from 'react-toastify';
+import fetch from 'isomorphic-unfetch';
 import { appWithTranslation, i18n, Router } from '../i18n';
 import withReduxStore from '../lib/with-redux-store';
 import { setLang, setReferral, setUser } from '../store';
@@ -100,7 +101,7 @@ class MyApp extends App {
 
     const { ref: cookieRef } = (nextCookie(ctx));
     const { ref } = query;
-    reduxStore.dispatch(setReferral(ref || cookieRef));
+    await this.checkAndSetRef(ref, cookieRef, reduxStore);
 
     let { user } = (nextCookie(ctx));
     user = user && JSON.parse(user);
@@ -126,6 +127,19 @@ class MyApp extends App {
       pageProps,
       lang,
     };
+  }
+
+  static async checkAndSetRef(ref, cookieRef, reduxStore) {
+    const newRef = await fetch(`${serverURL}/functions/checkRef`, {
+      headers: {
+        'x-parse-application-id': applicationId,
+        'X-Parse-JavaScript-Key': javaScriptKey,
+      },
+      body: `{"ref":"${ref || cookieRef}"}`,
+      method: 'POST',
+    });
+    const message = await newRef.json();
+    reduxStore.dispatch(setReferral((message && message.result) || ''));
   }
 
   componentDidMount() {

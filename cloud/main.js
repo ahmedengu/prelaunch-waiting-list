@@ -262,3 +262,20 @@ Parse.Cloud.define('manageSub', async (request, response) => {
 
   throw 'not-found';
 });
+
+Parse.Cloud.define('checkRef', async (request, response) => {
+  const { ref } = request.params;
+
+  if (ref) {
+    const query = new Parse.Query(Parse.User);
+
+    const user = await query
+      .equalTo('ref', ref)
+      .first({ useMasterKey: true });
+
+    if (user && user.get('ref') === ref) {
+      return ref;
+    }
+  }
+  return '';
+});
