@@ -2,13 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { domain } from '../constants';
+import { logEvent } from '../utils/analytics';
 
 class Share extends Component {
   componentDidMount() {
     setTimeout(() => {
       const addthisScript = document.createElement('script');
-      addthisScript.setAttribute('src', 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05');
-      if (document.body) document.body.appendChild(addthisScript);
+      addthisScript.setAttribute(
+        'src',
+        'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05',
+      );
+      if (document.body) {
+        document.body.appendChild(addthisScript);
+      }
+      if (window && window.addthis) {
+        window.addthis.layers.refresh();
+      } else {
+        setTimeout(() => {
+          if (window && window.addthis) {
+            window.addthis.layers.refresh();
+          }
+        }, 1000);
+      }
     });
   }
 
@@ -21,6 +36,7 @@ class Share extends Component {
     const copy = () => {
       copyInput.select();
       document.execCommand('copy');
+      logEvent('share', 'copy');
     };
 
     return (
@@ -73,6 +89,9 @@ class Share extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
+                  onClick={() => {
+                    logEvent('share', 'Facebook');
+                  }}
                 >
                   <div
                     className="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium"
@@ -99,6 +118,9 @@ class Share extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter"
+                  onClick={() => {
+                    logEvent('share', 'Twitter');
+                  }}
                 >
                   <div
                     className="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium"
@@ -119,10 +141,15 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`mailto:?subject=${encodeURIComponent(t('addthis-title'))}&body=${encodeURIComponent(`${t('addthis-description')} `)}${shareLink}`}
+                  href={`mailto:?subject=${encodeURIComponent(t('addthis-title'))}&body=${encodeURIComponent(
+                    `${t('addthis-description')} `,
+                  )}${shareLink}`}
                   target="_self"
                   rel="noopener noreferrer"
                   aria-label="E-Mail"
+                  onClick={() => {
+                    logEvent('share', 'E-Mail');
+                  }}
                 >
                   <div
                     className="resp-sharing-button resp-sharing-button--email resp-sharing-button--medium"
@@ -143,10 +170,15 @@ class Share extends Component {
 
                 <a
                   className="resp-sharing-button__link"
-                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}&title=${encodeURIComponent(t('addthis-title'))}&summary=${encodeURIComponent(t('addthis-description'))}&source=${shareLink}`}
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareLink}&title=${encodeURIComponent(
+                    t('addthis-title'),
+                  )}&summary=${encodeURIComponent(t('addthis-description'))}&source=${shareLink}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
+                  onClick={() => {
+                    logEvent('share', 'LinkedIn');
+                  }}
                 >
                   <div
                     className="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--medium"
@@ -171,6 +203,9 @@ class Share extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
+                  onClick={() => {
+                    logEvent('share', 'WhatsApp');
+                  }}
                 >
                   <div
                     className="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--medium"
@@ -189,10 +224,14 @@ class Share extends Component {
                   </div>
                 </a>
                 <div
+                  role="presentation"
                   className="addthis_inline_share_toolbox align-bottom d-inline-block pb-1"
                   data-url={userLink}
                   data-title={t('addthis-title')}
                   data-description={t('addthis-description')}
+                  onClick={() => {
+                    logEvent('share', 'addthis');
+                  }}
                 />
               </div>
             </div>
