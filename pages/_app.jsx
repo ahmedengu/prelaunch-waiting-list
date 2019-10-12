@@ -14,7 +14,7 @@ import { setLang, setReferral, setUser } from '../store';
 import {
   countries, javaScriptKey, applicationId, serverURL,
 } from '../constants';
-import { initGA, logPageView } from '../utils/analytics';
+import { initGA, logEvent, logPageView } from '../utils/analytics';
 
 class MyApp extends App {
   constructor(props) {
@@ -35,18 +35,19 @@ class MyApp extends App {
       Parse.serverURL = serverURL;
 
       if (token && link && username) {
-        const onfulfilled = () => {
+        const onfulfilled = (event) => () => {
+          logEvent('user', event);
           this.refreshUser(reduxStore, lang);
           Router.push(pathname);
           this.refreshUser(reduxStore, lang);
         };
 
         if (link.includes('verify_email')) {
-          Parse.Cloud.run('verifyEmail', { username, token }).then(onfulfilled);
+          Parse.Cloud.run('verifyEmail', { username, token }).then(onfulfilled('verifyEmail'));
         } else if (link.includes('unsub')) {
-          Parse.Cloud.run('manageSub', { username, token, sendEmails: false }).then(onfulfilled);
+          Parse.Cloud.run('manageSub', { username, token, sendEmails: false }).then(onfulfilled('unsub'));
         } else if (link.includes('resub')) {
-          Parse.Cloud.run('manageSub', { username, token, sendEmails: true }).then(onfulfilled);
+          Parse.Cloud.run('manageSub', { username, token, sendEmails: true }).then(onfulfilled('resub'));
         }
       }
 

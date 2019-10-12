@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
+import { logEvent } from '../utils/analytics';
 
 class Unverified extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Unverified extends Component {
       this.setState({ message: reponse });
     }).catch((reason) => {
       this.setState({ message: reason.message });
+      logEvent('resendVerification', reason.message);
     });
   }
 
@@ -40,6 +42,7 @@ class Unverified extends Component {
                   className="btn checkMail_section-btn pt-0 pb-0 spacing"
                   onClick={() => {
                     this.resend();
+                    logEvent('user', 'mail-resend');
                   }}
                 >
                   { t(message)}

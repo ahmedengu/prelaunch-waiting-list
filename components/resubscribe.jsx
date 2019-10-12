@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
 import { toast } from 'react-toastify';
+import { logEvent } from '../utils/analytics';
 
 class Resubscribe extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Resubscribe extends Component {
         toast(t(reponse));
       }).catch((reason) => {
         this.setState({ message: reason.message });
+        logEvent('manageSub', reason.message);
       });
   }
 
@@ -43,6 +45,7 @@ class Resubscribe extends Component {
                   className="btn checkMail_section-btn pt-0 pb-0 spacing"
                   onClick={() => {
                     this.resend();
+                    logEvent('user', 'resub');
                   }}
                 >
                   {t(message)}

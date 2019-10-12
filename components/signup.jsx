@@ -87,6 +87,8 @@ class Signup extends React.Component {
         logEvent('user', 'signUp');
         this.loggedIn(user, true);
       } catch (error) {
+        logEvent('signUp', error.message);
+
         if (notMounted) {
           this.state = {
             ...this.state, error: error.message, loading: false,
