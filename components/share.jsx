@@ -15,12 +15,15 @@ class Share extends Component {
       if (document.body) {
         document.body.appendChild(addthisScript);
       }
-      if (window && window.addthis) {
+      try {
         window.addthis.layers.refresh();
-      } else {
+      } catch (e) {
         setTimeout(() => {
-          if (window && window.addthis) {
+          try {
             window.addthis.layers.refresh();
+          } catch (error) {
+            const Honeybadger = require('honeybadger-js');
+            Honeybadger.notify(error);
           }
         }, 1000);
       }

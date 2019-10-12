@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { Router } from '../i18n';
 import { setUser } from '../store';
 import HomeFeatures from './homeFeatures';
-import { logEvent } from '../utils/analytics';
+import { logEvent, logUserId } from '../utils/analytics';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -84,8 +84,8 @@ class Signup extends React.Component {
 
       try {
         await user.signUp();
-        logEvent('user', 'signUp');
         this.loggedIn(user, true);
+        logEvent('user', 'signUp');
       } catch (error) {
         logEvent('signUp', error.message);
 
@@ -109,6 +109,7 @@ class Signup extends React.Component {
     const { query: { lng, subpath, ...query }, pathname } = Router;
     const userJson = user && user.toJSON();
     setUserHandler(userJson);
+    logUserId(userJson.objectId);
     cookie.set('user', userJson);
 
     query.ref = userJson.ref;
