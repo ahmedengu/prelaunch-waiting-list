@@ -35,21 +35,18 @@ class MyApp extends App {
       Parse.serverURL = serverURL;
 
       if (token && link && username) {
+        const onfulfilled = () => {
+          this.refreshUser(reduxStore, lang);
+          Router.push(pathname);
+          this.refreshUser(reduxStore, lang);
+        };
+
         if (link.includes('verify_email')) {
-          Parse.Cloud.run('verifyEmail', { username, token }).then(() => {
-            Router.push(pathname);
-            this.refreshUser(reduxStore, lang);
-          });
+          Parse.Cloud.run('verifyEmail', { username, token }).then(onfulfilled);
         } else if (link.includes('unsub')) {
-          Parse.Cloud.run('manageSub', { username, token, sendEmails: false }).then(() => {
-            Router.push(pathname);
-            this.refreshUser(reduxStore, lang);
-          });
+          Parse.Cloud.run('manageSub', { username, token, sendEmails: false }).then(onfulfilled);
         } else if (link.includes('resub')) {
-          Parse.Cloud.run('manageSub', { username, token, sendEmails: true }).then(() => {
-            Router.push(pathname);
-            this.refreshUser(reduxStore, lang);
-          });
+          Parse.Cloud.run('manageSub', { username, token, sendEmails: true }).then(onfulfilled);
         }
       }
 
