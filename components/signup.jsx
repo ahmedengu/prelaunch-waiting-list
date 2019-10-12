@@ -63,7 +63,7 @@ class Signup extends React.Component {
     email = email.toLowerCase()
       .trim();
     const atSplit = email.split('@');
-    if (email.includes('gmail')) {
+    if (email.includes('gmail.com')) {
       email = `${atSplit[0].split('+')[0].replace('.', '')}@${atSplit[1]}`;
     }
     try {

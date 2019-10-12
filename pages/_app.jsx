@@ -99,10 +99,6 @@ class MyApp extends App {
     const lang = (req ? req.language : i18n.language);
     reduxStore.dispatch(setLang(lang || 'ar'));
 
-    const { ref: cookieRef } = (nextCookie(ctx));
-    const { ref } = query;
-    await this.checkAndSetRef(ref, cookieRef, reduxStore);
-
     let { user } = (nextCookie(ctx));
     user = user && JSON.parse(user);
     if (user) {
@@ -121,6 +117,11 @@ class MyApp extends App {
           Router.push(`${myCountry}?${qs.stringify(query)}`);
         }
       }
+    } else {
+      const { ref: cookieRef } = (nextCookie(ctx));
+      const { ref } = query;
+
+      await this.checkAndSetRef(ref, cookieRef, reduxStore);
     }
 
     return {
@@ -130,16 +131,20 @@ class MyApp extends App {
   }
 
   static async checkAndSetRef(ref, cookieRef, reduxStore) {
-    const newRef = await fetch(`${serverURL}/functions/checkRef`, {
-      headers: {
-        'x-parse-application-id': applicationId,
-        'X-Parse-JavaScript-Key': javaScriptKey,
-      },
-      body: `{"ref":"${ref || cookieRef}"}`,
-      method: 'POST',
-    });
-    const message = await newRef.json();
-    reduxStore.dispatch(setReferral((message && message.result) || ''));
+    let referral = '';
+    if (ref) {
+      const newRef = await fetch(`${serverURL}/functions/checkRef`, {
+        headers: {
+          'x-parse-application-id': applicationId,
+          'X-Parse-JavaScript-Key': javaScriptKey,
+        },
+        body: `{"ref":"${ref || cookieRef}"}`,
+        method: 'POST',
+      });
+      const message = await newRef.json();
+      referral = (message && message.result) || referral;
+    }
+    reduxStore.dispatch(setReferral(referral));
   }
 
   componentDidMount() {

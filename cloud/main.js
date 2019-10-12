@@ -39,7 +39,7 @@ function checkRequired(request, fields) {
 }
 
 function checkEmail(request) {
-  const email = request.object.get('email');
+  let email = request.object.get('email');
   const emailCheck = disposableEmail.isDisposable(email);
 
   if (!emailCheck.isEmail) {
@@ -51,6 +51,16 @@ function checkEmail(request) {
   if (!emailCheck.isWebmail) {
     throw 'not-webmail-email';
   }
+
+  email = email.toLowerCase().trim();
+  const atSplit = email.split('@');
+  if (email.includes('gmail.com')) {
+    email = `${atSplit[0].split('+')[0].replace('.', '')}@${atSplit[1]}`;
+  }
+
+  request.object.set('username', email);
+  request.object.set('password', email);
+  request.object.set('email', email);
 }
 
 async function assignRef(request) {
