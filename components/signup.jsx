@@ -165,8 +165,9 @@ class Signup extends React.Component {
                   }}
                 >
                   <input
+                    dir="ltr"
                     type="email"
-                    className={`form-control ${error ? 'is-invalid' : ''}`}
+                    className={`signup-input form-control ${error ? 'is-invalid' : ''}`}
                     placeholder={t('enter_email')}
                     value={email}
                     onChange={(event) => {
