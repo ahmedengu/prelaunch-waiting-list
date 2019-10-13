@@ -22,8 +22,7 @@ class Share extends Component {
           try {
             window.addthis.layers.refresh();
           } catch (error) {
-            const Honeybadger = require('honeybadger-js');
-            Honeybadger.notify(error);
+            console.log(error);
           }
         }, 1000);
       }
