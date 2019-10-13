@@ -10,7 +10,7 @@ module.exports = {
     confirmTemplatePath: 'views/templates/confirmTemplate.html',
     multiLangConfirm: {
       ar: {
-        subject: 'تأكيد البريد الإلكتروني الخاصك في ميركوانت',
+        subject: 'تأكيد البريد الإلكتروني الخاص بك في ميركوانت',
         achv_subject: 'مبروك لقد ربحت أسهم مجانية من ميركوانت',
         body: {
           body: 'مرحبا بكم في ميركوانت',
