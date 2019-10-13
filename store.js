@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { i18n } from './i18n';
 
 const exampleInitialState = {
   user: {},
@@ -26,6 +27,10 @@ export const reducer = (state = exampleInitialState, action) => {
     case actionTypes.REFERRAL:
       return { ...state, referral: action.referral };
     case actionTypes.LANG:
+      if (state.lang !== action.lang) {
+        i18n.changeLanguage(action.lang);
+      }
+
       return { ...state, lang: action.lang };
     default:
       return state;

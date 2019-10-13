@@ -11,8 +11,6 @@ import { setLang } from '../store';
 class Header extends Component {
   changeLang = (user) => () => {
     const newLang = i18n.language === 'en' ? 'ar' : 'en';
-    i18n.changeLanguage(newLang);
-
     const { setLangHandler } = this.props;
     setLangHandler(newLang);
 

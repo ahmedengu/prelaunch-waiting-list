@@ -8,7 +8,7 @@ import cookie from 'js-cookie';
 import * as qs from 'qs';
 import { toast } from 'react-toastify';
 import { Router } from '../i18n';
-import { setUser } from '../store';
+import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
 
@@ -105,9 +105,10 @@ class Signup extends React.Component {
   }
 
   loggedIn(user, isNew = false) {
-    const { setUserHandler, t } = this.props;
+    const { setUserHandler, t, setLangHandler } = this.props;
     const { query: { lng, subpath, ...query }, pathname } = Router;
     const userJson = user && user.toJSON();
+    setLangHandler(userJson.lang);
     setUserHandler(userJson);
     logUserId(userJson.objectId);
     cookie.set('user', userJson);
@@ -214,6 +215,7 @@ Signup.propTypes = {
   country: PropTypes.string.isRequired,
   referral: PropTypes.string,
   lang: PropTypes.string.isRequired,
+  setLangHandler: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -224,6 +226,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   setUserHandler: setUser,
+  setLangHandler: setLang,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
