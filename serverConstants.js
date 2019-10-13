@@ -10,13 +10,13 @@ module.exports = {
     confirmTemplatePath: 'views/templates/confirmTemplate.html',
     multiLangConfirm: {
       ar: {
-        subject: 'تأكيد البريد الإلكتروني الخاص بـ MerQuant',
-        achv_subject: 'مبروك لقد ربحت أسهم مجانية من MerQuant',
+        subject: 'تأكيد البريد الإلكتروني الخاصك في ميركوانت',
+        achv_subject: 'مبروك لقد ربحت أسهم مجانية من ميركوانت',
         body: {
-          body: 'مرحبا بكم في MerQuant',
+          body: 'مرحبا بكم في ميركوانت',
           body1: 'استخدم الزر أدناه لتأكيد أن لدينا بريدك الإلكتروني الصحيح.',
-          footer1: 'يتم الحصول علي الاسهم المالية المجانية بعد تفعيل الحسابات المشارة اليها عن طريقك و بعد بدأ MerQuant',
-          footer2: 'تنظيم و تسجيل MerQuant لا تزال جارية.',
+          footer1: 'يتم الحصول علي الاسهم المالية المجانية بعد تفعيل الحسابات المشارة اليها عن طريقك و بعد بدأ ميركوانت',
+          footer2: 'تنظيم و تسجيل ميركوانت لا تزال جارية.',
           link: process.env.PUBLIC_URL || 'http://localhost:3000',
           achv_body: 'مبروك كسبت',
           achv_body0: 'أسهم',
