@@ -269,3 +269,9 @@ input:focus {
     direction: rtl;
   }
 }
+
+.social-margin{
+  @media only screen and (max-width: 767px) {
+    margin-right: 1rem;
+  }
+}

@@ -214,7 +214,7 @@ class Header extends Component {
                   <li className="nav-item">
                     <a
                       title="Facebook"
-                      className="nav-link"
+                      className="nav-link social-margin"
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.facebook.com/merquant"
@@ -225,11 +225,9 @@ class Header extends Component {
                     >
                       <FiFacebook />
                     </a>
-                  </li>
-                  <li className="nav-item">
                     <a
                       title="Twitter"
-                      className="nav-link"
+                      className="nav-link social-margin"
                       href="https://twitter.com/merquant"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -240,8 +238,6 @@ class Header extends Component {
                     >
                       <FiTwitter />
                     </a>
-                  </li>
-                  <li className="nav-item">
                     <a
                       title="Linkedin"
                       className="nav-link"
