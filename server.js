@@ -82,31 +82,33 @@ const dashboard = new ParseDashboard({
     res.redirect('https://merquant.com');
   });
   server.get('/webhooks/github_push', ({ res, req }) => {
-    const { payload } = req.body;
+    if (req && req.body) {
+      const { payload } = req.body;
 
-    const signature = `sha1=${crypto
-      .createHmac(
-        'sha1',
-        'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
-      )
-      .update(payload)
-      .digest('hex')}`;
-    const isAllowed = req.headers['x-hub-signature'] === signature;
-    const body = JSON.parse(payload);
-    const isMaster = body && body.ref === 'refs/heads/prod';
-    const directory = {
-      'ahmedengu/merquant_prelunch': '/srv/deploy',
-    }[(body && body.repository.full_name) || ''];
-    if (isAllowed && isMaster && directory) {
-      try {
-        exec(`cd ${directory} && bash deploy.sh`);
-        return res.send('success');
-      } catch (error) {
-        console.log(error);
-        return res.send('failed');
+      const signature = `sha1=${crypto
+        .createHmac(
+          'sha1',
+          'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
+        )
+        .update(payload)
+        .digest('hex')}`;
+      const isAllowed = req.headers['x-hub-signature'] === signature;
+      const body = JSON.parse(payload);
+      const isMaster = body && body.ref === 'refs/heads/prod';
+      const directory = {
+        'ahmedengu/merquant_prelunch': '/srv/deploy',
+      }[(body && body.repository.full_name) || ''];
+      if (isAllowed && isMaster && directory) {
+        try {
+          exec(`cd ${directory} && bash deploy.sh`);
+          return res.send('success');
+        } catch (error) {
+          console.log(error);
+          return res.send('failed');
+        }
       }
     }
-    res.redirect('https://merquant.com');
+    return res.redirect('https://merquant.com');
   });
   server.get('*', (req, res) => res.redirect('https://merquant.com'));
   const httpServer = http.createServer(server);
