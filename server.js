@@ -82,7 +82,7 @@ const dashboard = new ParseDashboard({
     res.redirect('https://merquant.com');
   });
   server.post('/webhooks/github_push', ({ res, req }) => {
-    if (req && req.body) {
+    if (req && req.body && req.body.payload) {
       const { payload } = req.body;
 
       const signature = `sha1=${crypto
