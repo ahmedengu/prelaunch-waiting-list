@@ -8,7 +8,6 @@ const Honeybadger = require('honeybadger').configure({
 });
 
 const port = process.env.PORT || 4000;
-const { CronJob } = require('cron');
 const ParseDashboard = require('parse-dashboard');
 const { emailConfig } = require('./serverConstants');
 
@@ -112,18 +111,3 @@ const dashboard = new ParseDashboard({
   console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
   ParseServer.createLiveQueryServer(httpServer);
 })();
-
-const aCron = new CronJob('0 17 * * *', (() => {
-  // Parse.Cloud.httpRequest({
-  //   method: 'POST',
-  //   url: 'http://178.62.95.208:1337/parse/jobs/push',
-  //   headers: {
-  //     'X-Parse-Application-Id': 'xxxxx',
-  //     'X-Parse-Master-Key': 'xxxxx',
-  //   },
-  // }).then((httpResponse) => {
-  //   console.log(httpResponse.text);
-  // }, (httpResponse) => {
-  //   console.error(`Request failed with response code ${httpResponse.status}`);
-  // });
-}), null, true, 'Atlantic/Azores');
