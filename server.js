@@ -78,35 +78,34 @@ const dashboard = new ParseDashboard({
   server.use(process.env.PARSE_MOUNT || '/api', api);
   server.use(process.env.DASHBOARD_MOUNT || '/dashboard', dashboard);
   server.use(Honeybadger.errorHandler);
-  server.get('/', ({ res }) => {
-    res.redirect('https://merquant.com');
-  });
-  server.post('/webhooks/github_push', ({ res, req }) => {
-    console.error(req.body);
-    const body = JSON.parse(req.body);
-    const signature = `sha1=${crypto
-      .createHmac(
-        'sha1',
-        'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
-      )
-      .update(body)
-      .digest('hex')}`;
-    const isAllowed = req.headers['X-Hub-Signature'] === signature;
-    console.error(isAllowed,'isAllowed');
-    const isMaster = body.ref === 'refs/heads/prod';
-    const directory = {
-      'ahmedengu/merquant_prelunch': '/srv/deploy',
-    }[(body.repository.full_name) || ''];
-    if (isAllowed && isMaster && directory) {
-      try {
-        exec(`cd ${directory} && bash deploy.sh`);
-        return res.send('success');
-      } catch (error) {
-        console.log(error);
-        return res.send('failed');
+  server.post('/webhooks/github_push', (req, res) => {
+    let data = '';
+    req.on('data', (chunk) => { data += chunk; });
+    req.on('end', () => {
+      const signature = `sha1=${crypto
+        .createHmac(
+          'sha1',
+          'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
+        )
+        .update(data)
+        .digest('hex')}`;
+      const isAllowed = req.headers['x-hub-signature'] === signature;
+      const body = JSON.parse(data);
+      const isMaster = body.ref === 'refs/heads/prod';
+      const directory = {
+        'ahmedengu/merquant_prelunch': '/srv/deploy',
+      }[(body.repository.full_name) || ''];
+      if (isAllowed && isMaster && directory) {
+        try {
+          exec(`cd ${directory} && bash deploy.sh`);
+          return res.send('success');
+        } catch (error) {
+          console.log(error);
+          return res.send('failed');
+        }
       }
-    }
-    return res.redirect('https://merquant.com');
+      res.redirect('https://merquant.com');
+    });
   });
   server.get('*', (req, res) => res.redirect('https://merquant.com'));
   const httpServer = http.createServer(server);
