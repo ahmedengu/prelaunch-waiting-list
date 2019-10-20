@@ -81,7 +81,7 @@ const dashboard = new ParseDashboard({
   server.get('/', ({ res }) => {
     res.redirect('https://merquant.com');
   });
-  server.get('/webhooks/github_push', ({ res, req }) => {
+  server.post('/webhooks/github_push', ({ res, req }) => {
     if (req && req.body) {
       const { payload } = req.body;
 
