@@ -70,7 +70,7 @@ const dashboard = new ParseDashboard({
   allowInsecureHTTP: true,
 });
 
-
+let lock = false;
 (async () => {
   const server = express();
   server.set('trust proxy', true);
@@ -95,8 +95,9 @@ const dashboard = new ParseDashboard({
       const directory = {
         'ahmedengu/merquant_prelunch': '/srv/deploy',
       }[(body.repository.full_name) || ''];
-      if (isAllowed && isMaster && directory) {
+      if (isAllowed && isMaster && directory && !lock) {
         try {
+          lock = true;
           exec(`cd ${directory} && sh deploy.sh`);
           return res.send('success');
         } catch (error) {
