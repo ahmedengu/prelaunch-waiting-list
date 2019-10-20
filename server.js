@@ -91,10 +91,10 @@ const dashboard = new ParseDashboard({
       .digest('hex')}`;
     const isAllowed = req.headers['x-hub-signature'] === signature;
     const body = JSON.parse(buf);
-    const isMaster = body?.ref === 'refs/heads/prod';
+    const isMaster = body && body.ref === 'refs/heads/prod';
     const directory = {
       'ahmedengu/merquant_prelunch': '/srv/deploy',
-    }[body?.repository['full_name'] || ''];
+    }[(body && body.repository.full_name) || ''];
     if (isAllowed && isMaster && directory) {
       try {
         exec(`cd ${directory} && bash deploy.sh`);
