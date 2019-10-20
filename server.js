@@ -100,8 +100,10 @@ const dashboard = new ParseDashboard({
     if (isAllowed && isMaster && directory) {
       try {
         exec(`cd ${directory} && bash deploy.sh`);
+        res.send('success');
       } catch (error) {
         console.log(error);
+        res.send('failed');
       }
     }
     res.redirect('https://merquant.com');
