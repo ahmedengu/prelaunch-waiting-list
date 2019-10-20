@@ -73,6 +73,7 @@ class Signup extends React.Component {
       logEvent('user', 'logIn');
     } catch (e) {
       const { country, lang, referral } = this.props;
+      const { query: { ref } } = Router;
 
       const user = new Parse.User();
       user.set('username', email);
@@ -80,7 +81,7 @@ class Signup extends React.Component {
       user.set('email', email);
       user.set('country', country);
       user.set('lang', lang);
-      user.set('referred', referral);
+      user.set('referred', referral || ref);
 
       try {
         await user.signUp();

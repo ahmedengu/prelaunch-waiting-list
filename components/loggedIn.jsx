@@ -8,6 +8,7 @@ import Share from './share';
 import { setUser } from '../store';
 import Unverified from './unverified';
 import Resubscribe from './resubscribe';
+import HomeFeatures from './homeFeatures';
 
 class LoggedIn extends React.Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class LoggedIn extends React.Component {
           <Resubscribe t={t} user={user} />
         )}
         <Share t={t} />
+        <HomeFeatures t={t} />
         {/* <Gifts t={t} /> */}
       </>
     );

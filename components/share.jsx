@@ -46,16 +46,15 @@ class Share extends Component {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-10 col-sm-6 m-auto col-md-4 pb-4 pb-md-0">
-              <img
-                alt="chatting"
-                className="img-fluid rounded-0"
-                src={t('share-img')}
-              />
-              <h2>
-                {t('your-points')}
-                {': '}
-                {user.points || 0}
-              </h2>
+              <div className="bg-dark card mb-3 text-center text-white">
+                <div className="card-header">{t('your-points')}</div>
+                <div className="card-body">
+                  <p className="card-title font-weight-bolder text-white" style={{ fontSize: '-webkit-xxx-large' }}>{user.points || 0}</p>
+                </div>
+                <div className="card-footer text-white">
+                  {t('points-card-footer')}
+                </div>
+              </div>
             </div>
             <div className="col-12 ml-auto col-md-6 col-lg-5">
               <h1>{t('share-h1')}</h1>
