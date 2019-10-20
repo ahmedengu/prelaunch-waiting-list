@@ -82,28 +82,25 @@ const dashboard = new ParseDashboard({
     res.redirect('https://merquant.com');
   });
   server.post('/webhooks/github_push', ({ res, req }) => {
-    if (req && req.body) {
-      const signature = `sha1=${crypto
-        .createHmac(
-          'sha1',
-          'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
-        )
-        .update(req.body)
-        .digest('hex')}`;
-      const isAllowed = req.headers['x-hub-signature'] === signature;
-      const body = JSON.parse(req.body);
-      const isMaster = body && body.ref === 'refs/heads/prod';
-      const directory = {
-        'ahmedengu/merquant_prelunch': '/srv/deploy',
-      }[(body && body.repository.full_name) || ''];
-      if (isAllowed && isMaster && directory) {
-        try {
-          exec(`cd ${directory} && bash deploy.sh`);
-          return res.send('success');
-        } catch (error) {
-          console.log(error);
-          return res.send('failed');
-        }
+    const signature = `sha1=${crypto
+      .createHmac(
+        'sha1',
+        'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
+      )
+      .update(req.body)
+      .digest('hex')}`;
+    const isAllowed = req.headers['X-Hub-Signature'] === signature;
+    const isMaster = req.body.ref === 'refs/heads/prod';
+    const directory = {
+      'ahmedengu/merquant_prelunch': '/srv/deploy',
+    }[(req.body.repository.full_name) || ''];
+    if (isAllowed && isMaster && directory) {
+      try {
+        exec(`cd ${directory} && bash deploy.sh`);
+        return res.send('success');
+      } catch (error) {
+        console.log(error);
+        return res.send('failed');
       }
     }
     return res.redirect('https://merquant.com');
