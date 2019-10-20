@@ -82,18 +82,21 @@ const dashboard = new ParseDashboard({
     res.redirect('https://merquant.com');
   });
   server.post('/webhooks/github_push', ({ res, req }) => {
+    console.error(req.body);
+    const body = JSON.parse(req.body);
     const signature = `sha1=${crypto
       .createHmac(
         'sha1',
         'jsdngjsdSDFSDF%$^$%^dfhdf%^&^%567567%^&%^fhfgh-dfhwrqrtyuadavGHG45645FGDF635SDGSD',
       )
-      .update(req.body)
+      .update(body)
       .digest('hex')}`;
     const isAllowed = req.headers['X-Hub-Signature'] === signature;
-    const isMaster = req.body.ref === 'refs/heads/prod';
+    console.error(isAllowed,'isAllowed');
+    const isMaster = body.ref === 'refs/heads/prod';
     const directory = {
       'ahmedengu/merquant_prelunch': '/srv/deploy',
-    }[(req.body.repository.full_name) || ''];
+    }[(body.repository.full_name) || ''];
     if (isAllowed && isMaster && directory) {
       try {
         exec(`cd ${directory} && bash deploy.sh`);
