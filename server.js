@@ -98,7 +98,7 @@ let lock = false;
       if (isAllowed && isMaster && directory && !lock) {
         try {
           lock = true;
-          exec(`cd ${directory} && sh deploy.sh`);
+          exec(`cd ${directory} && nohup sh deploy.sh > ${directory}/custom.out &`);
           return res.send('success');
         } catch (error) {
           console.log(error);
