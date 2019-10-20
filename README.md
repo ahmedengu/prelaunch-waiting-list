@@ -10,6 +10,9 @@ npm i
 npm run dev
 ```
 
+# Deployment
+Just push to prod :D
+
 # ToDo:
 - [X] UI
 - [x] Test Mails
