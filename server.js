@@ -104,7 +104,7 @@ const dashboard = new ParseDashboard({
           return res.send('failed');
         }
       }
-      res.redirect('https://merquant.com');
+      return res.redirect('https://merquant.com');
     });
   });
   server.get('*', (req, res) => res.redirect('https://merquant.com'));
