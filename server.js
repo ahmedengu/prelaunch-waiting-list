@@ -80,9 +80,7 @@ const dashboard = new ParseDashboard({
   server.use(Honeybadger.errorHandler);
   server.post('/webhooks/github_push', (req, res) => {
     let data = '';
-    req.on('data', (chunk) => {
-      data += chunk;
-    });
+    req.on('data', (chunk) => { data += chunk; });
     req.on('end', () => {
       const signature = `sha1=${crypto
         .createHmac(
@@ -99,7 +97,8 @@ const dashboard = new ParseDashboard({
       }[(body.repository.full_name) || ''];
       if (isAllowed && isMaster && directory) {
         try {
-          exec(`cd ${directory} && sh deploy.sh`, (error, stdout, stderr) => res.send(stdout));
+          exec(`cd ${directory} && sh deploy.sh`);
+          return res.send('success');
         } catch (error) {
           console.log(error);
           return res.send('failed');
