@@ -3,11 +3,12 @@ cd versions
 newDir=$(date +%Y%m%d%H%M%S)
 git clone --single-branch --branch prod git@github.com:ahmedengu/merquant_prelunch.git "$newDir"
 cd "$newDir"
+chown -R www-data:www-data .
 npm i
-supervisorctl stop all
+#supervisorctl stop all
 npm run build
 ln -sfn "$(pwd)" /srv/deploy/current
-supervisorctl start all
+supervisorctl restart all
 
 cp -rf deploy.sh /srv/deploy/deploy.sh
 
