@@ -129,14 +129,15 @@ class MyApp extends App {
   }
 
   static async checkAndSetRef(ref, cookieRef, reduxStore) {
+    const anyRef = ref || cookieRef;
     let referral = '';
-    if (ref) {
+    if (anyRef) {
       const newRef = await fetch(`${serverURL}/functions/checkRef`, {
         headers: {
           'x-parse-application-id': applicationId,
           'X-Parse-JavaScript-Key': javaScriptKey,
         },
-        body: `{"ref":"${ref || cookieRef}"}`,
+        body: `{"ref":"${anyRef}"}`,
         method: 'POST',
       });
       const message = await newRef.json();
