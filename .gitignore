@@ -16,3 +16,4 @@ runtime.log
 logs
 .idea
 .env
+!/constants.js
