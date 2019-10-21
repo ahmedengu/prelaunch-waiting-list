@@ -1,4 +1,5 @@
 # How to run:
+rename constants.local.js to constants.js
 ```
 # Install mongo dev:
 npm i mongodb-runner@latest -g
