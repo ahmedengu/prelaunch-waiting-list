@@ -1,5 +1,5 @@
-mkdir -p versions
-cd versions
+mkdir -p /srv/deploy/versions
+cd /srv/deploy/versions
 newDir=$(date +%Y%m%d%H%M%S)
 git clone --single-branch --branch prod git@github.com:ahmedengu/merquant_prelunch.git "$newDir"
 cd "$newDir"

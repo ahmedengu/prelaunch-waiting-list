@@ -46,11 +46,11 @@ class Share extends Component {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-10 col-sm-6 m-auto col-md-4 pb-4 pb-md-0">
-              <div className="bg-dark card mb-3 text-center text-white">
+              <div className="border-dark card mb-3 text-center">
                 <div className="card-header">{t('your-points')}</div>
                 <div className="card-body">
                   <h4
-                    className="card-title font-weight-bolder text-white"
+                    className="card-title font-weight-bolder"
                     style={{ fontSize: '-webkit-xxx-large' }}
                   >
                     {user.points || 0}
@@ -60,7 +60,7 @@ class Share extends Component {
                       { pendingPoints: (user.pendingPoints || 0) })}
                   </p>
                 </div>
-                <div className="card-footer text-white">
+                <div className="card-footer">
                   {t('points-card-footer')}
                 </div>
               </div>
