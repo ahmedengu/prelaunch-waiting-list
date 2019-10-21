@@ -49,7 +49,16 @@ class Share extends Component {
               <div className="bg-dark card mb-3 text-center text-white">
                 <div className="card-header">{t('your-points')}</div>
                 <div className="card-body">
-                  <p className="card-title font-weight-bolder text-white" style={{ fontSize: '-webkit-xxx-large' }}>{user.points || 0}</p>
+                  <h4
+                    className="card-title font-weight-bolder text-white"
+                    style={{ fontSize: '-webkit-xxx-large' }}
+                  >
+                    {user.points || 0}
+                  </h4>
+                  <p className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>
+                    {t('your-pending',
+                      { pendingPoints: (user.pendingPoints || 0) })}
+                  </p>
                 </div>
                 <div className="card-footer text-white">
                   {t('points-card-footer')}

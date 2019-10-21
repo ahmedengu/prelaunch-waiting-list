@@ -53,7 +53,6 @@ Error.defaultProps = {
 Error.propTypes = {
   statusCode: PropTypes.number,
   t: PropTypes.func.isRequired,
-  lang: PropTypes.string.isRequired,
 };
 
 export default withTranslation('error')(Error);

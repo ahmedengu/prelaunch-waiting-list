@@ -60,5 +60,6 @@
   "send-limit": "لقد تخطيت حد الارسال اليومي",
   "welcome": "مرحبا",
   "welcome-back": "مرحبا بعودتك",
-  "points-card-footer": "شارك رابطك لتحصل على مزيد من الاسهم"
+  "points-card-footer": "شارك رابطك لتحصل على مزيد من الاسهم",
+  "your-pending": "{{pendingPoints}} سهم ينتظر تفعيل الايميل المسجل"
 }
