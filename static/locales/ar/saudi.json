@@ -61,5 +61,7 @@
   "welcome": "مرحبا",
   "welcome-back": "مرحبا بعودتك",
   "points-card-footer": "شارك رابطك لتحصل على مزيد من الاسهم",
-  "your-pending": "{{pendingPoints}} سهم بانتظار تفعيل الايميل المسجل لدينا"
+  "your-pending": "{{pendingPoints}} سهم بانتظار تفعيل الايميل المسجل لدينا",
+  "logout": "الخروج",
+  "goodbye": "وداعا!"
 }

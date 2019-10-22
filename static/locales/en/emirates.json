@@ -61,5 +61,7 @@
   "welcome": "Welcome",
   "welcome-back": "Welcome Back",
   "points-card-footer": "Share your link to earn more stocks",
-  "your-pending": "{{pendingPoints}} Stocks pending email confirmation"
+  "your-pending": "{{pendingPoints}} Stocks pending email confirmation",
+  "logout": "Logout",
+  "goodbye": "Goodbye"
 }
