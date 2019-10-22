@@ -17,3 +17,8 @@ cp -rf deploy.sh /srv/deploy/deploy.sh
 
 cd ..
 find "$(pwd)" -type d -ctime +10 -exec rm -rf {} \;
+
+curl -X DELETE "https://api.cloudflare.com/client/v4/zones/71fcc53d4888eb19341472ec225e947d/purge_cache" \
+      -H "Content-Type:application/json" \
+      -H "Authorization: Bearer HOQUFhnlDKlVZ4BYP6v9qP0NfNqtr50pVucbPHmm" \
+     --data '{"purge_everything":true}'
