@@ -75,11 +75,9 @@ class MyApp extends App {
           cookie.set('user', userJson);
           try {
             if (userJson.lang === lang) {
-              console.log('1111111');
               userJson = (await Parse.User.current()
                 .fetch()).toJSON();
             } else {
-              console.log('222222');
               user.set('lang', lang);
               userJson = (await user.save())
                 .toJSON();

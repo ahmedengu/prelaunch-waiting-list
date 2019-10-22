@@ -74,6 +74,7 @@ const Footer = ({ t, setUserHandler, user }) => (
                     setUserHandler({});
                     toast(t('goodbye'));
                     logEvent('user', 'logOut');
+                    window.scrollTo(0, 0);
                   }}
                   className="btn btn-link font-weight-light text-white-50"
                 >
