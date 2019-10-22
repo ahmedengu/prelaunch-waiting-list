@@ -20,8 +20,12 @@ class MyApp extends App {
   constructor(props) {
     super(props);
     const {
-      reduxStore, lang, router: { pathname, query: { token, link, username } },
+      reduxStore,
+      lang,
+      router: { pathname, query: { token, link, username } },
+      pageProps: { namespacesRequired },
     } = props;
+
 
     if (process.browser) {
       toast.configure();
@@ -42,7 +46,7 @@ class MyApp extends App {
           this.refreshUser(reduxStore, lang);
           toast(i18n.getFixedT(
             (reduxStore.getState().user && reduxStore.getState().user.lang) || lang,
-            (reduxStore.getState().user && reduxStore.getState().user.country) || 'egypt',
+            (reduxStore.getState().user && reduxStore.getState().user.country) || namespacesRequired[0] || 'egypt',
           )(response));
         };
 
