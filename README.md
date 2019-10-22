@@ -13,6 +13,7 @@ npm run dev
 
 # Deployment
 Just push to prod :D
+there is a cron that runs every 15 min and deploy
 
 # ToDo:
 - [X] UI
