@@ -5,8 +5,10 @@ import Parse from 'parse';
 
 import Head from 'next/head';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { withRouter } from 'next/router';
 import { i18n, Link } from '../i18n';
 import { setLang } from '../store';
+import { domain } from '../constants';
 
 class Header extends Component {
   changeLang = (user) => () => {
@@ -23,7 +25,7 @@ class Header extends Component {
     }
   };
 
-  normalHead = (t) => (
+  normalHead = (t, shareUrl) => (
     <>
       <title>{t('title')}</title>
       <meta name="title" content={t('title')} />
@@ -36,8 +38,11 @@ class Header extends Component {
         content={t('keywords')}
       />
 
+      <meta property="og:url" content={shareUrl} />
+      <meta property="fb:app_id" content="403863870540210" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={t('title')} />
+      <meta property="og:image:alt" content={t('title')} />
       <meta
         property="og:description"
         content={t('meta-description')}
@@ -60,7 +65,7 @@ class Header extends Component {
     </>
   );
 
-  refHead = (t) => (
+  refHead = (t, shareUrl) => (
     <>
       <title>{t('ref-title')}</title>
       <meta name="title" content={t('ref-title')} />
@@ -73,8 +78,11 @@ class Header extends Component {
         content={t('ref-keywords')}
       />
 
+      <meta property="og:url" content={shareUrl} />
+      <meta property="fb:app_id" content="403863870540210" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={t('ref-title')} />
+      <meta property="og:image:alt" content={t('ref-title')} />
       <meta
         property="og:description"
         content={t('ref-meta-description')}
@@ -99,12 +107,16 @@ class Header extends Component {
 
   render() {
     const {
-      t, country, user, referral, lang,
+      t, country, user, referral, router: { asPath, query: { ref } },
     } = this.props;
+    const shareUrl = domain + asPath;
+    const queryString = referral ? `?ref=${ref || referral}` : '';
+
     return (
       <>
         <Head>
-          {referral && Object.keys(user).length === 0 ? this.refHead(t) : this.normalHead(t)}
+          {referral && Object.keys(user).length === 0
+            ? this.refHead(t, shareUrl) : this.normalHead(t, shareUrl)}
           <meta name="twitter:site" content="@MerQuant" />
           <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.ico" />
         </Head>
@@ -127,10 +139,10 @@ class Header extends Component {
                 className="col-4 col-md-2 text-right text-md-center order-lg-6 d-lg-none mr-md-2 m-auto"
               >
                 <p>
-                  <Link href={`/${(user && user.country) || country}`}>
+                  <Link href={`/${(user && user.country) || country}`} as={`/${(user && user.country) || country}${queryString}`}>
                     <a>
                       <img
-                        src="../static/assets/logo.png"
+                        src="/static/assets/logo.png"
                         height="50"
                         alt="MerQuant"
                         className="fr-fic fr-dii"
@@ -145,10 +157,10 @@ class Header extends Component {
                   className="col-4 col-md-2 text-right text-md-center order-lg-6 d-none d-lg-block d-xl-block"
                 >
                   <p>
-                    <Link href={`/${(user && user.country) || country}`}>
+                    <Link href={`/${(user && user.country) || country}`} as={`/${(user && user.country) || country}${queryString}`}>
                       <a>
                         <img
-                          src="../static/assets/logo.png"
+                          src="/static/assets/logo.png"
                           height="50"
                           alt="MerQuant"
                           className="fr-fic fr-dii"
@@ -163,7 +175,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'egypt' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'egypt'}
                     >
-                      <Link href="/egypt">
+                      <Link href="/egypt" as={`/egypt${queryString}`}>
                         <a
                           className="nav-link"
                           style={{
@@ -179,7 +191,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'emirates' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'emirates'}
                     >
-                      <Link href="/emirates">
+                      <Link href="/emirates" as={`/emirates${queryString}`}>
                         <a
                           className="nav-link"
                           style={{
@@ -195,7 +207,7 @@ class Header extends Component {
                       className={`nav-item ${(country === 'saudi' ? 'active' : '')}`}
                       hidden={user && user.country && user.country !== 'saudi'}
                     >
-                      <Link href="/saudi">
+                      <Link href="/saudi" as={`/saudi${queryString}`}>
                         <a
                           className="nav-link"
                           style={{
@@ -279,8 +291,8 @@ Header.propTypes = {
   setLangHandler: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   user: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
   country: PropTypes.string.isRequired,
-  lang: PropTypes.string.isRequired,
   referral: PropTypes.string,
 };
 
@@ -288,11 +300,10 @@ const mapStateToProps = (state) => ({
   user: state.user,
   country: state.country,
   referral: state.referral,
-  lang: state.lang,
 });
 
 const mapDispatchToProps = {
   setLangHandler: setLang,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
