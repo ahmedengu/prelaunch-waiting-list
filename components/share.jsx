@@ -26,6 +26,13 @@ class Share extends Component {
           }
         }, 1000);
       }
+      setTimeout(() => {
+        try {
+          window.addthis.layers.refresh();
+        } catch (error) {
+          console.log(error);
+        }
+      }, 1000);
     });
   }
 
