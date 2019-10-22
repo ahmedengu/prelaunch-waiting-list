@@ -5,6 +5,7 @@ import Parse from 'parse';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setUser } from '../store';
+import { logEvent } from '../utils/analytics';
 
 const Footer = ({ t, setUserHandler, user }) => (
   <footer
@@ -70,6 +71,7 @@ const Footer = ({ t, setUserHandler, user }) => (
                     Parse.User.logOut();
                     setUserHandler({});
                     toast(t('goodbye'));
+                    logEvent('user', 'logOut');
                   }}
                   className="btn btn-link font-weight-light text-white-50"
                 >
