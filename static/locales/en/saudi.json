@@ -32,7 +32,7 @@
   "invalid-email": "Invalid Email",
   "not-allowed": "Not Allowed",
   "not-webmail-email": "Only mail providers such as Gmail, Yahoo and Hotmail are allowed",
-  "disposable-email": "Temporary emails are not allowed",
+  "disposable-email": "Temporary emails are not allowed, Kindly use your personal email.",
   "youtube-video": "https://www.youtube.com/embed/TEjaAshjnXI?autoplay=1",
   "country-pic": "/static/assets/Flag_of_Saudi_Arabia.svg",
   "share-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/draws/email.svg",
@@ -63,5 +63,7 @@
   "points-card-footer": "Share your link to earn more stocks",
   "your-pending": "{{pendingPoints}} Stocks pending email confirmation",
   "logout": "Logout",
-  "goodbye": "Goodbye"
+  "goodbye": "Goodbye",
+  "link-send-failed": "Link sending failed",
+  "invalid-verification": "Invalid verification code"
 }

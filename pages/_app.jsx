@@ -35,19 +35,25 @@ class MyApp extends App {
       Parse.serverURL = serverURL;
 
       if (token && link && username) {
-        const onfulfilled = (event) => () => {
+        const onfulfilled = (event) => (response) => {
           logEvent('user', event);
           this.refreshUser(reduxStore, lang);
           Router.push(pathname);
           this.refreshUser(reduxStore, lang);
+          toast(i18n.getFixedT(
+            (reduxStore.getState().user && reduxStore.getState().user.lang) || lang,
+            (reduxStore.getState().user && reduxStore.getState().user.country) || 'egypt',
+          )(response));
         };
 
         if (link.includes('verify_email')) {
           Parse.Cloud.run('verifyEmail', { username, token }).then(onfulfilled('verifyEmail'));
         } else if (link.includes('unsub')) {
-          Parse.Cloud.run('manageSub', { username, token, sendEmails: false }).then(onfulfilled('unsub'));
+          Parse.Cloud.run('manageSub', { username, token, sendEmails: false })
+            .then(onfulfilled('unsub'));
         } else if (link.includes('resub')) {
-          Parse.Cloud.run('manageSub', { username, token, sendEmails: true }).then(onfulfilled('resub'));
+          Parse.Cloud.run('manageSub', { username, token, sendEmails: true })
+            .then(onfulfilled('resub'));
         }
       }
 
@@ -147,7 +153,9 @@ class MyApp extends App {
   }
 
   componentDidMount() {
-    if (window && !window.GA_INITIALIZED && window.location && window.location.host.includes('merquant.com')) {
+    if (window && !window.GA_INITIALIZED && window.location && window.location.host.includes(
+      'merquant.com',
+    )) {
       initGA();
       window.GA_INITIALIZED = true;
     }
