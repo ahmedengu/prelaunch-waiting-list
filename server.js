@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const { exec } = require('child_process');
+const fs = require('fs');
 const express = require('express');
 const { ParseServer } = require('parse-server');
 const http = require('http');
@@ -70,7 +70,6 @@ const dashboard = new ParseDashboard({
   allowInsecureHTTP: true,
 });
 
-let lock = false;
 (async () => {
   const server = express();
   server.set('trust proxy', true);
@@ -95,10 +94,9 @@ let lock = false;
       const directory = {
         'ahmedengu/merquant_prelunch': '/srv/deploy',
       }[(body.repository.full_name) || ''];
-      if (isAllowed && isMaster && directory && !lock) {
+      if (isAllowed && isMaster && directory) {
         try {
-          lock = true;
-          exec(`cd ${directory} && nohup sh deploy.sh > ${directory}/custom.out &`);
+          fs.writeFileSync(`${__dirname}/deployMe`, 'w');
           return res.send('success');
         } catch (error) {
           console.log(error);
