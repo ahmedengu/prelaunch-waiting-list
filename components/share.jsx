@@ -6,26 +6,8 @@ import { logEvent } from '../utils/analytics';
 
 class Share extends Component {
   componentDidMount() {
-    setTimeout(() => {
-      const addthisScript = document.createElement('script');
-      addthisScript.setAttribute(
-        'src',
-        'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05',
-      );
-      if (document.body) {
-        document.body.appendChild(addthisScript);
-      }
-      try {
-        window.addthis.layers.refresh();
-      } catch (e) {
-        setTimeout(() => {
-          try {
-            window.addthis.layers.refresh();
-          } catch (error) {
-            console.log(error);
-          }
-        }, 1000);
-      }
+    try {
+      window.addthis.layers.refresh();
       setTimeout(() => {
         try {
           window.addthis.layers.refresh();
@@ -33,7 +15,15 @@ class Share extends Component {
           console.log(error);
         }
       }, 1000);
-    });
+    } catch (e) {
+      setTimeout(() => {
+        try {
+          window.addthis.layers.refresh();
+        } catch (error) {
+          console.log(error);
+        }
+      }, 1000);
+    }
   }
 
   render() {
