@@ -147,7 +147,7 @@ class MyApp extends App {
   }
 
   componentDidMount() {
-    if (!window.GA_INITIALIZED) {
+    if (window && !window.GA_INITIALIZED && window.location && window.location.host.includes('merquant.com')) {
       initGA();
       window.GA_INITIALIZED = true;
     }

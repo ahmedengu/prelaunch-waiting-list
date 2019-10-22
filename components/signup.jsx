@@ -86,6 +86,7 @@ class Signup extends React.Component {
       try {
         await user.signUp();
         this.loggedIn(user, true);
+        logEvent('new_user', 'sign_up');
         logEvent('user', 'signUp');
       } catch (error) {
         logEvent('signUp', error.message);
