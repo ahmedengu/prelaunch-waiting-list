@@ -130,7 +130,9 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
       request.object.unset('referred');
     } else {
       const query = new Parse.Query(Parse.User);
-      const user = await query.equalTo('ref', request.object.get('referred'))
+      const user = await query
+        .equalTo('ref', request.object.get('referred'))
+        .notEqualTo('email', request.object.get('email'))
         .first({ useMasterKey: true });
       if (user) {
         user.increment('pendingPoints');

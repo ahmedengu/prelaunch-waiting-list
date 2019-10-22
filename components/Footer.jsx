@@ -70,8 +70,8 @@ const Footer = ({ t, setUserHandler, user }) => (
                   type="button"
                   onClick={() => {
                     Parse.User.logOut();
-                    setUserHandler({});
                     cookie.remove('user');
+                    setUserHandler({});
                     toast(t('goodbye'));
                     logEvent('user', 'logOut');
                   }}
