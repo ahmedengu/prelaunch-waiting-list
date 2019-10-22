@@ -4,6 +4,7 @@ import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import Parse from 'parse';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 import { setUser } from '../store';
 import { logEvent } from '../utils/analytics';
 
@@ -70,6 +71,7 @@ const Footer = ({ t, setUserHandler, user }) => (
                   onClick={() => {
                     Parse.User.logOut();
                     setUserHandler({});
+                    cookie.remove('user');
                     toast(t('goodbye'));
                     logEvent('user', 'logOut');
                   }}
