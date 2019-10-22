@@ -96,7 +96,7 @@ const dashboard = new ParseDashboard({
       }[(body.repository.full_name) || ''];
       if (isAllowed && isMaster && directory) {
         try {
-          fs.writeFileSync(`${__dirname}/deployMe`, 'w');
+          fs.writeFileSync('/srv/deploy/current/deployMe', 'w');
           return res.send('success');
         } catch (error) {
           console.log(error);

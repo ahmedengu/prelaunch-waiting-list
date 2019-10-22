@@ -1,3 +1,4 @@
+rm -rf /srv/deploy/current/deployMe
 mkdir -p /srv/deploy/versions
 cd /srv/deploy/versions
 newDir=$(date +%Y%m%d%H%M%S)
@@ -18,7 +19,7 @@ cp -rf deploy.sh /srv/deploy/deploy.sh
 cd ..
 find "$(pwd)" -type d -ctime +10 -exec rm -rf {} \;
 
-curl -X DELETE "https://api.cloudflare.com/client/v4/zones/71fcc53d4888eb19341472ec225e947d/purge_cache" \
+curl -X DELETE "https://api.cloudflare.com/client/v4/zones/8b32503f93557e12988be406f253dec2/purge_cache" \
       -H "Content-Type:application/json" \
       -H "Authorization: Bearer HOQUFhnlDKlVZ4BYP6v9qP0NfNqtr50pVucbPHmm" \
      --data '{"purge_everything":true}'
