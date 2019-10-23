@@ -50,7 +50,7 @@ class Share extends Component {
                     className="card-title font-weight-bolder"
                     style={{ fontSize: '-webkit-xxx-large' }}
                   >
-                    {user.points || 0}
+                    {(user.points || 0) + (user.pointsFromAdmin || 0)}
                   </h4>
                   <p className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>
                     {t('your-pending',
