@@ -107,10 +107,10 @@ class Header extends Component {
 
   render() {
     const {
-      t, country, user, referral, router: { asPath, query: { ref } },
+      t, country, user, referral, router: { asPath, query: { ref } }, lang,
     } = this.props;
-    const shareUrl = domain + asPath;
-    const queryString = referral ? `?ref=${ref || referral}` : '';
+    const queryString = asPath.includes('ref') ? `?ref=${ref || referral}` : '';
+    const shareUrl = `${domain}${asPath.includes(lang) ? '' : `/${lang}`}${asPath.split('?')[0]}${queryString}`;
 
     return (
       <>
@@ -293,6 +293,7 @@ Header.propTypes = {
   user: PropTypes.object.isRequired,
   router: PropTypes.object.isRequired,
   country: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
   referral: PropTypes.string,
 };
 
@@ -300,6 +301,7 @@ const mapStateToProps = (state) => ({
   user: state.user,
   country: state.country,
   referral: state.referral,
+  lang: state.lang,
 });
 
 const mapDispatchToProps = {
