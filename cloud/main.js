@@ -45,10 +45,10 @@ function checkEmail(request) {
   if (!emailCheck.isEmail) {
     throw 'invalid-email';
   }
-  if (emailCheck.isDisposable) {
+  if (emailCheck.isDisposable && !emailCheck.isWebmail) {
     throw 'disposable-email';
   }
-  if (!emailCheck.isWebmail) {
+  if (!emailCheck.isWebmail && !email.includes('@ymail.com')) {
     throw 'not-webmail-email';
   }
 
