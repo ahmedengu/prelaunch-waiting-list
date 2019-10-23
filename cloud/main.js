@@ -210,6 +210,15 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
 
     cache.put(cacheKey, trials + 1, 1000 * 60 * 60 * 24);
 
+    const query = new Parse.Query(Parse.User);
+    const user = await query.equalTo('email', email)
+      .first({ useMasterKey: true });
+
+    if (user) {
+      user.increment('resendVerification', 1);
+      await user.save(null, { useMasterKey: true });
+    }
+
     return 'email-sent';
   } catch (e) {
     const errorJson = JSON.parse(e.text);
