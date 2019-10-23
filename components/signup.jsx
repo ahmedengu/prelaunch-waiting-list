@@ -65,7 +65,7 @@ class Signup extends React.Component {
       .trim();
     const atSplit = email.split('@');
     if (email.includes('gmail.com')) {
-      email = `${atSplit[0].split('+')[0].replace('.', '')}@${atSplit[1]}`;
+      email = `${atSplit[0].split('+')[0].replace(/\./g, '')}@${atSplit[1]}`;
     }
     try {
       const user = await Parse.User.logIn(email, email);
