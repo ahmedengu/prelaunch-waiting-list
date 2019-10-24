@@ -9,7 +9,14 @@ mongodb-runner start
 npm i
 # run project
 npm run dev
+npm run server
 ```
+
+# workflow
+checkout master
+PR master
+merge master and test
+push prod
 
 # Deployment
 Just push to prod :D
