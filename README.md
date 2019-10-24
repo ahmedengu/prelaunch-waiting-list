@@ -13,10 +13,11 @@ npm run server
 ```
 
 # workflow
-checkout master
-PR master
-merge master and test
-push prod
+* Checkout master
+* PR to master
+* Code review and test
+* Merge master
+* Push prod
 
 # Deployment
 Just push to prod :D
