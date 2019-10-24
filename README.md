@@ -12,8 +12,8 @@ npm run dev
 npm run server
 ```
 
-dashboard locally: localhost:4000/dashboard/login
-user/pass: x
+* dashboard locally: localhost:4000/dashboard/login
+* user/pass: x
 
 # workflow
 * Checkout master
