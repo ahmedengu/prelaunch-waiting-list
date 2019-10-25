@@ -80,8 +80,10 @@ class Signup extends React.Component {
           // eslint-disable-next-line no-underscore-dangle
           await user._linkWith(providerName, { authData });
         }
+        logEvent('user', `social_login_${providerName}`);
       } else {
         user = await Parse.User.logIn(email, email);
+        logEvent('user', 'logIn_normal');
       }
       this.loggedIn(user);
       logEvent('user', 'logIn');
@@ -101,8 +103,10 @@ class Signup extends React.Component {
         if (providerName) {
           // eslint-disable-next-line no-underscore-dangle
           await user._linkWith(providerName, { authData });
+          logEvent('new_user', `social_signUp_${providerName}`);
         } else {
           await user.signUp();
+          logEvent('new_user', 'signUp_normal');
         }
         this.loggedIn(user, true);
         logEvent('new_user', 'sign_up');
@@ -125,10 +129,10 @@ class Signup extends React.Component {
     }
   }
 
-  loggedIn(user, isNew = false) {
+  async loggedIn(user, isNew = false) {
     const { setUserHandler, t, setLangHandler } = this.props;
     const { query: { lng, subpath, ...query }, pathname } = Router;
-    const userJson = user && user.toJSON();
+    const userJson = user && (await user.fetch()).toJSON();
     setLangHandler(userJson.lang);
     setUserHandler(userJson);
     logUserId(userJson.objectId);
@@ -147,7 +151,6 @@ class Signup extends React.Component {
         access_token: res.accessToken,
       };
       const providerName = 'facebook';
-      console.log(authData);
       this.setState({ email: res.email }, () => {
         this.register(false, providerName, authData);
       });
@@ -161,7 +164,6 @@ class Signup extends React.Component {
         access_token: res.Zi.access_token,
       };
       const providerName = 'google';
-      console.log(authData);
       this.setState({ email: res.w3.U3 }, () => {
         this.register(false, providerName, authData);
       });

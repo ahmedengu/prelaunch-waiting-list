@@ -117,7 +117,9 @@ function createNotification(user, event, data) {
 Parse.Cloud.beforeSave(Parse.User, async (request) => {
   if (request.object.isNew() && !request.master) {
     checkRequired(request, requiredFields);
-    checkEmail(request);
+    if (!request.object.get('authData')) {
+      checkEmail(request);
+    }
 
     request.object.set('points', 0);
     request.object.set('pendingRefPoints', 0);
@@ -146,7 +148,7 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     }
   } else if (!request.master && !(request.object.dirtyKeys()
     && request.object.dirtyKeys().length === 1
-    && request.object.dirtyKeys()[0] === 'lang')) {
+    && (request.object.dirtyKeys().includes('lang') || request.object.dirtyKeys().includes('authData')))) {
     throw 'not-allowed';
   }
 });
@@ -175,6 +177,9 @@ Parse.Cloud.afterSave(Parse.User, async (request) => {
         );
       }
     }
+  } else if (request.object.get('authData') && !request.object.get('emailVerified')) {
+    request.object.set('emailVerified', true);
+    request.object.save(null, { useMasterKey: true });
   }
 });
 
