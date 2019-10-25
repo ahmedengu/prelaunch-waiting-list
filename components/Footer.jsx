@@ -72,6 +72,7 @@ const Footer = ({ t, setUserHandler, user }) => (
                     Parse.User.logOut();
                     cookie.remove('user');
                     setUserHandler({});
+                    Parse.LiveQuery.close();
                     toast(t('goodbye'));
                     logEvent('user', 'logOut');
                     window.scrollTo(0, 0);
