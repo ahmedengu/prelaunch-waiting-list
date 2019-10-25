@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import cookie from 'js-cookie';
 import * as qs from 'qs';
 import { toast } from 'react-toastify';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import GoogleLogin from 'react-google-login';
+import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import { Router } from '../i18n';
 import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
@@ -32,7 +35,7 @@ class Signup extends React.Component {
     }
   }
 
-  async register(notMounted = false) {
+  async register(notMounted = false, providerName = '', authData = {}) {
     const validateEmail = (email) => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email)
@@ -68,7 +71,18 @@ class Signup extends React.Component {
       email = `${atSplit[0].split('+')[0].replace(/\./g, '')}@${atSplit[1]}`;
     }
     try {
-      const user = await Parse.User.logIn(email, email);
+      let user;
+      if (providerName) {
+        try {
+          user = await Parse.User.logInWith(providerName, { authData });
+        } catch (e) {
+          user = await Parse.User.logIn(email, email);
+          // eslint-disable-next-line no-underscore-dangle
+          await user._linkWith(providerName, { authData });
+        }
+      } else {
+        user = await Parse.User.logIn(email, email);
+      }
       this.loggedIn(user);
       logEvent('user', 'logIn');
     } catch (e) {
@@ -84,7 +98,12 @@ class Signup extends React.Component {
       user.set('referred', referral || ref);
 
       try {
-        await user.signUp();
+        if (providerName) {
+          // eslint-disable-next-line no-underscore-dangle
+          await user._linkWith(providerName, { authData });
+        } else {
+          await user.signUp();
+        }
         this.loggedIn(user, true);
         logEvent('new_user', 'sign_up');
         logEvent('user', 'signUp');
@@ -121,6 +140,34 @@ class Signup extends React.Component {
     toast(t(isNew ? 'welcome' : 'welcome-back'));
   }
 
+  responseFacebook(res) {
+    if (res.email) {
+      const authData = {
+        id: res.id,
+        access_token: res.accessToken,
+      };
+      const providerName = 'facebook';
+      console.log(authData);
+      this.setState({ email: res.email }, () => {
+        this.register(false, providerName, authData);
+      });
+    }
+  }
+
+  responseGoogle(res) {
+    if (res.w3.U3) {
+      const authData = {
+        id: res.El,
+        access_token: res.Zi.access_token,
+      };
+      const providerName = 'google';
+      console.log(authData);
+      this.setState({ email: res.w3.U3 }, () => {
+        this.register(false, providerName, authData);
+      });
+    }
+  }
+
   render() {
     const { t, referral } = this.props;
     const {
@@ -131,11 +178,11 @@ class Signup extends React.Component {
       <>
         <section className="fdb-block" data-block-type="contents" data-id="3">
           <div className="container">
-            <div className="row align-items-center">
+            <div className="row">
               <div
                 className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
               >
-                <div className="embed-responsive embed-responsive-16by9 m-2">
+                <div className="embed-responsive embed-responsive-16by9 mb-2">
                   <iframe
                     title="video"
                     src={t('youtube-video')}
@@ -200,6 +247,38 @@ class Signup extends React.Component {
                   <p className="text-danger" style={{ marginTop: 10 }}>{t(error)}</p>
                 </Animated>
 
+                <div className="row justify-content-center">
+                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
+                    <FacebookLogin
+                      appId="403863870540210"
+                      fields="email"
+                      callback={(res) => {
+                        this.responseFacebook(res);
+                      }}
+                      render={(renderProps) => (
+                        <FacebookLoginButton
+                          disabled={renderProps.disabled}
+                          onClick={renderProps.onClick}
+                        />
+                      )}
+                    />
+                  </div>
+
+                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
+                    <GoogleLogin
+                      clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
+                      onSuccess={(res) => {
+                        this.responseGoogle(res);
+                      }}
+                      render={(renderProps) => (
+                        <GoogleLoginButton
+                          disabled={renderProps.disabled}
+                          onClick={renderProps.onClick}
+                        />
+                      )}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

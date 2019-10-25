@@ -46,6 +46,14 @@ const api = new ParseServer({
   customPages: {
     parseFrameURL: process.env.PUBLIC_URL || 'http://localhost:3000',
   },
+  auth: {
+    facebook: {
+      appIds: '403863870540210',
+    },
+    google: {
+      appIds: '449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com',
+    },
+  },
 });
 
 
