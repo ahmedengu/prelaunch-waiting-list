@@ -259,6 +259,7 @@ class Signup extends React.Component {
                       }}
                       render={(renderProps) => (
                         <FacebookLoginButton
+                          text={t('login_with_facebook')}
                           disabled={renderProps.disabled}
                           onClick={renderProps.onClick}
                         />
@@ -274,6 +275,7 @@ class Signup extends React.Component {
                       }}
                       render={(renderProps) => (
                         <GoogleLoginButton
+                          text={t('login_with_google')}
                           disabled={renderProps.disabled}
                           onClick={renderProps.onClick}
                         />

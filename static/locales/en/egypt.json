@@ -19,7 +19,7 @@
   "copy": "copy",
   "header": "Fast, Easy and Commission Free Stock Broker.",
   "enter_email": "Enter your email",
-  "submit": "join",
+  "submit": "Join Now",
   "check-mail": "Please verify your email (check spam folder)",
   "resend-email": "Resend Verification Email",
   "resubscribe": "Subscribe",
@@ -39,10 +39,10 @@
   "addthis-title": "Earn a stock for free now from @MerQuant",
   "addthis-description": "MerQuant - Free Stock Trading in Egypt",
   "ref-title": "Join and get a stock for free from MerQuant",
-  "ref-meta-description": "A free random stock is waiting for you when you join and for everyone you refer, only with MerQuant",
+  "ref-meta-description": "A free stock is waiting for you when you join and for everyone you refer, only with MerQuant",
   "ref-keywords": "MerQuant, zero commission, stock trading, stop paying more than 30EGP, for every trade, Egypt",
   "ref-og-image": "https://merquant.com/static/assets/share.png?v=2",
-  "ref-header": "There is a random free stock waiting for you if you join within 24 hours",
+  "ref-header": "There is a free stock waiting for you if you join within 24 hours",
   "ref-description": "MerQuant zero commission stock trading, stop paying more than 30EGP for every trade",
   "features-title": "Features",
   "feature1-title": "Zero Commission",
@@ -65,5 +65,7 @@
   "logout": "Logout",
   "goodbye": "Goodbye",
   "link-send-failed": "Link sending failed",
-  "invalid-verification": "Invalid verification code"
+  "invalid-verification": "Invalid verification code",
+  "login_with_facebook": "Login with Facebook",
+  "login_with_google": "Login with Google"
 }
