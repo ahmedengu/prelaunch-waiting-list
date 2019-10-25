@@ -67,5 +67,6 @@
   "link-send-failed": "فشل ارسال الرابط",
   "invalid-verification": "كود التفعيل غير صحيح",
   "login_with_facebook": "تسجيل الدخول بفيسبوك",
-  "login_with_google": "تسجيل الدخول بجوجل"
+  "login_with_google": "تسجيل الدخول بجوجل",
+  "sent_to": "{{email}} تم الارسال الى"
 }
