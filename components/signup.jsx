@@ -249,7 +249,7 @@ class Signup extends React.Component {
                   <p className="text-danger" style={{ marginTop: 10 }}>{t(error)}</p>
                 </Animated>
 
-                <div className="row justify-content-center">
+                <div className="row justify-content-center d-none">
                   <div className="col-12 col-lg-6 col-xl-6 col-md-6">
                     <FacebookLogin
                       appId="403863870540210"
