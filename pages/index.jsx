@@ -19,7 +19,7 @@ export default class extends React.Component {
 
     if (res) {
       res.writeHead(302, {
-        Location: `/${country}${queryString}`,
+        Location: `/${lng}/${country}${queryString}`,
       });
       res.end();
     } else {
