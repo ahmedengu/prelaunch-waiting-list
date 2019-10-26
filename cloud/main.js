@@ -48,9 +48,6 @@ function checkEmail(request) {
   if (emailCheck.isDisposable && !emailCheck.isWebmail) {
     throw 'disposable-email';
   }
-  if (!emailCheck.isWebmail && !email.includes('@ymail.com')) {
-    throw 'not-webmail-email';
-  }
 
   email = email.toLowerCase().trim();
   const atSplit = email.split('@');
