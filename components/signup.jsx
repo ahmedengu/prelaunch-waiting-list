@@ -131,16 +131,15 @@ class Signup extends React.Component {
 
   async loggedIn(user, isNew = false) {
     const { setUserHandler, t, setLangHandler } = this.props;
-    const { query: { lng, subpath, ...query }, pathname } = Router;
+    const { pathname } = Router;
     const userJson = user && (await user.fetch()).toJSON();
     setLangHandler(userJson.lang);
     setUserHandler(userJson);
     logUserId(userJson.objectId);
     cookie.set('user', userJson);
 
-    query.ref = userJson.ref;
 
-    Router.push(`${pathname}?${qs.stringify(query)}`);
+    Router.push(`${pathname}?${qs.stringify({ ref: userJson.ref })}`);
     toast(t(isNew ? 'welcome' : 'welcome-back'));
   }
 
