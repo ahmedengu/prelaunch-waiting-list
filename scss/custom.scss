@@ -2,7 +2,10 @@ body {
   background-color: #343a40;
 }
 
-h1, .lead, .checkMail_section h4, h3 {
+h1,
+.lead,
+.checkMail_section h4,
+h3 {
   font-family: 'Signika', sans-serif;
 
 }
@@ -62,12 +65,14 @@ input:focus {
 
 .fdb-block {
   padding: 6rem 0px;
+
   @media (max-width: map-get($grid-breakpoints, "md")) {
     padding: 1rem 0px;
   }
 }
 
-.resp-sharing-button__link, .resp-sharing-button__icon {
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
   display: inline-block;
   direction: ltr;
 }
@@ -113,7 +118,8 @@ input:focus {
 
 /* Solid icons get a fill */
 
-.resp-sharing-button__icon--solid, .resp-sharing-button__icon--solidcircle {
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
   fill: #fff;
   stroke: none;
 }
@@ -201,7 +207,8 @@ input:focus {
 .resp-sharing-button--hackernews {
   background-color: #FF6600;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: #FB6200;
   }
 }
@@ -218,7 +225,8 @@ input:focus {
   background-color: #3b5998;
   border-color: #3b5998;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: #2d4373;
     border-color: #2d4373;
   }
@@ -228,7 +236,8 @@ input:focus {
   background-color: #55acee;
   border-color: #55acee;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: #2795e9;
     border-color: #2795e9;
   }
@@ -238,7 +247,8 @@ input:focus {
   background-color: #777777;
   border-color: #777777;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: #5e5e5e;
     border-color: #5e5e5e;
   }
@@ -248,7 +258,8 @@ input:focus {
   background-color: #0077b5;
   border-color: #0077b5;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: #046293;
     border-color: #046293;
   }
@@ -258,7 +269,8 @@ input:focus {
   background-color: #25D366;
   border-color: #25D366;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: #1DA851;
     border-color: #1DA851;
   }
@@ -270,8 +282,159 @@ input:focus {
   }
 }
 
-.social-margin{
+.social-margin {
   @media only screen and (max-width: 767px) {
     margin-right: 1rem;
   }
 }
+
+.main-container {
+  background-image: url(/static/assets/Bigger-Header.png);
+  background-color: #252525;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  margin: -5% 0%;
+  padding: 0px 60px;
+  height: 600px;
+
+  p {
+    position: relative;
+    top: 30px;
+    left: -90px;
+}
+  strong {
+    color: #FF6600;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+  }
+
+  h3 {
+    margin-top: 2.0rem;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    line-height: 36px;
+    font-weight: 100;
+  }
+
+  img {
+    position: relative;
+    top: 45px;
+  }
+
+  svg {
+    margin-left: 5px;
+  }
+
+  .header-text {
+    text-align: center;
+    margin: 0px;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 45px;
+    letter-spacing: -1.44px;
+    color: rgb(255, 255, 255);
+    text-decoration: unset;
+    margin-top: 5%;
+  }
+
+}
+
+.container {
+  @media (min-width: 750px) {
+    max-width: 100%;
+
+  }
+  }
+
+.input-group {
+  left: 22.5%;
+  width: 55%;
+  margin-top: 5%;
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #040d14;
+  border-color: #ced4da;
+}
+
+.entryForm {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.main-container {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: -0.32px;
+  text-align: center;
+
+  .social-login{
+    margin-top: 2%;
+  }
+
+  input,
+  .btn {
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    margin-right: 7px;
+    min-width: 0px;
+    text-decoration: unset;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 0px 0px 0px 24px;
+    font: 400 13.3333px Arial;
+  }
+
+  .btn {
+    width: 120px;
+    text-align: start;
+    padding-left: 25%;
+    text-transform: capitalize;
+    background-color:#252525;
+    transition-duration: .3s;
+  }
+
+  .btn:hover{
+    background-color:#FF6600;
+    transition-duration: .6s;
+  }
+}
+
+.text-left {
+  padding-left: 5%;
+}
+
+.container {
+  @media screen and (max-width: 750px) {
+    .btn{
+      width: 50px;
+      padding-left: 15px;
+    }
+  }
+  
+@media (min-width: 768px){
+  .col-md-6 {
+      flex: 0 0 0%;
+      max-width: 50%;
+  }
+}
+  }
+

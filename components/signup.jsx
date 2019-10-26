@@ -14,6 +14,7 @@ import { Router } from '../i18n';
 import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
+import { FaPlay } from "react-icons/fa";
 
 class Signup extends React.Component {
   constructor(props) {
@@ -179,36 +180,26 @@ class Signup extends React.Component {
       <>
         <section className="fdb-block" data-block-type="contents" data-id="3">
           <div className="container">
-            <div className="row">
-              <div
-                className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-              >
-                <div className="embed-responsive embed-responsive-16by9 mb-2">
-                  <iframe
-                    title="video"
-                    src={t('youtube-video')}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  />
-                </div>
-              </div>
 
-              <div
-                className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-              >
-                <p>
+            <div className="row align-items-center">
+              <div className="main-container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 container-fluid">
+                <a>
                   <img
-                    alt="Gift"
-                    className="fdb-icon fr-fic fr-dii"
-                    src={t('country-pic')}
+                    src="/static/assets/Logo-no-text.png"
+                    height="100"
+                    alt="MerQuant"
+                    className="fr-fic fr-dii"
                   />
-                </p>
-                <h1>{referral ? t('ref-header') : t('header')}</h1>
-                <p className="lead">
-                  {referral ? t('ref-description') : t('description')}
-                </p>
+                </a>
+                <h2 className="header-text">
+                  Rethink Investment
+                  </h2>
+                <h3>
+                  First & Only commission free stock trading in the Middle East <br />
+                  Stop Paying for What's FREE with <strong>MerQuant</strong>
+                </h3>
                 <form
-                  className="input-group"
+                  className="input-group entryForm"
                   noValidate
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -238,17 +229,7 @@ class Signup extends React.Component {
                   </div>
                 </form>
 
-                <Animated
-                  animationIn="fadeIn"
-                  animationInDuration={3000}
-                  animationOutDuration={3000}
-                  animationOut="fadeOut"
-                  isVisible={error !== ''}
-                >
-                  <p className="text-danger" style={{ marginTop: 10 }}>{t(error)}</p>
-                </Animated>
-
-                <div className="row justify-content-center">
+                <div className="row justify-content-center social-login">
                   <div className="col-12 col-lg-6 col-xl-6 col-md-6">
                     <FacebookLogin
                       appId="403863870540210"
@@ -258,9 +239,18 @@ class Signup extends React.Component {
                       }}
                       render={(renderProps) => (
                         <FacebookLoginButton
-                          text={t('login_with_facebook')}
+                          text={t('Facebook Login')}
                           disabled={renderProps.disabled}
                           onClick={renderProps.onClick}
+                          style={{width: 150,
+                            height: 36,
+                            fontSize: 12,            
+                            backgroundColor:"#252525"               }}
+                            activeStyle ={{
+                              backgroundColor:'#FF6600'
+                            }} 
+                            align="center"
+                          className='social-item'
                         />
                       )}
                     />
@@ -274,13 +264,28 @@ class Signup extends React.Component {
                       }}
                       render={(renderProps) => (
                         <GoogleLoginButton
-                          text={t('login_with_google')}
+                          text={t('Google Login')}
                           disabled={renderProps.disabled}
                           onClick={renderProps.onClick}
+                          style={{width: 150,
+                            height: 36,
+                            fontSize: 12,
+                            backgroundColor:"#252525"
+                          }}
+                            activeStyle ={{
+                              backgroundColor:'#FF6600'
+                            }}                           
+                          align="center"
+                          className='social-item'
                         />
                       )}
                     />
+                  <p><a href={t('youtube-video')} target="_blank">Watch Our Video <FaPlay /> </a></p>
+
                   </div>
+
+
+
                 </div>
               </div>
             </div>
