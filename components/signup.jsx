@@ -217,7 +217,9 @@ class Signup extends React.Component {
                 >
                   <input
                     dir="ltr"
-                    type="email"
+                    type="search"
+                    name="email"
+                    style={{ backgroundImage: 'unset', paddingRight: '0.75rem' }}
                     className={`signup-input form-control ${error ? 'is-invalid' : ''}`}
                     placeholder={t('enter_email')}
                     value={email}
