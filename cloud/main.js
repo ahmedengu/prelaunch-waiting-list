@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const disposableEmail = require('rendrr-disposable-email-list');
-const parseSmtp = require('parse-smtp-template');
+const parseSmtp = require('parse-smtp-template-text');
 const qs = require('qs');
 const uuid = require('uuid');
 const cache = require('memory-cache');

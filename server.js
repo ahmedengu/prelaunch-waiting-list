@@ -40,7 +40,7 @@ const api = new ParseServer({
     },
   },
   emailAdapter: {
-    module: 'parse-smtp-template',
+    module: 'parse-smtp-template-text',
     options: emailConfig,
   },
   customPages: {
