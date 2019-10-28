@@ -253,6 +253,7 @@ class Signup extends React.Component {
                 <div className="row justify-content-center">
                   <div className="col-12 col-lg-6 col-xl-6 col-md-6">
                     <FacebookLogin
+                      isMobile={false}
                       appId="403863870540210"
                       fields="email"
                       callback={(res) => {
