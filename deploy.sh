@@ -17,7 +17,7 @@ supervisorctl restart all
 cp -rf deploy.sh /srv/deploy/deploy.sh
 
 cd ..
-find "$(pwd)" -type d -ctime +10 -exec rm -rf {} \;
+ls -dt */ | tail -n +5 | xargs rm -rf
 
 curl -X DELETE "https://api.cloudflare.com/client/v4/zones/8b32503f93557e12988be406f253dec2/purge_cache" \
       -H "Content-Type:application/json" \
