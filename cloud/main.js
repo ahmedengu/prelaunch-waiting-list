@@ -191,7 +191,7 @@ Parse.Cloud.define('resendVerification', async (request, response) => {
   const cacheKey = `resendVerification_${email}`;
   const trials = cache.get(cacheKey) || 0;
 
-  if (trials > 3) {
+  if (trials >= 2) {
     throw 'send-limit';
   }
 
