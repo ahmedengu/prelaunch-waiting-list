@@ -5,6 +5,7 @@ module.exports = {
     user: process.env.MAIL_USER || 'f2ef551b118f58',
     password: process.env.MAIL_PASS || 'bdb83c37ee7151',
     fromAddress: process.env.MAIL_FROM || 'e9cf477a87-4a141f@inbox.mailtrap.io',
+    secure: process.env.MAIL_SECURE || false,
     multiTemplate: true,
     multiLang: true,
     confirmTemplatePath: 'views/templates/confirmTemplate.html',
