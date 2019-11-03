@@ -29,7 +29,7 @@ class Share extends Component {
   render() {
     const { t, user } = this.props;
     let copyInput = null;
-    const userLink = `${domain}?ref=${user.ref}`;
+    const userLink = `${domain}/?ref=${user.ref}`;
     const shareLink = encodeURIComponent(userLink);
 
     const copy = () => {
