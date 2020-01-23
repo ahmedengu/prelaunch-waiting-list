@@ -53,7 +53,6 @@ class LoggedIn extends React.Component {
         )}
         <Share t={t} />
         <HomeFeatures t={t} />
-        {/* <Gifts t={t} /> */}
       </>
     );
   }

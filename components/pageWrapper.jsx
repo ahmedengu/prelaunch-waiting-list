@@ -10,8 +10,13 @@ const PageWrapper = ({
   t, children, lang,
 }) => (
   <>
-    <main>
-      <Header t={t} />
+    <main
+      data-spy="scroll"
+      data-target=".navbar"
+      className="has-loading-screen"
+      data-bg-parallax="scroll"
+      data-bg-parallax-speed="3"
+    >
       <div className={lang === 'ar' ? 'rtl' : ''}>
         {children}
       </div>

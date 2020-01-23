@@ -119,167 +119,71 @@ class Header extends Component {
             ? this.refHead(t, shareUrl) : this.normalHead(t, shareUrl)}
           <meta name="twitter:site" content="@MerQuant" />
           <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.ico" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" />
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+          <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css" type="text/css" />
+          <link rel="stylesheet" href="/static/assets/font-awesome/css/fontawesome-all.min.css" />
+          <link rel="stylesheet" href="/static/assets/css/style.css" />
+          <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css" />
+
         </Head>
-        <header data-block-type="headers" data-id="1">
+        <nav
+          className="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element"
+          data-bg-color="rgb(31,31,31)"
+        >
           <div className="container">
-            <nav className="navbar navbar-expand-md no-gutters">
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav2"
-                aria-controls="navbarNav2"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon" />
-              </button>
-
-              <div
-                className="col-4 col-md-2 text-right text-md-center order-lg-6 d-lg-none mr-md-2 m-auto"
-              >
-                <p>
-                  <Link href={`/${(user && user.country) || country}`} as={`/${(user && user.country) || country}${queryString}`}>
-                    <a>
-                      <img
-                        src="/static/assets/logo.png"
-                        height="50"
-                        alt="MerQuant"
-                        className="fr-fic fr-dii"
-                      />
-                    </a>
-                  </Link>
-                </p>
-              </div>
-
-              <div className="collapse navbar-collapse" id="navbarNav2">
-                <div
-                  className="col-4 col-md-2 text-right text-md-center order-lg-6 d-none d-lg-block d-xl-block"
+            <a className="navbar-brand" href="#page-top">
+              <img className="logo img-responsive" src="/static/assets/img/image2vector.svg" alt="" />
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav ml-auto">
+                <a className="nav-item nav-link active ts-scroll" href="#page-top">
+Home
+                  <span
+                    className="sr-only"
+                  >
+(current)
+                  </span>
+                </a>
+                <a className="nav-item nav-link ts-scroll" href="#what-is-merquant">About</a>
+                <a
+                  target="_blank"
+                  rel="dofollow"
+                  className="nav-item nav-link ts-scroll"
+                  href="http://blog.merquant.com"
                 >
-                  <p>
-                    <Link href={`/${(user && user.country) || country}`} as={`/${(user && user.country) || country}${queryString}`}>
-                      <a>
-                        <img
-                          src="/static/assets/logo.png"
-                          height="50"
-                          alt="MerQuant"
-                          className="fr-fic fr-dii"
-                        />
-                      </a>
-                    </Link>
-                  </p>
+Blog
+                </a>
+                <div className="btn-group">
+                  <button
+                    type="button"
+                    className="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    English
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <button className="dropdown-item" type="button">Arabic</button>
+                    <button className="dropdown-item" type="button">Hausa</button>
+                  </div>
                 </div>
-                <div className="col-12 col-md-5 order-lg-1">
-                  <ul className="navbar-nav col-5">
-                    <li
-                      className={`nav-item ${(country === 'egypt' ? 'active' : '')}`}
-                      hidden={user && user.country && user.country !== 'egypt'}
-                    >
-                      <Link href="/egypt" as={`/egypt${queryString}`}>
-                        <a
-                          className="nav-link"
-                          style={{
-                            outline: 'none',
-                            display: 'inline-block',
-                          }}
-                        >
-                          {t('Egypt')}
-                        </a>
-                      </Link>
-                    </li>
-                    <li
-                      className={`nav-item ${(country === 'emirates' ? 'active' : '')}`}
-                      hidden={user && user.country && user.country !== 'emirates'}
-                    >
-                      <Link href="/emirates" as={`/emirates${queryString}`}>
-                        <a
-                          className="nav-link"
-                          style={{
-                            outline: 'none',
-                            display: 'inline-block',
-                          }}
-                        >
-                          {t('Emirates')}
-                        </a>
-                      </Link>
-                    </li>
-                    <li
-                      className={`nav-item ${(country === 'saudi' ? 'active' : '')}`}
-                      hidden={user && user.country && user.country !== 'saudi'}
-                    >
-                      <Link href="/saudi" as={`/saudi${queryString}`}>
-                        <a
-                          className="nav-link"
-                          style={{
-                            outline: 'none',
-                            display: 'inline-block',
-                          }}
-                        >
-                          {t('Saudi')}
-                        </a>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-
-                <ul className="navbar-nav justify-content-end col-sm-5 order-lg-12 d-md-flex ml-2">
-                  <li className="nav-item">
-                    <a
-                      title="Facebook"
-                      className="nav-link social-margin"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://www.facebook.com/merquant"
-                      style={{
-                        outline: 'none',
-                        display: 'inline-block',
-                      }}
-                    >
-                      <FiFacebook />
-                    </a>
-                    <a
-                      title="Twitter"
-                      className="nav-link social-margin"
-                      href="https://twitter.com/merquant"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        outline: 'none',
-                        display: 'inline-block',
-                      }}
-                    >
-                      <FiTwitter />
-                    </a>
-                    <a
-                      title="Linkedin"
-                      className="nav-link"
-                      href="https://www.linkedin.com/company/merquant"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        outline: 'none',
-                        display: 'inline-block',
-                      }}
-                    >
-                      <FiLinkedin />
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary ml-md-3"
-                      onClick={this.changeLang(user)}
-                    >
-                      {t('lang')}
-                    </button>
-                  </li>
-                </ul>
               </div>
-
-            </nav>
+            </div>
           </div>
-        </header>
-
+        </nav>
       </>
     );
   }

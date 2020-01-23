@@ -178,28 +178,8 @@ class MyApp extends App {
 
     return (
       <Provider store={reduxStore}>
-        <PageTransition timeout={300} classNames="page-transition">
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Component {...pageProps} />
-        </PageTransition>
-        <style jsx global>
-          {`
-          .page-transition-enter {
-            opacity: 0.5;
-          }
-          .page-transition-enter-active {
-            opacity: 1;
-            transition: opacity 300ms, transform 300ms;
-          }
-          .page-transition-exit {
-            opacity: 1;
-          }
-          .page-transition-exit-active {
-            opacity: 0.5;
-            transition: opacity 300ms;
-          }
-        `}
-        </style>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...pageProps} />
       </Provider>
     );
   }

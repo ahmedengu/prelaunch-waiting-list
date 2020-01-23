@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
-import { Animated } from 'react-animated-css';
 import { connect } from 'react-redux';
 import cookie from 'js-cookie';
 import * as qs from 'qs';
@@ -14,6 +13,7 @@ import { Router } from '../i18n';
 import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
+import Header from './Header';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -176,118 +176,182 @@ class Signup extends React.Component {
 
     return (
       <>
-        <section className="fdb-block" data-block-type="contents" data-id="3">
-          <div className="container">
-            <div className="row">
-              <div
-                className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-              >
-                <div className="embed-responsive embed-responsive-16by9 mb-2">
-                  <iframe
-                    title="video"
-                    src={t('youtube-video')}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <header id="ts-hero" className="ts-full-screen">
+          <Header t={t} />
+          <div className="container align-self-center">
+            <div className="row align-items-center">
+              <div className="col-sm-4 d-none d-sm-block">
+                <div className="owl-carousel text-center" data-owl-nav="1" data-owl-loop="1">
+                  <img
+                    src="/static/assets/img/app-03.png"
+                    className="d-inline-block mw-100 ts-width__auto"
+                    alt=""
+                  />
+                  <img
+                    src="/static/assets/img/app-01.png"
+                    className="d-inline-block mw-100 ts-width__auto"
+                    alt=""
+                  />
+                  <img
+                    src="/static/assets/img/app-02.png"
+                    className="d-inline-block mw-100 ts-width__auto"
+                    alt=""
                   />
                 </div>
               </div>
+              <div className="col-sm-7 offset-sm-1 signup">
+                <h3>
+                  First & Only commission free stock trading in the Middle East Stop Paying for
+                  Whats FREE
+                  with MerQuant
+                </h3>
+                <h1>INVESTMENT SIMPLIFIED</h1>
+                <form className="ts-form ts-form-email ts-labels-inside-input">
+                  <div className="row">
+                    <div className="col-md-9 col-sm-12 ">
+                      <div className="form-group mb-0">
+                        <label htmlFor="email-subscribe">Email address</label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="email-subscribe"
+                          aria-describedby="subscribe"
+                          name="email"
+                          placeholder=""
+                          required
+                        />
+                        <FacebookLogin
+                          isMobile={false}
+                          appId="403863870540210"
+                          fields="email"
+                          callback={(res) => {
+                            this.responseFacebook(res);
+                          }}
+                          render={(renderProps) => (
+                            <FacebookLoginButton
+                              text={t('login_with_facebook')}
+                              disabled={renderProps.disabled}
+                              onClick={renderProps.onClick}
+                            />
+                          )}
+                        />
 
-              <div
-                className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-              >
-                <p>
-                  <img
-                    alt="Gift"
-                    className="fdb-icon fr-fic fr-dii"
-                    src={t('country-pic')}
-                  />
-                </p>
-                <h1>{referral ? t('ref-header') : t('header')}</h1>
-                <p className="lead">
-                  {referral ? t('ref-description') : t('description')}
-                </p>
-                <form
-                  className="input-group"
-                  noValidate
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    this.register();
-                  }}
-                >
-                  <input
-                    dir="ltr"
-                    type="search"
-                    name="email"
-                    style={{ backgroundImage: 'unset', paddingRight: '0.75rem' }}
-                    className={`signup-input form-control ${error ? 'is-invalid' : ''}`}
-                    placeholder={t('enter_email')}
-                    value={email}
-                    onChange={(event) => {
-                      this.setState({
-                        email: event.target.value,
-                        error: '',
-                      });
-                    }}
-                  />
-                  <div className="input-group-append">
-                    <input
-                      className="btn btn-primary"
-                      type="submit"
-                      value={t('submit')}
-                      disabled={loading}
-                    />
+                        <GoogleLogin
+                          clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
+                          onSuccess={(res) => {
+                            this.responseGoogle(res);
+                          }}
+                          render={(renderProps) => (
+                            <GoogleLoginButton
+                              text={t('login_with_google')}
+                              disabled={renderProps.disabled}
+                              onClick={renderProps.onClick}
+                            />
+                          )}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-md-3 col-sm-3 col-3">
+                      <button type="button" className="btn btn-primary">
+                        <a
+                          className="submit-a"
+                          href="joined-original.html"
+                        >
+                          Join
+                          Now
+                        </a>
+                      </button>
+                    </div>
                   </div>
                 </form>
-
-                <Animated
-                  animationIn="fadeIn"
-                  animationInDuration={3000}
-                  animationOutDuration={3000}
-                  animationOut="fadeOut"
-                  isVisible={error !== ''}
-                >
-                  <p className="text-danger" style={{ marginTop: 10 }}>{t(error)}</p>
-                </Animated>
-
-                <div className="row justify-content-center">
-                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
-                    <FacebookLogin
-                      isMobile={false}
-                      appId="403863870540210"
-                      fields="email"
-                      callback={(res) => {
-                        this.responseFacebook(res);
-                      }}
-                      render={(renderProps) => (
-                        <FacebookLoginButton
-                          text={t('login_with_facebook')}
-                          disabled={renderProps.disabled}
-                          onClick={renderProps.onClick}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
-                    <GoogleLogin
-                      clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
-                      onSuccess={(res) => {
-                        this.responseGoogle(res);
-                      }}
-                      render={(renderProps) => (
-                        <GoogleLoginButton
-                          text={t('login_with_google')}
-                          disabled={renderProps.disabled}
-                          onClick={renderProps.onClick}
-                        />
-                      )}
-                    />
+                <div className="row margin-top-10">
+                  <div className="col-12">
+                    <a
+                      className="push-image-container"
+                      data-toggle="modal"
+                      data-target="#video-popup"
+                    >
+                      Watch the
+                      video
+                      {' '}
+                      <i className="far fa-play-circle" />
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+
+          <div
+            className="video-modal modal"
+            id="video-popup"
+            tabIndex="-1"
+            role="dialog"
+            aria-labelledby="video-popup-label"
+          >
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <span className="color-white x-button" aria-hidden="true">&times;</span>
+            </button>
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-body">
+
+                  <div className="video-container embed-responsive embed-responsive-16by9">
+                    <iframe
+                      className="embed-responsive-item"
+                      width="1280"
+                      height="720"
+                      src="https://www.youtube.com/embed/ExzAb3t6DkI"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay;"
+                      scrolling="no"
+                      allowFullScreen
+                      title="video"
+                    />
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgb(31,31,31)">
+          <svg
+            className="ts-svg ts-parallax-element"
+            width="100%"
+            height="100%"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <path
+              className="ts-dynamic-wave"
+              d=""
+              data-wave-height=".6"
+              data-wave-bones="4"
+              data-wave-speed="0.15"
+            />
+          </svg>
+          <svg
+            className="ts-svg"
+            width="100%"
+            height="100%"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <path
+              className="ts-dynamic-wave"
+              d=""
+              data-wave-color="#fff"
+              data-wave-height=".2"
+              data-wave-bones="6"
+              data-wave-speed="0.2"
+            />
+          </svg>
+        </div>
+
         <HomeFeatures t={t} />
       </>
     );
