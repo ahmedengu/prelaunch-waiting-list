@@ -14,12 +14,12 @@ const Footer = ({ t, setUserHandler, user }) => (
     data-block-type="footers"
     data-id="2"
   >
-    <section id="legal">
+    <section id="legal" style={{ margin: 0 }}>
       <div className="row justify-content-center text-center">
         <div className="col-12">
           <h3>MerQuant</h3>
-          <p>
-            Free shares are acquired after the validation of referred account and the official
+          <p className="typography-body">
+          Free shares are acquired after the validation of referred account and the official
             launch of
             MerQuant.
             The value of the stocks received can be up to 100EGP each, No one is allowed to have

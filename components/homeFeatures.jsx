@@ -10,8 +10,11 @@ const HomeFeatures = ({ t }) => (
     >
       <div className="container">
         <div className="ts-title">
-          <h2>How It Works</h2>
-          <h5>Experience trading in an easy and unique way with MerQuant</h5>
+          <h2 className="typography-head">How It Works</h2>
+          <h5 className="typography-sub">
+Experience trading in an easy and unique way with
+            MerQuant
+          </h5>
         </div>
         <ul className="nav nav-tabs justify-content-center my-5" id="myTab" role="tablist">
 
@@ -25,7 +28,7 @@ const HomeFeatures = ({ t }) => (
               aria-controls="mobile"
               aria-selected="false"
             >
-              <h4>Mobile</h4>
+              <h4 className="typography-sub">Mobile</h4>
             </a>
           </li>
         </ul>
@@ -51,19 +54,18 @@ const HomeFeatures = ({ t }) => (
     <section id="what-is-merquant" className="ts-block">
       <div className="container">
         <div className="ts-title">
-          <h2>What Is MerQuant?</h2>
+          <h2 className="typography-head width-70">What Is MerQuant?</h2>
         </div>
 
         <div className="row">
-          <div className="col-md-5 col-xl-5" data-animate="ts-fadeInUp" data-offset="100">
-            <p>
+          <div className="col-12 mb-4" data-animate="ts-fadeInUp" data-offset="100">
+            <p className="typography-body">
               MerQuant is the first commission-free brokerage firm, allowing people to trade in the
               Egyptian, Saudi and Emirates stock market. Making investing more accessible and
               simplified through removing entry barriers. In addition to a wide array of services
-              from
-              various educational and trading services.
+              from various educational and trading services.
             </p>
-            <p>
+            <p className="typography-body">
               Knowing the fees and other charges that might apply to you is essential to making the
               most of your investment. Furthermore, following is a partition of services traditional
               brokerage firms make you pay for (Minimums, Withdrawal fees, Data, Advisory services).
@@ -86,7 +88,7 @@ Read More!
           </div>
 
           <div
-            className="col-md-7 col-xl-7 text-center"
+            className="col-12 text-center"
             data-animate="ts-fadeInUp"
             data-delay="0.1s"
             data-offset="100"
@@ -108,32 +110,13 @@ Read More!
     <section id="features" className="ts-block">
       <div className="container">
         <div className="row">
-          <div className="col-md-7 col-xl-7 text-center">
-            <div className="position-relative">
-              <div
-                className="col-md-12 col-xl-12 text-center"
-                data-animate="ts-fadeInUp"
-                data-delay="0.1s"
-                data-offset="100"
-              >
-                <div className="px-3">
-                  <img
-                    src="/static/assets/img/Website.png"
-                    className="mw-100 ts-shadow__lg ts-border-radius__md"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-5 col-xl-5" data-animate="ts-fadeInUp" data-offset="100">
+          <div className="col-12 mb-4" data-animate="ts-fadeInUp" data-offset="100">
             <div className="ts-title">
-              <h2>Features</h2>
+              <h2 className="typography-head">Features</h2>
             </div>
 
-            <p>
-              MerQuant is the first commission-free online broker in the MENA region. Made for the
+            <p className="typography-body">
+            MerQuant is the first commission-free online broker in the MENA region. Made for the
               new
               generation of young investors by making investment more accessible and simplified than
               ever.
@@ -158,8 +141,8 @@ In other words, everything you’ve been paying for concerning any
                   <h6 className="my-2">Commission Free Trading</h6>
                 </a>
                 <div className="collapse" id="feature-1">
-                  <p>
-                    All buy/sell orders are commission free using
+                  <p className="typography-caption">
+                  All buy/sell orders are commission free using
                     {' '}
                     <strong>MerQuant</strong>
                     {' '}
@@ -182,7 +165,7 @@ in
                   <h6 className="my-2">Safe & Secure</h6>
                 </a>
                 <div className="collapse" id="feature-2">
-                  <p>
+                  <p className="typography-caption">
                     <strong>MerQuant</strong>
                     {' '}
 is subjected to the highest standards for
@@ -203,8 +186,8 @@ is subjected to the highest standards for
                   <h6 className="my-2">Local and Global Stock Trading</h6>
                 </a>
                 <div className="collapse" id="feature-3">
-                  <p>
-                    MerQuant Offers the possibility for stock trading in the local and global
+                  <p className="typography-caption">
+                  MerQuant Offers the possibility for stock trading in the local and global
                     markets, without taking any commissions.
                   </p>
                 </div>
@@ -223,7 +206,7 @@ is subjected to the highest standards for
     <section id="organize" className="ts-block mt-5">
       <div className="container">
         <div className="ts-title text-center">
-          <h2>All You Need In One App!</h2>
+          <h2 className="typography-head">All You Need In One App!</h2>
         </div>
 
         <div className="row align-items-center">
@@ -237,8 +220,8 @@ is subjected to the highest standards for
                 <i className="fas fa-camera" />
               </span>
               <h4 className="mb-2">Smart</h4>
-              <p>
-                MerQuant application adjusts with your investment goals, offering you advisory and
+              <p className="typography-body">
+              MerQuant application adjusts with your investment goals, offering you advisory and
                 notifications services that matter to you. Using the latest Artificial Intelligence
                 technologies.
               </p>
@@ -252,8 +235,8 @@ is subjected to the highest standards for
                 <i className="fas fa-camera" />
               </span>
               <h4 className="mb-2">Easy To Use</h4>
-              <p>
-                MerQuant is designed to be suitable for stock trading experts and amateurs too.
+              <p className="typography-body">
+              MerQuant is designed to be suitable for stock trading experts and amateurs too.
                 Without sacrificing the mandatory tools needed by expert users.
               </p>
             </figure>
@@ -282,8 +265,8 @@ is subjected to the highest standards for
                 <i className="fas fa-camera" />
               </span>
               <h4 className="mb-2">Market Analysis</h4>
-              <p>
-                MerQuant offers the right tools needed to analyise the stock market yourself, in
+              <p className="typography-body">
+              MerQuant offers the right tools needed to analyise the stock market yourself, in
                 addition to the experts advice, news and much more, all
                 {' '}
                 <strong>FREE</strong>
@@ -295,8 +278,8 @@ is subjected to the highest standards for
                 <i className="fas fa-camera" />
               </span>
               <h4 className="mb-2">No Entry Barriers</h4>
-              <p>
-                Easy to get started, without minimum amount of money to open your account or any
+              <p className="typography-body">
+              Easy to get started, without minimum amount of money to open your account or any
                 fees. In addition to the free tutorials and advisory services to help young
                 investors learn and invest.
               </p>
@@ -313,7 +296,7 @@ is subjected to the highest standards for
           <div className="row">
             <div className="col-sm-4">
               <div className="ts-promo-number text-center">
-                <h2 data-animate="ts-zoomIn">2000+</h2>
+                <h2 data-animate="ts-zoomIn" className="typography-head">2000+</h2>
                 <h3 className="mb-0 ts-opacity__50">Clients</h3>
                 <span className="ts-promo-number-divider" />
               </div>
@@ -322,7 +305,7 @@ is subjected to the highest standards for
 
             <div className="col-sm-4">
               <div className="ts-promo-number text-center">
-                <h2 data-animate="ts-zoomIn" data-delay="0.2s">0</h2>
+                <h2 className="typography-head" data-animate="ts-zoomIn" data-delay="0.2s">0</h2>
                 <h3 className="mb-0 ts-opacity__50">Commission</h3>
                 <span className="ts-promo-number-divider" />
               </div>
@@ -331,7 +314,7 @@ is subjected to the highest standards for
 
             <div className="col-sm-4">
               <div className="ts-promo-number text-center">
-                <h2 data-animate="ts-zoomIn" data-delay="0.2s">0</h2>
+                <h2 className="typography-head" data-animate="ts-zoomIn" data-delay="0.2s">0</h2>
                 <h3 className="mb-0 ts-opacity__50">Minimums</h3>
               </div>
             </div>
@@ -342,6 +325,7 @@ is subjected to the highest standards for
     </section>
     <section
       id="contact"
+      style={{ margin: 0 }}
       className="ts-separate-bg-element"
       data-bg-image="/static/assets/img/alex.jpeg"
       data-bg-image-opacity=".1"

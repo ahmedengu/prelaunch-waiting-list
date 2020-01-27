@@ -1983,6 +1983,15 @@ figure.icon {
     height: 100% !important;
 }
 
+
+.cls-1 {
+    fill-rule: evenodd;
+    fill: rgb(31,31,31);
+}
+.in path.cls-1 {
+    fill: white;
+}
+
 @media (min-width: 36rem) and (max-width: 47.9375rem) {
     html {
         font-size: 85%;
@@ -2057,6 +2066,10 @@ figure.icon {
     .ts-promo-numbers h2 {
         font-size: 2.5rem;
     }
+
+    .cls-1 {
+        fill: white;
+    }
 }
 
 @media (min-width: 62rem) and (max-width: 74.9375rem) {
@@ -2103,6 +2116,10 @@ figure.icon {
 
     .ts-promo-numbers h2 {
         font-size: 2.75rem;
+    }
+
+    .cls-1 {
+        fill: rgb(31,31,31);
     }
 
 }
@@ -2169,6 +2186,10 @@ figure.icon {
         padding: 2.5rem 5rem;
     }
 
+    .cls-1 {
+        fill: rgb(31,31,31);
+    }
+
 }
 
 @media (max-width: 35.9375rem) {
@@ -2204,6 +2225,10 @@ figure.icon {
     .ts-promo-number {
         margin-bottom: 1.875rem;
     }
+
+    .cls-1 {
+        fill: white;
+    }
 }
 
 @media (min-width: 36rem) and (max-width: 61.9375rem) {
@@ -2222,6 +2247,10 @@ figure.icon {
 
     [class*="navbar-expand"] .navbar-nav .nav-link {
         padding-top: 4rem;
+    }
+
+    .cls-1 {
+        fill: white;
     }
 }
 
@@ -2245,11 +2274,20 @@ figure.icon {
     .floated {
         position: absolute;
     }
+
+    .cls-1 {
+        fill: rgb(31,31,31);
+    }
+
 }
 
 @media (max-width: 47.9375rem) {
     h4 {
         font-size: 1.125rem;
+    }
+
+    .cls-1 {
+        fill: white;
     }
 }
 
@@ -2261,11 +2299,19 @@ figure.icon {
     .navbar.navbar-expand-md .ts-background {
         opacity: 0;
     }
+    .navbar.navbar-expand-md path.cls-1 {
+        fill:white;
+    }
+
 }
 
 @media (max-width: 61.9375rem) {
     .ts-card__image {
         height: 15.625rem;
+    }
+
+    .cls-1 {
+        fill: white;
     }
 }
 
@@ -2283,7 +2329,9 @@ figure.icon {
     }
 }
 
-.has-loading-screen svg {
+
+
+#ts-dynamic-waves svg {
     background: #ffab03;
     background: -webkit-linear-gradient(left, #ffab03, #fbc658);
     background: -moz-linear-gradient(left, #ffab03, #fbc658);
@@ -3596,4 +3644,34 @@ button.btn.btn-secondary.dropdown-toggle {
     background-color: #1e1e1e;
     border: none;
     font-size: .8rem;
+}
+
+
+.typography-head {
+    font-size: 6rem;
+    line-height: 1.04167;
+    font-weight: 600;
+    letter-spacing: -.015em;
+    font-family: 'Roboto', 'Source Sans Pro',"Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.typography-subhead {
+    font-size: 2rem;
+    line-height: 1.125;
+    font-weight: 600;
+    letter-spacing: .004em;
+    font-family: 'Roboto', 'Source Sans Pro',"Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.width-70 {
+    width: 70%;
+}
+
+section {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
 }

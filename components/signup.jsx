@@ -200,12 +200,11 @@ class Signup extends React.Component {
                 </div>
               </div>
               <div className="col-sm-7 offset-sm-1 signup">
-                <h3>
-                  First & Only commission free stock trading in the Middle East Stop Paying for
-                  Whats FREE
-                  with MerQuant
+                <h1 className="typography-head">Investment Simplified</h1>
+                <h3 className="typography-subhead">
+First & Only commission free stock trading in the
+                  Middle East Stop Paying for Whats FREE with MerQuant
                 </h3>
-                <h1>INVESTMENT SIMPLIFIED</h1>
                 <form className="ts-form ts-form-email ts-labels-inside-input">
                   <div className="row">
                     <div className="col-md-9 col-sm-12 ">
@@ -219,35 +218,6 @@ class Signup extends React.Component {
                           name="email"
                           placeholder=""
                           required
-                        />
-                        <FacebookLogin
-                          isMobile={false}
-                          appId="403863870540210"
-                          fields="email"
-                          callback={(res) => {
-                            this.responseFacebook(res);
-                          }}
-                          render={(renderProps) => (
-                            <FacebookLoginButton
-                              text={t('login_with_facebook')}
-                              disabled={renderProps.disabled}
-                              onClick={renderProps.onClick}
-                            />
-                          )}
-                        />
-
-                        <GoogleLogin
-                          clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
-                          onSuccess={(res) => {
-                            this.responseGoogle(res);
-                          }}
-                          render={(renderProps) => (
-                            <GoogleLoginButton
-                              text={t('login_with_google')}
-                              disabled={renderProps.disabled}
-                              onClick={renderProps.onClick}
-                            />
-                          )}
                         />
                       </div>
                     </div>
@@ -263,11 +233,47 @@ class Signup extends React.Component {
                       </button>
                     </div>
                   </div>
+                  <div className="row">
+                    <div className="col-12 col-lg-6 col-xl-6 col-md-6">
+                      <FacebookLogin
+                        isMobile={false}
+                        appId="403863870540210"
+                        fields="email"
+                        callback={(res) => {
+                          this.responseFacebook(res);
+                        }}
+                        render={(renderProps) => (
+                          <FacebookLoginButton
+                            text={t('login_with_facebook')}
+                            disabled={renderProps.disabled}
+                            onClick={renderProps.onClick}
+                          />
+                        )}
+                      />
+                    </div>
+
+                    <div className="col-12 col-lg-6 col-xl-6 col-md-6">
+                      <GoogleLogin
+                        clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
+                        onSuccess={(res) => {
+                          this.responseGoogle(res);
+                        }}
+                        render={(renderProps) => (
+                          <GoogleLoginButton
+                            text={t('login_with_google')}
+                            disabled={renderProps.disabled}
+                            onClick={renderProps.onClick}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+
                 </form>
                 <div className="row margin-top-10">
                   <div className="col-12">
                     <a
-                      className="push-image-container"
+                      className="push-image-container typography-headline-2"
                       data-toggle="modal"
                       data-target="#video-popup"
                     >
@@ -316,7 +322,7 @@ class Signup extends React.Component {
           </div>
         </header>
 
-        <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgb(31,31,31)">
+        <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgb(255,171,3)">
           <svg
             className="ts-svg ts-parallax-element"
             width="100%"
