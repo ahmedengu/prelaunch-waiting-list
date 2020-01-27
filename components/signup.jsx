@@ -205,71 +205,85 @@ class Signup extends React.Component {
 First & Only commission free stock trading in the
                   Middle East Stop Paying for Whats FREE with MerQuant
                 </h3>
-                <form className="ts-form ts-form-email ts-labels-inside-input">
+                <form
+                  className="ts-form ts-form-email ts-labels-inside-input"
+                  noValidate
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    this.register();
+                  }}
+                >
                   <div className="row">
                     <div className="col-md-9 col-sm-12 ">
                       <div className="form-group mb-0">
                         <label htmlFor="email-subscribe">Email address</label>
                         <input
-                          type="email"
-                          className="form-control"
+                          dir="ltr"
+                          type="search"
+                          className={`signup-input form-control ${error ? 'is-invalid' : ''}`}
+                          placeholder={t('enter_email')}
+                          value={email}
+                          onChange={(event) => {
+                            this.setState({
+                              email: event.target.value,
+                              error: '',
+                            });
+                          }}
                           id="email-subscribe"
                           aria-describedby="subscribe"
                           name="email"
-                          placeholder=""
                           required
                         />
                       </div>
                     </div>
                     <div className="col-md-3 col-sm-3 col-3">
-                      <button type="button" className="btn btn-primary">
-                        <a
-                          className="submit-a"
-                          href="joined-original.html"
-                        >
-                          Join
-                          Now
-                        </a>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-12 col-lg-6 col-xl-6 col-md-6">
-                      <FacebookLogin
-                        isMobile={false}
-                        appId="403863870540210"
-                        fields="email"
-                        callback={(res) => {
-                          this.responseFacebook(res);
-                        }}
-                        render={(renderProps) => (
-                          <FacebookLoginButton
-                            text={t('login_with_facebook')}
-                            disabled={renderProps.disabled}
-                            onClick={renderProps.onClick}
-                          />
-                        )}
-                      />
-                    </div>
-
-                    <div className="col-12 col-lg-6 col-xl-6 col-md-6">
-                      <GoogleLogin
-                        clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
-                        onSuccess={(res) => {
-                          this.responseGoogle(res);
-                        }}
-                        render={(renderProps) => (
-                          <GoogleLoginButton
-                            text={t('login_with_google')}
-                            disabled={renderProps.disabled}
-                            onClick={renderProps.onClick}
-                          />
-                        )}
+                      <input
+                        className="btn btn-primary submit-a"
+                        type="submit"
+                        value={t('submit')}
+                        disabled={loading}
                       />
                     </div>
                   </div>
-
                 </form>
+                {error && (<p className="text-danger" style={{ margin: 0 }}>{t(error)}</p>)}
+                <div className="row">
+                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
+                    <FacebookLogin
+                      isMobile={false}
+                      appId="403863870540210"
+                      fields="email"
+                      callback={(res) => {
+                        this.responseFacebook(res);
+                      }}
+                      render={(renderProps) => (
+                        <FacebookLoginButton
+                          text={t('login_with_facebook')}
+                          disabled={renderProps.disabled}
+                          onClick={renderProps.onClick}
+                        />
+                      )}
+                    />
+                  </div>
+
+                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
+                    <GoogleLogin
+                      clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
+                      onSuccess={(res) => {
+                        this.responseGoogle(res);
+                      }}
+                      render={(renderProps) => (
+                        <GoogleLoginButton
+                          text={t('login_with_google')}
+                          disabled={renderProps.disabled}
+                          onClick={renderProps.onClick}
+                        />
+                      )}
+                    />
+                  </div>
+                </div>
+
+
                 <div className="row margin-top-10">
                   <div className="col-12">
                     <a
