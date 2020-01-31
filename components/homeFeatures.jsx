@@ -10,10 +10,9 @@ const HomeFeatures = ({ t }) => (
     >
       <div className="container">
         <div className="ts-title">
-          <h2 className="typography-head">How It Works</h2>
+          <h2 className="typography-head">{t('header-2')}</h2>
           <h5 className="typography-sub">
-Experience trading in an easy and unique way with
-            MerQuant
+            {t('sub-2')}
           </h5>
         </div>
         <ul className="nav nav-tabs justify-content-center my-5" id="myTab" role="tablist">
@@ -28,7 +27,7 @@ Experience trading in an easy and unique way with
               aria-controls="mobile"
               aria-selected="false"
             >
-              <h4 className="typography-sub">Mobile</h4>
+              <h4 className="typography-sub">{t('sub-2-1')}</h4>
             </a>
           </li>
         </ul>
@@ -54,36 +53,19 @@ Experience trading in an easy and unique way with
     <section id="what-is-merquant" className="ts-block">
       <div className="container">
         <div className="ts-title">
-          <h2 className="typography-head width-70">What Is MerQuant?</h2>
+          <h2 className="typography-head width-70">{t('header-3')}</h2>
         </div>
 
         <div className="row">
           <div className="col-12 mb-4" data-animate="ts-fadeInUp" data-offset="100">
             <p className="typography-body">
-              MerQuant is the first commission-free brokerage firm, allowing people to trade in the
-              Egyptian, Saudi and Emirates stock market. Making investing more accessible and
-              simplified through removing entry barriers. In addition to a wide array of services
-              from various educational and trading services.
-            </p>
-            <p className="typography-body">
-              Knowing the fees and other charges that might apply to you is essential to making the
-              most of your investment. Furthermore, following is a partition of services traditional
-              brokerage firms make you pay for (Minimums, Withdrawal fees, Data, Advisory services).
-              Basically, you pay for
-              {' '}
-              <strong>everything</strong>
-, even the loss.
-              <br />
-              <strong>
-You pay none of these with MerQuant
-              </strong>
+              {t('sub-3')}
             </p>
             <a
               href="https://blog.merquant.com/en/who-we-are/"
-              target="_blank"
               className="btn btn-primary mb-4 ts-scroll"
             >
-Read More!
+              {t('read-more')}
             </a>
           </div>
 
@@ -112,20 +94,11 @@ Read More!
         <div className="row">
           <div className="col-12 mb-4" data-animate="ts-fadeInUp" data-offset="100">
             <div className="ts-title">
-              <h2 className="typography-head">Features</h2>
+              <h2 className="typography-head">{t('header-4')}</h2>
             </div>
 
             <p className="typography-body">
-            MerQuant is the first commission-free online broker in the MENA region. Made for the
-              new
-              generation of young investors by making investment more accessible and simplified than
-              ever.
-              {' '}
-              <br />
-              {' '}
-In other words, everything you’ve been paying for concerning any
-              investment
-              services will be free with MerQuant. Therefor, let’s break down things a little bit.
+              {t('sub-4')}
             </p>
 
             <ul className="list-unstyled ts-list-divided">
@@ -138,17 +111,11 @@ In other words, everything you’ve been paying for concerning any
                   aria-expanded="false"
                   aria-controls="feature-1"
                 >
-                  <h6 className="my-2">Commission Free Trading</h6>
+                  <h6 className="my-2">{t('sub-4-1')}</h6>
                 </a>
                 <div className="collapse" id="feature-1">
                   <p className="typography-caption">
-                  All buy/sell orders are commission free using
-                    {' '}
-                    <strong>MerQuant</strong>
-                    {' '}
-in
-                    local and global stock markets. Because of our vision to support information
-                    technology, and encourage people to invest.
+                    {t('sub-4-1-1')}
                   </p>
                 </div>
 
@@ -162,14 +129,11 @@ in
                   aria-expanded="false"
                   aria-controls="feature-2"
                 >
-                  <h6 className="my-2">Safe & Secure</h6>
+                  <h6 className="my-2">{t('sub-4-2')}</h6>
                 </a>
                 <div className="collapse" id="feature-2">
                   <p className="typography-caption">
-                    <strong>MerQuant</strong>
-                    {' '}
-is subjected to the highest standards for
-                    information security.
+                    {t('sub-4-2-1')}
                   </p>
                 </div>
 
@@ -183,12 +147,11 @@ is subjected to the highest standards for
                   aria-expanded="false"
                   aria-controls="feature-3"
                 >
-                  <h6 className="my-2">Local and Global Stock Trading</h6>
+                  <h6 className="my-2">{t('sub-4-3')}</h6>
                 </a>
                 <div className="collapse" id="feature-3">
                   <p className="typography-caption">
-                  MerQuant Offers the possibility for stock trading in the local and global
-                    markets, without taking any commissions.
+                    {t('sub-4-3-1')}
                   </p>
                 </div>
 
@@ -206,7 +169,7 @@ is subjected to the highest standards for
     <section id="organize" className="ts-block mt-5">
       <div className="container">
         <div className="ts-title text-center">
-          <h2 className="typography-head">All You Need In One App!</h2>
+          <h2 className="typography-head">{t('header-5')}</h2>
         </div>
 
         <div className="row align-items-center">
@@ -219,11 +182,9 @@ is subjected to the highest standards for
               <span style={{ fontSize: '3em' }}>
                 <i className="fas fa-camera" />
               </span>
-              <h4 className="mb-2">Smart</h4>
+              <h4 className="mb-2">{t('sub-5-2')}</h4>
               <p className="typography-body">
-              MerQuant application adjusts with your investment goals, offering you advisory and
-                notifications services that matter to you. Using the latest Artificial Intelligence
-                technologies.
+                {t('sub-5-2-1')}
               </p>
             </figure>
             <figure
@@ -234,10 +195,9 @@ is subjected to the highest standards for
               <span style={{ fontSize: '3em' }}>
                 <i className="fas fa-camera" />
               </span>
-              <h4 className="mb-2">Easy To Use</h4>
+              <h4 className="mb-2">{t('sub-5-4')}</h4>
               <p className="typography-body">
-              MerQuant is designed to be suitable for stock trading experts and amateurs too.
-                Without sacrificing the mandatory tools needed by expert users.
+                {t('sub-5-4-1')}
               </p>
             </figure>
           </div>
@@ -264,24 +224,18 @@ is subjected to the highest standards for
               <span style={{ fontSize: '3em' }}>
                 <i className="fas fa-camera" />
               </span>
-              <h4 className="mb-2">Market Analysis</h4>
+              <h4 className="mb-2">{t('sub-5-1')}</h4>
               <p className="typography-body">
-              MerQuant offers the right tools needed to analyise the stock market yourself, in
-                addition to the experts advice, news and much more, all
-                {' '}
-                <strong>FREE</strong>
-.
+                {t('sub-5-1-1')}
               </p>
             </figure>
             <figure className="ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".3s">
               <span style={{ fontSize: '3em' }}>
                 <i className="fas fa-camera" />
               </span>
-              <h4 className="mb-2">No Entry Barriers</h4>
+              <h4 className="mb-2">{t('sub-5-3')}</h4>
               <p className="typography-body">
-              Easy to get started, without minimum amount of money to open your account or any
-                fees. In addition to the free tutorials and advisory services to help young
-                investors learn and invest.
+                {t('sub-5-3-1')}
               </p>
             </figure>
           </div>
@@ -338,7 +292,10 @@ is subjected to the highest standards for
               <h3>Contact Us</h3>
               <address>
                 <figure>
-                  <div className="font-weight-bold">Email:</div>
+                  <div className="font-weight-bold">
+                    {t('signup-email')}
+:
+                  </div>
                   <a href="mailto:support@merquant.com">support@merquant.com</a>
                 </figure>
                 <figure>

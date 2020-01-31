@@ -200,10 +200,9 @@ class Signup extends React.Component {
                 </div>
               </div>
               <div className="col-sm-7 offset-sm-1 signup">
-                <h1 className="typography-head">Investment Simplified</h1>
+                <h1 className="typography-head">{ t('Investment-Simplified') }</h1>
                 <h3 className="typography-subhead">
-First & Only commission free stock trading in the
-                  Middle East Stop Paying for Whats FREE with MerQuant
+                  { t('sub-1') }
                 </h3>
                 <form
                   className="ts-form ts-form-email ts-labels-inside-input"
@@ -216,7 +215,7 @@ First & Only commission free stock trading in the
                   <div className="row">
                     <div className="col-md-9 col-sm-12 ">
                       <div className="form-group mb-0">
-                        <label htmlFor="email-subscribe">Email address</label>
+                        <label htmlFor="email-subscribe">{t('signup-email')}</label>
                         <input
                           dir="ltr"
                           type="search"
