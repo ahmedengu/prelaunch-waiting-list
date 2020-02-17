@@ -162,21 +162,16 @@ class Header extends Component {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav ml-auto">
                 <a className="nav-item nav-link active ts-scroll" href="#page-top">
-Home
-                  <span
-                    className="sr-only"
-                  >
-(current)
-                  </span>
+                  {t('home')}
                 </a>
-                <a className="nav-item nav-link ts-scroll" href="#what-is-merquant">About</a>
+                <a className="nav-item nav-link ts-scroll" href="#what-is-merquant">{t('about')}</a>
                 <a
                   target="_blank"
                   rel="dofollow"
                   className="nav-item nav-link ts-scroll"
-                  href="http://blog.merquant.com"
+                  href="https://blog.merquant.com"
                 >
-Blog
+                  {t('blog')}
                 </a>
                 <div className="btn-group nav-item nav-link ts-scroll">
                   <button
@@ -186,11 +181,10 @@ Blog
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    English
+                    {t('current-lang')}
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
-                    <button className="dropdown-item" type="button">Arabic</button>
-                    <button className="dropdown-item" type="button">Hausa</button>
+                    <button className="dropdown-item" type="button" onClick={this.changeLang(user)}>{t('lang')}</button>
                   </div>
                 </div>
               </div>
