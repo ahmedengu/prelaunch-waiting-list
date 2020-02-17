@@ -3,13 +3,14 @@ import '../scss/main.scss';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Header from './Header';
 import Footer from './Footer';
+import CustomHead from './CustomHead';
 
 const PageWrapper = ({
   t, children, lang,
 }) => (
   <>
+    <CustomHead t={t} />
     <main
       data-spy="scroll"
       data-target=".navbar"

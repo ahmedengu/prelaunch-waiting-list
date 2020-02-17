@@ -14,7 +14,9 @@
   "keywords": "MerQuant, zero commission, stock trading, stop paying more than 30EGP, for every trade, Egypt",
   "og-image": "https://merquant.com/static/assets/share.png?v=2",
   "your-points": "Stocks Earned",
-  "share-h1": "Thank you for registering, We will contact you upon MerQuant launch.",
+  "share-h1": "Thank you for registering",
+  "share-h4": "We will contact you upon MerQuant launch",
+  "share-p": "Invite a friend to join both of you will get a stock for free!",
   "share-l2": "Invite a friend to join both of you will get a stock for free!",
   "copy": "copy",
   "header": "Fast, Easy and Commission Free Stock Broker.",
@@ -98,5 +100,8 @@
   "home": "Home",
   "about": "About",
   "blog": "Blog",
-  "current-lang": "English"
+  "current-lang": "English",
+  "reservation-held": "This reservation is held for {{email}}.",
+  "is-this": "Is this ",
+  "not-you": "not you?"
 }

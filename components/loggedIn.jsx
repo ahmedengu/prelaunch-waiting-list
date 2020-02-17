@@ -9,6 +9,8 @@ import { setUser } from '../store';
 import Unverified from './unverified';
 import Resubscribe from './resubscribe';
 import HomeFeatures from './homeFeatures';
+import { domain } from '../constants';
+import { logEvent } from '../utils/analytics';
 
 class LoggedIn extends React.Component {
   constructor(props) {
@@ -43,8 +45,21 @@ class LoggedIn extends React.Component {
 
   render() {
     const { t, user } = this.props;
+
+    let copyInput = null;
+    const userLink = `${domain}/?ref=${user.ref}`;
+    const shareLink = encodeURIComponent(userLink);
+
+    const copy = () => {
+      copyInput.select();
+      document.execCommand('copy');
+      logEvent('share', 'copy');
+    };
+
     return (
-      <>
+      <div className="fill">
+        <div className="main " />
+
         {user && !user.emailVerified && (
           <Unverified t={t} email={user.email || user.username} />
         )}
@@ -57,13 +72,13 @@ class LoggedIn extends React.Component {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-7 text-center image">
-              <a href="index.html">
+              <a href="/">
                 <svg
-                  height="auto"
-                  onClick=""
-                  viewBox="0 0 818 387"
-                  width="15%"
                   xmlns="http://www.w3.org/2000/svg"
+                  width="15%"
+                  height="auto"
+                  viewBox="0 0 818 387"
+                  onClick=""
                 >
                   <path
                     className="cls-1"
@@ -74,48 +89,65 @@ class LoggedIn extends React.Component {
 
             </div>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-12">
+          <div className="row justify-content-center gift-section">
+            <div className="col-sm-8 col-md-6 col-lg-6 col-xl-6">
               <div id="content">
                 <div className="title">
-                  <h2>Thank you for registering</h2>
-                  <h4>We will contact you upon MerQuant launch</h4>
-                  <p>Invite a friend to join both of you will get a stock for free!</p>
-                  <p>
-This reservation is held for brollyxkazei5700@gmail.com. Is this
-                    <strong>
-not
-                    you?
-                    </strong>
-                  </p>
+                  <h2>{t('share-h1')}</h2>
+                  <h4>{t('share-h4')}</h4>
+                  <p>{t('share-p')}</p>
                 </div>
                 <form
                   action="#joined.html"
-                  className="ts-form ts-form-email ts-labels-inside-input ref-link"
                   id="joined-form"
+                  className="ts-form ts-form-email ts-labels-inside-input ref-link"
                 >
                   <div className="row">
-                    <div className="col-md-11 col-sm-11 col-11">
+                    <div className="col-sm-12 col-md-11 col-lg-11 col-xl-11">
                       <div className="form-group mb-0">
                         <input
+                          onChange={() => {}}
+                          type="text"
                           aria-describedby="subscribe"
                           className="form-control"
-                          disabled
-                          placeholder="https://www.merquant.com/b113"
+                          ref={(input) => {
+                            copyInput = input;
+                          }}
+                          value={userLink}
+                          dir="ltr"
                         />
-                        <p style="text-align: left">* This is a notice</p>
                       </div>
                     </div>
-                    <div className="col-md-1 col-sm-1 col-1">
-                      <button className="btn" type="submit">Copy</button>
+                    <div className="col-sm-4 col-md-1 col-lg-1 col-xl-1">
+                      <button
+                        className="btn"
+                        type="button"
+                        onClick={copy}
+                      >
+                        {t('copy')}
+                      </button>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
+
+            <div
+              className="col-sm-8 col-md-6 col-lg-6 col-xl-6 align-items-center stocks-earned align-self-center text-center"
+            >
+              <h3>{t('your-points')}</h3>
+              <h1>{(user.points || 0)}</h1>
+              <p style={{ color: '#494745', textShadow: 'none' }} className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>{t('your-pending', { pendingPoints: (user.pendingPoints || 0) })}</p>
+              <h4>{t('points-card-footer')}</h4>
+              <p>
+                {t('reservation-held', { email: user.email })}
+                {t('is-this')}
+                <strong>{t('not-you')}</strong>
+              </p>
+            </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
