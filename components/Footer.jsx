@@ -17,17 +17,65 @@ const Footer = ({ t, setUserHandler, user }) => (
     <section id="legal" style={{ margin: 0 }}>
       <div className="row justify-content-center text-center">
         <div className="col-12">
-          <h3>MerQuant</h3>
-          <p className="typography-body">
-          Free shares are acquired after the validation of referred account and the official
-            launch of
-            MerQuant.
-            The value of the stocks received can be up to 100EGP each, No one is allowed to have
-            more
-            than account.
-            The regulations and registration of MerQuant are still in progress.
-            Copyright © 2019 MerQuant, All rights reserved.
+          <h3>{t('merquant')}</h3>
+          <p className="lead">
+            <a
+              title="Facebook"
+              className="mx-2"
+              href="https://www.facebook.com/merquant"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiFacebook />
+            </a>
+            <a
+              title="Twitter"
+              className="mx-2"
+              href="https://twitter.com/merquant"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiTwitter />
+            </a>
+            <a
+              title="Linkedin"
+              className="mx-2"
+              href="https://www.linkedin.com/company/merquant"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiLinkedin />
+            </a>
           </p>
+          <p className="typography-body">
+            {t('line1')}
+            <br />
+            {t('line2')}
+            <br />
+            {t('line3')}
+            <br />
+            {t('line4')}
+          </p>
+          {
+            user && user.objectId
+            && (
+              <button
+                type="button"
+                onClick={() => {
+                  Parse.User.logOut();
+                  cookie.remove('user');
+                  setUserHandler({});
+                  Parse.LiveQuery.close();
+                  toast(t('goodbye'));
+                  logEvent('user', 'logOut');
+                  window.scrollTo(0, 0);
+                }}
+                className="btn btn-link font-weight-light text-white-50"
+              >
+                {t('logout')}
+              </button>
+            )
+          }
         </div>
       </div>
     </section>
