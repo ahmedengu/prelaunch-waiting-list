@@ -54,8 +54,7 @@ if (document.getElementsByClassName('ts-full-screen').length) {
 }
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // jQuery
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$(document).ready(($) => {
+function documentReady() {
   $('body').imagesLoaded(() => {
     $('body').addClass('loading-done');
     const $animatedWaves = $('.ts-animated-waves');
@@ -110,15 +109,19 @@ $(document).ready(($) => {
 
       if ($this.attr('data-bg-image') !== undefined) {
         $this.find('.ts-background').append('<div class="ts-background-image">');
-        $this.find('.ts-background-image').css('background-image', `url(${$this.attr('data-bg-image')})`);
+        $this.find('.ts-background-image')
+          .css('background-image', `url(${$this.attr('data-bg-image')})`);
         $this.find('.ts-background-image').css('background-size', $this.attr('data-bg-size'));
-        $this.find('.ts-background-image').css('background-position', $this.attr('data-bg-position'));
+        $this.find('.ts-background-image')
+          .css('background-position', $this.attr('data-bg-position'));
         $this.find('.ts-background-image').css('opacity', $this.attr('data-bg-image-opacity'));
 
         $this.find('.ts-background-image').css('background-size', $this.attr('data-bg-size'));
         $this.find('.ts-background-image').css('background-repeat', $this.attr('data-bg-repeat'));
-        $this.find('.ts-background-image').css('background-position', $this.attr('data-bg-position'));
-        $this.find('.ts-background-image').css('background-blend-mode', $this.attr('data-bg-blend-mode'));
+        $this.find('.ts-background-image')
+          .css('background-position', $this.attr('data-bg-position'));
+        $this.find('.ts-background-image')
+          .css('background-blend-mode', $this.attr('data-bg-blend-mode'));
       }
 
       // Parallax effect
@@ -147,7 +150,7 @@ $(document).ready(($) => {
 
   //  Parallax Background Image
 
-  $("[data-bg-parallax='scroll']").each(function () {
+  $('[data-bg-parallax=\'scroll\']').each(function () {
     const speed = $(this).attr('data-bg-parallax-speed');
     const $this = $(this);
     let isVisible;
@@ -161,11 +164,14 @@ $(document).ready(($) => {
         $(window).scroll(() => {
           if (isVisible === 1) {
             position = $(window).scrollTop() - $this.offset().top;
-            backgroundPosition = (100 - (Math.abs((-$(window).height()) - position) / ($(window).height() + $this.height())) * 100);
+            backgroundPosition = (100 - (Math.abs((-$(window).height()) - position) / ($(window)
+              .height() + $this.height())) * 100);
             if ($this.find('.ts-parallax-element').hasClass('ts-background-image')) {
-              $this.find('.ts-background-image.ts-parallax-element').css('background-position-y', `${position / speed}px`);
+              $this.find('.ts-background-image.ts-parallax-element')
+                .css('background-position-y', `${position / speed}px`);
             } else {
-              $this.find('.ts-parallax-element').css('transform', `translateY(${position / speed}px)`);
+              $this.find('.ts-parallax-element')
+                .css('transform', `translateY(${position / speed}px)`);
             }
           }
         });
@@ -210,44 +216,72 @@ $(document).ready(($) => {
   if ($owlCarousel.length) {
     $owlCarousel.each(function () {
       let items = parseInt($(this).attr('data-owl-items'), 10);
-      if (!items) items = 1;
+      if (!items) {
+        items = 1;
+      }
 
       let nav = parseInt($(this).attr('data-owl-nav'), 2);
-      if (!nav) nav = 0;
+      if (!nav) {
+        nav = 0;
+      }
 
       let dots = parseInt($(this).attr('data-owl-dots'), 2);
-      if (!dots) dots = 0;
+      if (!dots) {
+        dots = 0;
+      }
 
       let center = parseInt($(this).attr('data-owl-center'), 2);
-      if (!center) center = 0;
+      if (!center) {
+        center = 0;
+      }
 
       let loop = parseInt($(this).attr('data-owl-loop'), 2);
-      if (!loop) loop = 0;
+      if (!loop) {
+        loop = 0;
+      }
 
       let margin = parseInt($(this).attr('data-owl-margin'), 2);
-      if (!margin) margin = 0;
+      if (!margin) {
+        margin = 0;
+      }
 
       let autoWidth = parseInt($(this).attr('data-owl-auto-width'), 2);
-      if (!autoWidth) autoWidth = 0;
+      if (!autoWidth) {
+        autoWidth = 0;
+      }
 
       let navContainer = $(this).attr('data-owl-nav-container');
-      if (!navContainer) navContainer = 0;
+      if (!navContainer) {
+        navContainer = 0;
+      }
 
       let autoplay = parseInt($(this).attr('data-owl-autoplay'), 2);
-      if (!autoplay) autoplay = 0;
+      if (!autoplay) {
+        autoplay = 0;
+      }
 
       let autoplayTimeOut = parseInt($(this).attr('data-owl-autoplay-timeout'), 10);
-      if (!autoplayTimeOut) autoplayTimeOut = 5000;
+      if (!autoplayTimeOut) {
+        autoplayTimeOut = 5000;
+      }
 
       let autoHeight = parseInt($(this).attr('data-owl-auto-height'), 2);
-      if (!autoHeight) autoHeight = 0;
+      if (!autoHeight) {
+        autoHeight = 0;
+      }
 
       let fadeOut = $(this).attr('data-owl-fadeout');
-      if (!fadeOut) fadeOut = 0;
-      else fadeOut = 'fadeOut';
+      if (!fadeOut) {
+        fadeOut = 0;
+      } else {
+        fadeOut = 'fadeOut';
+      }
 
-      if ($('body').hasClass('rtl')) var rtl = true;
-      else rtl = false;
+      if ($('body').hasClass('rtl')) {
+        var rtl = true;
+      } else {
+        rtl = false;
+      }
 
       if (items === 1) {
         $(this).owlCarousel({
@@ -313,11 +347,11 @@ $(document).ready(($) => {
         const el = $(this.el);
         el.empty()
           .append(`<div>${this.leadingZeros(data.days, 3)} <span>Days</span></div>`)
-          .append("<figure class='divider'>:</figure>")
+          .append('<figure class=\'divider\'>:</figure>')
           .append(`<div>${this.leadingZeros(data.hours, 2)} <span>Hours</span></div>`)
-          .append("<figure class='divider'>:</figure>")
+          .append('<figure class=\'divider\'>:</figure>')
           .append(`<div>${this.leadingZeros(data.min, 2)} <span>Minutes</span></div>`)
-          .append("<figure class='divider'>:</figure>")
+          .append('<figure class=\'divider\'>:</figure>')
           .append(`<div>${this.leadingZeros(data.sec, 2)} <span>Seconds</span></div>`);
       },
     });
@@ -356,9 +390,9 @@ $(document).ready(($) => {
       overflowY: 'hidden',
       iframe: {
         markup: '<div class="mfp-iframe-scaler">'
-                + '<div class="mfp-close"></div>'
-                + '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'
-                + '</div>',
+            + '<div class="mfp-close"></div>'
+            + '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'
+            + '</div>',
         patterns: {
           youtube: {
             index: 'youtube.com/',
@@ -380,12 +414,15 @@ $(document).ready(($) => {
     });
   }
 
-  $(".ts-form-email [type='submit']").each(function () {
+  $('.ts-form-email [type=\'submit\']').each(function () {
     const text = $(this).text();
-    $(this).html('').append(`<span>${text}</span>`).prepend("<div class='status'><i class='fas fa-circle-notch fa-spin spinner'></i></div>");
+    $(this)
+      .html('')
+      .append(`<span>${text}</span>`)
+      .prepend('<div class=\'status\'><i class=\'fas fa-circle-notch fa-spin spinner\'></i></div>');
   });
 
-  $(".ts-form-email .btn[type='submit']").on('click', function (e) {
+  $('.ts-form-email .btn[type=\'submit\']').on('click', function (e) {
     const $button = $(this);
     const $form = $(this).closest('form');
     const pathToPhp = $(this).closest('form').attr('data-php-path');
@@ -426,7 +463,7 @@ $(document).ready(($) => {
       $('.navbar').removeClass('in');
     }
   });
-});
+}
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Functions
