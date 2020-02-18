@@ -141,17 +141,25 @@ class MyApp extends App {
   static async checkAndSetRef(ref, cookieRef, reduxStore) {
     const anyRef = ref || cookieRef;
     let referral = '';
-    if (anyRef) {
-      const newRef = await fetch(`${serverURL}/functions/checkRef`, {
-        headers: {
-          'x-parse-application-id': applicationId,
-          'X-Parse-JavaScript-Key': javaScriptKey,
-        },
-        body: `{"ref":"${anyRef}"}`,
-        method: 'POST',
+    try {
+      if (anyRef) {
+        const newRef = await fetch(`${serverURL}/functions/checkRef`, {
+          headers: {
+            'x-parse-application-id': applicationId,
+            'X-Parse-JavaScript-Key': javaScriptKey,
+          },
+          body: `{"ref":"${anyRef}"}`,
+          method: 'POST',
+        });
+        const message = await newRef.json();
+        referral = (message && message.result) || referral;
+      }
+    } catch (e) {
+      const Honeybadger = process.browser ? require('honeybadger-js') : require('honeybadger');
+      Honeybadger.configure({
+        apiKey: 'd4871a0d',
       });
-      const message = await newRef.json();
-      referral = (message && message.result) || referral;
+      Honeybadger.notify(e);
     }
     reduxStore.dispatch(setReferral(referral));
   }
