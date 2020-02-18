@@ -156,13 +156,13 @@ class Signup extends React.Component {
   }
 
   responseGoogle(res) {
-    if (res.w3.U3) {
+    if (res.accessToken && res.profileObj) {
       const authData = {
-        id: res.El,
-        access_token: res.Zi.access_token,
+        id: res.googleId,
+        access_token: res.accessToken,
       };
       const providerName = 'google';
-      this.setState({ email: res.w3.U3 }, () => {
+      this.setState({ email: res.profileObj.email }, () => {
         this.register(false, providerName, authData);
       });
     }
