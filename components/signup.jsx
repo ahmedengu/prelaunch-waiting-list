@@ -294,8 +294,7 @@ class Signup extends React.Component {
                       data-toggle="modal"
                       data-target="#video-popup"
                     >
-                      Watch the
-                      video
+                      {t('watch-video')}
                       {' '}
                       <i className="far fa-play-circle" />
                     </a>

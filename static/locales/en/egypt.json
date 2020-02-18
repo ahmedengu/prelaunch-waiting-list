@@ -103,5 +103,6 @@
   "current-lang": "English",
   "reservation-held": "This reservation is held for {{email}}.",
   "is-this": "Is this ",
-  "not-you": "not you?"
+  "not-you": "not you?",
+  "watch-video": "Watch the video"
 }
