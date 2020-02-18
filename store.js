@@ -7,6 +7,7 @@ const exampleInitialState = {
   country: 'egypt',
   referral: '',
   lang: 'ar',
+  dir: 'ltr',
 };
 
 export const actionTypes = {
@@ -31,7 +32,7 @@ export const reducer = (state = exampleInitialState, action) => {
         i18n.changeLanguage(action.lang);
       }
 
-      return { ...state, lang: action.lang };
+      return { ...state, lang: action.lang, dir: action.lang === 'ar' ? 'rtl' : 'ltr' };
     default:
       return state;
   }
