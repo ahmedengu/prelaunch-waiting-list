@@ -54,6 +54,17 @@ if (document.getElementsByClassName('ts-full-screen').length) {
 }
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // jQuery
+$(document).ready(($) => {
+  $('body').imagesLoaded(() => {
+    $('body').addClass('loading-done');
+    const $animatedWaves = $('.ts-animated-waves');
+    $animatedWaves.css('transform', `translateX( calc( -100% + ${$(window).width() + 5}px )`);
+    $animatedWaves.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+      $(this).toggleClass('repeat');
+    });
+  });
+});
+
 function documentReady() {
   $('body').imagesLoaded(() => {
     $('body').addClass('loading-done');
