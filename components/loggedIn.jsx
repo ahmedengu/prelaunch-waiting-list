@@ -78,7 +78,6 @@ class LoggedIn extends React.Component {
                   width="15%"
                   height="auto"
                   viewBox="0 0 818 387"
-                  onClick=""
                 >
                   <path
                     className="cls-1"
