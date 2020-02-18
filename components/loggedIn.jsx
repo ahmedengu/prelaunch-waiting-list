@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Parse from 'parse';
 import cookie from 'js-cookie';
+import { toast } from 'react-toastify';
 import Share from './share';
 import { setUser } from '../store';
 import Unverified from './unverified';
@@ -44,7 +45,7 @@ class LoggedIn extends React.Component {
   }
 
   render() {
-    const { t, user } = this.props;
+    const { t, user, setUserHandler } = this.props;
 
     let copyInput = null;
     const userLink = `${domain}/?ref=${user.ref}`;
@@ -141,7 +142,21 @@ class LoggedIn extends React.Component {
               <p>
                 {t('reservation-held', { email: user.email })}
                 {t('is-this')}
-                <strong>{t('not-you')}</strong>
+                <button
+                  className="btn btn-outline-light"
+                  type="button"
+                  onClick={() => {
+                    Parse.User.logOut();
+                    cookie.remove('user');
+                    setUserHandler({});
+                    Parse.LiveQuery.close();
+                    toast(t('goodbye'));
+                    logEvent('user', 'logOut');
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  {t('not-you')}
+                </button>
               </p>
             </div>
           </div>
