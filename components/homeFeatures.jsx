@@ -43,7 +43,7 @@ const HomeFeatures = ({ t }) => (
             role="tabpanel"
             aria-labelledby="mobile"
           >
-            <img src="/static/assets/img/phone.png" className="mw-50" alt="" />
+            <img src={t('img-phone1')} className="mw-50" alt="" />
           </div>
         </div>
 
@@ -77,7 +77,7 @@ const HomeFeatures = ({ t }) => (
           >
             <div className="px-3">
               <img
-                src="/static/assets/img/what-is-merquant.jpg"
+                src={t('img-whatis')}
                 className="mw-100 ts-shadow__lg ts-border-radius__md"
                 alt=""
               />
@@ -205,7 +205,7 @@ const HomeFeatures = ({ t }) => (
           <div className="col-md-4 my-5 d-flex justify-content-center align-items-center">
             <div className="image position-relative">
               <img
-                src="/static/assets/img/phone.png"
+                src={t('img-phone2')}
                 className="mw-100"
                 alt=""
                 data-animate="ts-zoomInShort"
@@ -281,7 +281,7 @@ const HomeFeatures = ({ t }) => (
       id="contact"
       style={{ margin: 0 }}
       className="ts-separate-bg-element"
-      data-bg-image="/static/assets/img/alex.jpeg"
+      data-bg-image={t('img-contact')}
       data-bg-image-opacity=".1"
       data-bg-color="#313131"
     >

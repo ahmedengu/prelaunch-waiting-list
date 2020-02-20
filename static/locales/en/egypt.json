@@ -104,5 +104,12 @@
   "reservation-held": "This reservation is held for {{email}}.",
   "is-this": "Is this ",
   "not-you": "not you?",
-  "watch-video": "Watch the video"
+  "watch-video": "Watch the video",
+  "carousel-1": "/static/assets/img/app-03.png",
+  "carousel-2": "/static/assets/img/app-01.png",
+  "carousel-3": "/static/assets/img/app-02.png",
+  "img-phone1": "/static/assets/img/phone.png",
+  "img-phone2": "/static/assets/img/phone.png",
+  "img-whatis": "/static/assets/img/what-is-merquant.jpg",
+  "img-contact": "/static/assets/img/alex.jpeg"
 }

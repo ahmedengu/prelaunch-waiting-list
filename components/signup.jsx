@@ -187,17 +187,17 @@ class Signup extends React.Component {
               <div className="col-sm-4 d-none d-sm-block">
                 <div className="owl-carousel text-center" data-owl-nav="1" data-owl-loop="1">
                   <img
-                    src="/static/assets/img/app-03.png"
+                    src={t('carousel-1')}
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />
                   <img
-                    src="/static/assets/img/app-01.png"
+                    src={t('carousel-2')}
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />
                   <img
-                    src="/static/assets/img/app-02.png"
+                    src={t('carousel-3')}
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />
