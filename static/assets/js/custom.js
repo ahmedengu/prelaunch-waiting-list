@@ -28,17 +28,14 @@ function removeVideo(e) {
   const iframe = $modal.find('iframe')[0];
   const video = $modal.find('video')[0];
 
-  if (iframe.length != 0) {
+  if (iframe && iframe.length != 0) {
     iframe.remove();
     console.log('iframe remove');
-  } else if (video.length != 0) {
+  } else if (video && video.length != 0) {
     video.remove();
     console.log('video remove');
   }
 }
-
-$(document).on('show.bs.modal', getVideo(), addVideo);
-$(document).on('hidden.bs.modal', removeVideo);
 
 function showModal(e) {
   console.log(e);
@@ -47,14 +44,18 @@ function showModal(e) {
   console.log($modal);
 }
 
-$(document).on('show.bs.modal', showModal);
 
-if (document.getElementsByClassName('ts-full-screen').length) {
-  document.getElementsByClassName('ts-full-screen')[0].style.height = `${window.innerHeight}px`;
-}
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // jQuery
 $(document).ready(($) => {
+  if (document.getElementsByClassName('ts-full-screen').length) {
+    document.getElementsByClassName('ts-full-screen')[0].style.height = `${window.innerHeight}px`;
+  }
+
+  $(document).on('show.bs.modal', showModal);
+  $(document).on('show.bs.modal', getVideo(), addVideo);
+  $(document).on('hidden.bs.modal', removeVideo);
+
   $('body').imagesLoaded(() => {
     $('body').addClass('loading-done');
     const $animatedWaves = $('.ts-animated-waves');
@@ -527,26 +528,4 @@ function getScrollBarWidth() {
   const widthWithScroll = $('<div>').css({ width: '100%' }).appendTo($outer).outerWidth();
   $outer.remove();
   return 100 - widthWithScroll;
-}
-
-function simpleMap(latitude, longitude, markerImage, mapStyle, mapElement, markerDrag) {
-  if (!markerDrag) {
-    markerDrag = false;
-  }
-  const mapCenter = new google.maps.LatLng(latitude, longitude);
-  const mapOptions = {
-    zoom: 13,
-    center: mapCenter,
-    disableDefaultUI: true,
-    scrollwheel: false,
-    styles: mapStyle,
-  };
-  const element = document.getElementById(mapElement);
-  const map = new google.maps.Map(element, mapOptions);
-  const marker = new google.maps.Marker({
-    position: new google.maps.LatLng(latitude, longitude),
-    map,
-    icon: markerImage,
-    draggable: markerDrag,
-  });
 }
