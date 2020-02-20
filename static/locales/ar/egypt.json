@@ -34,7 +34,7 @@
   "not-allowed": "غير مسموح",
   "not-webmail-email": "عناوين البريد الالكتروني المسموح بها من مقدمي خدمات البريد Google و Yahoo و Hotmail فقط.",
   "disposable-email": "عناوين البريد الالكترونية المؤقتة غير مسموح بها من فضلك استخدم بريدك الشخصي",
-  "youtube-video": "https://www.youtube.com/embed/ExzAb3t6DkI?autoplay=1",
+  "youtube-video": "https://www.youtube.com/embed/ExzAb3t6DkI",
   "country-pic": "/static/assets/Flag_of_Egypt.svg",
   "share-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/draws/email.svg",
   "addthis-title": "قم بالتسجيل بقائمة انتظار اول وسيط لتداول الاسهم بدون عمولة بالشرق الاوسط, و احصل علي سهم مجاني @MerQuant",
@@ -111,5 +111,14 @@
   "img-phone1": "/static/assets/img/phone.png",
   "img-phone2": "/static/assets/img/phone.png",
   "img-whatis": "/static/assets/img/what-is-merquant.jpg",
-  "img-contact": "/static/assets/img/alex.jpeg"
+  "img-contact": "/static/assets/img/alex.jpeg",
+  "clients": "العملاء",
+  "commission": "العمولة",
+  "minimums": "الحد الأدنى",
+  "contact-us": "اتصل بنا",
+  "contact-form": "نموذج الاتصال",
+  "your-name": "اسمك",
+  "your-email": "بريدك الإلكتروني",
+  "your-message": "رسالتك",
+  "send-message": "إرسال رسالة"
 }

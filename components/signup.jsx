@@ -323,7 +323,7 @@ class Signup extends React.Component {
                       className="embed-responsive-item"
                       width="1280"
                       height="720"
-                      src="https://www.youtube.com/embed/ExzAb3t6DkI"
+                      src={t('youtube-video')}
                       frameBorder="0"
                       allow="accelerometer; autoplay;"
                       scrolling="no"

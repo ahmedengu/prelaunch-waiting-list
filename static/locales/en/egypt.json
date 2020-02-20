@@ -35,7 +35,7 @@
   "not-allowed": "Not Allowed",
   "not-webmail-email": "Only mail providers such as Gmail, Yahoo and Hotmail are allowed",
   "disposable-email": "Temporary emails are not allowed, Kindly use your personal email.",
-  "youtube-video": "https://www.youtube.com/embed/TEjaAshjnXI?autoplay=1",
+  "youtube-video": "https://www.youtube.com/embed/TEjaAshjnXI",
   "country-pic": "/static/assets/Flag_of_Egypt.svg",
   "share-img": "https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs/draws/email.svg",
   "addthis-title": "Get early access for the first commission free stock broker in the middle east, and earn a free stock @MerQuant",
@@ -111,5 +111,14 @@
   "img-phone1": "/static/assets/img/phone.png",
   "img-phone2": "/static/assets/img/phone.png",
   "img-whatis": "/static/assets/img/what-is-merquant.jpg",
-  "img-contact": "/static/assets/img/alex.jpeg"
+  "img-contact": "/static/assets/img/alex.jpeg",
+  "clients": "Clients",
+  "commission": "Commission",
+  "minimums": "Minimums",
+  "contact-us": "Contact Us",
+  "contact-form": "Contact Form",
+  "your-name": "Your Name",
+  "your-email": "Your Email",
+  "your-message": "Your Message",
+  "send-message": "Send a Message"
 }

@@ -251,7 +251,7 @@ const HomeFeatures = ({ t }) => (
             <div className="col-sm-4">
               <div className="ts-promo-number text-center">
                 <h2 data-animate="ts-zoomIn" className="typography-head">2000+</h2>
-                <h3 className="mb-0 ts-opacity__50">Clients</h3>
+                <h3 className="mb-0 ts-opacity__50">{t('clients')}</h3>
                 <span className="ts-promo-number-divider" />
               </div>
 
@@ -260,7 +260,7 @@ const HomeFeatures = ({ t }) => (
             <div className="col-sm-4">
               <div className="ts-promo-number text-center">
                 <h2 className="typography-head" data-animate="ts-zoomIn" data-delay="0.2s">0</h2>
-                <h3 className="mb-0 ts-opacity__50">Commission</h3>
+                <h3 className="mb-0 ts-opacity__50">{t('commission')}</h3>
                 <span className="ts-promo-number-divider" />
               </div>
 
@@ -269,7 +269,7 @@ const HomeFeatures = ({ t }) => (
             <div className="col-sm-4">
               <div className="ts-promo-number text-center">
                 <h2 className="typography-head" data-animate="ts-zoomIn" data-delay="0.2s">0</h2>
-                <h3 className="mb-0 ts-opacity__50">Minimums</h3>
+                <h3 className="mb-0 ts-opacity__50">{t('minimums')}</h3>
               </div>
             </div>
 
@@ -289,7 +289,7 @@ const HomeFeatures = ({ t }) => (
         <div className="ts-box mb-0 p-5 ts-mt__n-10">
           <div className="row">
             <div className="col-md-4">
-              <h3>Contact Us</h3>
+              <h3>{t('contact-us')}</h3>
               <address>
                 <figure>
                   <div className="font-weight-bold">
@@ -325,7 +325,7 @@ Instagram:
               </address>
             </div>
             <div className="col-md-8">
-              <h3>Contact Form</h3>
+              <h3>{t('contact-form')}</h3>
               <form
                 id="form-contact"
                 method="post"
@@ -334,13 +334,17 @@ Instagram:
                 <div className="row">
                   <div className="col-md-6 col-sm-6">
                     <div className="form-group">
-                      <label htmlFor="form-contact-name">Your Name *</label>
+                      <label htmlFor="form-contact-name">
+                        {t('your-name')}
+                        {' '}
+*
+                      </label>
                       <input
                         type="text"
                         className="form-control padding-input"
                         id="form-contact-name"
                         name="name"
-                        placeholder="Your Name"
+                        placeholder={t('your-name')}
                         required
                       />
                     </div>
@@ -349,13 +353,18 @@ Instagram:
 
                   <div className="col-md-6 col-sm-6">
                     <div className="form-group">
-                      <label htmlFor="form-contact-email">Your Email *</label>
+                      <label htmlFor="form-contact-email">
+                        {t('your-email')}
+                        {' '}
+*
+                      </label>
                       <input
+                        dir="ltr"
                         type="email"
                         className="form-control padding-input"
                         id="form-contact-email"
                         name="email"
-                        placeholder="Your Email"
+                        placeholder={t('your-email')}
                         required
                       />
                     </div>
@@ -365,13 +374,17 @@ Instagram:
                 <div className="row">
                   <div className="col-md-12">
                     <div className="form-group">
-                      <label htmlFor="form-contact-message">Your Message *</label>
+                      <label htmlFor="form-contact-message">
+                        {t('your-message')}
+                        {' '}
+*
+                      </label>
                       <textarea
                         className="form-control padding-input"
                         id="form-contact-message"
                         rows="5"
                         name="message"
-                        placeholder="Your Message"
+                        placeholder={t('your-message')}
                         required
                       />
                     </div>
@@ -386,7 +399,7 @@ Instagram:
                     className="btn btn-primary float-right"
                     id="form-contact-submit"
                   >
-Send a Message
+                    {t('send-message')}
                   </button>
                 </div>
 
