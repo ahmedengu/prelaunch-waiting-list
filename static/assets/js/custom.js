@@ -1,11 +1,3 @@
-window.selectQuestion = (id, item) => {
-  const btn = document.querySelector('#question');
-  const txt = item.textContent;
-
-  item.classList = 'active';
-  console.log(id, txt);
-};
-
 function getVideo() {
   $('.video-modal').each(function () {
     const iframe = $(this).find('iframe')[0];
@@ -44,9 +36,22 @@ function showModal(e) {
   console.log($modal);
 }
 
+function heroHeight() {
+  $('.ts-full-screen').height($(window).height());
+}
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// jQuery
+function doneResizing() {
+  heroHeight();
+  $('.owl-carousel').trigger('next.owl.carousel');
+}
+
+function getScrollBarWidth() {
+  const $outer = $('<div>').css({ visibility: 'hidden', width: 100, overflow: 'scroll' }).appendTo('body');
+  const widthWithScroll = $('<div>').css({ width: '100%' }).appendTo($outer).outerWidth();
+  $outer.remove();
+  return 100 - widthWithScroll;
+}
+
 $(document).ready(($) => {
   if (document.getElementsByClassName('ts-full-screen').length) {
     document.getElementsByClassName('ts-full-screen')[0].style.height = `${window.innerHeight}px`;
@@ -63,6 +68,30 @@ $(document).ready(($) => {
     $animatedWaves.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
       $(this).toggleClass('repeat');
     });
+  });
+
+  $('.ts-scroll').on('click', function (event) {
+    if (
+      location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
+      && location.hostname === this.hostname
+    ) {
+      let target = $(this.hash);
+      target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
+      if (target.length) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top,
+        }, 1000, () => {
+          const $target = $(target);
+          $target.focus();
+          if ($target.is(':focus')) {
+            return false;
+          }
+          $target.attr('tabindex', '-1');
+          $target.focus();
+        });
+      }
+    }
   });
 });
 
@@ -369,63 +398,6 @@ function documentReady() {
     });
   });
 
-  // Magnific Popup
-
-  const $popupImage = $('.popup-popup');
-
-  if ($popupImage.length > 0) {
-    $popupImage.magnificPopup({
-      type: 'image',
-      fixedContentPos: false,
-      gallery: { enabled: true },
-      removalDelay: 300,
-      mainClass: 'mfp-fade',
-      callbacks: {
-        // This prevents pushing the entire page to the right after opening Magnific popup image
-        open() {
-          $('.page-wrapper, .navbar-nav').css('margin-right', getScrollBarWidth());
-        },
-        close() {
-          $('.page-wrapper, .navbar-nav').css('margin-right', 0);
-        },
-      },
-    });
-  }
-
-  const $videoPopup = $('.video-popup');
-
-  if ($videoPopup.length > 0) {
-    $videoPopup.magnificPopup({
-      type: 'iframe',
-      removalDelay: 300,
-      mainClass: 'mfp-fade',
-      overflowY: 'hidden',
-      iframe: {
-        markup: '<div class="mfp-iframe-scaler">'
-            + '<div class="mfp-close"></div>'
-            + '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'
-            + '</div>',
-        patterns: {
-          youtube: {
-            index: 'youtube.com/',
-            id: 'v=',
-            src: '//www.youtube.com/embed/%id%?autoplay=1',
-          },
-          vimeo: {
-            index: 'vimeo.com/',
-            id: '/',
-            src: '//player.vimeo.com/video/%id%?autoplay=1',
-          },
-          gmaps: {
-            index: '//maps.google.',
-            src: '%id%&output=embed',
-          },
-        },
-        srcAction: 'iframe_src',
-      },
-    });
-  }
-
   $('.ts-form-email [type=\'submit\']').each(function () {
     const text = $(this).text();
     $(this)
@@ -475,57 +447,4 @@ function documentReady() {
       $('.navbar').removeClass('in');
     }
   });
-}
-
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Functions
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Do after resize
-
-function doneResizing() {
-  heroHeight();
-  $('.owl-carousel').trigger('next.owl.carousel');
-}
-
-// Set Hero height
-
-function heroHeight() {
-  $('.ts-full-screen').height($(window).height());
-}
-
-// Smooth Scroll
-
-$('.ts-scroll').on('click', function (event) {
-  if (
-    location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
-        && location.hostname === this.hostname
-  ) {
-    let target = $(this.hash);
-    target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
-    if (target.length) {
-      event.preventDefault();
-      $('html, body').animate({
-        scrollTop: target.offset().top,
-      }, 1000, () => {
-        const $target = $(target);
-        $target.focus();
-        if ($target.is(':focus')) {
-          return false;
-        }
-        $target.attr('tabindex', '-1');
-        $target.focus();
-      });
-    }
-  }
-});
-
-
-// Return scrollbar width
-
-function getScrollBarWidth() {
-  const $outer = $('<div>').css({ visibility: 'hidden', width: 100, overflow: 'scroll' }).appendTo('body');
-  const widthWithScroll = $('<div>').css({ width: '100%' }).appendTo($outer).outerWidth();
-  $outer.remove();
-  return 100 - widthWithScroll;
 }
