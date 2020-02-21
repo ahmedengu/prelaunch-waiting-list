@@ -1512,20 +1512,20 @@ select::-ms-expand {
     position: relative;
 }
 
-.select-wrapper:before {
-    position: absolute;
-    display: inline-block;
-    font-weight: 900;
-    text-rendering: auto;
-    top: 0;
-    margin: auto;
-    bottom: 0;
-    right: .9375rem;
-    height: 1.875rem;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome\ 5 Free";
-    content: "\f0dd";
-}
+/*.select-wrapper:before {*/
+/*    position: absolute;*/
+/*    display: inline-block;*/
+/*    font-weight: 900;*/
+/*    text-rendering: auto;*/
+/*    top: 0;*/
+/*    margin: auto;*/
+/*    bottom: 0;*/
+/*    right: .9375rem;*/
+/*    height: 1.875rem;*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*    font-family: "Font Awesome\ 5 Free";*/
+/*    content: "\f0dd";*/
+/*}*/
 
 /*-------------------------------------------
   -- Slider
@@ -3674,4 +3674,68 @@ section {
 
 .mb-4 {
     margin-bottom: 2rem;
+}
+
+
+/*ARABIC FONTS */
+
+
+.rtl * {
+    font-family: 'Almarai' , 'serif';
+    letter-spacing: .05ex;
+}
+
+.rtl select {
+    direction: rtl;
+}
+
+.rtl > .ts-block {
+    text-align: right;
+}
+
+.rtl .typography-head {
+    font-size: 10ex;
+}
+
+.rtl .typography-subhead {
+    font-size: 4ex;
+    line-height: 3ex;
+}
+
+
+.select-hidden {
+    display: none;
+    visibility: hidden;
+    padding-right: 10px;
+}
+
+select {
+    height: 2.2rem;
+    background-color: #ffffff;
+    color: #727b81;
+    border: none;
+    -moz-border-radius-bottomleft: 2rem;
+    -moz-border-radius-bottomright: 2rem;
+    -webkit-border-bottom-left-radius: 2rem;
+    -webkit-border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.social-login {
+    display: block !important;
+    border: 0px !important;
+    border-radius: 2rem !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 2px !important;
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer !important;
+    font-size: .8rem !important;
+    margin-top: 10px !important;
+    width: calc(100% - 30px) !important;
+    overflow: hidden !important;
+    user-select: none !important;
+    height: 32px !important;
+    text-align-last: center;
+    text-combine-upright: all;
+    background: rgb(29, 29, 29) !important;
 }
