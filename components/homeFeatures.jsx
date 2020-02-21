@@ -285,7 +285,7 @@ const HomeFeatures = ({ t }) => (
       data-bg-image-opacity=".1"
       data-bg-color="#313131"
     >
-      <div className="container">
+      <div className="container contact">
         <div className="ts-box mb-0 p-5 ts-mt__n-10">
           <div className="row">
             <div className="col-md-4">
@@ -377,7 +377,7 @@ Instagram:
                       <label htmlFor="form-contact-message">
                         {t('your-message')}
                         {' '}
-*
+                        *
                       </label>
                       <textarea
                         className="form-control padding-input"
