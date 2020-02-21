@@ -9,7 +9,6 @@ import Share from './share';
 import { setUser } from '../store';
 import Unverified from './unverified';
 import Resubscribe from './resubscribe';
-import HomeFeatures from './homeFeatures';
 import { domain } from '../constants';
 import { logEvent } from '../utils/analytics';
 
@@ -51,7 +50,6 @@ class LoggedIn extends React.Component {
 
     let copyInput = null;
     const userLink = `${domain}/?ref=${user.ref}`;
-    const shareLink = encodeURIComponent(userLink);
 
     const copy = () => {
       copyInput.select();
@@ -69,8 +67,6 @@ class LoggedIn extends React.Component {
         {user && user.emailVerified && user.sendEmails === false && (
           <Resubscribe t={t} user={user} />
         )}
-        {/* <Share t={t} /> */}
-        {/* <HomeFeatures t={t} /> */}
 
         <div className="container">
           <div className="row justify-content-center">
@@ -99,8 +95,7 @@ class LoggedIn extends React.Component {
                   <h4>{t('share-h4')}</h4>
                   <p>{t('share-p')}</p>
                 </div>
-                <form
-                  action="#joined.html"
+                <div
                   id="joined-form"
                   className="ts-form ts-form-email ts-labels-inside-input ref-link"
                 >
@@ -108,6 +103,7 @@ class LoggedIn extends React.Component {
                     <div className="col-sm-12 col-md-11 col-lg-11 col-xl-11">
                       <div className="form-group mb-0">
                         <input
+                          style={{ direction: 'ltr', 'text-align': 'left' }}
                           onChange={() => {}}
                           type="text"
                           aria-describedby="subscribe"
@@ -130,7 +126,8 @@ class LoggedIn extends React.Component {
                       </button>
                     </div>
                   </div>
-                </form>
+                </div>
+                {/* <Share t={t} /> */}
               </div>
             </div>
 
