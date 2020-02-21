@@ -3680,7 +3680,7 @@ section {
 /*ARABIC FONTS */
 
 
-.rtl * {
+.rtl :not(i) {
     font-family: 'Almarai' , 'serif';
     letter-spacing: .05ex;
 }
