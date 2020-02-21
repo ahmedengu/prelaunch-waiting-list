@@ -217,7 +217,16 @@ class Signup extends React.Component {
                   }}
                 >
                   <div className="row">
-                    <div className="col-md-9 col-sm-12 ">
+                    <div className="col-md-2 col-sm-2 col-2">
+                      <select id="country" className="select-css">
+                        <option value="hide">{t('country-selector')}</option>
+                        <option value="eg">{t('country-eg')}</option>
+                        <option value="ksa">{t('country-ksa')}</option>
+                        <option value="uae">{t('country-uae')}</option>
+                        <option value="ng">{t('country-ng')}</option>
+                      </select>
+                    </div>
+                    <div className="col-md-8 col-sm-12 ">
                       <div className="form-group mb-0">
                         <label htmlFor="email-subscribe">{t('signup-email')}</label>
                         <input
@@ -239,7 +248,7 @@ class Signup extends React.Component {
                         />
                       </div>
                     </div>
-                    <div className="col-md-3 col-sm-3 col-3">
+                    <div className="col-md-2 col-sm-2 col-2">
                       <input
                         className="btn btn-primary submit-a"
                         type="submit"
@@ -250,39 +259,49 @@ class Signup extends React.Component {
                   </div>
                 </form>
                 {error && (<p className="text-danger" style={{ margin: 0 }}>{t(error)}</p>)}
-                <div className="row">
-                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
-                    <FacebookLogin
-                      isMobile={false}
-                      appId="403863870540210"
-                      fields="email"
-                      callback={(res) => {
-                        this.responseFacebook(res);
+                <div className="container">
+                  <div className="row">
+                    <div className="col align-self-start" />
+                    <div className="col align-self-center">
+                      <FacebookLogin
+                        isMobile={false}
+                        appId="403863870540210"
+                        fields="email"
+                        callback={(res) => {
+                          this.responseFacebook(res);
+                        }}
+                        render={(renderProps) => (
+                          <FacebookLoginButton
+                            className="social-login"
+                            text={t('login_with_facebook')}
+                            disabled={renderProps.disabled}
+                            onClick={renderProps.onClick}
+                          />
+                        )}
+                      />
+                    </div>
+                    <div
+                      className="col align-self-end"
+                      style={{
+                        marginLeft: '-8%',
+                        marginRight: '11%',
                       }}
-                      render={(renderProps) => (
-                        <FacebookLoginButton
-                          text={t('login_with_facebook')}
-                          disabled={renderProps.disabled}
-                          onClick={renderProps.onClick}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  <div className="col-12 col-lg-6 col-xl-6 col-md-6">
-                    <GoogleLogin
-                      clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
-                      onSuccess={(res) => {
-                        this.responseGoogle(res);
-                      }}
-                      render={(renderProps) => (
-                        <GoogleLoginButton
-                          text={t('login_with_google')}
-                          disabled={renderProps.disabled}
-                          onClick={renderProps.onClick}
-                        />
-                      )}
-                    />
+                    >
+                      <GoogleLogin
+                        clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
+                        onSuccess={(res) => {
+                          this.responseGoogle(res);
+                        }}
+                        render={(renderProps) => (
+                          <GoogleLoginButton
+                            className="social-login"
+                            text={t('login_with_google')}
+                            disabled={renderProps.disabled}
+                            onClick={renderProps.onClick}
+                          />
+                        )}
+                      />
+                    </div>
                   </div>
                 </div>
 

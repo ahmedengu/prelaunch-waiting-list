@@ -109,6 +109,7 @@ class CustomHead extends Component {
         <link rel="stylesheet" href="/static/assets/css/style.css" />
         <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-toastify@5.5.0/dist/ReactToastify.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Almarai&display=swap" rel="stylesheet" />
       </Head>
     );
   }

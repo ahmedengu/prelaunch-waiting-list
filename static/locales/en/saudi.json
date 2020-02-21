@@ -66,7 +66,7 @@
   "goodbye": "Goodbye",
   "link-send-failed": "Link sending failed",
   "invalid-verification": "Invalid verification code",
-  "login_with_facebook": "Login with Facebook",
-  "login_with_google": "Login with Google",
+  "login_with_facebook": "Facebook",
+  "login_with_google": "Google",
   "sent_to": "Sent to {{email}}"
 }
