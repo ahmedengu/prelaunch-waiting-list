@@ -99,7 +99,7 @@ class LoggedIn extends React.Component {
                   id="joined-form"
                   className="ts-form ts-form-email ts-labels-inside-input ref-link"
                 >
-                  <div className="row">
+                  <div className="row mb-2">
                     <div className="col-sm-12 col-md-11 col-lg-11 col-xl-11">
                       <div className="form-group mb-0">
                         <input
@@ -126,8 +126,8 @@ class LoggedIn extends React.Component {
                       </button>
                     </div>
                   </div>
+                  <Share t={t} user={user} />
                 </div>
-                {/* <Share t={t} /> */}
               </div>
             </div>
 
