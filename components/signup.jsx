@@ -232,7 +232,7 @@ class Signup extends React.Component {
                       <div className="form-group mb-0">
                         <label htmlFor="email-subscribe">{t('signup-email')}</label>
                         <input
-                          style={{ direction: 'ltr', 'text-align': 'left' }}
+                          style={{ direction: 'ltr', textAlign: 'left' }}
                           dir="ltr"
                           type="search"
                           className={`signup-input form-control ${error ? 'is-invalid' : ''}`}
