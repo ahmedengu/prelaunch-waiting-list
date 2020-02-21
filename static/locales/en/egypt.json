@@ -126,5 +126,6 @@
   "your-email": "Your Email",
   "your-message": "Your Message",
   "send-message": "Send a Message",
-  "contact-sent": "Thank You for Contacting us!"
+  "contact-sent": "Thank You for Contacting us!",
+  "contact-subject": "MerQuant - Inquiry from {{name}}"
 }

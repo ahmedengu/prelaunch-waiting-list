@@ -33,9 +33,15 @@ class ContactForm extends Component {
       loading: true,
       error: '',
     });
-
+    const { t } = this.props;
     try {
-      console.log(await Parse.Cloud.run('contactForm', { email, name, message }));
+      await Parse.Cloud.run('contactForm', {
+        email,
+        name,
+        message,
+        subject: t('contact-subject', { name }),
+      });
+
       this.setState({
         loading: false,
         sent: true,
@@ -150,7 +156,7 @@ class ContactForm extends Component {
           </div>
 
           <div className="form-group clearfix">
-            {sent && (<span className="text-success">{t('contact-sent')}</span>)}
+            {sent && (<span className="text-success pull-left">{t('contact-sent')}</span>)}
             <button
               type="submit"
               className={`btn btn-primary float-right ${loading && 'processing'}`}

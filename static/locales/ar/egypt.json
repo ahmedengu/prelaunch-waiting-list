@@ -126,5 +126,6 @@
   "your-email": "بريدك الإلكتروني",
   "your-message": "رسالتك",
   "send-message": "إرسال رسالة",
-  "contact-sent": "شكر لتواصلك معنا!"
+  "contact-sent": "شكر لتواصلك معنا!",
+  "contact-subject": "ميركوانت - استفسار من {{name}}"
 }

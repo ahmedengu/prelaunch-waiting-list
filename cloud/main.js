@@ -4,6 +4,7 @@ const parseSmtp = require('parse-smtp-template-text');
 const qs = require('qs');
 const uuid = require('uuid');
 const cache = require('memory-cache');
+const nodemailer = require('nodemailer');
 const { applicationId, serverURL } = require('../constants');
 const { emailConfig } = require('../serverConstants');
 
@@ -303,8 +304,42 @@ Parse.Cloud.define('checkRef', async (request, response) => {
 });
 
 Parse.Cloud.define('contactForm', async (request, response) => {
-  const { email, name, message } = request.params;
+  const {
+    email, name, message, subject,
+  } = request.params;
 
-  console.log(email, name, message);
-  return '';
+  const emailCheck = disposableEmail.isDisposable(email);
+
+  if (!emailCheck.isEmail) {
+    throw 'invalid-email';
+  }
+  if (emailCheck.isDisposable && !emailCheck.isWebmail) {
+    throw 'disposable-email';
+  }
+
+  const transport = nodemailer.createTransport({
+    host: emailConfig.host,
+    port: emailConfig.port,
+    secure: emailConfig.secure || false,
+    auth: {
+      user: emailConfig.user,
+      pass: emailConfig.password,
+    },
+  });
+
+  const senderOptions = {
+    from: emailConfig.fromAddress,
+    to: emailConfig.fromAddress,
+    replyTo: _.trim(email),
+    subject,
+    text: `${message}\n\nname: ${name}\nemail: ${email}`,
+  };
+
+  try {
+    await transport.sendMail(senderOptions);
+    return 'contact-sent';
+  } catch (e) {
+    const errorJson = JSON.parse(e.text);
+    throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
+  }
 });
