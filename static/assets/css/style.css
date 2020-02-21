@@ -3519,11 +3519,14 @@ line-height: .4rem;
     color: white;
 }
 
-#legal p {
-    font-size: .5rem;
-    line-height: .8rem;
-    width: 50%;
-    margin-left:25%;
+#legal .lead {
+    font-size: 1.2rem;
+}
+
+#legal .typography-body {
+    line-height: 1.5rem;
+    width: 80%;
+    margin-left: 10%;
     color: white;
 }
 
@@ -3632,6 +3635,15 @@ section {
     letter-spacing: .05ex;
 }
 
+#legal {
+    font-family: 'Almarai' , 'serif';
+}
+
+a.mx-2:hover {
+    color: white;
+    transition: .2s ease-in-out;
+}
+
 .rtl select {
     direction: rtl;
 }
@@ -3701,7 +3713,6 @@ select {
 
 #form-contact input{
     height: 2.7rem;
-
 }
 
 #form-contact input:focus, #form-contact textarea:focus {
