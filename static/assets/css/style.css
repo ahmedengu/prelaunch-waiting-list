@@ -3739,3 +3739,28 @@ select {
     text-combine-upright: all;
     background: rgb(29, 29, 29) !important;
 }
+
+#form-contact input, #form-contact textarea{
+    background-color: #1e1e1e;
+    padding: 1rem;
+    color: white;
+    border-radius: .7rem;
+}
+
+.rtl .contact, .rtl .form-group, .rtl input, .rtl textarea {
+    direction: rtl;
+    text-align: right;
+}
+
+#form-contact input{
+    height: 2.7rem;
+
+}
+
+#form-contact input:focus, #form-contact textarea:focus {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    transition: .3s ease-in-out;
+    box-shadow: none;
+}
