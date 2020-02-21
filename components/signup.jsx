@@ -22,6 +22,7 @@ class Signup extends React.Component {
       email: '',
       error: '',
       loading: false,
+      width: 1024,
     };
 
     if (process.browser) {
@@ -37,6 +38,7 @@ class Signup extends React.Component {
 
   componentDidMount() {
     window.documentReady();
+    this.setState({ width: window.innerWidth });
   }
 
   async register(notMounted = false, providerName = '', authData = {}) {
@@ -175,7 +177,7 @@ class Signup extends React.Component {
   render() {
     const { t, referral } = this.props;
     const {
-      email, loading, error,
+      email, loading, error, width,
     } = this.state;
 
     return (
@@ -309,9 +311,13 @@ class Signup extends React.Component {
                 <div className="row margin-top-10">
                   <div className="col-12">
                     <a
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={(t('youtube-video') || '').replace('/embed/', '/watch?v=')}
                       className="push-image-container typography-headline-2"
-                      data-toggle="modal"
+                      data-toggle={width <= 760 ? '' : 'modal'}
                       data-target="#video-popup"
+                      style={{ color: '#1e1e1e' }}
                     >
                       {t('watch-video')}
                       {' '}
