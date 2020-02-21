@@ -398,33 +398,6 @@ function documentReady() {
     });
   });
 
-  $('.ts-form-email [type=\'submit\']').each(function () {
-    const text = $(this).text();
-    $(this)
-      .html('')
-      .append(`<span>${text}</span>`)
-      .prepend('<div class=\'status\'><i class=\'fas fa-circle-notch fa-spin spinner\'></i></div>');
-  });
-
-  $('.ts-form-email .btn[type=\'submit\']').on('click', function (e) {
-    const $button = $(this);
-    const $form = $(this).closest('form');
-    const pathToPhp = $(this).closest('form').attr('data-php-path');
-    $form.validate({
-      submitHandler() {
-        $button.addClass('processing');
-        $.post(pathToPhp, $form.serialize(), (response) => {
-          $button.addClass('done').find('.status').append(response).prop('disabled', true);
-        });
-        return false;
-      },
-    });
-  });
-
-  $('form:not(.ts-form-email)').each(function () {
-    $(this).validate();
-  });
-
   $('[data-animate]').scrolla({
     mobile: true,
   });

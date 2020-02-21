@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ContactForm from './ContactForm';
+
 
 const HomeFeatures = ({ t }) => (
   <>
@@ -294,7 +296,7 @@ const HomeFeatures = ({ t }) => (
                 <figure>
                   <div className="font-weight-bold">
                     {t('signup-email')}
-:
+                    :
                   </div>
                   <a href="mailto:support@merquant.com">support@merquant.com</a>
                 </figure>
@@ -302,7 +304,7 @@ const HomeFeatures = ({ t }) => (
                   <div className="font-weight-bold">
                     <i className="fab fa-facebook" />
                     {' '}
-Facebook:
+                    Facebook:
                   </div>
                   <a href="https://www.facebook.com/merquant">facebook.com/MerQuant</a>
                 </figure>
@@ -310,7 +312,7 @@ Facebook:
                   <div className="font-weight-bold">
                     <i className="fab fa-twitter" />
                     {' '}
-Twitter:
+                    Twitter:
                   </div>
                   <a href="https://twitter.com/merquant">twitter.com/MerQuant</a>
                 </figure>
@@ -318,93 +320,14 @@ Twitter:
                   <div className="font-weight-bold">
                     <i className="fab fa-instagram" />
                     {' '}
-Instagram:
+                    Instagram:
                   </div>
                   <a href="https://www.instagram.com/merquant/">instagram.com/MerQuant</a>
                 </figure>
               </address>
             </div>
             <div className="col-md-8">
-              <h3>{t('contact-form')}</h3>
-              <form
-                id="form-contact"
-                method="post"
-                className="clearfix ts-form ts-form-email"
-              >
-                <div className="row">
-                  <div className="col-md-6 col-sm-6">
-                    <div className="form-group">
-                      <label htmlFor="form-contact-name">
-                        {t('your-name')}
-                        {' '}
-*
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control padding-input"
-                        id="form-contact-name"
-                        name="name"
-                        placeholder={t('your-name')}
-                        required
-                      />
-                    </div>
-
-                  </div>
-
-                  <div className="col-md-6 col-sm-6">
-                    <div className="form-group">
-                      <label htmlFor="form-contact-email">
-                        {t('your-email')}
-                        {' '}
-*
-                      </label>
-                      <input
-                        dir="ltr"
-                        type="email"
-                        className="form-control padding-input"
-                        id="form-contact-email"
-                        name="email"
-                        placeholder={t('your-email')}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label htmlFor="form-contact-message">
-                        {t('your-message')}
-                        {' '}
-                        *
-                      </label>
-                      <textarea
-                        className="form-control padding-input"
-                        id="form-contact-message"
-                        rows="5"
-                        name="message"
-                        placeholder={t('your-message')}
-                        required
-                      />
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div className="form-group clearfix">
-                  <button
-                    type="submit"
-                    className="btn btn-primary float-right"
-                    id="form-contact-submit"
-                  >
-                    {t('send-message')}
-                  </button>
-                </div>
-
-                <div className="form-contact-status" />
-              </form>
+              <ContactForm t={t} />
             </div>
           </div>
         </div>

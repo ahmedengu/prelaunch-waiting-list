@@ -175,7 +175,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { t, referral } = this.props;
+    const { t } = this.props;
     const {
       email, loading, error, width,
     } = this.state;
@@ -252,12 +252,18 @@ class Signup extends React.Component {
                       </div>
                     </div>
                     <div className="col-md-2 col-sm-2 col-2">
-                      <input
-                        className="btn btn-primary submit-a"
+                      <button
+                        className={`btn btn-primary submit-a ${loading && 'processing'}`}
                         type="submit"
-                        value={t('submit')}
                         disabled={loading}
-                      />
+                      >
+                        {t('submit')}
+                        <div className="status">
+                          <i
+                            className="fas fa-circle-notch fa-spin spinner"
+                          />
+                        </div>
+                      </button>
                     </div>
                   </div>
                 </form>

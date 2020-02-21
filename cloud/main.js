@@ -301,3 +301,10 @@ Parse.Cloud.define('checkRef', async (request, response) => {
   }
   return '';
 });
+
+Parse.Cloud.define('contactForm', async (request, response) => {
+  const { email, name, message } = request.params;
+
+  console.log(email, name, message);
+  return '';
+});
