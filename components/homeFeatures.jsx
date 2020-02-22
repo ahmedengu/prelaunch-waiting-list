@@ -59,7 +59,7 @@ const HomeFeatures = ({ t }) => (
         </div>
 
         <div className="row">
-          <div className="col-12 mb-4" data-animate="ts-fadeInUp" data-offset="100">
+          <div className="col-5 mb-4" data-animate="ts-fadeInUp" data-offset="100" style{{marginTop: '7%'}}>
             <p className="typography-body">
               {t('sub-3')}
             </p>
@@ -72,7 +72,7 @@ const HomeFeatures = ({ t }) => (
           </div>
 
           <div
-            className="col-12 text-center"
+            className="col-7 text-center"
             data-animate="ts-fadeInUp"
             data-delay="0.1s"
             data-offset="100"
@@ -94,7 +94,16 @@ const HomeFeatures = ({ t }) => (
     <section id="features" className="ts-block">
       <div className="container">
         <div className="row">
-          <div className="col-12 mb-4" data-animate="ts-fadeInUp" data-offset="100">
+          <div className="col-7">
+            <div className="px-3">
+              <img
+                  src={t('img-features')}
+                  className="mw-100 ts-shadow__lg ts-border-radius__md"
+                  alt=""
+              />
+            </div>
+          </div>
+          <div className="col-5 mb-4" data-animate="ts-fadeInUp" data-offset="100">
             <div className="ts-title">
               <h2 className="typography-head">{t('header-4')}</h2>
             </div>
