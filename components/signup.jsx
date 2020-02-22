@@ -249,6 +249,7 @@ class Signup extends React.Component {
                           name="email"
                           required
                         />
+                        <small className="form-text mt-2 ts-opacity__50">{t('signup-legal')}</small>
                       </div>
                     </div>
                     <div className="col-md-2 col-sm-2 col-2">

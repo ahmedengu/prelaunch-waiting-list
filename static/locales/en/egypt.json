@@ -128,5 +128,7 @@
   "your-message": "Your Message",
   "send-message": "Send a Message",
   "contact-sent": "Thank You for Contacting us!",
-  "contact-subject": "MerQuant - Inquiry from {{name}}"
+  "contact-subject": "MerQuant - Inquiry from {{name}}",
+  "signup-legal": "* By using our Services, you agree to the terms and conditions.",
+  "commission-free": "’Commission Free!"
 }

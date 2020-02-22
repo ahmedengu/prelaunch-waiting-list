@@ -59,7 +59,7 @@ const HomeFeatures = ({ t }) => (
         </div>
 
         <div className="row">
-          <div className="col-5 mb-4" data-animate="ts-fadeInUp" data-offset="100" style={{ marginTop: '7%' }}>
+          <div className="col-md-7 col-xl-7" data-animate="ts-fadeInUp" data-offset="100" style={{ marginTop: '7%' }}>
             <p className="typography-body">
               {t('sub-3')}
             </p>
@@ -72,17 +72,15 @@ const HomeFeatures = ({ t }) => (
           </div>
 
           <div
-            className="col-7 text-center"
+            className="col-md-5 col-xl-5 text-center"
             data-animate="ts-fadeInUp"
             data-delay="0.1s"
             data-offset="100"
           >
             <div className="px-3">
-              <img
-                src={t('img-whatis')}
-                className="mw-100 ts-shadow__lg ts-border-radius__md"
-                alt=""
-              />
+              <div className="badge" style={{ backgroundImage: t('img-whatis') }}>
+                <div className="text">{t('commission-free')}</div>
+              </div>
             </div>
           </div>
 
@@ -94,16 +92,25 @@ const HomeFeatures = ({ t }) => (
     <section id="features" className="ts-block">
       <div className="container">
         <div className="row">
-          <div className="col-7">
-            <div className="px-3">
-              <img
-                  src={t('img-features')}
-                  className="mw-100 ts-shadow__lg ts-border-radius__md"
-                  alt=""
-              />
+          <div className="col-md-7 col-xl-7 text-center">
+            <div className="position-relative">
+              <div
+                className="col-md-12 col-xl-12 text-center"
+                data-animate="ts-fadeInUp"
+                data-delay="0.1s"
+                data-offset="100"
+              >
+                <div className="px-3">
+                  <img
+                    src={t('img-features')}
+                    className="mw-100 ts-shadow__lg ts-border-radius__md"
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="col-5 mb-4" data-animate="ts-fadeInUp" data-offset="100">
+          <div className="col-md-5 col-xl-5" data-animate="ts-fadeInUp" data-offset="100">
             <div className="ts-title">
               <h2 className="typography-head">{t('header-4')}</h2>
             </div>

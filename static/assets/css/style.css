@@ -3450,7 +3450,7 @@ line-height: .4rem;
 .badge:hover {
     box-shadow: 0px 0.5rem 2rem rgba(0, 0, 0, 0.75);
     background-position: 0% 50%;
-    transform: scale(1.2);
+    transform: scale(1);
 }
 .badge:hover .text {
     -webkit-transform: rotate(-45deg) translate(0px) rotate(-315deg);
@@ -3897,4 +3897,13 @@ select {
     cursor: pointer !important;
     font-size: .8rem !important;
     letter-spacing: .05rem;
+}
+
+#what-is-merquant img, #features img {
+    transition: .4s ease-in-out;
+}
+
+#what-is-merquant img:hover, #features img:hover {
+    transform: scale(1.02);
+    transition: .4s ease-in-out;
 }
