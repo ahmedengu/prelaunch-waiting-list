@@ -3877,3 +3877,24 @@ select {
     background-color: #1da851;
     border-color: #1da851;
 }
+
+.Toastify__toast--default {
+    background: #1e1e1e !important;
+    color: #fff !important;
+}
+
+.Toastify__close-button--default {
+    color: #f7f6f9 !important;
+    opacity: .7 !important;
+}
+
+.Toastify__progress-bar--default {
+    background: linear-gradient(90deg,#f7d000,#ff8400,#ff8100,#fa001e,#f9001e,#dd0060) !important;
+}
+
+.Toastify__toast-body{
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer !important;
+    font-size: .8rem !important;
+    letter-spacing: .05rem;
+}
