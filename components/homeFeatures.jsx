@@ -59,7 +59,7 @@ const HomeFeatures = ({ t }) => (
         </div>
 
         <div className="row">
-          <div className="col-5 mb-4" data-animate="ts-fadeInUp" data-offset="100" style{{marginTop: '7%'}}>
+          <div className="col-5 mb-4" data-animate="ts-fadeInUp" data-offset="100" style={{ marginTop: '7%' }}>
             <p className="typography-body">
               {t('sub-3')}
             </p>
