@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
-import Parse from 'parse';
-import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import cookie from 'js-cookie';
-import { setUser } from '../store';
-import { logEvent } from '../utils/analytics';
 
-const Footer = ({ t, setUserHandler, user }) => (
+const Footer = ({ t }) => (
   <footer
     className="fdb-block fp-active bg-dark"
     data-block-type="footers"
@@ -56,26 +50,6 @@ const Footer = ({ t, setUserHandler, user }) => (
             <br />
             {t('line4')}
           </p>
-          {
-            user && user.objectId
-            && (
-              <button
-                type="button"
-                onClick={() => {
-                  Parse.User.logOut();
-                  cookie.remove('user');
-                  setUserHandler({});
-                  Parse.LiveQuery.close();
-                  toast(t('goodbye'));
-                  logEvent('user', 'logOut');
-                  window.scrollTo(0, 0);
-                }}
-                className="btn btn-link font-weight-light text-white-50"
-              >
-                {t('logout')}
-              </button>
-            )
-          }
         </div>
       </div>
     </section>
@@ -99,17 +73,6 @@ const Footer = ({ t, setUserHandler, user }) => (
 
 Footer.propTypes = {
   t: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
-  setUserHandler: PropTypes.func.isRequired,
 };
 
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = {
-  setUserHandler: setUser,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;
