@@ -27,16 +27,16 @@ class Header extends Component {
 
   render() {
     const {
-      t, country, user,
+      t, country, user, lang,
     } = this.props;
-
+    const currentPage = `/${lang}/${country}`;
     return (
       <nav
         className="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element"
         data-bg-color="rgb(31,31,31)"
       >
         <div className="container">
-          <a href="#" className="navbar-brand">
+          <a href={`${currentPage}#`} className="navbar-brand">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50%"
@@ -63,10 +63,10 @@ class Header extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ml-auto">
-              <a className="nav-item nav-link active ts-scroll" href="#page-top">
+              <a className="nav-item nav-link active ts-scroll" href={`${currentPage}#page-top`}>
                 {t('home')}
               </a>
-              <a className="nav-item nav-link ts-scroll" href="#what-is-merquant">{t('about')}</a>
+              <a className="nav-item nav-link ts-scroll" href={`${currentPage}#what-is-merquant`}>{t('about')}</a>
               <a
                 target="_blank"
                 rel="dofollow"

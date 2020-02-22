@@ -3,13 +3,52 @@ import PropTypes from 'prop-types';
 
 import { withTranslation } from '../i18n';
 import PageWrapper from '../components/pageWrapper';
+import Header from '../components/Header';
 
 const Error = ({ statusCode, t }) => (
   <PageWrapper t={t}>
-    <div className="fdb-block">
-      <div className="container">
+    <header id="ts-hero" className="ts-full-screen">
+      <Header t={t} />
+
+      <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgb(255,171,3)">
+        <svg
+          className="ts-svg ts-parallax-element"
+          width="100%"
+          height="100%"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs />
+          <path
+            className="ts-dynamic-wave"
+            d=""
+            data-wave-height=".6"
+            data-wave-bones="4"
+            data-wave-speed="0.15"
+          />
+        </svg>
+        <svg
+          className="ts-svg"
+          width="100%"
+          height="100%"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs />
+          <path
+            className="ts-dynamic-wave"
+            d=""
+            data-wave-color="#fff"
+            data-wave-height=".2"
+            data-wave-bones="6"
+            data-wave-speed="0.2"
+          />
+        </svg>
+      </div>
+
+      <div className="container align-self-center">
         <div className="row align-items-center">
-          <div className="col-12 col-md-6 col-lg-5">
+          <div className="col-sm-4 d-none d-sm-block">
             <h1>{t('ops')}</h1>
             <p className="lead">
               {statusCode
@@ -22,13 +61,13 @@ const Error = ({ statusCode, t }) => (
               <img
                 alt="Shape"
                 className="img-fluid"
-                src="https://cdn.jsdelivr.net/gh/froala/design-blocks@2.0.1/dist/imgs//shapes/2.svg"
+                src="/static/assets/error.png"
               />
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </header>
   </PageWrapper>
 );
 
