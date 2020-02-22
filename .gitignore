@@ -17,3 +17,4 @@ logs
 .idea
 .env
 constants.js
+package-lock.json

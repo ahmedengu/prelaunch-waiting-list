@@ -33,6 +33,7 @@ class MyApp extends App {
       const Honeybadger = require('honeybadger-js');
       Honeybadger.configure({
         apiKey: 'd4871a0d',
+        revision: __NEXT_DATA__.buildId,
       });
 
       Parse.initialize(applicationId, javaScriptKey);
@@ -158,6 +159,7 @@ class MyApp extends App {
       const Honeybadger = process.browser ? require('honeybadger-js') : require('honeybadger');
       Honeybadger.configure({
         apiKey: 'd4871a0d',
+        revision: __NEXT_DATA__.buildId,
       });
       Honeybadger.notify(e);
     }

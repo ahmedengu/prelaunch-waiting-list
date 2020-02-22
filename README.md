@@ -6,6 +6,7 @@ npm i mongodb-runner@latest -g
 # run mongo
 mongodb-runner start
 # install project dependencies
+cp constants.local.js constants.js
 npm i
 # run project
 npm run dev
