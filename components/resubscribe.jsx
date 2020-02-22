@@ -38,17 +38,17 @@ class Resubscribe extends Component {
     const { t } = this.props;
     const { loading, message } = this.state;
     return (
-      <section className="checkMail_section">
+      <div className="checkMail_section">
         <div className="container">
           <div className="row text-center">
             <div className="col-12 text-white">
-              <h4 className="spacing font-weight-lighter" style={{ fontSize: 'medium' }}>
+              <h4 className="spacing font-weight-lighter m-2" style={{ fontSize: 'medium' }}>
                 {t('you-are-not-subscribed')}
                 {' - '}
                 <button
                   disabled={loading}
                   type="button"
-                  className="btn checkMail_section-btn pt-0 pb-0 spacing"
+                  className="btn checkMail_section-btn pt-0 pb-0"
                   onClick={() => {
                     this.resend();
                     logEvent('user', 'resub');
@@ -60,7 +60,7 @@ class Resubscribe extends Component {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }
