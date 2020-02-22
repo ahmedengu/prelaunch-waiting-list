@@ -45,25 +45,14 @@ const Error = ({ statusCode, t }) => (
           />
         </svg>
       </div>
-
       <div className="container align-self-center">
         <div className="row align-items-center">
-          <div className="col-sm-4 d-none d-sm-block">
-            <h1>{t('ops')}</h1>
-            <p className="lead">
-              {statusCode
-                ? t('error-with-status', { statusCode })
-                : t('error-without-status')}
-            </p>
-          </div>
-          <div className="col-12 col-md-6 ml-md-auto mt-4 mt-md-0">
-            <p>
-              <img
-                alt="Shape"
-                className="img-fluid"
-                src="/static/assets/error.png"
-              />
-            </p>
+          <div className="col-12 text-center">
+            <img
+              alt="Error"
+              className="img-fluid"
+              src="/static/assets/error.png"
+            />
           </div>
         </div>
       </div>
