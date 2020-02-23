@@ -4073,3 +4073,9 @@ select {
     fill:rgb(246, 134, 51);
     transition: 1s ease-in-out;
 }
+
+.stroke-transparent {
+    font-size: 2rem;
+    -webkit-text-stroke: 1.3px #26293f;
+    -webkit-text-fill-color: #1f1f1f00;
+}
