@@ -198,7 +198,7 @@ const HomeFeatures = ({ t }) => (
               data-delay=".1s"
             >
               <span style={{ fontSize: '3em' }}>
-                <i className="fa fa-lightbulb-o" />
+                <i className="stroke-transparent fas fa-lightbulb-o" />
               </span>
               <h4 className="mb-2">{t('sub-5-2')}</h4>
               <p className="typography-body">
@@ -211,7 +211,7 @@ const HomeFeatures = ({ t }) => (
               data-delay=".3s"
             >
               <span style={{ fontSize: '3em' }}>
-                <i className="fa fa-smile-o" />
+                <i className="stroke-transparent fas fa-bolt" />
               </span>
               <h4 className="mb-2">{t('sub-5-4')}</h4>
               <p className="typography-body">
@@ -240,7 +240,7 @@ const HomeFeatures = ({ t }) => (
           <div className="col-md-4">
             <figure className="ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".1s">
               <span style={{ fontSize: '3em' }}>
-                <i className="fas fa-braille" />
+                <i className=" stroke-transparent fas fa-filter" />
               </span>
               <h4 className="mb-2">{t('sub-5-1')}</h4>
               <p className="typography-body">
@@ -249,7 +249,7 @@ const HomeFeatures = ({ t }) => (
             </figure>
             <figure className="ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".3s">
               <span style={{ fontSize: '3em' }}>
-                <i className="fa fa-toggle-off" />
+                <i className="stroke-transparent fas fa-magic" />
               </span>
               <h4 className="mb-2">{t('sub-5-3')}</h4>
               <p className="typography-body">
