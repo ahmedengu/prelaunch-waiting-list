@@ -176,7 +176,7 @@ class Signup extends React.Component {
   }
 
   countryChange = (value) => {
-    const { target: { value: country } } = value
+    const { target: { value: country } } = value;
     this.setState({
       country,
     });
@@ -186,22 +186,22 @@ class Signup extends React.Component {
     const { country } = this.state;
     if (country === 'eg') {
       return (
-          <img className="flag" src="https://image.flaticon.com/icons/svg/321/321226.svg" alt="" />
-    );
-    }
-    else if (country === 'ksa') {
-      return (
-          <img className="flag" src="https://image.flaticon.com/icons/svg/321/321258.svg" alt="" />
+        <img className="flag" src="../static/assets/img/egypt.png" alt="" />
       );
     }
-    else if (country === 'uae') {
+    if (country === 'ksa') {
       return (
-          <img className="flag" src="https://image.flaticon.com/icons/svg/321/321268.svg" alt="" />
+        <img className="flag" src="../static/assets/img/saudi-arabia.png" alt="" />
       );
     }
-    else if (country === 'ng') {
+    if (country === 'uae') {
       return (
-          <img className="flag" src="https://image.flaticon.com/icons/svg/630/630697.svg" alt="" />
+        <img className="flag" src="../static/assets/img/united-arab-emirates.png" alt="" />
+      );
+    }
+    if (country === 'ng') {
+      return (
+        <img className="flag" src="../static/assets/img/nigeria.png" alt="" />
       );
     }
     return null;
@@ -264,7 +264,6 @@ class Signup extends React.Component {
                     </div>
                     <div className="col-md-8 col-sm-12 ">
                       <div className="form-group mb-0">
-                        <label htmlFor="email-subscribe">{t('signup-email')}</label>
                         <input
                           style={{ direction: 'ltr', textAlign: 'left' }}
                           dir="ltr"
