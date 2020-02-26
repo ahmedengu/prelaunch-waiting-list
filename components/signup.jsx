@@ -182,31 +182,6 @@ class Signup extends React.Component {
     });
   };
 
-  renderFlag = () => {
-    const { country } = this.state;
-    if (country === 'eg') {
-      return (
-        <img className="flag" src="../static/assets/img/egypt.png" alt="" />
-      );
-    }
-    if (country === 'ksa') {
-      return (
-        <img className="flag" src="../static/assets/img/saudi-arabia.png" alt="" />
-      );
-    }
-    if (country === 'uae') {
-      return (
-        <img className="flag" src="../static/assets/img/united-arab-emirates.png" alt="" />
-      );
-    }
-    if (country === 'ng') {
-      return (
-        <img className="flag" src="../static/assets/img/nigeria.png" alt="" />
-      );
-    }
-    return null;
-  }
-
   render() {
     const { t } = this.props;
     const {
