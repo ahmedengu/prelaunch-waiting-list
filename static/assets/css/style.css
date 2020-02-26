@@ -4079,3 +4079,9 @@ select {
     -webkit-text-stroke: 1.3px #26293f;
     -webkit-text-fill-color: #1f1f1f00;
 }
+
+img.flag {
+    width: 75%;
+    margin-left: 20%;
+    border-radius: 1rem;
+}
