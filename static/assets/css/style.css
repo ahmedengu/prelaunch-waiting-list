@@ -4080,8 +4080,45 @@ select {
     -webkit-text-fill-color: #1f1f1f00;
 }
 
-img.flag {
-    width: 75%;
-    margin-left: 20%;
-    border-radius: 1rem;
+.dropdown {
+    margin-bottom: 23%;
+}
+
+.dropdown-menu.show {
+    display: block;
+    font-size: .8rem;
+}
+
+button.btn.btn-primary.dropdown-toggle {
+    width: 6rem;
+}
+
+.dropdown-menu > li{
+    padding-left: .6rem;
+    color: #1d1d1d;
+}
+
+.dropdown-menu > li:hover{
+    background-color: #fcc453;
+    color: #1d1d1d;
+    padding-left: .7rem;
+    transition-duration: .3s;
+}
+
+.flag {
+    width: 50%;
+    margin-left: 15%;
+}
+
+.rtl .ksaText {
+    font-size: .8rem;
+}
+
+button.btn.btn-primary.dropdown-toggle {
+    width: 5rem;
+    font-size: .8rem;
+    padding: .3rem 0;
+    margin-top: .3rem;
+    background-color: white;
+    color: #1d1d1d;
 }

@@ -182,31 +182,6 @@ class Signup extends React.Component {
     });
   };
 
-  renderFlag = () => {
-    const { country } = this.state;
-    if (country === 'eg') {
-      return (
-        <img className="flag" src="../static/assets/img/egypt.png" alt="" />
-      );
-    }
-    if (country === 'ksa') {
-      return (
-        <img className="flag" src="../static/assets/img/saudi-arabia.png" alt="" />
-      );
-    }
-    if (country === 'uae') {
-      return (
-        <img className="flag" src="../static/assets/img/united-arab-emirates.png" alt="" />
-      );
-    }
-    if (country === 'ng') {
-      return (
-        <img className="flag" src="../static/assets/img/nigeria.png" alt="" />
-      );
-    }
-    return null;
-  }
-
   render() {
     const { t } = this.props;
     const {
@@ -253,14 +228,66 @@ class Signup extends React.Component {
                 >
                   <div className="row">
                     <div className="col-md-2 col-sm-2 col-2">
-                      <select id="country" className="select-css" onChange={this.countryChange}>
-                        <option value="hide">{t('country-selector')}</option>
-                        <option value="eg">{t('country-eg')}</option>
-                        <option value="ksa">{t('country-ksa')}</option>
-                        <option value="uae">{t('country-uae')}</option>
-                        <option value="ng">{t('country-ng')}</option>
-                      </select>
-                      {this.renderFlag()}
+                      <div className="dropdown">
+                        <button
+                          className="btn btn-primary dropdown-toggle"
+                          type="button"
+                          data-toggle="dropdown"
+                        >
+                          {t('country-selector')}
+                          <span className="caret" />
+                        </button>
+                        <ul className="dropdown-menu">
+                          <li>
+                            <div className="row">
+                              <div className="col">
+                                <span>
+                                  {t('country-eg')}
+                                </span>
+                              </div>
+                              <div className="col">
+                                <img className="flag" src="../static/assets/img/egypt.png" alt="" />
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="row">
+                              <div className="col">
+                                <span className="ksaText">
+                                  {t('country-ksa')}
+                                </span>
+                              </div>
+                              <div className="col">
+                                <img className="flag" src="../static/assets/img/saudi-arabia.png" alt="" />
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="row">
+                              <div className="col">
+                                <span>
+                                  {t('country-uae')}
+                                </span>
+                              </div>
+                              <div className="col">
+                                <img className="flag" src="../static/assets/img/united-arab-emirates.png" alt="" />
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="row">
+                              <div className="col">
+                                <span>
+                                  {t('country-ng')}
+                                </span>
+                              </div>
+                              <div className="col">
+                                <img className="flag" src="../static/assets/img/nigeria.png" alt="" />
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                     <div className="col-md-8 col-sm-12 ">
                       <div className="form-group mb-0">
