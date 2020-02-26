@@ -23,6 +23,7 @@ class Signup extends React.Component {
       error: '',
       loading: false,
       width: 1024,
+      country: '',
     };
 
     if (process.browser) {
@@ -174,6 +175,38 @@ class Signup extends React.Component {
     }
   }
 
+  countryChange = (value) => {
+    const { target: { value: country } } = value
+    this.setState({
+      country,
+    });
+  };
+
+  renderFlag = () => {
+    const { country } = this.state;
+    if (country === 'eg') {
+      return (
+          <img className="flag" src="https://image.flaticon.com/icons/svg/321/321226.svg" alt="" />
+    );
+    }
+    else if (country === 'ksa') {
+      return (
+          <img className="flag" src="https://image.flaticon.com/icons/svg/321/321258.svg" alt="" />
+      );
+    }
+    else if (country === 'uae') {
+      return (
+          <img className="flag" src="https://image.flaticon.com/icons/svg/321/321268.svg" alt="" />
+      );
+    }
+    else if (country === 'ng') {
+      return (
+          <img className="flag" src="https://image.flaticon.com/icons/svg/630/630697.svg" alt="" />
+      );
+    }
+    return null;
+  }
+
   render() {
     const { t } = this.props;
     const {
@@ -220,13 +253,14 @@ class Signup extends React.Component {
                 >
                   <div className="row">
                     <div className="col-md-2 col-sm-2 col-2">
-                      <select id="country" className="select-css">
+                      <select id="country" className="select-css" onChange={this.countryChange}>
                         <option value="hide">{t('country-selector')}</option>
                         <option value="eg">{t('country-eg')}</option>
                         <option value="ksa">{t('country-ksa')}</option>
                         <option value="uae">{t('country-uae')}</option>
                         <option value="ng">{t('country-ng')}</option>
                       </select>
+                      {this.renderFlag()}
                     </div>
                     <div className="col-md-8 col-sm-12 ">
                       <div className="form-group mb-0">
