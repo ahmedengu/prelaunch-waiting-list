@@ -7,7 +7,7 @@ const HomeFeatures = ({ t }) => (
   <>
     <section
       id="how-it-looks"
-      className="pb-0 ts-block text-center ts-overflow__hidden ts-shape-mask__down"
+      className="text-center ts-block"
       data-bg-size="inherit"
     >
       <div className="container">
@@ -17,7 +17,7 @@ const HomeFeatures = ({ t }) => (
             {t('sub-2')}
           </h5>
         </div>
-        <ul className="nav nav-tabs justify-content-center my-5" id="myTab" role="tablist">
+        <ul className="nav nav-tabs justify-content-center my-lg-5" id="myTab" role="tablist">
 
           <li className="nav-item">
             <a
@@ -35,7 +35,7 @@ const HomeFeatures = ({ t }) => (
         </ul>
 
         <div
-          className="tab-content pt-5 ts-tabs-presentation"
+          className="tab-content pt-sm-2 pt-lg-5 ts-tabs-presentation"
           id="myTabContent"
           data-animate="ts-fadeInUp"
         >

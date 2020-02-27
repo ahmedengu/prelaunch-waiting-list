@@ -36,7 +36,7 @@ class Header extends Component {
         data-bg-color="rgb(31,31,31)"
       >
         <div className="container">
-          <a href={`${currentPage}#`} className="navbar-brand">
+          <a href={`${currentPage}#`} className="navbar-brand m-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50%"
@@ -86,7 +86,7 @@ class Header extends Component {
                   {t('current-lang')}
                 </button>
                 <div className="dropdown-menu dropdown-menu-right">
-                  <button className="dropdown-item" type="button" onClick={this.changeLang(user)}>{t('lang')}</button>
+                  <button className="dropdown-item text-center" type="button" onClick={this.changeLang(user)}>{t('lang')}</button>
                 </div>
               </div>
             </div>
