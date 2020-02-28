@@ -38,6 +38,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
+    console.log('i am here on the didmout');
     window.documentReady();
     this.setState({ width: window.innerWidth });
   }
@@ -183,14 +184,67 @@ class Signup extends React.Component {
   };
 
   render() {
-    const { t } = this.props;
+    const { t, country } = this.props;
     const {
       email, loading, error, width,
     } = this.state;
-
+    const countriesData = [
+      {
+        tag: 'country-eg',
+        route: 'egypt',
+      },
+      {
+        tag: 'country-ksa',
+        route: 'saudi',
+      },
+      {
+        tag: 'country-uae',
+        route: 'emirates',
+      },
+      // {
+      //   name: 'nigeria',
+      //   tag: 'country-ng',
+      // },
+    ];
+    const CountriesSelector = () => countriesData.map(({ tag, route }) => {
+      if (route === country) {
+        return false;
+      }
+      const onCountrySelectorHandler = (countryRoute) => {
+        Router.push(`/${countryRoute}`);
+      };
+      return (
+        <li
+          key={tag}
+          role="button"
+          tabIndex="0"
+          onClick={(e) => {
+            e.preventDefault();
+            onCountrySelectorHandler(route);
+          }}
+          onKeyPress={(e) => {
+            e.preventDefault();
+            if (e.key === 'Enter' || e.key === 'Space') {
+              onCountrySelectorHandler(route);
+            }
+          }}
+        >
+          <div className="row">
+            <div className="col">
+              <span>
+                {t(tag)}
+              </span>
+            </div>
+            <div className="col">
+              <img className="flag" src={`/static/assets/img/${route}.png`} alt="" />
+            </div>
+          </div>
+        </li>
+      );
+    });
     return (
       <>
-        <header id="ts-hero">
+        <header id="ts-hero" className="ts-full-screen">
           <Header t={t} />
           <div className="container align-self-center main-content">
             <div className="row align-items-center">
@@ -207,70 +261,24 @@ class Signup extends React.Component {
                     this.register();
                   }}
                 >
-                  <div className="row">
-                    <div className="col-md-2 col-sm-2 col-2">
+                  <div className="row text-center">
+                    <div className="col-md-2 col-sm-12">
                       <div className="dropdown">
                         <button
                           className="btn btn-primary dropdown-toggle"
                           type="button"
                           data-toggle="dropdown"
                         >
-                          {t('country-selector')}
+                          {/* {t('country-selector')} */}
+                          <img className="flag" src={`../static/assets/img/${country}.png`} alt="" />
                           <span className="caret" />
                         </button>
                         <ul className="dropdown-menu">
-                          <li>
-                            <div className="row">
-                              <div className="col">
-                                <span>
-                                  {t('country-eg')}
-                                </span>
-                              </div>
-                              <div className="col">
-                                <img className="flag" src="../static/assets/img/egypt.png" alt="" />
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="row">
-                              <div className="col">
-                                <span className="ksaText">
-                                  {t('country-ksa')}
-                                </span>
-                              </div>
-                              <div className="col">
-                                <img className="flag" src="../static/assets/img/saudi-arabia.png" alt="" />
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="row">
-                              <div className="col">
-                                <span>
-                                  {t('country-uae')}
-                                </span>
-                              </div>
-                              <div className="col">
-                                <img className="flag" src="../static/assets/img/united-arab-emirates.png" alt="" />
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="row">
-                              <div className="col">
-                                <span>
-                                  {t('country-ng')}
-                                </span>
-                              </div>
-                              <div className="col">
-                                <img className="flag" src="../static/assets/img/nigeria.png" alt="" />
-                              </div>
-                            </div>
-                          </li>
+                          <CountriesSelector />
                         </ul>
                       </div>
                     </div>
-                    <div className="col-md-8 col-sm-12 ">
+                    <div className="col-md-8 col-sm-8 ">
                       <div className="form-group mb-0">
                         <input
                           style={{ direction: 'ltr', textAlign: 'left' }}
@@ -293,9 +301,9 @@ class Signup extends React.Component {
                         <small className="form-text mt-2 ts-opacity__50">{t('signup-legal')}</small>
                       </div>
                     </div>
-                    <div className="col-md-3 col-sm-3 col-3 submit-a__wrapper">
+                    <div className="col-md-2 col-sm-3 submit-a__wrapper">
                       <button
-                        className="btn btn-primary submit-a"
+                        className={`btn btn-primary submit-a ${loading && 'processing'}`}
                         type="submit"
                         disabled={loading}
                       >
@@ -310,63 +318,53 @@ class Signup extends React.Component {
                   </div>
                 </form>
                 {error && (<p className="text-danger" style={{ margin: 0 }}>{t(error)}</p>)}
-                <div className="container">
-                  <div className="row">
-                    <div className="col align-self-start" />
-                    <div className="col align-self-center">
-                      <FacebookLogin
-                        isMobile={false}
-                        appId="403863870540210"
-                        fields="email"
-                        callback={(res) => {
-                          this.responseFacebook(res);
-                        }}
-                        render={(renderProps) => (
-                          <FacebookLoginButton
-                            className="social-login"
-                            text={t('login_with_facebook')}
-                            disabled={renderProps.disabled}
-                            onClick={renderProps.onClick}
-                          />
-                        )}
-                      />
-                    </div>
-                    <div
-                      className="col align-self-end"
-                      style={{
-                        marginLeft: '-8%',
-                        marginRight: '11%',
+                <div className="row">
+                  <div className="col-lg-5 col-md-5 col-sm-12">
+                    <FacebookLogin
+                      isMobile={false}
+                      appId="403863870540210"
+                      fields="email"
+                      callback={(res) => {
+                        this.responseFacebook(res);
                       }}
-                    >
-                      <GoogleLogin
-                        clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
-                        onSuccess={(res) => {
-                          this.responseGoogle(res);
-                        }}
-                        render={(renderProps) => (
-                          <GoogleLoginButton
-                            className="social-login"
-                            text={t('login_with_google')}
-                            disabled={renderProps.disabled}
-                            onClick={renderProps.onClick}
-                          />
-                        )}
-                      />
-                    </div>
+                      render={(renderProps) => (
+                        <FacebookLoginButton
+                          className="social-login"
+                          text={t('login_with_facebook')}
+                          disabled={renderProps.disabled}
+                          onClick={renderProps.onClick}
+                        />
+                      )}
+                    />
+                  </div>
+                  <div
+                    className="col-lg-5 col-md-5 col-sm-12"
+                  >
+                    <GoogleLogin
+                      clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
+                      onSuccess={(res) => {
+                        this.responseGoogle(res);
+                      }}
+                      render={(renderProps) => (
+                        <GoogleLoginButton
+                          className="social-login"
+                          text={t('login_with_google')}
+                          disabled={renderProps.disabled}
+                          onClick={renderProps.onClick}
+                        />
+                      )}
+                    />
                   </div>
                 </div>
-
-
-                <div className="row margin-top-10">
-                  <div className="col-12">
+                <div className="row text-center mt-lg-5 margin-top-10">
+                  <div className="col-lg-10 col-sm-12">
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
                       href={(t('youtube-video') || '').replace('/embed/', '/watch?v=')}
-                      className="push-image-container typography-headline-2"
+                      className="push-image-container btn btn-primary"
                       data-toggle={width <= 760 ? '' : 'modal'}
                       data-target="#video-popup"
-                      style={{ color: '#1e1e1e' }}
                     >
                       {t('watch-video')}
                       {' '}
@@ -378,17 +376,17 @@ class Signup extends React.Component {
               <div className="col-lg-4 col-sm-12">
                 <div className="owl-carousel text-center" data-owl-nav="1" data-owl-loop="1">
                   <img
-                    src="/static/assets/img/app-03.png"
+                    src={t('carousel-1')}
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />
                   <img
-                    src="/static/assets/img/app-01.png"
+                    src={t('carousel-2')}
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />
                   <img
-                    src="/static/assets/img/app-02.png"
+                    src={t('carousel-3')}
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />

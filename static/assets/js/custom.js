@@ -53,10 +53,10 @@ function getScrollBarWidth() {
 }
 
 $(document).ready(($) => {
-  if (document.getElementsByClassName('ts-full-screen').length) {
-    document.getElementsByClassName('ts-full-screen')[0].style.height = `${window.innerHeight}px`;
+  const el = document.getElementsByClassName('ts-full-screen');
+  if (el && el[0] && window.innerWidth > 768) {
+    el[0].style.height = `${window.innerHeight}px`;
   }
-
   $(document).on('show.bs.modal', showModal);
   $(document).on('show.bs.modal', getVideo(), addVideo);
   $(document).on('hidden.bs.modal', removeVideo);
@@ -96,6 +96,10 @@ $(document).ready(($) => {
 });
 
 function documentReady() {
+  const el = document.getElementsByClassName('ts-full-screen');
+  if (el && el[0] && window.innerWidth > 768) {
+    el[0].style.height = `${window.innerHeight}px`;
+  }
   $('body').imagesLoaded(() => {
     $('body').addClass('loading-done');
     const $animatedWaves = $('.ts-animated-waves');

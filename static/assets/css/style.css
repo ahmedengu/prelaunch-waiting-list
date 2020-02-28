@@ -630,7 +630,7 @@ a:hover {
 p {
     line-height: 1.6875rem;
     margin-bottom: 1.875rem;
-    color: rgb(251, 198, 88);
+    color: #000;
 }
 
 .ts-font-weight__normal {
@@ -2288,7 +2288,7 @@ figure.icon {
 
 #navbarNavAltMarkup {
     text-align: center;
-    background-color: #000;
+    /* background-color: #000; */
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
@@ -3016,9 +3016,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.fixed-top.ts-separate-bg-element.in .nav
     color: #fd7e14;
 }
 
-#joined-form button {
-    padding: 0.3rem;
-}
 
 .padding-input {
     padding: .7rem;
@@ -3656,9 +3653,7 @@ Main Components
 a.push-image-container {
     cursor: pointer;
     font-size: 1.3rem;
-}
-a.push-image-container:hover {
-    text-decoration: underline;
+    font-weight: normal;
 }
 
 .margin-top-10 {
@@ -3688,7 +3683,7 @@ button.btn.btn-secondary.dropdown-toggle {
 
 
 .typography-head {
-    font-size: 6rem;
+    font-size: 4rem;
     line-height: 1.04167;
     font-weight: 600;
     letter-spacing: -.015em;
@@ -3780,13 +3775,11 @@ select {
     cursor: pointer !important;
     font-size: .8rem !important;
     margin-top: 10px !important;
-    width: calc(100% - 30px) !important;
     overflow: hidden !important;
     user-select: none !important;
     height: 32px !important;
     text-align-last: center;
     text-combine-upright: all;
-    background: rgb(29, 29, 29) !important;
 }
 
 #form-contact input, #form-contact textarea {
@@ -3842,7 +3835,6 @@ select {
 .resp-sharing-button__icon svg {
     width: 1em;
     height: 1em;
-    margin-right: 0.4em;
     vertical-align: top;
 }
 
@@ -4057,7 +4049,7 @@ select {
 }
 
 .checkMail_section-btn:hover {
-    background: #9f9c9a;
+    background: #1e1b26;
     color: white;
     font-weight: bold;
     transition: all 0.5s ease-in-out;
@@ -4121,10 +4113,21 @@ button.btn.btn-primary.dropdown-toggle {
 button.btn.btn-primary.dropdown-toggle {
     width: 5rem;
     font-size: .8rem;
-    padding: .3rem 0;
-    margin-top: .3rem;
+    padding: .2rem 0;
     background-color: white;
     color: #1d1d1d;
+}
+button.btn.btn-primary.dropdown-toggle img {
+    width: 30px;
+}
+.main-content >  .row {
+    flex-direction: row-reverse;
+}
+.at-resp-share-element .at-share-btn {
+    margin: 0px 2px 0px !important;
+}
+.copy-btn {
+    padding: .3rem 1.25rem;
 }
 /** Mobile style */
 
@@ -4152,7 +4155,23 @@ button.btn.btn-primary.dropdown-toggle {
     .ts-block {
         padding-top: 15px;
     }
-    .typography-head {
-        font-size: 4rem;
+    #navbarNavAltMarkup {
+        background-color: #000;
+    }
+    .navbar-brand {
+        margin: 0;
+        flex: 1;
+    }
+    .signup .dropdown {
+        margin-bottom: 15px;
+    }
+    #content {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    .fill {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }

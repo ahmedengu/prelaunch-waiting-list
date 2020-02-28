@@ -32,7 +32,7 @@ class Share extends Component {
     const shareLink = encodeURIComponent(userLink);
 
     return (
-      <div>
+      <div className="row align-items-center justify-content-center m-auto">
         <a
           className="resp-sharing-button__link"
           href={`https://facebook.com/sharer/sharer.php?u=${shareLink}`}
@@ -56,7 +56,6 @@ class Share extends Component {
                 />
               </svg>
             </div>
-            Facebook
           </div>
         </a>
 
@@ -85,7 +84,6 @@ class Share extends Component {
                 />
               </svg>
             </div>
-            Twitter
           </div>
         </a>
 
@@ -114,7 +112,6 @@ class Share extends Component {
                 />
               </svg>
             </div>
-            E-Mail
           </div>
         </a>
 
@@ -143,7 +140,6 @@ class Share extends Component {
                 />
               </svg>
             </div>
-            LinkedIn
           </div>
         </a>
 
@@ -170,12 +166,11 @@ class Share extends Component {
                 />
               </svg>
             </div>
-            WhatsApp
           </div>
         </a>
         <div
           role="presentation"
-          className="addthis_inline_share_toolbox align-bottom d-inline-block pb-1"
+          className="addthis_inline_share_toolbox"
           data-url={userLink}
           data-title={t('addthis-title')}
           data-description={t('addthis-description')}

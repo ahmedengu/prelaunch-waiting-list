@@ -78,7 +78,7 @@ const HomeFeatures = ({ t }) => (
             data-offset="100"
           >
             <div className="px-3">
-              <div className="badge" style={{ backgroundImage: t('img-whatis') }}>
+              <div className="badge" style={{ backgroundImage: `url(${t('img-whatis')})` }}>
                 <div className="text">{t('commission-free')}</div>
               </div>
             </div>

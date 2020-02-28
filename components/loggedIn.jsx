@@ -100,7 +100,7 @@ class LoggedIn extends React.Component {
                   className="ts-form ts-form-email ts-labels-inside-input ref-link"
                 >
                   <div className="row mb-2">
-                    <div className="col-sm-12 col-md-11 col-lg-11 col-xl-11">
+                    <div className="col-9">
                       <div className="form-group mb-0">
                         <input
                           style={{ direction: 'ltr', 'text-align': 'left' }}
@@ -116,9 +116,9 @@ class LoggedIn extends React.Component {
                         />
                       </div>
                     </div>
-                    <div className="col-sm-4 col-md-1 col-lg-1 col-xl-1">
+                    <div className="col-3">
                       <button
-                        className="btn"
+                        className="btn copy-btn"
                         type="button"
                         onClick={copy}
                       >
@@ -138,7 +138,7 @@ class LoggedIn extends React.Component {
               <h1>{(user.points || 0)}</h1>
               <p style={{ color: '#494745', textShadow: 'none' }} className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>{t('your-pending', { pendingPoints: (user.pendingPoints || 0) })}</p>
               <h4>{t('points-card-footer')}</h4>
-              <p dir={dir}>
+              <p dir={dir} className="text-light">
                 {t('reservation-held', { email: user.email })}
                 {t('is-this')}
                 {/* eslint-disable-next-line max-len */}
@@ -148,10 +148,10 @@ class LoggedIn extends React.Component {
                   onClick={() => {
                     Parse.User.logOut();
                     cookie.remove('user');
-                    setUserHandler({});
                     Parse.LiveQuery.close();
                     toast(t('goodbye'));
                     logEvent('user', 'logOut');
+                    setUserHandler({});
                     window.scrollTo(0, 0);
                   }}
                 >

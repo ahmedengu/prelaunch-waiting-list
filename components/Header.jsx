@@ -36,7 +36,7 @@ class Header extends Component {
         data-bg-color="rgb(31,31,31)"
       >
         <div className="container">
-          <a href={`${currentPage}#`} className="navbar-brand m-0">
+          <a href={`${currentPage}#`} className="navbar-brand">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50%"
