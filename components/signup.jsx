@@ -190,30 +190,11 @@ class Signup extends React.Component {
 
     return (
       <>
-        <header id="ts-hero" className="ts-full-screen">
+        <header id="ts-hero">
           <Header t={t} />
-          <div className="container align-self-center">
+          <div className="container align-self-center main-content">
             <div className="row align-items-center">
-              <div className="col-sm-4 d-none d-sm-block">
-                <div className="owl-carousel text-center" data-owl-nav="1" data-owl-loop="1">
-                  <img
-                    src={t('carousel-1')}
-                    className="d-inline-block mw-100 ts-width__auto"
-                    alt=""
-                  />
-                  <img
-                    src={t('carousel-2')}
-                    className="d-inline-block mw-100 ts-width__auto"
-                    alt=""
-                  />
-                  <img
-                    src={t('carousel-3')}
-                    className="d-inline-block mw-100 ts-width__auto"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="col-sm-7 offset-sm-1 signup">
+              <div className="col-lg-7 col-sm-12 offset-sm-1 signup">
                 <h1 className="typography-head">{ t('Investment-Simplified') }</h1>
                 <h3 className="typography-subhead">
                   { t('sub-1') }
@@ -312,9 +293,9 @@ class Signup extends React.Component {
                         <small className="form-text mt-2 ts-opacity__50">{t('signup-legal')}</small>
                       </div>
                     </div>
-                    <div className="col-md-2 col-sm-2 col-2">
+                    <div className="col-md-3 col-sm-3 col-3 submit-a__wrapper">
                       <button
-                        className={`btn btn-primary submit-a ${loading && 'processing'}`}
+                        className="btn btn-primary submit-a"
                         type="submit"
                         disabled={loading}
                       >
@@ -392,6 +373,25 @@ class Signup extends React.Component {
                       <i className="far fa-play-circle" />
                     </a>
                   </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-sm-12">
+                <div className="owl-carousel text-center" data-owl-nav="1" data-owl-loop="1">
+                  <img
+                    src="/static/assets/img/app-03.png"
+                    className="d-inline-block mw-100 ts-width__auto"
+                    alt=""
+                  />
+                  <img
+                    src="/static/assets/img/app-01.png"
+                    className="d-inline-block mw-100 ts-width__auto"
+                    alt=""
+                  />
+                  <img
+                    src="/static/assets/img/app-02.png"
+                    className="d-inline-block mw-100 ts-width__auto"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
