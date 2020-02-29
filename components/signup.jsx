@@ -38,7 +38,6 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    console.log('i am here on the didmout');
     window.documentReady();
     this.setState({ width: window.innerWidth });
   }

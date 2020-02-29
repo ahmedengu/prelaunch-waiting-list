@@ -2296,7 +2296,7 @@ figure.icon {
 }
 
 .logo {
-    height: 5.5rem;
+    height: 3rem;
 }
 
 input {
@@ -3610,11 +3610,6 @@ Main Components
     color: white;
 }
 
-.fixed-top {
-    height: 12%;
-}
-
-
 .video-modal {
     background: #cccccc26;
     z-index: 1100;
@@ -4173,5 +4168,9 @@ button.btn.btn-primary.dropdown-toggle img {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    #ts-hero .owl-prev, #ts-hero .owl-next {
+        background-color: #fdb522;
     }
 }

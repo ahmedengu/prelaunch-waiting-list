@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
+import { toast } from 'react-toastify';
 import { logEvent } from '../utils/analytics';
 
 class ContactForm extends Component {
@@ -46,6 +47,7 @@ class ContactForm extends Component {
         loading: false,
         sent: true,
       });
+      toast(t('contact-sent'));
       logEvent('contactForm', 'sendmail');
     } catch (e) {
       this.setState({

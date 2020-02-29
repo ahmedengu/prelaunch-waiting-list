@@ -4,7 +4,6 @@ function getVideo() {
 
     $(this).detach().appendTo('body');
     $(this).data('video', iframe);
-    console.log('get video');
   });
 }
 
@@ -12,7 +11,6 @@ function addVideo(e) {
   const $modal = $(e.target);
   const iframeData = $modal.data('video');
   $modal.find('.video-container').append($(iframeData));
-  console.log('add video');
 }
 
 function removeVideo(e) {
@@ -22,22 +20,13 @@ function removeVideo(e) {
 
   if (iframe && iframe.length != 0) {
     iframe.remove();
-    console.log('iframe remove');
   } else if (video && video.length != 0) {
     video.remove();
-    console.log('video remove');
   }
 }
 
-function showModal(e) {
-  console.log(e);
-  console.log('modalul e:');
-  const $modal = $(e.target);
-  console.log($modal);
-}
-
 function heroHeight() {
-  $('.ts-full-screen').height($(window).height());
+  $('.ts-full-screen').height($(window).width() > 768 ? $(window).height() : 'unset');
 }
 
 function doneResizing() {
@@ -45,61 +34,9 @@ function doneResizing() {
   $('.owl-carousel').trigger('next.owl.carousel');
 }
 
-function getScrollBarWidth() {
-  const $outer = $('<div>').css({ visibility: 'hidden', width: 100, overflow: 'scroll' }).appendTo('body');
-  const widthWithScroll = $('<div>').css({ width: '100%' }).appendTo($outer).outerWidth();
-  $outer.remove();
-  return 100 - widthWithScroll;
-}
-
-$(document).ready(($) => {
-  const el = document.getElementsByClassName('ts-full-screen');
-  if (el && el[0] && window.innerWidth > 768) {
-    el[0].style.height = `${window.innerHeight}px`;
-  }
-  $(document).on('show.bs.modal', showModal);
-  $(document).on('show.bs.modal', getVideo(), addVideo);
-  $(document).on('hidden.bs.modal', removeVideo);
-
-  $('body').imagesLoaded(() => {
-    $('body').addClass('loading-done');
-    const $animatedWaves = $('.ts-animated-waves');
-    $animatedWaves.css('transform', `translateX( calc( -100% + ${$(window).width() + 5}px )`);
-    $animatedWaves.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-      $(this).toggleClass('repeat');
-    });
-  });
-
-  $('.ts-scroll').on('click', function (event) {
-    if (
-      location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
-      && location.hostname === this.hostname
-    ) {
-      let target = $(this.hash);
-      target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
-      if (target.length) {
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top,
-        }, 1000, () => {
-          const $target = $(target);
-          $target.focus();
-          if ($target.is(':focus')) {
-            return false;
-          }
-          $target.attr('tabindex', '-1');
-          $target.focus();
-        });
-      }
-    }
-  });
-});
-
 function documentReady() {
-  const el = document.getElementsByClassName('ts-full-screen');
-  if (el && el[0] && window.innerWidth > 768) {
-    el[0].style.height = `${window.innerHeight}px`;
-  }
+  doneResizing();
+
   $('body').imagesLoaded(() => {
     $('body').addClass('loading-done');
     const $animatedWaves = $('.ts-animated-waves');
@@ -418,10 +355,49 @@ function documentReady() {
   // On SCROLL actions
 
   $(window).on('scroll', () => {
-    if ($(window).scrollTop() > $(window).height()) {
+    if ($(window).scrollTop() + 100 > $(window).height()) {
       $('.navbar').addClass('in');
     } else {
       $('.navbar').removeClass('in');
     }
   });
 }
+
+$(document).ready(($) => {
+  documentReady();
+  $(document).on('show.bs.modal', getVideo(), addVideo);
+  $(document).on('hidden.bs.modal', removeVideo);
+
+  $('body').imagesLoaded(() => {
+    $('body').addClass('loading-done');
+    const $animatedWaves = $('.ts-animated-waves');
+    $animatedWaves.css('transform', `translateX( calc( -100% + ${$(window).width() + 5}px )`);
+    $animatedWaves.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+      $(this).toggleClass('repeat');
+    });
+  });
+
+  $('.ts-scroll').on('click', function (event) {
+    if (
+      location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
+      && location.hostname === this.hostname
+    ) {
+      let target = $(this.hash);
+      target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
+      if (target.length) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top,
+        }, 1000, () => {
+          const $target = $(target);
+          $target.focus();
+          if ($target.is(':focus')) {
+            return false;
+          }
+          $target.attr('tabindex', '-1');
+          $target.focus();
+        });
+      }
+    }
+  });
+});
