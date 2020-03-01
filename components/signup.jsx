@@ -260,16 +260,15 @@ class Signup extends React.Component {
                     this.register();
                   }}
                 >
-                  <div className="row text-center">
-                    <div className="col-md-2 col-sm-12">
+                  <div className="row text-center align-items-baseline">
+                    <div className="col-2">
                       <div className="dropdown">
                         <button
                           className="btn btn-primary dropdown-toggle"
                           type="button"
                           data-toggle="dropdown"
                         >
-                          {/* {t('country-selector')} */}
-                          <img className="flag" src={`../static/assets/img/${country}.png`} alt="" />
+                          <img className="flag" src={`/static/assets/img/${country}.png`} alt="" />
                           <span className="caret" />
                         </button>
                         <ul className="dropdown-menu">
@@ -277,7 +276,7 @@ class Signup extends React.Component {
                         </ul>
                       </div>
                     </div>
-                    <div className="col-md-8 col-sm-8 ">
+                    <div className="col-7 p-0">
                       <div className="form-group mb-0">
                         <input
                           style={{ direction: 'ltr', textAlign: 'left' }}
@@ -297,10 +296,9 @@ class Signup extends React.Component {
                           name="email"
                           required
                         />
-                        <small className="form-text mt-2 ts-opacity__50">{t('signup-legal')}</small>
                       </div>
                     </div>
-                    <div className="col-md-2 col-sm-3 submit-a__wrapper">
+                    <div className="col-3 p-0">
                       <button
                         className={`btn btn-primary submit-a ${loading && 'processing'}`}
                         type="submit"
@@ -313,6 +311,15 @@ class Signup extends React.Component {
                           />
                         </div>
                       </button>
+                    </div>
+                  </div>
+                  <div className="row align-items-baseline">
+                    <div className="col-10 offset-2" style={{ marginTop: -15 }}>
+                      <small
+                        className="ts-opacity__50"
+                      >
+                        {t('signup-legal')}
+                      </small>
                     </div>
                   </div>
                 </form>

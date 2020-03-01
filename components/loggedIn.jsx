@@ -41,6 +41,8 @@ class LoggedIn extends React.Component {
           });
         });
     }
+
+    $('body').addClass('loading-done');
   }
 
   render() {
@@ -103,7 +105,7 @@ class LoggedIn extends React.Component {
                     <div className="col-9">
                       <div className="form-group mb-0">
                         <input
-                          style={{ direction: 'ltr', 'text-align': 'left' }}
+                          style={{ direction: 'ltr', textAlign: 'left' }}
                           onChange={() => {}}
                           type="text"
                           aria-describedby="subscribe"
