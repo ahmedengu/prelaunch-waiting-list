@@ -62,7 +62,7 @@ class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav ml-auto">
+            <div className="navbar-nav ml-auto align-items-center">
               <a className="nav-item nav-link active ts-scroll" href={`${currentPage}#page-top`}>
                 {t('home')}
               </a>

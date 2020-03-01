@@ -248,10 +248,10 @@ class Signup extends React.Component {
           <div className="container align-self-center main-content">
             <div className="row align-items-center">
               <div className="col-lg-7 col-sm-12 offset-sm-1 signup">
-                <h1 className="typography-head">{ t('Investment-Simplified') }</h1>
-                <h3 className="typography-subhead">
+                <h1 className="typography-head text-center">{ t('Investment-Simplified') }</h1>
+                <h2 className="typography-subhead text-center mb-3">
                   { t('sub-1') }
-                </h3>
+                </h2>
                 <form
                   className="ts-form ts-form-email ts-labels-inside-input"
                   noValidate
@@ -314,10 +314,8 @@ class Signup extends React.Component {
                     </div>
                   </div>
                   <div className="row align-items-baseline">
-                    <div className="col-10 offset-2" style={{ marginTop: -15 }}>
-                      <small
-                        className="ts-opacity__50"
-                      >
+                    <div className="col-12 text-dark text-nowrap font-italic legal-subhead" style={{ marginTop: -15 }}>
+                      <small>
                         {t('signup-legal')}
                       </small>
                     </div>
@@ -325,7 +323,7 @@ class Signup extends React.Component {
                 </form>
                 {error && (<p className="text-danger" style={{ margin: 0 }}>{t(error)}</p>)}
                 <div className="row">
-                  <div className="col-lg-5 col-md-5 col-sm-12">
+                  <div className="col-6 p-0">
                     <FacebookLogin
                       isMobile={false}
                       appId="403863870540210"
@@ -344,7 +342,7 @@ class Signup extends React.Component {
                     />
                   </div>
                   <div
-                    className="col-lg-5 col-md-5 col-sm-12"
+                    className="col-6 p-0"
                   >
                     <GoogleLogin
                       clientId="449870039809-vernaus5vu13rmqga2rf6t9lpofm9nuf.apps.googleusercontent.com"
@@ -362,13 +360,13 @@ class Signup extends React.Component {
                     />
                   </div>
                 </div>
-                <div className="row text-center mt-lg-5 margin-top-10">
-                  <div className="col-lg-10 col-sm-12">
+                <div className="row text-center mt-2">
+                  <div className="col-12">
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
                       href={(t('youtube-video') || '').replace('/embed/', '/watch?v=')}
-                      className="push-image-container btn btn-primary"
+                      className="btn btn-outline-dark push-image-container"
                       data-toggle={width <= 760 ? '' : 'modal'}
                       data-target="#video-popup"
                     >

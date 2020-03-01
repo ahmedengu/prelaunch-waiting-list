@@ -33,9 +33,7 @@ class Unverified extends Component {
     const { t } = this.props;
     const { loading, message } = this.state;
     return (
-      <div className="checkMail_section">
-        <div className="row text-center">
-          <div className="col-12 text-white">
+      <div className="checkMail_section text-center">
             <h4 className="m-2" style={{ fontSize: '.9375rem' }}>
               {t('check-mail')}
               {' - '}
@@ -52,8 +50,6 @@ class Unverified extends Component {
               </button>
             </h4>
           </div>
-        </div>
-      </div>
     );
   }
 }

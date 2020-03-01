@@ -98,6 +98,9 @@ class CustomHead extends Component {
       <Head>
         {referral && Object.keys(user).length === 0
           ? this.refHead(t, shareUrl) : this.normalHead(t, shareUrl)}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <meta name="twitter:site" content="@MerQuant" />
         <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.ico" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" />

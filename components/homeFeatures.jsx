@@ -13,7 +13,7 @@ const HomeFeatures = ({ t }) => (
       <div className="container">
         <div className="ts-title">
           <h2 className="typography-head">{t('header-2')}</h2>
-          <h5 className="typography-sub">
+          <h5 className="typography-sub mt-3">
             {t('sub-2')}
           </h5>
         </div>

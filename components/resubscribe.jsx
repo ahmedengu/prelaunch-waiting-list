@@ -38,10 +38,7 @@ class Resubscribe extends Component {
     const { t } = this.props;
     const { loading, message } = this.state;
     return (
-      <div className="checkMail_section">
-        <div className="container">
-          <div className="row text-center">
-            <div className="col-12 text-white">
+      <div className="checkMail_section text-center">
               <h4 className="m-2" style={{ fontSize: '.9375rem' }}>
                 {t('you-are-not-subscribed')}
                 {' - '}
@@ -58,9 +55,6 @@ class Resubscribe extends Component {
                 </button>
               </h4>
             </div>
-          </div>
-        </div>
-      </div>
     );
   }
 }

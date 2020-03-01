@@ -3669,7 +3669,7 @@ button.btn.btn-secondary.dropdown-toggle {
 }
 
 .typography-subhead {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.125;
     font-weight: 600;
     letter-spacing: .004em;
@@ -3720,10 +3720,14 @@ a.mx-2:hover {
 }
 
 .rtl .typography-subhead {
-    font-size: 4ex;
+    font-size: 3.5ex;
     line-height: 3ex;
 }
 
+.rtl .legal-subhead{
+    text-align: right;
+    direction: rtl;
+}
 
 .select-hidden {
     display: none;
@@ -4009,11 +4013,18 @@ select {
     transition: .4s ease-in-out;
 }
 
+.rtl .checkMail_section {
+    direction: rtl;
+}
+
 .checkMail_section {
     background: #1e1b27;
     color: #e6dbae;
     position: absolute;
     top:0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
@@ -4115,7 +4126,6 @@ button.btn.btn-primary.dropdown-toggle img {
         margin-bottom: 20px;
         display: block;
         text-align: center;
-        font-size: 24px;
     }
     .ts-block {
         padding-top: 15px;
@@ -4137,6 +4147,10 @@ button.btn.btn-primary.dropdown-toggle img {
 
     #ts-hero .owl-prev, #ts-hero .owl-next {
         background-color: #fdb522;
+    }
+
+    .ts-promo-number .ts-promo-number-divider:after {
+        display: none;
     }
 }
 
