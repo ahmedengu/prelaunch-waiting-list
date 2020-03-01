@@ -37,6 +37,33 @@ function doneResizing() {
 function documentReady() {
   doneResizing();
 
+  $(document).on('show.bs.modal', getVideo(), addVideo);
+  $(document).on('hidden.bs.modal', removeVideo);
+
+  $('.ts-scroll').on('click', function (event) {
+    if (
+      location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
+      && location.hostname === this.hostname
+    ) {
+      let target = $(this.hash);
+      target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
+      if (target.length) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top,
+        }, 1000, () => {
+          const $target = $(target);
+          $target.focus();
+          if ($target.is(':focus')) {
+            return false;
+          }
+          $target.attr('tabindex', '-1');
+          $target.focus();
+        });
+      }
+    }
+  });
+
   $('body').imagesLoaded(() => {
     $('body').addClass('loading-done');
     const $animatedWaves = $('.ts-animated-waves');
@@ -362,42 +389,3 @@ function documentReady() {
     }
   });
 }
-
-$(document).ready(($) => {
-  documentReady();
-  $(document).on('show.bs.modal', getVideo(), addVideo);
-  $(document).on('hidden.bs.modal', removeVideo);
-
-  $('body').imagesLoaded(() => {
-    $('body').addClass('loading-done');
-    const $animatedWaves = $('.ts-animated-waves');
-    $animatedWaves.css('transform', `translateX( calc( -100% + ${$(window).width() + 5}px )`);
-    $animatedWaves.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-      $(this).toggleClass('repeat');
-    });
-  });
-
-  $('.ts-scroll').on('click', function (event) {
-    if (
-      location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
-      && location.hostname === this.hostname
-    ) {
-      let target = $(this.hash);
-      target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
-      if (target.length) {
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top,
-        }, 1000, () => {
-          const $target = $(target);
-          $target.focus();
-          if ($target.is(':focus')) {
-            return false;
-          }
-          $target.attr('tabindex', '-1');
-          $target.focus();
-        });
-      }
-    }
-  });
-});

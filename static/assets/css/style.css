@@ -1014,23 +1014,23 @@ blockquote h6 {
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
-    background-color: rgb(237, 44, 66);
-    border-color: rgb(237, 44, 66);
+    background-color: #ffab03;
+    border-color: #ffab03;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-    background-color: rgb(237, 44, 66);
-    border-color: rgb(225, 20, 44);
+    background-color: #ffab03;
+    border-color: #fdb31d;
     box-shadow: 0 .1875rem .9375rem rgba(0, 0, 0, .2);
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-    background-color: rgb(237, 44, 66);
-    border-color: rgb(237, 44, 66);
+    background-color: #ffab03;
+    border-color: #ffab03;
     box-shadow: 0 .1875rem .9375rem rgba(0, 0, 0, .2);
 }
 
@@ -4098,7 +4098,6 @@ button.btn.btn-primary.dropdown-toggle {
 
 .flag {
     width: 50%;
-    margin-left: 15%;
 }
 
 .rtl .ksaText {
