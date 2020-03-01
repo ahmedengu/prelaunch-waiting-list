@@ -382,7 +382,7 @@ function documentReady() {
   // On SCROLL actions
 
   $(window).on('scroll', () => {
-    if ($(window).scrollTop() + 100 > $(window).height()) {
+    if ($(window).scrollTop() > 100) {
       $('.navbar').addClass('in');
     } else {
       $('.navbar').removeClass('in');
