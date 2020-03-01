@@ -6,6 +6,7 @@
 const NextI18Next = require('next-i18next').default;
 
 module.exports = new NextI18Next({
+  fallbackNS: 'common',
   browserLanguageDetection: true,
   serverLanguageDetection: true,
   otherLanguages: ['en'],
