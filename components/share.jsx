@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import { domain } from '../constants';
 import { logEvent } from '../utils/analytics';
 
@@ -31,6 +32,13 @@ class Share extends Component {
     const userLink = `${domain}/?ref=${user.ref}`;
     const shareLink = encodeURIComponent(userLink);
 
+    const onShare = (action) => () => {
+      if (action !== 'addthis') {
+        toast(t('thanks-for-sharing'));
+      }
+      logEvent('share', action);
+    };
+
     return (
       <div className="row align-items-center justify-content-center m-auto">
         <a
@@ -39,9 +47,7 @@ class Share extends Component {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
-          onClick={() => {
-            logEvent('share', 'Facebook');
-          }}
+          onClick={onShare('Facebook')}
         >
           <div
             className="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium"
@@ -67,9 +73,7 @@ class Share extends Component {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"
-          onClick={() => {
-            logEvent('share', 'Twitter');
-          }}
+          onClick={onShare('Twitter')}
         >
           <div
             className="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium"
@@ -95,9 +99,7 @@ class Share extends Component {
           target="_self"
           rel="noopener noreferrer"
           aria-label="E-Mail"
-          onClick={() => {
-            logEvent('share', 'E-Mail');
-          }}
+          onClick={onShare('E-Mail')}
         >
           <div
             className="resp-sharing-button resp-sharing-button--email resp-sharing-button--medium"
@@ -123,9 +125,7 @@ class Share extends Component {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          onClick={() => {
-            logEvent('share', 'LinkedIn');
-          }}
+          onClick={onShare('LinkedIn')}
         >
           <div
             className="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--medium"
@@ -149,9 +149,7 @@ class Share extends Component {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
-          onClick={() => {
-            logEvent('share', 'WhatsApp');
-          }}
+          onClick={onShare('WhatsApp')}
         >
           <div
             className="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--medium"
@@ -174,9 +172,7 @@ class Share extends Component {
           data-url={userLink}
           data-title={t('addthis-title')}
           data-description={t('addthis-description')}
-          onClick={() => {
-            logEvent('share', 'addthis');
-          }}
+          onClick={onShare('addthis')}
         />
       </div>
     );
