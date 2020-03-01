@@ -57,6 +57,7 @@ class LoggedIn extends React.Component {
       copyInput.select();
       document.execCommand('copy');
       logEvent('share', 'copy');
+      toast(t('copied'));
     };
 
     return (
