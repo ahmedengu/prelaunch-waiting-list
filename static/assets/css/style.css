@@ -3464,6 +3464,10 @@ Main Components
     text-decoration: underline !important;
 }
 
+.not-you:hover{
+    text-decoration: none !important;
+}
+
 .stocks-earned > h3 h1 p {
     margin: 0;
     text-shadow: -1px 1px #000000;

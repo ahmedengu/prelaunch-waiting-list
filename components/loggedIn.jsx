@@ -118,7 +118,7 @@ class LoggedIn extends React.Component {
                     </div>
                     <div className="col-3">
                       <button
-                        className="btn copy-btn"
+                        className="btn copy-btn btn-outline-light"
                         type="button"
                         onClick={copy}
                       >
@@ -136,7 +136,7 @@ class LoggedIn extends React.Component {
             >
               <h3>{t('your-points')}</h3>
               <h1>{(user.points || 0)}</h1>
-              <p style={{ color: '#494745', textShadow: 'none' }} className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>{t('your-pending', { pendingPoints: (user.pendingPoints || 0) })}</p>
+              <p style={{ color: '#fbc658', textShadow: 'none' }} className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>{t('your-pending', { pendingPoints: (user.pendingPoints || 0) })}</p>
               <h4>{t('points-card-footer')}</h4>
               <p dir={dir} className="text-light">
                 {t('reservation-held', { email: user.email })}
