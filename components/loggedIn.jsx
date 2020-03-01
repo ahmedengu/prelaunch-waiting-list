@@ -61,8 +61,6 @@ class LoggedIn extends React.Component {
 
     return (
       <div className="fill">
-        <div className="main " />
-
         {user && !user.emailVerified && (
           <Unverified t={t} email={user.email || user.username} />
         )}
@@ -102,7 +100,7 @@ class LoggedIn extends React.Component {
                   className="ts-form ts-form-email ts-labels-inside-input ref-link"
                 >
                   <div className="row mb-2">
-                    <div className="col-9">
+                    <div className="col-9 pr-0">
                       <div className="form-group mb-0">
                         <input
                           style={{ direction: 'ltr', textAlign: 'left' }}

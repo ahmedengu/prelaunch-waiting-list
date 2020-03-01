@@ -42,7 +42,7 @@ class Resubscribe extends Component {
         <div className="container">
           <div className="row text-center">
             <div className="col-12 text-white">
-              <h4 className="spacing font-weight-lighter m-2" style={{ fontSize: 'medium' }}>
+              <h4 className="m-2" style={{ fontSize: '.9375rem' }}>
                 {t('you-are-not-subscribed')}
                 {' - '}
                 <button

@@ -34,25 +34,23 @@ class Unverified extends Component {
     const { loading, message } = this.state;
     return (
       <div className="checkMail_section">
-        <div className="container">
-          <div className="row text-center">
-            <div className="col-12 text-white">
-              <h4 className="font-weight-lighter m-2" style={{ fontSize: 'medium' }}>
-                {t('check-mail')}
-                {' - '}
-                <button
-                  disabled={loading}
-                  type="button"
-                  className="btn checkMail_section-btn pt-0 pb-0"
-                  onClick={() => {
-                    this.resend();
-                    logEvent('user', 'mail-resend');
-                  }}
-                >
-                  {t(message)}
-                </button>
-              </h4>
-            </div>
+        <div className="row text-center">
+          <div className="col-12 text-white">
+            <h4 className="m-2" style={{ fontSize: '.9375rem' }}>
+              {t('check-mail')}
+              {' - '}
+              <button
+                disabled={loading}
+                type="button"
+                className="btn checkMail_section-btn pt-0 pb-0"
+                onClick={() => {
+                  this.resend();
+                  logEvent('user', 'mail-resend');
+                }}
+              >
+                {t(message)}
+              </button>
+            </h4>
           </div>
         </div>
       </div>
