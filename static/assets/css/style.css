@@ -3458,13 +3458,13 @@ Main Components
     border-radius: 1rem;
 }
 
-.not-you{
+.not-you {
     color: #FFF !important;
     cursor: pointer;
     text-decoration: underline !important;
 }
 
-.not-you:hover{
+.not-you:hover {
     text-decoration: none !important;
 }
 
@@ -3724,7 +3724,7 @@ a.mx-2:hover {
     line-height: 3ex;
 }
 
-.rtl .legal-subhead{
+.rtl .legal-subhead {
     text-align: right;
     direction: rtl;
 }
@@ -4021,7 +4021,7 @@ select {
     background: #1e1b27;
     color: #e6dbae;
     position: absolute;
-    top:0px;
+    top: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4048,12 +4048,13 @@ select {
     font-size: x-large;
 }
 
-.svg-logo{
-    fill:rgb(255, 170, 51);
+.svg-logo {
+    fill: rgb(255, 170, 51);
     transition: 1s ease-in-out;
 }
-.svg-logo:hover{
-    fill:rgb(246, 134, 51);
+
+.svg-logo:hover {
+    fill: rgb(246, 134, 51);
     transition: 1s ease-in-out;
 }
 
@@ -4072,12 +4073,12 @@ select {
     font-size: .8rem;
 }
 
-.dropdown-menu > li{
+.dropdown-menu > li {
     padding-left: .6rem;
     color: #1d1d1d;
 }
 
-.dropdown-menu > li:hover{
+.dropdown-menu > li:hover {
     background-color: #fcc453;
     color: #1d1d1d;
     padding-left: .7rem;
@@ -4099,18 +4100,23 @@ button.btn.btn-primary.dropdown-toggle {
     background-color: white;
     color: #1d1d1d;
 }
+
 button.btn.btn-primary.dropdown-toggle img {
     width: 30px;
 }
-.main-content >  .row {
+
+.main-content > .row {
     flex-direction: row-reverse;
 }
+
 .at-resp-share-element .at-share-btn {
     margin: 0px 2px 0px !important;
 }
+
 .copy-btn {
     padding: .3rem 1.25rem;
 }
+
 /** Mobile style */
 
 @media screen and (max-width: 768px) {
@@ -4119,27 +4125,34 @@ button.btn.btn-primary.dropdown-toggle img {
         padding-left: 2rem;
         padding-bottom: .3125rem;
     }
+
     .main-content {
         margin-top: 100px;
     }
+
     a.push-image-container {
         margin-bottom: 20px;
         display: block;
         text-align: center;
     }
+
     .ts-block {
         padding-top: 15px;
     }
+
     #navbarNavAltMarkup {
         background-color: #000;
     }
+
     .navbar-brand {
         margin: 0;
         flex: 1;
     }
+
     .signup .dropdown {
         margin-bottom: 15px;
     }
+
     #content {
         max-width: 100%;
         margin-bottom: 15px;
@@ -4159,14 +4172,16 @@ button.btn.btn-primary.dropdown-toggle img {
         width: 3rem;
         height: 28px;
     }
-    button.btn.btn-primary.dropdown-toggle img{
+
+    button.btn.btn-primary.dropdown-toggle img {
         width: 20px;
     }
-    .submit-a{
+
+    .submit-a {
         padding: .5rem 0.8rem;
     }
 
-    .badge .text{
+    .badge .text {
         left: 35%;
     }
 
