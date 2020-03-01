@@ -27,9 +27,9 @@ class Header extends Component {
 
   render() {
     const {
-      t, country, user, lang,
+      t, country, user, lang, isError,
     } = this.props;
-    const currentPage = `/${lang}/${country}`;
+    const currentPage = isError ? `/${lang}/${country}` : '';
     return (
       <nav
         className="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element"
@@ -66,6 +66,7 @@ class Header extends Component {
               <a className="nav-item nav-link active ts-scroll" href={`${currentPage}#page-top`}>
                 {t('home')}
               </a>
+              <a className="nav-item nav-link ts-scroll" href={`${currentPage}#how-it-works`}>{t('how-it-works')}</a>
               <a className="nav-item nav-link ts-scroll" href={`${currentPage}#what-is-merquant`}>{t('about')}</a>
               <a
                 target="_blank"
@@ -97,7 +98,7 @@ class Header extends Component {
   }
 }
 
-Header.defaultProps = { referral: '' };
+Header.defaultProps = { referral: '', isError: false };
 Header.propTypes = {
   t: PropTypes.func.isRequired,
   setLangHandler: PropTypes.func.isRequired,
@@ -106,6 +107,7 @@ Header.propTypes = {
   country: PropTypes.string.isRequired,
   lang: PropTypes.string.isRequired,
   referral: PropTypes.string,
+  isError: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

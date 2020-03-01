@@ -243,7 +243,7 @@ class Signup extends React.Component {
     });
     return (
       <>
-        <header id="ts-hero" className="ts-full-screen">
+        <header id="page-top" className="ts-full-screen">
           <Header t={t} />
           <div className="container align-self-center main-content">
             <div className="row align-items-center">

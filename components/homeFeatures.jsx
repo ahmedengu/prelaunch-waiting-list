@@ -6,7 +6,7 @@ import ContactForm from './ContactForm';
 const HomeFeatures = ({ t }) => (
   <>
     <section
-      id="how-it-looks"
+      id="how-it-works"
       className="text-center ts-block"
       data-bg-size="inherit"
     >

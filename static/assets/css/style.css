@@ -1362,13 +1362,13 @@ body.has-loading-screen.loading-done:after {
   -- Hero
 -------------------------------------------*/
 
-#ts-hero {
+#page-top {
     color: #f7f6f9;
     display: flex;
     position: relative;
 }
 
-#ts-hero .ts-background-image {
+#page-top .ts-background-image {
     background-position: top center;
 }
 
@@ -1909,22 +1909,22 @@ figure.icon {
 
 /* Hero navigation arrows */
 
-#ts-hero .owl-prev, #ts-hero .owl-next {
+#page-top .owl-prev, #page-top .owl-next {
     background-color: transparent;
     border: .125rem solid rgba(255, 255, 255, .8);
 }
 
-#ts-hero .owl-prev:after, #ts-hero .owl-next:after {
+#page-top .owl-prev:after, #page-top .owl-next:after {
     line-height: 2.25rem;
 }
 
 /* Hero slider height */
 
-.ts-hero-slider {
+.page-top-slider {
     height: 100% !important;
 }
 
-.ts-hero-slider div {
+.page-top-slider div {
     height: 100% !important;
 }
 
@@ -4158,7 +4158,7 @@ button.btn.btn-primary.dropdown-toggle img {
         margin-bottom: 15px;
     }
 
-    #ts-hero .owl-prev, #ts-hero .owl-next {
+    #page-top .owl-prev, #page-top .owl-next {
         background-color: #fdb522;
     }
 

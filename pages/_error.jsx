@@ -28,8 +28,8 @@ class Error extends Component {
     const { statusCode, t } = this.props;
     return (
       <PageWrapper t={t}>
-        <header id="ts-hero" className="ts-full-screen" style={{ height: '100vh' }}>
-          <Header t={t} />
+        <header id="page-top" className="ts-full-screen" style={{ height: '100vh' }}>
+          <Header t={t} isError />
 
           <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgb(255,171,3)">
             <svg
