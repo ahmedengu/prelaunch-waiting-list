@@ -137,7 +137,18 @@ class LoggedIn extends React.Component {
             >
               <h3>{t('your-points')}</h3>
               <h1>{(user.points || 0)}</h1>
-              <p style={{ color: '#fbc658', textShadow: 'none' }} className={`card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>{t('your-pending', { pendingPoints: (user.pendingPoints || 0) })}</p>
+              <p style={{ textShadow: 'none' }} className={`text-white card-text ${user.pendingPoints > 0 ? '' : 'd-none'}`}>
+                (
+                <span style={{ color: '#fbc658', fontSize: '2rem' }}>
+                  {' '}
+                  {(user.pendingPoints || 0)}
+                  {' '}
+                </span>
+)
+                {' '}
+                {' '}
+                {t('your-pending')}
+              </p>
               <h4>{t('points-card-footer')}</h4>
               <p dir={dir} className="text-light">
                 {t('reservation-held', { email: user.email })}

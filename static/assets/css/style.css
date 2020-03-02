@@ -3496,6 +3496,9 @@ Main Components
     margin-bottom: 0;
 }
 
+.rtl .stocks-earned{
+    direction: rtl;
+}
 
 .badge {
     display: block;
@@ -3697,7 +3700,7 @@ section {
 
 
 .rtl :not(i) {
-    font-family: 'Almarai', 'serif';
+    font-family: 'Almarai', 'serif' !important;
     letter-spacing: .05ex;
 }
 
