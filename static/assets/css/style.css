@@ -3693,7 +3693,7 @@ section {
 
 
 .rtl :not(i) {
-    font-family: 'Almarai', 'serif';
+    font-family: 'Almarai', 'serif', Arial, sans-serif !important;
 }
 
 #legal {

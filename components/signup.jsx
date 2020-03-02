@@ -420,7 +420,7 @@ class Signup extends React.Component {
                       height="720"
                       src={t('youtube-video')}
                       frameBorder="0"
-                      allow="accelerometer; autoplay;"
+                      allow="accelerometer;"
                       scrolling="no"
                       allowFullScreen
                       title="video"
