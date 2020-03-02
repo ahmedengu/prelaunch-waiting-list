@@ -262,7 +262,7 @@ class Signup extends React.Component {
                 >
                   <div className="row text-center align-items-baseline">
                     <div className="col-2">
-                      <div className="dropdown">
+                      <div className="dropdown m-0">
                         <button
                           className="btn btn-primary dropdown-toggle"
                           type="button"
@@ -313,13 +313,6 @@ class Signup extends React.Component {
                       </button>
                     </div>
                   </div>
-                  <div className="row align-items-baseline">
-                    <div className="col-12 text-dark text-nowrap font-italic legal-subhead" style={{ marginTop: -15 }}>
-                      <small>
-                        {t('signup-legal')}
-                      </small>
-                    </div>
-                  </div>
                 </form>
                 {error && (<p className="text-danger" style={{ margin: 0 }}>{t(error)}</p>)}
                 <div className="row">
@@ -358,6 +351,13 @@ class Signup extends React.Component {
                         />
                       )}
                     />
+                  </div>
+                </div>
+                <div className="row align-items-baseline">
+                  <div className="col-12 text-dark text-nowrap font-italic legal-subhead">
+                    <small>
+                      {t('signup-legal')}
+                    </small>
                   </div>
                 </div>
                 <div className="row text-center mt-2">

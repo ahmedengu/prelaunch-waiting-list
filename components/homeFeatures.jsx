@@ -17,7 +17,7 @@ const HomeFeatures = ({ t }) => (
             {t('sub-2')}
           </h5>
         </div>
-        <ul className="nav nav-tabs justify-content-center my-lg-5" id="myTab" role="tablist">
+        <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
 
           <li className="nav-item">
             <a
@@ -35,7 +35,7 @@ const HomeFeatures = ({ t }) => (
         </ul>
 
         <div
-          className="tab-content pt-sm-2 pt-lg-5 ts-tabs-presentation"
+          className="tab-content pt-sm-2 pt-lg-2 ts-tabs-presentation"
           id="myTabContent"
           data-animate="ts-fadeInUp"
         >
@@ -45,7 +45,7 @@ const HomeFeatures = ({ t }) => (
             role="tabpanel"
             aria-labelledby="mobile"
           >
-            <img src={t('img-phone1')} className="mw-50" alt="" />
+            <img src={t('img-phone1')} className="mw-25" alt="" />
           </div>
         </div>
 
@@ -59,7 +59,7 @@ const HomeFeatures = ({ t }) => (
         </div>
 
         <div className="row">
-          <div className="col-md-7 col-xl-7" data-animate="ts-fadeInUp" data-offset="100" style={{ marginTop: '7%' }}>
+          <div className="col-md-7 col-xl-7 mt-lg-3 mt-sm-3" data-animate="ts-fadeInUp" data-offset="100">
             <p className="typography-body">
               {t('sub-3')}
             </p>
@@ -91,25 +91,7 @@ const HomeFeatures = ({ t }) => (
 
     <section id="features" className="ts-block">
       <div className="container">
-        <div className="row">
-          <div className="col-md-7 col-xl-7 text-center">
-            <div className="position-relative">
-              <div
-                className="col-md-12 col-xl-12 text-center"
-                data-animate="ts-fadeInUp"
-                data-delay="0.1s"
-                data-offset="100"
-              >
-                <div className="px-3">
-                  <img
-                    src={t('img-features')}
-                    className="mw-100 ts-shadow__lg ts-border-radius__md"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="row flex-row-reverse">
           <div className="col-md-5 col-xl-5" data-animate="ts-fadeInUp" data-offset="100">
             <div className="ts-title">
               <h2 className="typography-head">{t('header-4')}</h2>
@@ -177,14 +159,29 @@ const HomeFeatures = ({ t }) => (
             </ul>
 
           </div>
-
+          <div className="col-md-7 col-xl-7 text-center">
+            <div className="position-relative">
+              <div
+                className="col-md-12 col-xl-12 text-center"
+                data-animate="ts-fadeInUp"
+                data-delay="0.1s"
+                data-offset="100"
+              >
+                <div className="px-3">
+                  <img
+                    src={t('img-features')}
+                    className="mw-100 ts-shadow__lg ts-border-radius__md"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
-
     </section>
 
-    <section id="organize" className="ts-block mt-5">
+    <section id="organize" className="ts-block">
       <div className="container">
         <div className="ts-title text-center">
           <h2 className="typography-head">{t('header-5')}</h2>
