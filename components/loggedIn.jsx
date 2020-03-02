@@ -69,7 +69,7 @@ class LoggedIn extends React.Component {
           <Resubscribe t={t} user={user} />
         )}
 
-        <div className="container">
+        <div className="container" style={{ paddingTop: '5rem' }}>
           <div className="row justify-content-center">
             <div className="col-7 text-center image">
               <a href="/">
@@ -101,7 +101,7 @@ class LoggedIn extends React.Component {
                   className="ts-form ts-form-email ts-labels-inside-input ref-link"
                 >
                   <div className="row mb-2">
-                    <div className="col-9 pr-0">
+                    <div className="col-8 pr-0">
                       <div className="form-group mb-0">
                         <input
                           style={{ direction: 'ltr', textAlign: 'left' }}
