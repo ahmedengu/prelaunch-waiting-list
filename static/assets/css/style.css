@@ -3709,6 +3709,10 @@ a.mx-2:hover {
     direction: rtl;
 }
 
+.rtl .push-image-container {
+    direction: rtl;
+}
+
 .rtl > .ts-block {
     text-align: right;
 }
@@ -4186,4 +4190,8 @@ button.btn.btn-primary.dropdown-toggle img {
     .badge:hover .text {
         margin-left: -7rem;
     }
+}
+
+button#form-contact-submit:disabled {
+    cursor: no-drop;
 }

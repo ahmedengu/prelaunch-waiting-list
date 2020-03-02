@@ -88,6 +88,7 @@ class ContactForm extends Component {
                   className="form-control padding-input"
                   id="form-contact-name"
                   name="name"
+                  disabled={sent}
                   value={name}
                   onChange={(event) => {
                     this.setState({
@@ -114,6 +115,7 @@ class ContactForm extends Component {
                   className={`form-control padding-input ${error ? 'is-invalid' : ''}`}
                   id="form-contact-email"
                   name="email"
+                  disabled={sent}
                   value={email}
                   onChange={(event) => {
                     this.setState({
@@ -142,6 +144,7 @@ class ContactForm extends Component {
                   id="form-contact-message"
                   rows="5"
                   name="message"
+                  disabled={sent}
                   value={message}
                   onChange={(event) => {
                     this.setState({
@@ -161,7 +164,7 @@ class ContactForm extends Component {
             {sent && (<span className="text-success pull-left">{t('contact-sent')}</span>)}
             <button
               type="submit"
-              className={`btn btn-primary float-right ${loading && 'processing'}`}
+              className={`btn btn-dark float-right ${loading && 'processing'}`}
               id="form-contact-submit"
               disabled={loading || !(email && name && message) || sent}
             >
