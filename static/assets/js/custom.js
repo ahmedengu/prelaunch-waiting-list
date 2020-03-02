@@ -42,7 +42,7 @@ function documentReady() {
 
   $('.ts-scroll').on('click', function (event) {
     if (
-      location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
+      this && this.pathname && location && location.pathname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
       && location.hostname === this.hostname
     ) {
       let target = $(this.hash);
