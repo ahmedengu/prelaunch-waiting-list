@@ -59,7 +59,11 @@ const HomeFeatures = ({ t }) => (
         </div>
 
         <div className="row">
-          <div className="col-md-7 col-xl-7 mt-lg-3 mt-sm-3" data-animate="ts-fadeInUp" data-offset="100">
+          <div
+            className="col-md-7 col-xl-7 mt-lg-3 mt-sm-3"
+            data-animate="ts-fadeInUp"
+            data-offset="100"
+          >
             <p className="typography-body">
               {t('sub-3')}
             </p>
@@ -313,7 +317,13 @@ const HomeFeatures = ({ t }) => (
                     {t('signup-email')}
                     :
                   </div>
-                  <a href="mailto:support@merquant.com">support@merquant.com</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="mailto:support@merquant.com"
+                  >
+                    support@merquant.com
+                  </a>
                 </figure>
                 <figure>
                   <div className="font-weight-bold">
@@ -321,7 +331,13 @@ const HomeFeatures = ({ t }) => (
                     {' '}
                     Facebook:
                   </div>
-                  <a href="https://www.facebook.com/merquant">facebook.com/MerQuant</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.facebook.com/merquant"
+                  >
+                    facebook.com/MerQuant
+                  </a>
                 </figure>
                 <figure>
                   <div className="font-weight-bold">
@@ -329,7 +345,13 @@ const HomeFeatures = ({ t }) => (
                     {' '}
                     Twitter:
                   </div>
-                  <a href="https://twitter.com/merquant">twitter.com/MerQuant</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://twitter.com/merquant"
+                  >
+                    twitter.com/MerQuant
+                  </a>
                 </figure>
                 <figure>
                   <div className="font-weight-bold">
@@ -337,7 +359,13 @@ const HomeFeatures = ({ t }) => (
                     {' '}
                     Instagram:
                   </div>
-                  <a href="https://www.instagram.com/merquant/">instagram.com/MerQuant</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.instagram.com/merquant/"
+                  >
+                    instagram.com/MerQuant
+                  </a>
                 </figure>
               </address>
             </div>
