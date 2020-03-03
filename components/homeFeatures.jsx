@@ -64,7 +64,9 @@ const HomeFeatures = ({ t }) => (
               {t('sub-3')}
             </p>
             <a
-              href="https://blog.merquant.com/en/who-we-are/"
+              rel="dofollow"
+              target="_blank"
+              href={t('read-more-url')}
               className="btn btn-primary mb-4 ts-scroll"
             >
               {t('read-more')}
