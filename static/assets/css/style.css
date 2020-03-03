@@ -802,7 +802,7 @@ C. Components
 -------------------------------------------*/
 
 .ts-block {
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
     padding-top: 5rem;
     position: relative;
 }
@@ -2104,8 +2104,8 @@ figure.icon {
     }
 
     .ts-block {
-        padding-bottom: 3.3rem;
-        padding-top: 3.3rem;
+        padding-bottom: 2rem;
+        padding-top: 5rem;
     }
 
     .ts-card__image {
@@ -4136,10 +4136,6 @@ button.btn.btn-primary.dropdown-toggle img {
         margin-bottom: 20px;
         display: block;
         text-align: center;
-    }
-
-    .ts-block {
-        padding-top: 15px;
     }
 
     #navbarNavAltMarkup {
