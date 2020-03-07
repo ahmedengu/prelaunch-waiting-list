@@ -305,7 +305,7 @@ Parse.Cloud.define('checkRef', async (request, response) => {
 
 Parse.Cloud.define('contactForm', async (request, response) => {
   const {
-    email, name, message, subject,
+    email, name, message, subject, country,
   } = request.params;
 
   const emailCheck = disposableEmail.isDisposable(email);
@@ -332,7 +332,7 @@ Parse.Cloud.define('contactForm', async (request, response) => {
     to: emailConfig.fromAddress,
     replyTo: _.trim(email),
     subject,
-    text: `${message}\n\nname: ${name}\nemail: ${email}`,
+    text: `${message}\n\nname: ${name}\nemail: ${email}\ncountry: ${country}`,
   };
 
   try {

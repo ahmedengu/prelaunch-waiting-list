@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Parse from 'parse';
 import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
 import { logEvent } from '../utils/analytics';
 
 class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      country: props.country,
       email: '',
       name: '',
       message: '',
@@ -24,7 +26,9 @@ class ContactForm extends Component {
         .toLowerCase());
     };
 
-    const { email, name, message } = this.state;
+    const {
+      email, name, message, country,
+    } = this.state;
     if (!email || !validateEmail(email)) {
       this.setState({ error: 'invalid-email' });
       return;
@@ -39,6 +43,7 @@ class ContactForm extends Component {
       await Parse.Cloud.run('contactForm', {
         email,
         name,
+        country,
         message,
         subject: t('contact-subject', { name }),
       });
@@ -184,7 +189,12 @@ class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-  t: PropTypes.any,
+  t: PropTypes.func.isRequired,
+  country: PropTypes.string.isRequired,
 };
 
-export default ContactForm;
+const mapStateToProps = (state) => ({
+  country: state.country,
+});
+
+export default connect(mapStateToProps)(ContactForm);
