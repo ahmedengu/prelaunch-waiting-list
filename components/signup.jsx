@@ -210,7 +210,9 @@ class Signup extends React.Component {
         return false;
       }
       const onCountrySelectorHandler = (countryRoute) => {
+        window.removeLoading();
         Router.push(`/${countryRoute}`);
+        window.addLoading();
       };
       return (
         <li

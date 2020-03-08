@@ -1,3 +1,15 @@
+function removeLoading() {
+  $('body').addClass('no-transition-loading-screen');
+  $('body').removeClass('loading-done');
+}
+
+function addLoading() {
+  setTimeout(() => {
+    $('body').removeClass('no-transition-loading-screen');
+    $('body').addClass('loading-done');
+  }, 1000);
+}
+
 function getVideo() {
   $('.video-modal').each(function () {
     const iframe = $(this).find('iframe')[0];

@@ -12,6 +12,7 @@ import { domain } from '../constants';
 
 class Header extends Component {
   changeLang = (user) => () => {
+    window.removeLoading();
     const newLang = i18n.language === 'en' ? 'ar' : 'en';
     const { setLangHandler } = this.props;
     setLangHandler(newLang);
@@ -23,6 +24,8 @@ class Header extends Component {
       current.set('lang', newLang);
       current.save();
     }
+
+    window.addLoading();
   };
 
   render() {

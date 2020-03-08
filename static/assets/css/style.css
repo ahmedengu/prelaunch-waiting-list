@@ -1338,6 +1338,10 @@ body.has-loading-screen.loading-done:after {
     opacity: 0;
 }
 
+body.no-transition-loading-screen:before {
+    transition: none !important;
+}
+
 /*-------------------------------------------
   -- Map
 -------------------------------------------*/
