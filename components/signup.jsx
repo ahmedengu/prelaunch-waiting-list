@@ -245,6 +245,16 @@ class Signup extends React.Component {
     });
     return (
       <>
+        {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
+        <iframe
+          id="background-video"
+          width="951"
+          height="535"
+          src="https://www.youtube.com/embed/TEjaAshjnXI?version=3&autoplay=1&loop=1&controls=0&showinfo=0"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay controls"
+        />
         <header id="page-top" className="ts-full-screen">
           <Header t={t} />
           <div className="container align-self-center main-content">
@@ -435,23 +445,7 @@ class Signup extends React.Component {
           </div>
         </header>
 
-        <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgb(255,171,3)">
-          <svg
-            className="ts-svg ts-parallax-element"
-            width="100%"
-            height="100%"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs />
-            <path
-              className="ts-dynamic-wave"
-              d=""
-              data-wave-height=".6"
-              data-wave-bones="4"
-              data-wave-speed="0.15"
-            />
-          </svg>
+        <div id="ts-dynamic-waves" className="ts-background" data-bg-color="rgba(255, 171, 3, 0.72)">
           <svg
             className="ts-svg"
             width="100%"
