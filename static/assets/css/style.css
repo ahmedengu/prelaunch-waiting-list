@@ -2283,11 +2283,11 @@ figure.icon {
 
 #ts-dynamic-waves svg {
     background: #ffab03;
-    background: -webkit-linear-gradient(left, #ffab03, #fbc658);
-    background: -moz-linear-gradient(left, #ffab03, #fbc658);
-    background: -ms-linear-gradient(left, #ffab03, #fbc658);
-    background: -o-linear-gradient(left, #ffab03, #fbc658);
-    background: linear-gradient(to right, #ffab03, #fbc658);
+    background: -webkit-linear-gradient(to right, #ffab039e, #fbc658e0);
+    background: -moz-linear-gradient(to right, #ffab039e, #fbc658e0);
+    background: -ms-linear-gradient(to right, #ffab039e, #fbc658e0);
+    background: -o-linear-gradient(to right, #ffab039e, #fbc658e0);
+    background: linear-gradient(to right, #ffab039e, #fbc658e0);
 }
 
 #navbarNavAltMarkup {
@@ -4195,4 +4195,13 @@ button.btn.btn-primary.dropdown-toggle img {
 
 button#form-contact-submit:disabled {
     cursor: no-drop;
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 93%;
+    z-index: -2;
 }
