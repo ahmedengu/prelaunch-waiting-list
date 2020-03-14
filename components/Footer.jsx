@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import {
+  FiFacebook, FiLinkedin, FiTwitter, FiInstagram,
+} from 'react-icons/fi';
 
 const Footer = ({ t }) => (
   <footer
@@ -32,6 +34,15 @@ const Footer = ({ t }) => (
               <FiTwitter />
             </a>
             <a
+              title="Instagram"
+              className="mx-2"
+              href="https://www.instagram.com/merquant"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiInstagram />
+            </a>
+            <a
               title="Linkedin"
               className="mx-2"
               href="https://www.linkedin.com/company/merquant"
@@ -60,7 +71,6 @@ const Footer = ({ t }) => (
     <script src="/static/assets/js/imagesloaded.pkgd.min.js" />
     <script src="/static/assets/js/isInViewport.jquery.js" />
     <script src="/static/assets/js/jquery.particleground.min.js" />
-    <script src="/static/assets/js/owl.carousel.min.js" />
     <script src="/static/assets/js/scrolla.jquery.min.js" />
     <script src="/static/assets/js/jquery.validate.min.js" />
     <script src="/static/assets/js/jquery-validate.bootstrap-tooltip.min.js" />

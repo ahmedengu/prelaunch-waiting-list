@@ -269,10 +269,10 @@ const HomeFeatures = ({ t }) => (
         <div className="row">
           <div className="col-sm-12">
             <div className="ts-promo-number text-center">
-              <h1 style={{ fontSize: '2.5rem', marginBottom: '-12px' }}>Start Investment with MerQuant</h1>
-              <h1 style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '3rem' }}>Sign Up, it's free!</h1>
+              <h1 style={{ fontSize: '2.5rem', marginBottom: '-12px' }}>{t('start_with_merquant')}</h1>
+              <h1 style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '3rem' }}>{t('free-signup')}</h1>
               {/* eslint-disable-next-line react/button-has-type */}
-              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="signupBottom">Get Early Access</button>
+              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="signupBottom">{t('early-access')}</button>
             </div>
           </div>
 
@@ -319,14 +319,15 @@ const HomeFeatures = ({ t }) => (
     >
       <div className="container contact">
         <div className="ts-box mb-0 p-5 ts-mt__n-10">
-          <div className="row">
+          <div className="row" style={{ direction: 'ltr' }}>
             <div className="col-md-4">
               <h3>{t('contact-us')}</h3>
-              <address>
+              <address className="text-left">
                 <figure>
                   <div className="font-weight-bold">
-                    {t('signup-email')}
-                    :
+                    <i className="fa fa-envelope" />
+                    {' '}
+                    Email:
                   </div>
                   <a
                     target="_blank"
@@ -347,7 +348,7 @@ const HomeFeatures = ({ t }) => (
                     rel="noopener noreferrer"
                     href="https://www.facebook.com/merquant"
                   >
-                    facebook.com/MerQuant
+                    facebook.com/merquant
                   </a>
                 </figure>
                 <figure>
@@ -361,7 +362,7 @@ const HomeFeatures = ({ t }) => (
                     rel="noopener noreferrer"
                     href="https://twitter.com/merquant"
                   >
-                    twitter.com/MerQuant
+                    twitter.com/merquant
                   </a>
                 </figure>
                 <figure>
@@ -373,9 +374,23 @@ const HomeFeatures = ({ t }) => (
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.instagram.com/merquant/"
+                    href="https://www.instagram.com/merquant"
                   >
-                    instagram.com/MerQuant
+                    instagram.com/merquant
+                  </a>
+                </figure>
+                <figure>
+                  <div className="font-weight-bold">
+                    <i className="fab fa-linkedin" />
+                    {' '}
+                    Linkedin:
+                  </div>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.linkedin.com/company/merquant"
+                  >
+                    linkedin.com/company/merquant
                   </a>
                 </figure>
               </address>
