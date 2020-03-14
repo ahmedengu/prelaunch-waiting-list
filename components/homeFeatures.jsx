@@ -308,14 +308,15 @@ const HomeFeatures = ({ t }) => (
     >
       <div className="container contact">
         <div className="ts-box mb-0 p-5 ts-mt__n-10">
-          <div className="row">
+          <div className="row" style={{ direction: 'ltr' }}>
             <div className="col-md-4">
               <h3>{t('contact-us')}</h3>
-              <address>
+              <address className="text-left">
                 <figure>
                   <div className="font-weight-bold">
-                    {t('signup-email')}
-                    :
+                    <i className="fa fa-envelope" />
+                    {' '}
+                    Email:
                   </div>
                   <a
                     target="_blank"
