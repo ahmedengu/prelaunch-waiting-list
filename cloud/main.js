@@ -146,7 +146,8 @@ Parse.Cloud.beforeSave(Parse.User, async (request) => {
     }
   } else if (!request.master && !(request.object.dirtyKeys()
     && request.object.dirtyKeys().length === 1
-    && (request.object.dirtyKeys().includes('lang') || request.object.dirtyKeys().includes('authData')))) {
+    && (request.object.dirtyKeys().includes('lang') || request.object.dirtyKeys()
+      .includes('authData')))) {
     throw 'not-allowed';
   }
 });
@@ -290,6 +291,10 @@ Parse.Cloud.define('checkRef', async (request, response) => {
   const { ref } = request.params;
 
   if (ref) {
+    const key = `ref_${ref}`;
+    if (cache.get(key)) {
+      return ref;
+    }
     const query = new Parse.Query(Parse.User);
 
     const user = await query
@@ -297,6 +302,7 @@ Parse.Cloud.define('checkRef', async (request, response) => {
       .first({ useMasterKey: true });
 
     if (user && user.get('ref') === ref) {
+      cache.put(key, true, 1000 * 60 * 60);
       return ref;
     }
   }
