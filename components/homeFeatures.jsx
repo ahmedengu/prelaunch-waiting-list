@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ContactForm from './ContactForm';
 
-
 const HomeFeatures = ({ t }) => (
   <>
     <section
@@ -265,6 +264,21 @@ const HomeFeatures = ({ t }) => (
       </div>
     </section>
 
+    <section id="bottomSignup" className="ts-block ts-separate-bg-element">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12">
+            <div className="ts-promo-number text-center">
+              <h1 style={{ fontSize: '2.5rem', marginBottom: '-12px' }}>Start Investment with MerQuant</h1>
+              <h1 style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '3rem' }}>Sign Up, it's free!</h1>
+              {/* eslint-disable-next-line react/button-has-type */}
+              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="signupBottom">Get Early Access</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
     <section id="numbers" className="ts-block ts-separate-bg-element">
       <div className="container">
         <div className="ts-promo-numbers">
@@ -302,9 +316,6 @@ const HomeFeatures = ({ t }) => (
       id="contact"
       style={{ margin: 0 }}
       className="ts-separate-bg-element"
-      data-bg-image={t('img-contact')}
-      data-bg-image-opacity=".1"
-      data-bg-color="#313131"
     >
       <div className="container contact">
         <div className="ts-box mb-0 p-5 ts-mt__n-10">

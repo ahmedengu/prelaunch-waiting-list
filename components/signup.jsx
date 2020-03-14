@@ -24,6 +24,8 @@ class Signup extends React.Component {
       loading: false,
       width: 1024,
       country: '',
+      showScrollTopButton: false,
+      scrollTopAltStyle: false,
     };
 
     if (process.browser) {
@@ -40,6 +42,9 @@ class Signup extends React.Component {
   componentDidMount() {
     window.documentReady();
     this.setState({ width: window.innerWidth });
+    document.addEventListener('scroll', () => {
+      this.onScroll();
+    });
   }
 
   async register(notMounted = false, providerName = '', authData = {}) {
@@ -182,6 +187,55 @@ class Signup extends React.Component {
     });
   };
 
+  onScroll = () => {
+    if (window.pageYOffset > 300) {
+      this.setState({
+        showScrollTopButton: true,
+      });
+    } else {
+      this.setState({
+        showScrollTopButton: false,
+      });
+    }
+
+    if (window.pageYOffset > 3600) {
+      this.setState({
+        scrollTopAltStyle: true,
+      });
+    } else {
+      this.setState({
+        scrollTopAltStyle: false,
+      });
+    }
+  };
+
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    this.setState({
+      showScrollTopButton: false,
+      scrollTopAltStyle: false,
+    });
+  }
+
+  backToTopButton = () => {
+    const { showScrollTopButton, scrollTopAltStyle } = this.state;
+    if (showScrollTopButton && !scrollTopAltStyle) {
+      return (
+      // eslint-disable-next-line react/button-has-type,jsx-a11y/control-has-associated-label
+        <button onClick={this.scrollToTop} id="scrollTopButton" title="Go to top"><i className="backTopArrow fas fa-arrow-up" /></button>
+      );
+    } if (showScrollTopButton && scrollTopAltStyle) {
+      return (
+      // eslint-disable-next-line react/button-has-type,jsx-a11y/control-has-associated-label
+        <button style={{ backgroundColor: '#ffab04', color: '#1e1e1e' }} onClick={this.scrollToTop} id="scrollTopButton" title="Go to top"><i className="backTopArrow fas fa-arrow-up" /></button>
+      );
+    }
+    return null;
+  };
+
   render() {
     const { t, country } = this.props;
     const {
@@ -244,8 +298,9 @@ class Signup extends React.Component {
       );
     });
     return (
-      <>
+      <div className="scroll-to-top">
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
+        {this.backToTopButton()}
         <iframe
           id="background-video"
           width="951"
@@ -466,7 +521,7 @@ class Signup extends React.Component {
         </div>
 
         <HomeFeatures t={t} />
-      </>
+      </div>
     );
   }
 }
