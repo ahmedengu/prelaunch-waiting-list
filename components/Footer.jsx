@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {
   FiFacebook, FiLinkedin, FiTwitter, FiInstagram,
 } from 'react-icons/fi';
+import {
+  FaBlog,
+} from 'react-icons/fa';
 
 const Footer = ({ t }) => (
   <footer
@@ -32,6 +35,15 @@ const Footer = ({ t }) => (
               rel="noopener noreferrer"
             >
               <FiTwitter />
+            </a>
+            <a
+              title="Blog"
+              className="mx-2"
+              href="https://blog.merquant.com"
+              target="_blank"
+              rel="dofollow"
+            >
+              <FaBlog />
             </a>
             <a
               title="Instagram"
