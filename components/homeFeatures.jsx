@@ -336,7 +336,7 @@ const HomeFeatures = ({ t }) => (
                     rel="noopener noreferrer"
                     href="https://www.facebook.com/merquant"
                   >
-                    facebook.com/MerQuant
+                    facebook.com/merquant
                   </a>
                 </figure>
                 <figure>
@@ -350,7 +350,7 @@ const HomeFeatures = ({ t }) => (
                     rel="noopener noreferrer"
                     href="https://twitter.com/merquant"
                   >
-                    twitter.com/MerQuant
+                    twitter.com/merquant
                   </a>
                 </figure>
                 <figure>
@@ -362,9 +362,23 @@ const HomeFeatures = ({ t }) => (
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.instagram.com/merquant/"
+                    href="https://www.instagram.com/merquant"
                   >
-                    instagram.com/MerQuant
+                    instagram.com/merquant
+                  </a>
+                </figure>
+                <figure>
+                  <div className="font-weight-bold">
+                    <i className="fab fa-linkedin" />
+                    {' '}
+                    Linkedin:
+                  </div>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.linkedin.com/company/merquant"
+                  >
+                    linkedin.com/company/merquant
                   </a>
                 </figure>
               </address>

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import {
+  FiFacebook, FiLinkedin, FiTwitter, FiInstagram,
+} from 'react-icons/fi';
 
 const Footer = ({ t }) => (
   <footer
@@ -30,6 +32,15 @@ const Footer = ({ t }) => (
               rel="noopener noreferrer"
             >
               <FiTwitter />
+            </a>
+            <a
+              title="Instagram"
+              className="mx-2"
+              href="https://www.instagram.com/merquant"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiInstagram />
             </a>
             <a
               title="Linkedin"
