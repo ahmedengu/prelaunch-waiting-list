@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
+import OwlCarousel from 'react-owl-carousel2';
 import { Router } from '../i18n';
 import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
@@ -390,7 +391,19 @@ class Signup extends React.Component {
                 </div>
               </div>
               <div className="col-lg-4 col-sm-12">
-                <div className="owl-carousel text-center" data-owl-nav="1" data-owl-loop="1">
+                <OwlCarousel
+                  options={{
+                    items: 1,
+                    nav: true,
+                    rewind: true,
+                    autoplay: true,
+                    navText: [],
+                    dots: false,
+                  }}
+                  className="owl-carousel text-center"
+                  data-owl-nav="1"
+                  data-owl-loop="1"
+                >
                   <img
                     src={t('carousel-1')}
                     className="d-inline-block mw-100 ts-width__auto"
@@ -406,7 +419,7 @@ class Signup extends React.Component {
                     className="d-inline-block mw-100 ts-width__auto"
                     alt=""
                   />
-                </div>
+                </OwlCarousel>
               </div>
             </div>
           </div>

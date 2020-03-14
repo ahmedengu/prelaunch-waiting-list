@@ -71,7 +71,6 @@ const Footer = ({ t }) => (
     <script src="/static/assets/js/imagesloaded.pkgd.min.js" />
     <script src="/static/assets/js/isInViewport.jquery.js" />
     <script src="/static/assets/js/jquery.particleground.min.js" />
-    <script src="/static/assets/js/owl.carousel.min.js" />
     <script src="/static/assets/js/scrolla.jquery.min.js" />
     <script src="/static/assets/js/jquery.validate.min.js" />
     <script src="/static/assets/js/jquery-validate.bootstrap-tooltip.min.js" />

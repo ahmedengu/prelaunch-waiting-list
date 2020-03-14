@@ -28,6 +28,7 @@
   "dependencies": {
     "@honeybadger-io/webpack": "^1.2.0",
     "@zeit/next-sass": "^1.0.1",
+    "bootstrap": "^4.0.0",
     "cron": "1.7.2",
     "express": "^4.16.4",
     "geoip-country": "^3.2.5",
@@ -43,6 +44,7 @@
     "next-i18next": "1.2.1",
     "next-redux-wrapper": "^4.0.0",
     "node-sass": "^4.12.0",
+    "nodemailer": "4.7.0",
     "parse": "^2.11.0",
     "parse-dashboard": "^2.0.5",
     "parse-server": "^4.1.0",
@@ -57,13 +59,14 @@
     "react-google-login": "^5.0.6",
     "react-hotjar": "^2.0.2",
     "react-icons": "^3.7.0",
+    "react-owl-carousel2": "^0.3.0",
     "react-redux": "^7.1.1",
     "react-social-login-buttons": "^3.0.0",
     "react-toastify": "^5.4.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "rendrr-disposable-email-list": "^1.0.7",
-    "uuid": "^3.3.3",
-    "nodemailer": "4.7.0"
+    "sass-google-fonts": "^1.0.1",
+    "uuid": "^3.3.3"
   }
 }

@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Parse from 'parse';
-
-import Head from 'next/head';
-import { FiFacebook, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { withRouter } from 'next/router';
-import { i18n, Link } from '../i18n';
+import { i18n } from '../i18n';
 import { setLang } from '../store';
-import { domain } from '../constants';
 
 class Header extends Component {
   changeLang = (user) => () => {
