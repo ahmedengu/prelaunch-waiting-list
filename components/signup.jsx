@@ -304,7 +304,7 @@ class Signup extends React.Component {
         {this.backToTopButton()}
         <iframe
           id="background-video"
-          width="951"
+          width="100%"
           height="535"
           src="https://www.youtube.com/embed/TEjaAshjnXI?version=3&autoplay=1&loop=1&controls=0&showinfo=0"
           frameBorder="0"
