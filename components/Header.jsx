@@ -87,6 +87,8 @@ class Header extends Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
+                  <i className="fa fa-globe" />
+                  {' '}
                   {t('current-lang')}
                 </button>
                 <div className="dropdown-menu dropdown-menu-right">
