@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import nextCookie from 'next-cookies';
 import cookie from 'js-cookie';
 import * as qs from 'qs';
-import { PageTransition } from 'next-page-transitions';
 import { toast } from 'react-toastify';
 import fetch from 'isomorphic-unfetch';
 import { appWithTranslation, i18n, Router } from '../i18n';
