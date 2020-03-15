@@ -183,28 +183,24 @@ class Signup extends React.Component {
 
   onScroll = () => {
     const { showScrollTopButton, scrollTopAltStyle } = this.state;
+    const newState = {};
     if (window.pageYOffset > 300) {
       if (!showScrollTopButton) {
-        this.setState({
-          showScrollTopButton: true,
-        });
+        newState.showScrollTopButton = true;
+      }
+      if (window.pageYOffset > 3600) {
+        if (!scrollTopAltStyle) {
+          newState.scrollTopAltStyle = true;
+        }
+      } else if (scrollTopAltStyle) {
+        newState.scrollTopAltStyle = false;
       }
     } else if (showScrollTopButton) {
-      this.setState({
-        showScrollTopButton: false,
-      });
+      newState.showScrollTopButton = false;
     }
 
-    if (window.pageYOffset > 3600) {
-      if (!scrollTopAltStyle) {
-        this.setState({
-          scrollTopAltStyle: true,
-        });
-      }
-    } else if (scrollTopAltStyle) {
-      this.setState({
-        scrollTopAltStyle: false,
-      });
+    if (Object.keys(newState).length) {
+      this.setState(newState);
     }
   };
 
@@ -212,10 +208,6 @@ class Signup extends React.Component {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
-    });
-    this.setState({
-      showScrollTopButton: false,
-      scrollTopAltStyle: false,
     });
   }
 
