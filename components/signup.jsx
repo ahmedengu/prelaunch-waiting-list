@@ -181,29 +181,27 @@ class Signup extends React.Component {
     }
   }
 
-  countryChange = (value) => {
-    const { target: { value: country } } = value;
-    this.setState({
-      country,
-    });
-  };
-
   onScroll = () => {
+    const { showScrollTopButton, scrollTopAltStyle } = this.state;
     if (window.pageYOffset > 300) {
-      this.setState({
-        showScrollTopButton: true,
-      });
-    } else {
+      if (!showScrollTopButton) {
+        this.setState({
+          showScrollTopButton: true,
+        });
+      }
+    } else if (showScrollTopButton) {
       this.setState({
         showScrollTopButton: false,
       });
     }
 
     if (window.pageYOffset > 3600) {
-      this.setState({
-        scrollTopAltStyle: true,
-      });
-    } else {
+      if (!scrollTopAltStyle) {
+        this.setState({
+          scrollTopAltStyle: true,
+        });
+      }
+    } else if (scrollTopAltStyle) {
       this.setState({
         scrollTopAltStyle: false,
       });
@@ -223,15 +221,19 @@ class Signup extends React.Component {
 
   backToTopButton = () => {
     const { showScrollTopButton, scrollTopAltStyle } = this.state;
-    if (showScrollTopButton && !scrollTopAltStyle) {
+    if (showScrollTopButton) {
+      const style = scrollTopAltStyle ? { backgroundColor: '#ffab04', color: '#1e1e1e' } : {};
       return (
-      // eslint-disable-next-line react/button-has-type,jsx-a11y/control-has-associated-label
-        <button onClick={this.scrollToTop} id="scrollTopButton" title="Go to top"><i className="backTopArrow fas fa-arrow-up" /></button>
-      );
-    } if (showScrollTopButton && scrollTopAltStyle) {
-      return (
-      // eslint-disable-next-line react/button-has-type,jsx-a11y/control-has-associated-label
-        <button style={{ backgroundColor: '#ffab04', color: '#1e1e1e' }} onClick={this.scrollToTop} id="scrollTopButton" title="Go to top"><i className="backTopArrow fas fa-arrow-up" /></button>
+        <button
+          type="button"
+          aria-label="Go to top"
+          style={style}
+          onClick={this.scrollToTop}
+          id="scrollTopButton"
+          title="Go to top"
+        >
+          <i className="backTopArrow fas fa-arrow-up" />
+        </button>
       );
     }
     return null;
