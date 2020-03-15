@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ContactForm from './ContactForm';
 
+const backToSignup = () => {
+  window.$('html').animate({
+    scrollTop: 0,
+  }, 1000, 'linear', () => {
+    window.$('#email-subscribe').focus();
+  });
+};
+
 const HomeFeatures = ({ t }) => (
   <>
     <section
@@ -271,8 +279,13 @@ const HomeFeatures = ({ t }) => (
             <div className="ts-promo-number text-center">
               <h1 style={{ fontSize: '2.5rem', marginBottom: '-12px' }}>{t('start_with_merquant')}</h1>
               <h1 style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '3rem' }}>{t('free-signup')}</h1>
-              {/* eslint-disable-next-line react/button-has-type */}
-              <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="signupBottom">{t('early-access')}</button>
+              <button
+                type="button"
+                onClick={backToSignup}
+                className="signupBottom"
+              >
+                {t('early-access')}
+              </button>
             </div>
           </div>
 
