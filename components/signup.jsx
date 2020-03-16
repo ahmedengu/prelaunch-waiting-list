@@ -297,15 +297,6 @@ class Signup extends React.Component {
       <div className="scroll-to-top">
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
         {this.backToTopButton()}
-        <iframe
-          id="background-video"
-          width="100%"
-          height="535"
-          src="https://www.youtube.com/embed/TEjaAshjnXI?version=3&autoplay=1&loop=1&controls=0&showinfo=0"
-          frameBorder="0"
-          allowFullScreen
-          allow="autoplay controls"
-        />
         <header id="page-top" className="ts-full-screen">
           <Header t={t} />
           <div className="container align-self-center main-content">
