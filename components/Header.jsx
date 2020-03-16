@@ -5,10 +5,11 @@ import Parse from 'parse';
 import { withRouter } from 'next/router';
 import { i18n } from '../i18n';
 import { setLang } from '../store';
+import { addLoading, removeLoading } from '../static/assets/js/custom';
 
 class Header extends Component {
   changeLang = (user) => () => {
-    window.removeLoading();
+    removeLoading();
     const newLang = i18n.language === 'en' ? 'ar' : 'en';
     const { setLangHandler } = this.props;
     setLangHandler(newLang);
@@ -21,7 +22,7 @@ class Header extends Component {
       current.save();
     }
 
-    window.addLoading();
+    addLoading();
   };
 
   render() {

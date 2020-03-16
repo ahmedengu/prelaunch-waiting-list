@@ -15,6 +15,7 @@ import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
 import Header from './Header';
+import { addLoading, documentReady, removeLoading } from '../static/assets/js/custom';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    window.documentReady();
+    documentReady();
     this.setState({ width: window.innerWidth });
     document.addEventListener('scroll', () => {
       this.onScroll();
@@ -259,9 +260,9 @@ class Signup extends React.Component {
         return false;
       }
       const onCountrySelectorHandler = (countryRoute) => {
-        window.removeLoading();
+        removeLoading();
         Router.push(`/${countryRoute}`);
-        window.addLoading();
+        addLoading();
       };
       return (
         <li

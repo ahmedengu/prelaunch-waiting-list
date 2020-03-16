@@ -270,3 +270,9 @@ function documentReady() {
     }
   });
 }
+
+export {
+  documentReady,
+  addLoading,
+  removeLoading,
+};
