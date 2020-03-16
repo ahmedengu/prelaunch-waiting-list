@@ -2,7 +2,15 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 // ---------------------------------------------
 export default class CustomDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    const { req } = ctx;
+
+    return { ...initialProps, isBot: (req.get('User-Agent') || '').toLowerCase().includes('bot') };
+  }
+
   render() {
+    const { isBot } = this.props;
     return (
       <html lang="en-US">
         <Head />
@@ -21,7 +29,7 @@ export default class CustomDocument extends Document {
           />
         </noscript>
 
-        <body data-spy="scroll" data-target=".navbar" className="has-loading-screen" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+        <body data-spy="scroll" data-target=".navbar" className={isBot ? '' : 'has-loading-screen'} data-bg-parallax="scroll" data-bg-parallax-speed="3">
           <Main />
           <NextScript />
         </body>
