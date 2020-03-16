@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  FiFacebook, FiLinkedin, FiTwitter, FiInstagram,
+  FiFacebook, FiLinkedin, FiTwitter, FiInstagram, FiYoutube,
 } from 'react-icons/fi';
 import {
   FaBlog,
@@ -35,6 +35,15 @@ const Footer = ({ t }) => (
               rel="noopener noreferrer"
             >
               <FiTwitter />
+            </a>
+            <a
+              title="YouTube"
+              className="mx-2"
+              href="https://www.youtube.com/channel/UC5sXswGcRPseLizTDCltOJw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiYoutube />
             </a>
             <a
               title="Blog"
