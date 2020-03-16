@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+    <url>
+        <loc>https://merquant.com</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://merquant.com/ar/egypt</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://merquant.com/en/egypt</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://merquant.com/ar/saudi</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://merquant.com/en/saudi</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://merquant.com/ar/emirates</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://merquant.com/en/emirates</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://blog.merquant.com</loc>
+        <lastmod>2020-03-16T07:54:19+00:00</lastmod>
+    </url>
+
+
+</urlset>
