@@ -272,7 +272,7 @@ const HomeFeatures = ({ t }) => (
       </div>
     </section>
 
-    <section id="bottomSignup" className="ts-block ts-separate-bg-element">
+    <section id="bottomSignup" className="ts-block ts-shape-mask__up ts-shape-mask__down">
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
@@ -282,7 +282,7 @@ const HomeFeatures = ({ t }) => (
               <button
                 type="button"
                 onClick={backToSignup}
-                className="signupBottom"
+                className="btn btn-lg btn-outline-dark mb-5"
               >
                 {t('early-access')}
               </button>
