@@ -48,13 +48,15 @@ class Signup extends React.Component {
   }
 
   videoOnClick = () => {
-    console.log('sdfsdf');
     window.scrollTo({
       top: window.$('#merquant-video').offset().top - 100,
       behavior: 'smooth',
     });
     const { setPlay } = this.props;
-    setPlay(true);
+    setPlay(false);
+    setTimeout(() => {
+      setPlay(true);
+    }, 0);
   };
 
   onScroll = () => {
