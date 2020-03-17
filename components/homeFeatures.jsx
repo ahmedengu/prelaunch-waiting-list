@@ -21,7 +21,7 @@ class HomeFeatures extends Component {
   componentDidUpdate(prevProps) {
     const { playVideo } = this.props;
     const { video } = this.state;
-    if (!prevProps.playVideo && playVideo && video) {
+    if (!prevProps.playVideo && playVideo && video && typeof video.playVideo === 'function') {
       video.playVideo();
     }
   }

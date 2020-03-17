@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Footer from './Footer';
 import CustomHead from './CustomHead';
+import BackToTop from './backToTop';
 
 const PageWrapper = ({
   t, children, lang,
 }) => (
   <>
     <CustomHead t={t} />
+    <BackToTop />
     <main>
       <div className={lang === 'ar' ? 'rtl' : ''}>
         {children}
