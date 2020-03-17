@@ -11,7 +11,7 @@ import GoogleLogin from 'react-google-login';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import OwlCarousel from 'react-owl-carousel2';
 import { Router } from '../i18n';
-import { setLang, setPlayVideo, setUser } from '../store';
+import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
 import Header from './Header';
@@ -25,6 +25,7 @@ class Signup extends React.Component {
       error: '',
       loading: false,
       country: '',
+      playVideo: false,
     };
 
     if (process.browser) {
@@ -42,15 +43,18 @@ class Signup extends React.Component {
     documentReady();
   }
 
+  setPlay = (playVideo) => {
+    this.setState({ playVideo });
+  };
+
   videoOnClick = () => {
     window.scrollTo({
       top: window.$('#merquant-video').offset().top - 100,
       behavior: 'smooth',
     });
-    const { setPlay } = this.props;
-    setPlay(false);
+    this.setPlay(false);
     setTimeout(() => {
-      setPlay(true);
+      this.setPlay(true);
     }, 100);
   };
 
@@ -190,7 +194,7 @@ class Signup extends React.Component {
   render() {
     const { t, country } = this.props;
     const {
-      email, loading, error,
+      email, loading, error, playVideo,
     } = this.state;
     const countriesData = [
       {
@@ -440,7 +444,7 @@ class Signup extends React.Component {
           </svg>
         </div>
 
-        <HomeFeatures t={t} />
+        <HomeFeatures t={t} playVideo={playVideo} setPlay={this.setPlay} />
       </div>
     );
   }
@@ -454,7 +458,6 @@ Signup.propTypes = {
   referral: PropTypes.string,
   lang: PropTypes.string.isRequired,
   setLangHandler: PropTypes.func.isRequired,
-  setPlay: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -466,7 +469,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setUserHandler: setUser,
   setLangHandler: setLang,
-  setPlay: setPlayVideo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

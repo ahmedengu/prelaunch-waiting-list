@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import YouTube from '@u-wave/react-youtube';
-import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
-import { setPlayVideo } from '../store';
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -19,15 +17,15 @@ class HomeFeatures extends Component {
     this.state = { video: {} };
   }
 
-  componentDidMount() {
-    const { setPlay, playVideo } = this.props;
-
-    document.addEventListener('scroll', () => {
-      if (!playVideo && window.$('#merquant-video') && window.$('#merquant-video').offset() && window.pageYOffset > window.$('#merquant-video').offset().top - 150) {
-        setPlay(true);
-      }
-    });
-  }
+  // componentDidMount() {
+  //   const { setPlay, playVideo } = this.props;
+  //
+  //   document.addEventListener('scroll', () => {
+  //     if (!playVideo && window.$('#merquant-video') && window.$('#merquant-video').offset() && window.pageYOffset > window.$('#merquant-video').offset().top - 150) {
+  //       setPlay(true);
+  //     }
+  //   });
+  // }
 
   componentDidUpdate(prevProps) {
     const { playVideo } = this.props;
@@ -416,12 +414,5 @@ HomeFeatures.propTypes = {
   playVideo: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  playVideo: state.playVideo,
-});
 
-const mapDispatchToProps = {
-  setPlay: setPlayVideo,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeFeatures);
+export default HomeFeatures;
