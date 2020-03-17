@@ -3780,6 +3780,10 @@ a.mx-2:hover {
 }
 
 .rtl {
+  #features{
+    text-align: right;
+  }
+
   select, .push-image-container {
     direction: rtl;
   }
