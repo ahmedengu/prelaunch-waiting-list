@@ -21,7 +21,7 @@ class BackToTop extends Component {
       if (!showScrollTopButton) {
         newState.showScrollTopButton = true;
       }
-      if (window.pageYOffset > 3600) {
+      if (window.pageYOffset > 1500) {
         if (!scrollTopAltStyle) {
           newState.scrollTopAltStyle = true;
         }
