@@ -165,8 +165,8 @@ class ContactForm extends Component {
 
           </div>
 
-          <div className="form-group clearfix">
-            {sent && (<span className="text-success pull-left">{t('contact-sent')}</span>)}
+          <div className="form-group clearfix text-left">
+            {sent && (<span className="text-success">{t('contact-sent')}</span>)}
             <button
               type="submit"
               className={`btn btn-dark float-right ${loading && 'processing'}`}
