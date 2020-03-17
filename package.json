@@ -67,7 +67,6 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "rendrr-disposable-email-list": "^1.0.7",
-    "sass-google-fonts": "^1.0.1",
     "uuid": "^3.3.3"
   }
 }

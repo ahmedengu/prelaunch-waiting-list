@@ -1,13 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~react-toastify/scss/main.scss";
 @import "~react-owl-carousel2/src/owl.carousel.css";
-@import "~sass-google-fonts/src/GoogleFonts";
 
-@include google-font('Almarai');
-@include google-font('Roboto');
-@include google-font('Source Sans Pro');
-@include google-font('Poppins', '400,500,600');
-
+@import url( "https://fonts.googleapis.com/css?family=Almarai|Roboto|Poppins:400,500,600" );
 
 /***********************************************************************************************************************
 A. Basic Styling
@@ -3728,7 +3723,7 @@ button.btn.btn-secondary.dropdown-toggle {
   line-height: 1.04167;
   font-weight: 600;
   letter-spacing: -.015em;
-  font-family: 'Roboto', 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .typography-subhead {
@@ -3736,7 +3731,7 @@ button.btn.btn-secondary.dropdown-toggle {
   line-height: 1.125;
   font-weight: 600;
   letter-spacing: .004em;
-  font-family: 'Roboto', 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .width-70 {

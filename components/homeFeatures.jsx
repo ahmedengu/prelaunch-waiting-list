@@ -174,7 +174,7 @@ class HomeFeatures extends Component {
                   data-delay=".1s"
                 >
                   <span style={{ fontSize: '3em' }}>
-                    <i className="stroke-transparent fas fa-lightbulb-o" />
+                    <i className="stroke-transparent fas fa-lightbulb" />
                   </span>
                   <h4 className="mb-2">{t('sub-5-2')}</h4>
                   <p className="typography-body">
