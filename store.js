@@ -8,10 +8,11 @@ const exampleInitialState = {
   referral: '',
   lang: 'ar',
   dir: 'ltr',
+  playVideo: false,
 };
 
 export const actionTypes = {
-  USER: 'USER', COUNTRY: 'COUNTRY', T: 'T', LANG: 'LANG', REFERRAL: 'REFERRAL',
+  USER: 'USER', COUNTRY: 'COUNTRY', T: 'T', LANG: 'LANG', REFERRAL: 'REFERRAL', PLAY_VIDEO: 'PLAY_VIDEO',
 };
 
 // REDUCERS
@@ -25,6 +26,8 @@ export const reducer = (state = exampleInitialState, action) => {
       };
     case actionTypes.COUNTRY:
       return { ...state, country: action.country };
+    case actionTypes.PLAY_VIDEO:
+      return { ...state, playVideo: action.playVideo };
     case actionTypes.REFERRAL:
       return { ...state, referral: action.referral };
     case actionTypes.LANG:
@@ -40,6 +43,7 @@ export const reducer = (state = exampleInitialState, action) => {
 
 // ACTIONS
 export const setCountry = (country) => ({ type: actionTypes.COUNTRY, country });
+export const setPlayVideo = (playVideo) => ({ type: actionTypes.PLAY_VIDEO, playVideo });
 export const setUser = (user) => ({ type: actionTypes.USER, user });
 export const setReferral = (referral) => ({ type: actionTypes.REFERRAL, referral });
 export const setLang = (lang) => ({ type: actionTypes.LANG, lang });
@@ -48,6 +52,6 @@ export function initializeStore(initialState = exampleInitialState) {
   return createStore(
     reducer,
     initialState,
-    composeWithDevTools(applyMiddleware()),
+    composeWithDevTools({ trace: true, traceLimit: 25 })(applyMiddleware()),
   );
 }

@@ -66,8 +66,8 @@ class Header extends Component {
               <a className="nav-item nav-link active ts-scroll" href={`${currentPage}#page-top`}>
                 {t('home')}
               </a>
-              <a className="nav-item nav-link ts-scroll" href={`${currentPage}#how-it-works`}>{t('how-it-works')}</a>
               <a className="nav-item nav-link ts-scroll" href={`${currentPage}#what-is-merquant`}>{t('about')}</a>
+              <a className="nav-item nav-link ts-scroll" href={`${currentPage}#features`}>{t('header-4')}</a>
               <a
                 target="_blank"
                 rel="dofollow"

@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import YouTube from '@u-wave/react-youtube';
+import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
+import {  setPlayVideo } from '../store';
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -10,102 +13,38 @@ const backToSignup = () => {
   });
 };
 
-const HomeFeatures = ({ t }) => (
+const HomeFeatures = ({ t, playVideo, setPlay }) => (
   <>
     <section
-      id="how-it-works"
+      id="what-is-merquant"
       className="text-center ts-block"
       data-bg-size="inherit"
     >
       <div className="container">
         <div className="ts-title">
-          <h2 className="typography-head">{t('header-2')}</h2>
+          <h2 className="typography-head">{t('header-3')}</h2>
           <h5 className="typography-sub mt-3">
             {t('sub-2')}
           </h5>
         </div>
-        <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-
-          <li className="nav-item">
-            <a
-              className="nav-link"
-              id="mobile-tab"
-              data-toggle="tab"
-              href="#mobile"
-              role="tab"
-              aria-controls="mobile"
-              aria-selected="false"
-            >
-              <h4 className="typography-sub">{t('sub-2-1')}</h4>
-            </a>
-          </li>
-        </ul>
-
-        <div
-          className="tab-content pt-sm-2 pt-lg-2 ts-tabs-presentation"
-          id="myTabContent"
-          data-animate="ts-fadeInUp"
-        >
-          <div
-            className="tab-pane fade show active"
-            id="mobile"
-            role="tabpanel"
-            aria-labelledby="mobile"
-          >
-            <img src={t('img-phone1')} className="mw-25" alt="" />
-          </div>
+        <div className="embed-responsive embed-responsive-16by9">
+          <YouTube
+            showRelatedVideos={false}
+            id="merquant-video"
+            onPause={() => playVideo && setPlay(false)}
+            onPlaying={() => !playVideo && setPlay(true)}
+            paused={!playVideo}
+            autoplay={playVideo}
+            video={(t('youtube-video') || '').replace('https://www.youtube.com/embed/', '')}
+          />
         </div>
-
-      </div>
-    </section>
-
-    <section id="what-is-merquant" className="ts-block">
-      <div className="container">
-        <div className="ts-title">
-          <h2 className="typography-head width-70">{t('header-3')}</h2>
-        </div>
-
-        <div className="row">
-          <div
-            className="col-md-7 col-xl-7 mt-lg-3 mt-sm-3"
-            data-animate="ts-fadeInUp"
-            data-offset="100"
-          >
-            <p className="typography-body">
-              {t('sub-3')}
-            </p>
-            <a
-              rel="dofollow"
-              target="_blank"
-              href={t('read-more-url')}
-              className="btn btn-primary mb-4 ts-scroll"
-            >
-              {t('read-more')}
-            </a>
-          </div>
-
-          <div
-            className="col-md-5 col-xl-5 text-center"
-            data-animate="ts-fadeInUp"
-            data-delay="0.1s"
-            data-offset="100"
-          >
-            <div className="px-3">
-              <div className="badge" style={{ backgroundImage: `url(${t('img-whatis')})` }}>
-                <div className="text">{t('commission-free')}</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </section>
 
     <section id="features" className="ts-block">
       <div className="container">
-        <div className="row flex-row-reverse">
-          <div className="col-md-5 col-xl-5" data-animate="ts-fadeInUp" data-offset="100">
+        <div className="row flex-row-reverse align-items-center">
+          <div className="col-md-6 col-xl-6" data-animate="ts-fadeInUp" data-offset="100">
             <div className="ts-title">
               <h2 className="typography-head">{t('header-4')}</h2>
             </div>
@@ -169,24 +108,28 @@ const HomeFeatures = ({ t }) => (
                 </div>
 
               </li>
+              <li>
+                <a
+                  target="_blank"
+                  href={t('read-more-url')}
+                  className="ts-font-color__black"
+                  role="button"
+                >
+                  <h6 className="my-2">{t('read-more')}</h6>
+                </a>
+              </li>
             </ul>
 
           </div>
-          <div className="col-md-7 col-xl-7 text-center">
-            <div className="position-relative">
-              <div
-                className="col-md-12 col-xl-12 text-center"
-                data-animate="ts-fadeInUp"
-                data-delay="0.1s"
-                data-offset="100"
-              >
-                <div className="px-3">
-                  <img
-                    src={t('img-features')}
-                    className="mw-100 ts-shadow__lg ts-border-radius__md"
-                    alt=""
-                  />
-                </div>
+          <div
+            className="col-md-6 col-xl-6 text-center"
+            data-animate="ts-fadeInUp"
+            data-delay="0.1s"
+            data-offset="100"
+          >
+            <div className="px-3">
+              <div className="badge" style={{ backgroundImage: `url(${t('img-whatis')})` }}>
+                <div className="text">{t('commission-free')}</div>
               </div>
             </div>
           </div>
@@ -420,6 +363,16 @@ const HomeFeatures = ({ t }) => (
 
 HomeFeatures.propTypes = {
   t: PropTypes.func.isRequired,
+  setPlay: PropTypes.func.isRequired,
+  playVideo: PropTypes.bool.isRequired,
 };
 
-export default HomeFeatures;
+const mapStateToProps = (state) => ({
+  playVideo: state.playVideo,
+});
+
+const mapDispatchToProps = {
+  setPlay: setPlayVideo,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeFeatures);

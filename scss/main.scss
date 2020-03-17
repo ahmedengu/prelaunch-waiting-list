@@ -2,10 +2,11 @@
 @import "~react-toastify/scss/main.scss";
 @import "~react-owl-carousel2/src/owl.carousel.css";
 @import "~sass-google-fonts/src/GoogleFonts";
-@include google-font( 'Almarai' );
-@include google-font( 'Roboto' );
-@include google-font( 'Source Sans Pro' );
-@include google-font( 'Poppins', '400,500,600' );
+
+@include google-font('Almarai');
+@include google-font('Roboto');
+@include google-font('Source Sans Pro');
+@include google-font('Poppins', '400,500,600');
 
 
 /***********************************************************************************************************************
@@ -661,7 +662,8 @@ p {
   font-size: .8125rem !important;
 }
 
-.ts-xs-text-center {}
+.ts-xs-text-center {
+}
 
 /*-------------------------------------------
   -- Title
@@ -1144,7 +1146,8 @@ blockquote {
   }
 }
 
-.ts-card__image {}
+.ts-card__image {
+}
 
 /*-------------------------------------------
   -- Circle
@@ -1307,7 +1310,8 @@ hr {
   flex: 1 1 auto;
 }
 
-.ts-item-footer {}
+.ts-item-footer {
+}
 
 /*-------------------------------------------
   -- List
@@ -3592,8 +3596,8 @@ Main Components
 .badge {
   display: block;
   position: relative;
-  width: 20rem;
-  height: 20rem;
+  width: 22rem;
+  height: 22rem;
   cursor: pointer;
   background: url(/static/assets/img/what-is-merquant.jpg) no-repeat 100% 100%;
   background-size: 160%;
@@ -3612,12 +3616,12 @@ Main Components
       -webkit-transform: rotate(-45deg) translate(0px) rotate(-315deg);
       transform: rotate(-45deg) translate(0px) rotate(-315deg);
       background: #fbc6584f;
-      width: 20rem;
+      width: 22rem;
       letter-spacing: .3rem;
-      line-height: 20rem;
-      height: 20rem;
-      margin-top: -10rem;
-      margin-left: -10rem;
+      line-height: 22rem;
+      height: 22rem;
+      margin-top: -11rem;
+      margin-left: 11rem;
       border-radius: 0;
       transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1), letter-spacing 1.5s ease-out;
     }
@@ -3629,7 +3633,7 @@ Main Components
     width: 10rem;
     height: 10rem;
     line-height: 10rem;
-    left: 50%;
+    left: -50%;
     top: 50%;
     margin-top: -5rem;
     margin-left: -5rem;
@@ -3696,42 +3700,11 @@ Main Components
   }
 }
 
-.video-modal {
-  background: #cccccc26;
-  z-index: 1100;
-
-  .modal-dialog {
-    max-width: 80%;
-    padding: 0 !important;
-  }
-
-  .modal-content {
-    background: none;
-    border: none;
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .close {
-    font-weight: 100;
-    opacity: 0.9;
-    margin: 30px 35px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 4rem;
-
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
 .color-white {
   color: white;
 }
 
-a.push-image-container {
+.push-image-container {
   cursor: pointer;
   font-size: 1.3rem;
   font-weight: normal;
@@ -4248,7 +4221,7 @@ button.btn.btn-primary.dropdown-toggle {
     margin-top: 100px;
   }
 
-  a.push-image-container {
+  .push-image-container {
     margin-bottom: 20px;
     display: block;
     text-align: center;
@@ -4298,12 +4271,19 @@ button.btn.btn-primary.dropdown-toggle {
   }
 
   .badge {
+    width: 20rem;
+    height: 20rem;
+
     .text {
-      left: 35%;
+      left: -35%;
     }
 
     &:hover .text {
-      margin-left: -7rem;
+      width: 20rem;
+      line-height: 20rem;
+      height: 20rem;
+      margin-top: -10rem;
+      margin-left: 7rem;
     }
   }
 }
@@ -4337,7 +4317,7 @@ button#form-contact-submit:disabled {
   -ms-flex-align: center;
   align-items: center;
   text-decoration: none;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   cursor: n-resize !important;
   transition: all 0.3s ease-in-out;
 
@@ -4378,7 +4358,7 @@ button#form-contact-submit:disabled {
   align-items: center;
   background-color: #ffab04;
   color: #191919;
-  box-shadow: 2px 10px 20px -4px rgba(0,0,0,.38);
+  box-shadow: 2px 10px 20px -4px rgba(0, 0, 0, .38);
   position: relative;
   display: inline-block;
   padding: 15px;

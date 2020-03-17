@@ -11,7 +11,7 @@ import GoogleLogin from 'react-google-login';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import OwlCarousel from 'react-owl-carousel2';
 import { Router } from '../i18n';
-import { setLang, setUser } from '../store';
+import { setLang, setPlayVideo, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
 import Header from './Header';
@@ -24,7 +24,6 @@ class Signup extends React.Component {
       email: '',
       error: '',
       loading: false,
-      width: 1024,
       country: '',
       showScrollTopButton: false,
       scrollTopAltStyle: false,
@@ -43,11 +42,75 @@ class Signup extends React.Component {
 
   componentDidMount() {
     documentReady();
-    this.setState({ width: window.innerWidth });
     document.addEventListener('scroll', () => {
       this.onScroll();
     });
   }
+
+  videoOnClick = () => {
+    console.log('sdfsdf');
+    window.scrollTo({
+      top: window.$('#merquant-video').offset().top - 100,
+      behavior: 'smooth',
+    });
+    const { setPlay } = this.props;
+    setPlay(true);
+  };
+
+  onScroll = () => {
+    const { showScrollTopButton, scrollTopAltStyle } = this.state;
+    const { setPlay, playVideo } = this.props;
+
+    const newState = {};
+    if (window.pageYOffset > 300) {
+      if (!showScrollTopButton) {
+        newState.showScrollTopButton = true;
+      }
+      if (!playVideo && window.pageYOffset > window.$('#merquant-video').offset().top - 150) {
+        setPlay(true);
+      }
+      if (window.pageYOffset > 3600) {
+        if (!scrollTopAltStyle) {
+          newState.scrollTopAltStyle = true;
+        }
+      } else if (scrollTopAltStyle) {
+        newState.scrollTopAltStyle = false;
+      }
+    } else if (showScrollTopButton) {
+      newState.showScrollTopButton = false;
+    }
+
+    if (Object.keys(newState).length) {
+      this.setState(newState);
+    }
+  };
+
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
+  backToTopButton = () => {
+    const { showScrollTopButton, scrollTopAltStyle } = this.state;
+    if (showScrollTopButton) {
+      const style = scrollTopAltStyle ? { backgroundColor: '#ffab04', color: '#1e1e1e' } : {};
+      return (
+        <button
+          type="button"
+          aria-label="Go to top"
+          style={style}
+          onClick={this.scrollToTop}
+          id="scrollTopButton"
+          title="Go to top"
+        >
+          <i className="backTopArrow fas fa-arrow-up" />
+        </button>
+      );
+    }
+    return null;
+  };
 
   async register(notMounted = false, providerName = '', authData = {}) {
     const validateEmail = (email) => {
@@ -182,60 +245,10 @@ class Signup extends React.Component {
     }
   }
 
-  onScroll = () => {
-    const { showScrollTopButton, scrollTopAltStyle } = this.state;
-    const newState = {};
-    if (window.pageYOffset > 300) {
-      if (!showScrollTopButton) {
-        newState.showScrollTopButton = true;
-      }
-      if (window.pageYOffset > 3600) {
-        if (!scrollTopAltStyle) {
-          newState.scrollTopAltStyle = true;
-        }
-      } else if (scrollTopAltStyle) {
-        newState.scrollTopAltStyle = false;
-      }
-    } else if (showScrollTopButton) {
-      newState.showScrollTopButton = false;
-    }
-
-    if (Object.keys(newState).length) {
-      this.setState(newState);
-    }
-  };
-
-  scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
-
-  backToTopButton = () => {
-    const { showScrollTopButton, scrollTopAltStyle } = this.state;
-    if (showScrollTopButton) {
-      const style = scrollTopAltStyle ? { backgroundColor: '#ffab04', color: '#1e1e1e' } : {};
-      return (
-        <button
-          type="button"
-          aria-label="Go to top"
-          style={style}
-          onClick={this.scrollToTop}
-          id="scrollTopButton"
-          title="Go to top"
-        >
-          <i className="backTopArrow fas fa-arrow-up" />
-        </button>
-      );
-    }
-    return null;
-  };
-
   render() {
     const { t, country } = this.props;
     const {
-      email, loading, error, width,
+      email, loading, error,
     } = this.state;
     const countriesData = [
       {
@@ -416,18 +429,15 @@ class Signup extends React.Component {
                 </div>
                 <div className="row text-center mt-2">
                   <div className="col-12">
-                    <a
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      href={(t('youtube-video') || '').replace('/embed/', '/watch?v=')}
+                    <button
+                      type="button"
                       className="btn btn-outline-dark push-image-container"
-                      data-toggle={width <= 760 ? '' : 'modal'}
-                      data-target="#video-popup"
+                      onClick={this.videoOnClick}
                     >
                       {t('watch-video')}
                       {' '}
                       <i className="far fa-play-circle" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -461,39 +471,6 @@ class Signup extends React.Component {
                     alt=""
                   />
                 </OwlCarousel>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="video-modal modal"
-            id="video-popup"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="video-popup-label"
-          >
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-              <span className="color-white x-button" aria-hidden="true">&times;</span>
-            </button>
-            <div className="modal-dialog modal-dialog-centered" role="document">
-              <div className="modal-content">
-                <div className="modal-body">
-
-                  <div className="video-container embed-responsive embed-responsive-16by9">
-                    <iframe
-                      className="embed-responsive-item"
-                      width="1280"
-                      height="720"
-                      src={t('youtube-video')}
-                      frameBorder="0"
-                      allow="accelerometer;"
-                      scrolling="no"
-                      allowFullScreen
-                      title="video"
-                    />
-                  </div>
-
-                </div>
               </div>
             </div>
           </div>
@@ -533,17 +510,21 @@ Signup.propTypes = {
   referral: PropTypes.string,
   lang: PropTypes.string.isRequired,
   setLangHandler: PropTypes.func.isRequired,
+  setPlay: PropTypes.func.isRequired,
+  playVideo: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   country: state.country,
   referral: state.referral,
   lang: state.lang,
+  playVideo: state.playVideo,
 });
 
 const mapDispatchToProps = {
   setUserHandler: setUser,
   setLangHandler: setLang,
+  setPlay: setPlayVideo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
