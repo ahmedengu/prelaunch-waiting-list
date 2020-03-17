@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { setPlayVideo } from '../store';
 
 class BackToTop extends Component {
   constructor(props) {
@@ -13,22 +10,16 @@ class BackToTop extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', () => {
-      this.onScroll();
-    });
+    document.addEventListener('scroll', this.onScroll);
   }
 
   onScroll = () => {
     const { showScrollTopButton, scrollTopAltStyle } = this.state;
-    const { setPlay, playVideo } = this.props;
 
     const newState = {};
     if (window.pageYOffset > 300) {
       if (!showScrollTopButton) {
         newState.showScrollTopButton = true;
-      }
-      if (!playVideo && window.$('#merquant-video') && window.$('#merquant-video').offset() && window.pageYOffset > window.$('#merquant-video').offset().top - 150) {
-        setPlay(true);
       }
       if (window.pageYOffset > 3600) {
         if (!scrollTopAltStyle) {
@@ -74,17 +65,4 @@ class BackToTop extends Component {
   }
 }
 
-BackToTop.propTypes = {
-  setPlay: PropTypes.func.isRequired,
-  playVideo: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  playVideo: state.playVideo,
-});
-
-const mapDispatchToProps = {
-  setPlay: setPlayVideo,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BackToTop);
+export default BackToTop;

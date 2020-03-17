@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import YouTube from '@u-wave/react-youtube';
 import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
+import { setPlayVideo } from '../store';
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -16,6 +17,16 @@ class HomeFeatures extends Component {
   constructor(props) {
     super(props);
     this.state = { video: {} };
+  }
+
+  componentDidMount() {
+    const { setPlay, playVideo } = this.props;
+
+    document.addEventListener('scroll', () => {
+      if (!playVideo && window.$('#merquant-video') && window.$('#merquant-video').offset() && window.pageYOffset > window.$('#merquant-video').offset().top - 150) {
+        setPlay(true);
+      }
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -401,6 +412,7 @@ class HomeFeatures extends Component {
 
 HomeFeatures.propTypes = {
   t: PropTypes.func.isRequired,
+  setPlay: PropTypes.func.isRequired,
   playVideo: PropTypes.bool.isRequired,
 };
 
@@ -408,4 +420,8 @@ const mapStateToProps = (state) => ({
   playVideo: state.playVideo,
 });
 
-export default connect(mapStateToProps)(HomeFeatures);
+const mapDispatchToProps = {
+  setPlay: setPlayVideo,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeFeatures);
