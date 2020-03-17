@@ -76,25 +76,6 @@ function documentReady() {
         $this.find('.ts-background').css('background-color', $this.attr('data-bg-color'));
       }
 
-      // Particles
-
-      if ($this.attr('data-bg-particles-line-color') || $this.attr('data-bg-particles-dot-color')) {
-        $this.find('.ts-background').append('<div class="ts-background-particles">');
-        $('.ts-background-particles').each(function () {
-          const lineColor = $this.attr('data-bg-particles-line-color');
-          const dotColor = $this.attr('data-bg-particles-dot-color');
-          const parallax = $this.attr('data-bg-particles-parallax');
-          $(this).particleground({
-            density: 15000,
-            lineWidth: 0.2,
-            lineColor,
-            dotColor,
-            parallax,
-            proximity: 200,
-          });
-        });
-      }
-
       // Background Image
 
       if ($this.attr('data-bg-image') !== undefined) {
@@ -138,41 +119,6 @@ function documentReady() {
     }
   });
 
-  //  Parallax Background Image
-
-  $('[data-bg-parallax=\'scroll\']').each(function () {
-    const speed = $(this).attr('data-bg-parallax-speed');
-    const $this = $(this);
-    let isVisible;
-    let backgroundPosition;
-
-    $this.isInViewport((status) => {
-      if (status === 'entered') {
-        isVisible = 1;
-        let position;
-
-        $(window).scroll(() => {
-          if (isVisible === 1) {
-            position = $(window).scrollTop() - $this.offset().top;
-            backgroundPosition = (100 - (Math.abs((-$(window).height()) - position) / ($(window)
-              .height() + $this.height())) * 100);
-            if ($this.find('.ts-parallax-element').hasClass('ts-background-image')) {
-              $this.find('.ts-background-image.ts-parallax-element')
-                .css('background-position-y', `${position / speed}px`);
-            } else {
-              $this.find('.ts-parallax-element')
-                .css('transform', `translateY(${position / speed}px)`);
-            }
-          }
-        });
-      }
-      if (status === 'leaved') {
-        isVisible = 0;
-      }
-    });
-  });
-
-
   // Dynamic Waves in Hero
 
   $('.ts-dynamic-wave').each(function () {
@@ -215,10 +161,6 @@ function documentReady() {
           .append(`<div>${this.leadingZeros(data.sec, 2)} <span>Seconds</span></div>`);
       },
     });
-  });
-
-  $('[data-animate]').scrolla({
-    mobile: true,
   });
 
   // On RESIZE actions
