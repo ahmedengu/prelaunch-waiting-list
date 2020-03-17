@@ -86,12 +86,7 @@ const Footer = ({ t }) => (
       </div>
     </section>
 
-    <script src="/static/assets/js/jquery-3.3.1.min.js" />
-    <script src="/static/assets/js/popper.min.js" />
-    <script src="/static/assets/bootstrap/js/bootstrap.min.js" />
-    <script src="/static/assets/js/imagesloaded.pkgd.min.js" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js" />
-    <script src="/static/assets/js/jquery.wavify.js" />
+    <script src="/static/assets/js/bundle.js?v=1" />
     <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05" />
   </footer>
 );
