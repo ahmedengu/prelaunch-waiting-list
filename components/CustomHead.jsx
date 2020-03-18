@@ -1,117 +1,85 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import { setLang } from '../store';
 import { domain } from '../constants';
 
-class CustomHead extends Component {
-  normalHead = (t, shareUrl) => (
-    <>
-      <title>{t('title')}</title>
-      <meta name="title" content={t('title')} />
+const NormalHead = ({ t, shareUrl, prefix }) => (
+  <>
+
+  </>
+);
+
+NormalHead.propTypes = {
+  t: PropTypes.func.isRequired,
+  shareUrl: PropTypes.string.isRequired,
+  prefix: PropTypes.string.isRequired,
+};
+
+const CustomHead = (props) => {
+  const {
+    t, user, referral, router: { asPath, query: { ref } }, lang,
+  } = props;
+  const queryString = asPath.includes('ref') ? `?ref=${ref || referral}` : '';
+  const shareUrl = `${domain}${asPath.includes(lang)
+    ? ''
+    : `/${lang}`}${asPath.split('?')[0]}${queryString}`;
+  const prefix = referral && Object.keys(user).length === 0 ? 'ref-' : '';
+
+  return (
+    <Head>
+      <title>{t(`${prefix}title`)}</title>
+      <meta name="title" content={t(`${prefix}title`)} />
       <meta
         name="description"
-        content={t('meta-description')}
+        content={t(`${prefix}meta-description`)}
       />
       <meta
         name="keywords"
-        content={t('keywords')}
+        content={t(`${prefix}keywords`)}
       />
 
       <meta property="og:url" content={shareUrl} />
       <meta property="fb:app_id" content="403863870540210" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={t('title')} />
-      <meta property="og:image:alt" content={t('title')} />
+      <meta property="og:title" content={t(`${prefix}title`)} />
+      <meta property="og:image:alt" content={t(`${prefix}title`)} />
       <meta
         property="og:description"
-        content={t('meta-description')}
+        content={t(`${prefix}meta-description`)}
       />
       <meta
         property="og:image"
-        content={t('og-image')}
+        content={t(`${prefix}og-image`)}
       />
 
       <meta property="twitter:card" content="summary" />
-      <meta property="twitter:title" content={t('title')} />
+      <meta property="twitter:title" content={t(`${prefix}title`)} />
       <meta
         property="twitter:description"
-        content={t('meta-description')}
+        content={t(`${prefix}meta-description`)}
       />
       <meta
         property="twitter:image"
-        content={t('og-image')}
+        content={t(`${prefix}og-image`)}
       />
-    </>
+      <meta charSet="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+      />
+
+      <meta name="twitter:site" content="@MerQuant" />
+      <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+      <link rel="stylesheet" href="/static/assets/font-awesome/css/fontawesome-all.min.css" />
+    </Head>
   );
-
-  refHead = (t, shareUrl) => (
-    <>
-      <title>{t('ref-title')}</title>
-      <meta name="title" content={t('ref-title')} />
-      <meta
-        name="description"
-        content={t('ref-meta-description')}
-      />
-      <meta
-        name="keywords"
-        content={t('ref-keywords')}
-      />
-
-      <meta property="og:url" content={shareUrl} />
-      <meta property="fb:app_id" content="403863870540210" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={t('ref-title')} />
-      <meta property="og:image:alt" content={t('ref-title')} />
-      <meta
-        property="og:description"
-        content={t('ref-meta-description')}
-      />
-      <meta
-        property="og:image"
-        content={t('ref-og-image')}
-      />
-
-      <meta property="twitter:card" content="summary" />
-      <meta property="twitter:title" content={t('ref-title')} />
-      <meta
-        property="twitter:description"
-        content={t('ref-meta-description')}
-      />
-      <meta
-        property="twitter:image"
-        content={t('ref-og-image')}
-      />
-    </>
-  );
-
-  render() {
-    const {
-      t, user, referral, router: { asPath, query: { ref } }, lang,
-    } = this.props;
-    const queryString = asPath.includes('ref') ? `?ref=${ref || referral}` : '';
-    const shareUrl = `${domain}${asPath.includes(lang) ? '' : `/${lang}`}${asPath.split('?')[0]}${queryString}`;
-
-    return (
-      <Head>
-        {this.normalHead(t, shareUrl)}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-
-        <meta name="twitter:site" content="@MerQuant" />
-        <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.ico" />
-        <link rel="stylesheet" href="/static/assets/font-awesome/css/fontawesome-all.min.css" />
-      </Head>
-    );
-  }
-}
+};
 
 CustomHead.defaultProps = { referral: '' };
 CustomHead.propTypes = {
   t: PropTypes.func.isRequired,
-  setLangHandler: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   router: PropTypes.object.isRequired,
   lang: PropTypes.string.isRequired,
@@ -125,8 +93,5 @@ const mapStateToProps = (state) => ({
   lang: state.lang,
 });
 
-const mapDispatchToProps = {
-  setLangHandler: setLang,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CustomHead));
+export default connect(mapStateToProps)(withRouter(CustomHead));
