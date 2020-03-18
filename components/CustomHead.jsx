@@ -72,7 +72,6 @@ const CustomHead = (props) => {
 
       <meta name="twitter:site" content="@MerQuant" />
       <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
-      <link rel="stylesheet" href="/static/assets/font-awesome/css/fontawesome-all.min.css" />
     </Head>
   );
 };
