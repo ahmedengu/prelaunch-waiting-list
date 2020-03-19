@@ -14,7 +14,8 @@ const backToSignup = () => {
 class HomeFeatures extends Component {
   constructor(props) {
     super(props);
-    this.state = { video: {} };
+    this.state = {};
+    this.video = {};
   }
 
   // componentDidMount() {
@@ -29,9 +30,8 @@ class HomeFeatures extends Component {
 
   componentDidUpdate(prevProps) {
     const { playVideo } = this.props;
-    const { video } = this.state;
-    if (!prevProps.playVideo && playVideo && video && typeof video.playVideo === 'function') {
-      video.playVideo();
+    if (!prevProps.playVideo && playVideo && this.video && typeof this.video.playVideo === 'function') {
+      this.video.playVideo();
     }
   }
 
@@ -56,7 +56,7 @@ class HomeFeatures extends Component {
                 showRelatedVideos={false}
                 id="merquant-video"
                 onReady={(vid) => {
-                  this.setState({ video: vid.target });
+                  this.video = vid.target;
                 }}
                 video={(t('youtube-video') || '').replace('https://www.youtube.com/embed/', '')}
               />
