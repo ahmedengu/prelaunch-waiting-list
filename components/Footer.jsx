@@ -87,6 +87,7 @@ const Footer = ({ t }) => (
     </section>
 
     <script src="/static/assets/js/bundle.js?v=1" />
+    <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d8fc633026ccc05" />
   </footer>
 );
 
