@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import YouTube from '@u-wave/react-youtube';
+import dynamic from 'next/dynamic';
 import ContactForm from './ContactForm';
+
+const YouTube = dynamic(() => import('@u-wave/react-youtube'),
+  { ssr: false });
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -288,7 +291,7 @@ class HomeFeatures extends Component {
                       data-animate="ts-zoomIn"
                       data-delay="0.2s"
                     >
-0
+                      0
                     </h2>
                     <h3 className="mb-0 ts-opacity__50">{t('commission')}</h3>
                     <span className="ts-promo-number-divider" />
@@ -303,7 +306,7 @@ class HomeFeatures extends Component {
                       data-animate="ts-zoomIn"
                       data-delay="0.2s"
                     >
-0
+                      0
                     </h2>
                     <h3 className="mb-0 ts-opacity__50">{t('minimums')}</h3>
                   </div>
