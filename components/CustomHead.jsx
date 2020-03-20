@@ -5,18 +5,6 @@ import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { domain } from '../constants';
 
-const NormalHead = ({ t, shareUrl, prefix }) => (
-  <>
-
-  </>
-);
-
-NormalHead.propTypes = {
-  t: PropTypes.func.isRequired,
-  shareUrl: PropTypes.string.isRequired,
-  prefix: PropTypes.string.isRequired,
-};
-
 const CustomHead = (props) => {
   const {
     t, user, referral, router: { asPath, query: { ref } }, lang,
