@@ -60,6 +60,7 @@ const CustomHead = (props) => {
 
       <meta name="twitter:site" content="@MerQuant" />
       <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+      <meta name="p:domain_verify" content="66ba3f2dcd70025dba6f6497cf4b8f41"/>
     </Head>
   );
 };
