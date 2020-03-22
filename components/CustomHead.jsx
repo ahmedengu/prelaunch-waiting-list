@@ -32,6 +32,7 @@ const CustomHead = (props) => {
       <meta property="fb:app_id" content="403863870540210" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={t(`${prefix}title`)} />
+      <meta property="og:video" content={t('youtube-video')} />
       <meta property="og:image:alt" content={t(`${prefix}title`)} />
       <meta
         property="og:description"
@@ -44,6 +45,7 @@ const CustomHead = (props) => {
 
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:title" content={t(`${prefix}title`)} />
+      <meta property="twitter:player" content={t('youtube-video')} />
       <meta
         property="twitter:description"
         content={t(`${prefix}meta-description`)}
@@ -60,7 +62,7 @@ const CustomHead = (props) => {
 
       <meta name="twitter:site" content="@MerQuant" />
       <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
-      <meta name="p:domain_verify" content="66ba3f2dcd70025dba6f6497cf4b8f41"/>
+      <meta name="p:domain_verify" content="66ba3f2dcd70025dba6f6497cf4b8f41" />
     </Head>
   );
 };
