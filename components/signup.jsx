@@ -127,9 +127,11 @@ class Signup extends React.Component {
           // eslint-disable-next-line no-underscore-dangle
           await user._linkWith(providerName, { authData });
           logEvent('new_user', `social_signUp_${providerName}`);
+          logEvent('new_user_social', `social_signUp_${providerName}`);
         } else {
           await user.signUp();
           logEvent('new_user', 'signUp_normal');
+          logEvent('new_user_normal', 'signUp_normal');
         }
         this.loggedIn(user, true);
         logEvent('user', 'signUp');
