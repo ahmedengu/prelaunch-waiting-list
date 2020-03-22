@@ -69,7 +69,7 @@ class ContactForm extends Component {
     } = this.state;
     return (
       <>
-        <h3>{t('contact-form')}</h3>
+        <h3>{t('contact-us')}</h3>
         <form
           id="form-contact"
           method="post"

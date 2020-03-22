@@ -268,7 +268,7 @@ class HomeFeatures extends Component {
             </div>
           </div>
         </section>
-        <section id="numbers" className="ts-block ts-separate-bg-element">
+        <section id="numbers" className="ts-block ts-separate-bg-element pb-0">
           <div className="container">
             <div className="ts-promo-numbers">
               <div className="row">
@@ -315,14 +315,16 @@ class HomeFeatures extends Component {
         </section>
         <section
           id="contact"
-          style={{ margin: 0 }}
-          className="ts-separate-bg-element"
+          className="ts-separate-bg-element mb-0 pt-10"
         >
           <div className="container contact">
             <div className="ts-box mb-0 p-5 ts-mt__n-10">
-              <div className="row" style={{ direction: 'ltr' }}>
+              <div className="row" style={{ direction: 'ltr', flexDirection: 'row-reverse' }}>
+                <div className="col-md-8">
+                  <ContactForm t={t} />
+                </div>
                 <div className="col-md-4">
-                  <h3>{t('contact-us')}</h3>
+                  <h3>{t('follow-us')}</h3>
                   <address className="text-left">
                     <figure>
                       <div className="font-weight-bold">
@@ -336,6 +338,20 @@ class HomeFeatures extends Component {
                         href="mailto:support@merquant.com"
                       >
                         support@merquant.com
+                      </a>
+                    </figure>
+                    <figure>
+                      <div className="font-weight-bold">
+                        <i className="fab fa-blogger" />
+                        {' '}
+                        Blog:
+                      </div>
+                      <a
+                        target="_blank"
+                        rel="dofollow"
+                        href="https://blog.merquant.com"
+                      >
+                        blog.merquant.com
                       </a>
                     </figure>
                     <figure>
@@ -395,9 +411,6 @@ class HomeFeatures extends Component {
                       </a>
                     </figure>
                   </address>
-                </div>
-                <div className="col-md-8">
-                  <ContactForm t={t} />
                 </div>
               </div>
             </div>

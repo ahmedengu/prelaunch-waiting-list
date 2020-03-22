@@ -68,14 +68,7 @@ class Header extends Component {
               </a>
               <a className="nav-item nav-link ts-scroll" href={`${currentPage}#what-is-merquant`}>{t('about')}</a>
               <a className="nav-item nav-link ts-scroll" href={`${currentPage}#features`}>{t('header-4')}</a>
-              <a
-                target="_blank"
-                rel="dofollow"
-                className="nav-item nav-link ts-scroll"
-                href="https://blog.merquant.com"
-              >
-                {t('blog')}
-              </a>
+              <a className="nav-item nav-link ts-scroll" href={`${currentPage}#contact`}>{t('contact-us')}</a>
               <div className="btn-group nav-item nav-link ts-scroll">
                 <button
                   type="button"
