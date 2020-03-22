@@ -276,7 +276,7 @@ class Signup extends React.Component {
                     this.register();
                   }}
                 >
-                  <div className="row text-center align-items-baseline">
+                  <div className="row text-center">
                     <div className="col-2">
                       <div className="dropdown m-0">
                         <button
