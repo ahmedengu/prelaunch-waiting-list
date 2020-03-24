@@ -194,7 +194,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { t, country } = this.props;
+    const { t, country, referral } = this.props;
     const {
       email, loading, error, playVideo,
     } = this.state;
@@ -268,7 +268,7 @@ class Signup extends React.Component {
               <div className="col-lg-7 col-sm-12 offset-sm-1 signup">
                 <h1 className="typography-head text-center">{t('Investment-Simplified')}</h1>
                 <h2 className="typography-subhead text-center mb-3">
-                  {t('sub-1')}
+                  {t(referral ? 'ref-sub-1' : 'sub-1')}
                 </h2>
                 <form
                   className="ts-form ts-form-email ts-labels-inside-input"
