@@ -82,7 +82,7 @@ async function assignRef(request) {
 }
 
 function sendAchievementMail(user, data) {
-  if (user.get('email') && (!user.get('options') || user.get('options').sendEmails !== false)) {
+  if (user.get('email') && user.get('emailVerified') && user.get('sendEmails') !== false) {
     const mailOptions = {
       ..._.cloneDeep(emailConfig),
       confirmTemplatePath: 'views/templates/achievement.html',
