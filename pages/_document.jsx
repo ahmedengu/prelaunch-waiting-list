@@ -5,14 +5,17 @@ export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     const { req } = ctx;
-
-    return { ...initialProps, isBot: (req.get('User-Agent') || '').toLowerCase().includes('bot') };
+    let lng = 'ar';
+    if (req.query && req.query.lng) {
+      lng = req.query.lng;
+    }
+    return { ...initialProps, lng, isBot: (req.get('User-Agent') || '').toLowerCase().includes('bot') };
   }
 
   render() {
-    const { isBot } = this.props;
+    const { isBot, lng } = this.props;
     return (
-      <html lang="en-US">
+      <html lang={lng}>
         <Head />
         <noscript>
           <style dangerouslySetInnerHTML={{
