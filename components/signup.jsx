@@ -253,7 +253,7 @@ class Signup extends React.Component {
               </span>
             </div>
             <div className="col">
-              <img className="flag" src={countriesImgs[route]} alt="" />
+              <img className="flag" src={countriesImgs[route]} alt={route} />
             </div>
           </div>
         </li>
@@ -286,7 +286,7 @@ class Signup extends React.Component {
                           type="button"
                           data-toggle="dropdown"
                         >
-                          <img className="flag" src={countriesImgs[country]} alt="" />
+                          <img className="flag" src={countriesImgs[country]} alt={country} />
                           <span className="caret" />
                         </button>
                         <ul className="dropdown-menu">
@@ -409,17 +409,17 @@ class Signup extends React.Component {
                   <img
                     src={t('carousel-1')}
                     className="d-inline-block mw-100 ts-width__auto"
-                    alt=""
+                    alt="MerQuant App 1"
                   />
                   <img
                     src={t('carousel-2')}
                     className="d-inline-block mw-100 ts-width__auto"
-                    alt=""
+                    alt="MerQuant App 2"
                   />
                   <img
                     src={t('carousel-3')}
                     className="d-inline-block mw-100 ts-width__auto"
-                    alt=""
+                    alt="MerQuant App 3"
                   />
                 </OwlCarousel>
               </div>

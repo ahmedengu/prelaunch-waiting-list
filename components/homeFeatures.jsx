@@ -201,7 +201,7 @@ class HomeFeatures extends Component {
                   <img
                     src={t('img-phone2')}
                     className="mw-100"
-                    alt=""
+                    alt="Commission Free Trading"
                     data-animate="ts-zoomInShort"
                     data-delay=".1s"
                   />
