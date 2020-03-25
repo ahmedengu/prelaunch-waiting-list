@@ -1,2 +1,3 @@
+Sitemap: https://merquant.com/sitemap.xml
 User-agent: *
 Allow: /
