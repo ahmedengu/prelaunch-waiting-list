@@ -60,6 +60,18 @@ class LoggedIn extends React.Component {
       toast(t('copied'));
     };
 
+    const onClickLogout = () => {
+      Parse.User.logOut();
+      cookie.remove('user');
+      Parse.LiveQuery.close();
+      toast(t('goodbye'));
+      logEvent('user', 'logOut');
+      setUserHandler({});
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
+    };
+
     return (
       <div className="fill">
         {user && !user.emailVerified && (
@@ -157,15 +169,7 @@ class LoggedIn extends React.Component {
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                 <a
                   className="not-you"
-                  onClick={() => {
-                    Parse.User.logOut();
-                    cookie.remove('user');
-                    Parse.LiveQuery.close();
-                    toast(t('goodbye'));
-                    logEvent('user', 'logOut');
-                    setUserHandler({});
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={onClickLogout}
                 >
                   {t('not-you')}
                 </a>

@@ -38,7 +38,7 @@ class BackToTop extends Component {
   };
 
   scrollToTop = () => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
