@@ -58,13 +58,6 @@ class Header extends Component {
             aria-controls="navbarNavAltMarkup"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            onBlur={(e) => {
-              e.preventDefault();
-              const btn = document.querySelector('button.navbar-toggler');
-              if (btn) {
-                btn.click();
-              }
-            }}
           >
             <span className="navbar-toggler-icon" />
           </button>

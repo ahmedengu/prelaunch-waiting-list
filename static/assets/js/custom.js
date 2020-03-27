@@ -54,7 +54,7 @@ function documentReady() {
     });
   });
 
-  $('.navbar-nav .nav-link').on('click', () => {
+  $(document).on('click', () => {
     $('.navbar-collapse').collapse('hide');
   });
 

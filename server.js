@@ -125,6 +125,6 @@ const dashboard = new ParseDashboard({
   ParseServer.createLiveQueryServer(httpServer);
 })();
 
-const aCron = new CronJob('0 */3 * * *', (async () => {
+const aCron = new CronJob('0 */6 * * *', (async () => {
   await Parse.Cloud.startJob('sendStatus');
 }), null, true, 'Atlantic/Azores');
