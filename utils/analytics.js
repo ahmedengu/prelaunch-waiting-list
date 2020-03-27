@@ -1,11 +1,11 @@
 import ReactGA from 'react-ga';
 import ReactPixel from 'react-facebook-pixel';
-import { hotjar } from 'react-hotjar';
+// import { hotjar } from 'react-hotjar';
 
 export const initGA = () => {
   ReactGA.initialize('UA-149722393-1');
   ReactPixel.init('2280759418716987');
-  hotjar.initialize(1535519, 6);
+  // hotjar.initialize(1535519, 6);
 };
 export const logPageView = () => {
   if (window.GA_INITIALIZED) {
