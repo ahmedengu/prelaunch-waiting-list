@@ -41,6 +41,11 @@ class Signup extends React.Component {
 
   componentDidMount() {
     documentReady();
+    const { t, referral } = this.props;
+    const { query: { ref } } = Router;
+    if (!referral && ref) {
+      toast(t('incorrect-referral'));
+    }
   }
 
   setPlay = (playVideo) => {
