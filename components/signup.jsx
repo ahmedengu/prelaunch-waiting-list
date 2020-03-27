@@ -36,6 +36,8 @@ class Signup extends React.Component {
       } else if (ref) {
         cookie.set('ref', ref, { expires: 1 });
       }
+
+      cookie.set('country', props.country);
     }
   }
 

@@ -89,6 +89,7 @@ class MyApp extends App {
           reduxStore.dispatch(setUser(userJson));
           if (userJson) {
             cookie.set('user', userJson);
+            cookie.set('country', userJson.country);
           } else {
             cookie.remove('user');
           }
