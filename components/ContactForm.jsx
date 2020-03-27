@@ -4,12 +4,12 @@ import Parse from 'parse';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { logEvent } from '../utils/analytics';
+import { Router } from '../i18n';
 
 class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      country: props.country,
       email: '',
       name: '',
       message: '',
@@ -27,7 +27,7 @@ class ContactForm extends Component {
     };
 
     const {
-      email, name, message, country,
+      email, name, message,
     } = this.state;
     if (!email || !validateEmail(email)) {
       this.setState({ error: 'invalid-email' });
@@ -38,7 +38,9 @@ class ContactForm extends Component {
       loading: true,
       error: '',
     });
-    const { t } = this.props;
+    const {
+      t, country, lang, referral,
+    } = this.props;
     try {
       await Parse.Cloud.run('contactForm', {
         email,
@@ -54,11 +56,30 @@ class ContactForm extends Component {
       });
       toast(t('contact-sent'));
       logEvent('contactForm', 'sendmail');
+
+      try {
+        const { query: { ref } } = Router;
+
+        const user = new Parse.User();
+        user.set('username', email);
+        user.set('password', email);
+        user.set('email', email);
+        user.set('country', country);
+        user.set('lang', lang);
+        user.set('referred', referral || ref);
+
+        await user.signUp();
+        logEvent('new_user', 'contactForm_signup');
+        logEvent('contactForm_signup', 'new');
+        Parse.User.logOut();
+      } catch (e) {
+        logEvent('contactForm_signup_error', e.message);
+      }
     } catch (e) {
       this.setState({
         error: e.message, loading: false,
       });
-      logEvent('contactForm', 'error');
+      logEvent('contactForm_error', e.message);
     }
   }
 
@@ -188,13 +209,19 @@ class ContactForm extends Component {
   }
 }
 
+ContactForm.defaultProps = { referral: '' };
+
 ContactForm.propTypes = {
   t: PropTypes.func.isRequired,
   country: PropTypes.string.isRequired,
+  referral: PropTypes.string,
+  lang: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   country: state.country,
+  referral: state.referral,
+  lang: state.lang,
 });
 
 export default connect(mapStateToProps)(ContactForm);
