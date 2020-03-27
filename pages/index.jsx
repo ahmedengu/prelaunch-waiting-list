@@ -18,6 +18,7 @@ export default class extends React.Component {
     const { query: { subpath, lng, ...query } } = req;
     const queryString = Object.keys(query).length ? `?${qs.stringify(query)}` : '';
     let country = getCookie('country', req.header('cookie'));
+    country = countries.includes(country) && country;
 
     if (!process.browser && !country) {
       const geoip = require('geoip-country');
