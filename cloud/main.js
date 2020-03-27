@@ -8,6 +8,16 @@ const nodemailer = require('nodemailer');
 const { applicationId, serverURL } = require('../constants');
 const { emailConfig } = require('../serverConstants');
 
+const smtpOptions = {
+  host: emailConfig.host,
+  port: emailConfig.port,
+  secure: emailConfig.secure || false,
+  auth: {
+    user: emailConfig.user,
+    pass: emailConfig.password,
+  },
+};
+
 const requiredFields = ['username', 'email', 'country', 'lang'];
 const achievementsPoints = [
   5,
@@ -323,15 +333,7 @@ Parse.Cloud.define('contactForm', async (request, response) => {
     throw 'disposable-email';
   }
 
-  const transport = nodemailer.createTransport({
-    host: emailConfig.host,
-    port: emailConfig.port,
-    secure: emailConfig.secure || false,
-    auth: {
-      user: emailConfig.user,
-      pass: emailConfig.password,
-    },
-  });
+  const transport = nodemailer.createTransport(smtpOptions);
 
   const senderOptions = {
     from: emailConfig.fromAddress,
@@ -344,6 +346,28 @@ Parse.Cloud.define('contactForm', async (request, response) => {
   try {
     await transport.sendMail(senderOptions);
     return 'contact-sent';
+  } catch (e) {
+    const errorJson = JSON.parse(e.text);
+    throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;
+  }
+});
+
+Parse.Cloud.job('sendStatus', async (request) => {
+  const query = new Parse.Query(Parse.User);
+  const count = await query.count({ useMasterKey: true });
+
+  const transport = nodemailer.createTransport(smtpOptions);
+
+  const senderOptions = {
+    from: emailConfig.fromAddress,
+    to: 'ahmedengu@gmail.com,brollyxkazei5700@gmail.com,mo7amd.khaled@gmail.com',
+    subject: 'MerQuant Status',
+    html: `<img src="https://media.giphy.com/media/YmQLj2KxaNz58g7Ofg/giphy.gif"/><p>Count: ${count}</p>`,
+  };
+
+  try {
+    await transport.sendMail(senderOptions);
+    return 'mail-sent';
   } catch (e) {
     const errorJson = JSON.parse(e.text);
     throw errorJson.code ? `error-${errorJson.code}` : errorJson.error;

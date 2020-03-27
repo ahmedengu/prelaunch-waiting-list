@@ -3,6 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const { ParseServer } = require('parse-server');
 const http = require('http');
+const { CronJob } = require('cron');
 const Honeybadger = require('honeybadger').configure({
   apiKey: '9c499114',
 });
@@ -123,3 +124,7 @@ const dashboard = new ParseDashboard({
   console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
   ParseServer.createLiveQueryServer(httpServer);
 })();
+
+const aCron = new CronJob('0 */3 * * *', (async () => {
+  await Parse.Cloud.startJob('sendStatus');
+}), null, true, 'Atlantic/Azores');
