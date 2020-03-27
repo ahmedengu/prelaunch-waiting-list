@@ -326,6 +326,7 @@ class Signup extends React.Component {
                           id="email-subscribe"
                           aria-describedby="subscribe"
                           name="email"
+                          autoFocus
                           required
                         />
                       </div>
