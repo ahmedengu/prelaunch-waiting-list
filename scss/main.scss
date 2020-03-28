@@ -3980,6 +3980,11 @@ button.btn.btn-primary.dropdown-toggle {
     padding-right: 2rem;
     padding-left: 2rem;
     padding-bottom: .3125rem;
+    width: 100%;
+
+    .btn {
+      width: 100%;
+    }
   }
 
   .main-content {
@@ -3992,7 +3997,7 @@ button.btn.btn-primary.dropdown-toggle {
   }
 
   #navbarNavAltMarkup {
-    background-color: #000;
+    background-color: rgb(31, 31, 31);
   }
 
   .navbar-brand {

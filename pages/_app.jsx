@@ -89,6 +89,7 @@ class MyApp extends App {
           reduxStore.dispatch(setUser(userJson));
           if (userJson) {
             cookie.set('user', userJson);
+            cookie.set('country', userJson.country);
           } else {
             cookie.remove('user');
           }
@@ -174,7 +175,9 @@ class MyApp extends App {
     logPageView();
 
     Router.events.on('routeChangeComplete', () => {
-      window.scrollTo(0, 0);
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
     });
   }
 

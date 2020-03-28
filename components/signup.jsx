@@ -36,11 +36,18 @@ class Signup extends React.Component {
       } else if (ref) {
         cookie.set('ref', ref, { expires: 1 });
       }
+
+      cookie.set('country', props.country);
     }
   }
 
   componentDidMount() {
     documentReady();
+    const { t, referral } = this.props;
+    const { query: { ref } } = Router;
+    if (!referral && ref) {
+      toast(t('incorrect-referral'));
+    }
   }
 
   setPlay = (playVideo) => {
@@ -48,10 +55,17 @@ class Signup extends React.Component {
   };
 
   videoOnClick = () => {
-    window.scrollTo({
-      top: window.$('#merquant-video').offset().top - 100,
-      behavior: 'smooth',
-    });
+    if (typeof window !== 'undefined') {
+      const top = window.$('#merquant-video').offset().top - 100;
+      try {
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      } catch (e) {
+        window.scrollTo(0, top);
+      }
+    }
     this.setPlay(false);
     setTimeout(() => {
       this.setPlay(true);
@@ -312,6 +326,7 @@ class Signup extends React.Component {
                           id="email-subscribe"
                           aria-describedby="subscribe"
                           name="email"
+                          autoFocus
                           required
                         />
                       </div>

@@ -22,6 +22,7 @@ export const reducer = (state = exampleInitialState, action) => {
       return {
         ...state,
         user: action.user || {},
+        referral: (action.user && action.user.ref) || state.referral,
       };
     case actionTypes.COUNTRY:
       return { ...state, country: action.country };
