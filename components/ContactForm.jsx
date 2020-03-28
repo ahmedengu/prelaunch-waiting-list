@@ -69,9 +69,9 @@ class ContactForm extends Component {
         user.set('referred', referral || ref);
 
         await user.signUp();
+        Parse.User.logOut();
         logEvent('new_user', 'contactForm_signup');
         logEvent('contactForm_signup', 'new');
-        Parse.User.logOut();
       } catch (e) {
         logEvent('contactForm_signup_error', e.message);
       }
