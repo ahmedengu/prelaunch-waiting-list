@@ -4,7 +4,6 @@ import Parse from 'parse';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { logEvent } from '../utils/analytics';
-import { Router } from '../i18n';
 
 class ContactForm extends Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class ContactForm extends Component {
       error: '',
     });
     const {
-      t, country, lang, referral,
+      t, country, lang,
     } = this.props;
     try {
       await Parse.Cloud.run('contactForm', {
@@ -58,15 +57,13 @@ class ContactForm extends Component {
       logEvent('contactForm', 'sendmail');
 
       try {
-        const { query: { ref } } = Router;
-
         const user = new Parse.User();
         user.set('username', email);
         user.set('password', email);
         user.set('email', email);
         user.set('country', country);
         user.set('lang', lang);
-        user.set('referred', referral || ref);
+        user.set('referred', 'contact');
 
         await user.signUp();
         Parse.User.logOut();
@@ -209,18 +206,14 @@ class ContactForm extends Component {
   }
 }
 
-ContactForm.defaultProps = { referral: '' };
-
 ContactForm.propTypes = {
   t: PropTypes.func.isRequired,
   country: PropTypes.string.isRequired,
-  referral: PropTypes.string,
   lang: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   country: state.country,
-  referral: state.referral,
   lang: state.lang,
 });
 
