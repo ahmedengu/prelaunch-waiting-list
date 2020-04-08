@@ -120,6 +120,7 @@
   "img-whatis": "/static/assets/img/what-is-merquant-ar.jpeg",
   "img-features": "/static/assets/img/features.jpg",
   "img-contact": "/static/assets/img/alex.jpeg",
+  "img-zero-commission": "/static/assets/img/zero-commission.jpeg",
   "clients": "العملاء",
   "commission": "العمولة",
   "minimums": "الحد الأدنى",
@@ -139,5 +140,8 @@
   "start_with_merquant": "استثمر الآن مع ميركوانت",
   "free-signup": "سجل مجاناَ",
   "early-access": "اشترك الان",
-  "incorrect-referral": "كود الإحالة غير صحيح"
+  "incorrect-referral": "كود الإحالة غير صحيح",
+  "faq-section-title": "الاسئله الشائعه",
+  "faq-q-1": "that question 1 in arabic",
+  "faq-a-1": "that answer 1 in arabic"
 }

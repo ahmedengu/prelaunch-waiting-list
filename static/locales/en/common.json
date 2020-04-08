@@ -120,6 +120,7 @@
   "img-whatis": "/static/assets/img/what-is-merquant.jpg",
   "img-features": "/static/assets/img/features.jpg",
   "img-contact": "/static/assets/img/alex.jpeg",
+  "img-zero-commission": "/static/assets/img/zero-commission.jpeg",
   "clients": "Clients",
   "commission": "Commission",
   "minimums": "Minimums",
@@ -140,5 +141,12 @@
   "start_with_merquant": "Start Investing with MerQuant",
   "free-signup": "Signup It's Free",
   "early-access": "Get Early Access",
-  "incorrect-referral": "Incorrect referral code"
+  "incorrect-referral": "Incorrect referral code",
+  "faq-section-title": "FAQ",
+  "faq-q-1": "that question 1",
+  "faq-a-1": "that answer 1",
+  "faq-q-2": "that question 2",
+  "faq-a-2": "that answer 2",
+  "faq-q-3": "that question 3",
+  "faq-a-3": "that answer 3"
 }

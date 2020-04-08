@@ -4145,3 +4145,91 @@ button#form-contact-submit:disabled {
   }
 
 }
+
+/* -----------------------------------------------
+====================  FAQ ========================
+-------------------------------------------------- */
+.faq {
+  &-side-img {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    .image {
+      max-width: 80%;
+      height: auto;
+      margin: auto;
+    }
+  }
+  &-heading {
+  }
+  &-wrapper {
+    position: relative;
+    &:before {
+      content: "";
+      background: linear-gradient(-45deg, #ffab03b8, #ffab03b8);
+      height: calc(100% - 60px);
+      left: -41px;
+      position: absolute;
+      top: 39px;
+      width: 2px;
+      border-radius: 50%;
+    }
+  }
+  &-group {
+
+  }
+  &-panel {
+    position: relative;
+    padding: 20px 30px;
+    &:before {
+      content: "";
+      background: linear-gradient(-45deg, #ffab03b8, #ffab03b8);
+      height: 100%;
+      left: -2px;
+      position: absolute;
+      top: 0;
+      width: 2px;
+    }
+    & + & {
+      margin-top: 30px;
+    }
+    &-heading {
+      display: flex;
+      align-items: center;
+      &:before {
+        border-radius: 50px;
+        border: 2px solid #ffab03b8;
+        background: #fff;
+        content: "";
+        height: 15px;
+        left: -48px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+      }
+    }
+    &-heading-label {
+      margin: auto 15px;
+    }
+    &-toggle-button {
+      background: transparent;
+      padding: 0px;
+      border: none;
+      justify-self: flex-end;
+      margin: 0px 0px auto auto;
+    }
+    &-desc {
+      display: flex;
+      align-items: center;
+      margin: auto 15px;
+      overflow: hidden;
+      transition: height 1s;
+      &.close {
+        height: 0px !important;
+      }
+    }
+  }
+}
