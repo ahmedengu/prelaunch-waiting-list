@@ -15,6 +15,7 @@ ln -sfn /srv/deploy/versions/"$newDir" /srv/deploy/current
 supervisorctl restart all
 
 cp -rf deploy.sh /srv/deploy/deploy.sh
+cp -rf backup.sh /srv/deploy/backup.sh
 
 cd ..
 ls -dt */ | tail -n +5 | xargs rm -rf
