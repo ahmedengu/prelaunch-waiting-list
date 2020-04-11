@@ -50,7 +50,7 @@ class HomeFeatures extends Component {
             <div className="col-sm-12 ts-title text-center">
               <h2 className="faq-heading typography-head">{t('faq-section-title')}</h2>
             </div>
-            <div className="col-md-6 col-sm-12 faq-side-img">
+            <div className="col-md-6 d-md-block d-none faq-side-img">
               <div className="image">
                 <img src={t('img-features')} className="mw-100" alt="" />
               </div>
@@ -308,7 +308,7 @@ class HomeFeatures extends Component {
               <div className="row">
                 <div className="col-sm-4">
                   <div className="ts-promo-number text-center">
-                    <h2 data-animate="ts-zoomIn" className="typography-head">3000+</h2>
+                    <h2 data-animate="ts-zoomIn" className="typography-head">7000+</h2>
                     <h3 className="mb-0 ts-opacity__50">{t('clients')}</h3>
                     <span className="ts-promo-number-divider" />
                   </div>
