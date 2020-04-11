@@ -4212,24 +4212,21 @@ button#form-contact-submit:disabled {
       }
     }
     &-heading-label {
-      margin: auto 15px;
+      margin: auto auto auto 15px;
     }
     &-toggle-button {
       background: transparent;
       padding: 0px;
       border: none;
-      justify-self: flex-end;
-      margin: 0px 0px auto auto;
+      display: flex;
+      align-items: center;
+      width: 100%;
     }
     &-desc {
       display: flex;
       align-items: center;
       margin: auto 15px;
       overflow: hidden;
-      transition: height 1s;
-      &.close {
-        height: 0px !important;
-      }
     }
   }
 }

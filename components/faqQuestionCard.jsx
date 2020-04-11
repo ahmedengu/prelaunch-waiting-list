@@ -8,8 +8,9 @@ function FaqQuestionCard(props) {
   const { q, a } = faq;
   const QuestionHeading = () => (
     <div className="faq-panel-heading">
-      <p className="faq-panel-heading-label">{q}</p>
-      <ToggleButton id={id} />
+      <ToggleButton id={id}>
+        <p className="faq-panel-heading-label">{q}</p>
+      </ToggleButton>
     </div>
   );
   const QuestionAnswer = () => (
