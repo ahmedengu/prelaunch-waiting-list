@@ -4227,6 +4227,7 @@ button#form-contact-submit:disabled {
       align-items: center;
       margin: auto 15px;
       overflow: hidden;
+      transition: height 0.1s;
     }
   }
 }
