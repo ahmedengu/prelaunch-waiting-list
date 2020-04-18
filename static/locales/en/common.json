@@ -11,7 +11,7 @@
   "title": "MerQuant - Zero commission Stock Trading in Egypt",
   "description": "MerQuant zero commission stock trading, stop paying more than 30EGP for every trade",
   "meta-description": "MerQuant zero commission stock trading, stop paying more than 30EGP for every trade",
-  "keywords": "MerQuant, zero commission, stock trading, stop paying more than 30EGP, for every trade, Egypt",
+  "keywords": "MerQuant, zero commission, stock trading, stop paying more than 30EGP, for every trade, Egypt, stock investing, no commission, easy to learn, easy to start",
   "og-image": "https://merquant.com/static/assets/share/normal_en_eg.png?v=1",
   "logo_sq": "https://merquant.com/static/assets/logo_sq.png",
   "your-points": "Stocks Earned",
@@ -135,6 +135,8 @@
   "early-access": "Get Early Access",
   "incorrect-referral": "Incorrect referral code",
   "posts-h2": "Read More",
+  "posts-cta": "Keep Reading...",
+  "posts-link": "https://blog.merquant.com/en",
   "posts": [
     {
       "title": "Who we are?",

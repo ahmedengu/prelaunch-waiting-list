@@ -23,6 +23,8 @@ const BlogSection = ({ t }) => (
         }
       </div>
     </div>
+
+    <a target="_blank" rel="dofollow" href={t('posts-link')} type="button" className="cta btn btn-lg btn-outline-dark mb-5">{t('posts-cta')}</a>
   </section>
 );
 

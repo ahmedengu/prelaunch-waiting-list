@@ -3554,7 +3554,7 @@ a.mx-2:hover {
     text-align: right;
   }
 
-  select, .push-image-container {
+  select, .push-image-container, .cta {
     direction: rtl;
   }
 
@@ -4211,7 +4211,7 @@ button#form-contact-submit:disabled {
       //   width: 15px;
       // }
     }
-    &-heading-label { 
+    &-heading-label {
       margin: auto auto auto 15px;
       &:hover {
         color: inherit;
