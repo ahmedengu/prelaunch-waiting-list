@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import YouTube from '@u-wave/react-youtube';
+import dynamic from 'next/dynamic';
 import ContactForm from './ContactForm';
 import FaqQuestionCard from './faqQuestionCard';
 import BlogSection from './blogSection';
+
+const YouTube = dynamic(() => import('@u-wave/react-youtube'),
+  { ssr: false });
 
 const backToSignup = () => {
   window.$('html').animate({

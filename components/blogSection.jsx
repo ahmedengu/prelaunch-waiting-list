@@ -14,7 +14,7 @@ const BlogSection = ({ t }) => (
             <a target="_blank" rel="dofollow" href={url} className="col-sm-6 col-md-4 col-xl-4" key={key}>
               <figure data-animate="ts-fadeInUp" style={{ visibility: 'visible' }} className="ts-fadeInUp animated">
                 <figure className="icon">
-                  <img className="img-fluid" src={img} alt={title} />
+                  {process.browser && (<img className="img-fluid" src={img} alt={title} />)}
                 </figure>
                 <h4 className="text-dark">{title}</h4>
               </figure>

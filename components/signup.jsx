@@ -6,16 +6,21 @@ import { connect } from 'react-redux';
 import cookie from 'js-cookie';
 import * as qs from 'qs';
 import { toast } from 'react-toastify';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import GoogleLogin from 'react-google-login';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import OwlCarousel from 'react-owl-carousel2';
+import dynamic from 'next/dynamic';
 import { Router } from '../i18n';
 import { setLang, setUser } from '../store';
 import HomeFeatures from './homeFeatures';
 import { logEvent, logUserId } from '../utils/analytics';
 import Header from './Header';
 import { addLoading, documentReady, removeLoading } from '../static/assets/js/custom';
+
+const GoogleLogin = dynamic(() => import('react-google-login'),
+  { ssr: false });
+const FacebookLogin = dynamic(() => import('react-facebook-login/dist/facebook-login-render-props'),
+  { ssr: false });
+
 
 class Signup extends React.Component {
   constructor(props) {
