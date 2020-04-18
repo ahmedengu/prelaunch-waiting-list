@@ -32,9 +32,11 @@ function FaqQuestionCard(props) {
 export default FaqQuestionCard;
 
 FaqQuestionCard.propTypes = {
-  faq: PropTypes.objectOf({
-    q: PropTypes.string.isRequired,
-    a: PropTypes.string.isRequired,
-  }).isRequired,
+  faq: PropTypes.shape(
+    {
+      q: PropTypes.string,
+      a: PropTypes.string,
+    },
+  ).isRequired,
   id: PropTypes.string.isRequired,
 };

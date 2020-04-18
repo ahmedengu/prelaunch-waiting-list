@@ -34,8 +34,5 @@ export default ToggleButton;
 
 ToggleButton.propTypes = {
   id: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf([
-    PropTypes.node,
-    PropTypes.func,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
