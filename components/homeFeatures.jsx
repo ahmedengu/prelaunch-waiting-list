@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import YouTube from '@u-wave/react-youtube';
 import ContactForm from './ContactForm';
 import FaqQuestionCard from './faqQuestionCard';
+import BlogSection from './blogSection';
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -271,6 +272,7 @@ class HomeFeatures extends Component {
             </div>
           </div>
         </section>
+        <BlogSection t={t} />
         <FaqSection />
         <section id="bottomSignup" className="ts-block ts-shape-mask__up ts-shape-mask__down">
           <div className="container">

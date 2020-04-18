@@ -140,6 +140,24 @@
   "free-signup": "Signup It's Free",
   "early-access": "Get Early Access",
   "incorrect-referral": "Incorrect referral code",
+  "posts-h2": "Read More",
+  "posts": [
+    {
+      "title": "Who we are?",
+      "url": "https://blog.merquant.com/en/who-we-are/",
+      "img": "https://blog.merquant.com/wp-content/uploads/2019/10/what-is-merquant-ar-1.jpeg"
+    },
+    {
+      "title": "Why Invest ?",
+      "url": "https://blog.merquant.com/en/why-investment",
+      "img": "https://blog.merquant.com/wp-content/uploads/2019/10/photo-1554672723-d42a16e533db.jpg"
+    },
+    {
+      "title": "Emergency Fund",
+      "url": "https://blog.merquant.com/صندوق-الطوارئ/",
+      "img": "https://blog.merquant.com/wp-content/uploads/2019/12/photo-1520695082671-948f2937d752.jpg"
+    }
+  ],
   "faq-section-title": "FAQ",
   "faq-img": "/static/assets/faq/en.png",
   "faq-q-1": "How MerQuant gonna make money?",
