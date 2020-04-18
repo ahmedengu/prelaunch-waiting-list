@@ -4166,16 +4166,16 @@ button#form-contact-submit:disabled {
   }
   &-wrapper {
     position: relative;
-    &:before {
-      content: "";
-      background: linear-gradient(-45deg, #ffab03b8, #ffab03b8);
-      height: calc(100% - 60px);
-      left: -41px;
-      position: absolute;
-      top: 39px;
-      width: 2px;
-      border-radius: 50%;
-    }
+    // &:before {
+    //   content: "";
+    //   background: linear-gradient(-45deg, #ffab03b8, #ffab03b8);
+    //   height: calc(100% - 60px);
+    //   left: -41px;
+    //   position: absolute;
+    //   top: 39px;
+    //   width: 2px;
+    //   border-radius: 50%;
+    // }
   }
   &-group {
 
@@ -4198,21 +4198,24 @@ button#form-contact-submit:disabled {
     &-heading {
       display: flex;
       align-items: center;
-      &:before {
-        border-radius: 50px;
-        border: 2px solid #ffab03b8;
-        background: #fff;
-        content: "";
-        height: 15px;
-        left: -48px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 15px;
-      }
+      // &:before {
+      //   border-radius: 50px;
+      //   border: 2px solid #ffab03b8;
+      //   background: #fff;
+      //   content: "";
+      //   height: 15px;
+      //   left: -48px;
+      //   position: absolute;
+      //   top: 50%;
+      //   transform: translateY(-50%);
+      //   width: 15px;
+      // }
     }
-    &-heading-label {
+    &-heading-label { 
       margin: auto auto auto 15px;
+      &:hover {
+        color: inherit;
+      }
     }
     &-toggle-button {
       background: transparent;
@@ -4221,11 +4224,19 @@ button#form-contact-submit:disabled {
       display: flex;
       align-items: center;
       width: 100%;
+      &:hover {
+        color: #fdb736;
+      }
+      &[aria-expanded=true] {
+        .faq-panel-heading-label {
+          color: #fdb736
+        }
+      }
     }
     &-desc {
       display: flex;
       align-items: center;
-      margin: auto 15px;
+      margin: 15px 15px auto;
       overflow: hidden;
       transition: height 0.1s;
     }
