@@ -5,7 +5,7 @@ const BlogSection = ({ t }) => (
   <section id="learn" className="ts-block text-center">
     <div className="container">
       <div className="ts-title">
-        <h2>{t('posts-h2')}</h2>
+        <h2 className="typography-head">{t('posts-h2')}</h2>
       </div>
 
       <div className="row">
