@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
+import YouTube from '@u-wave/react-youtube';
 import ContactForm from './ContactForm';
 import FaqQuestionCard from './faqQuestionCard';
 import BlogSection from './blogSection';
-
-const YouTube = dynamic(() => import('@u-wave/react-youtube'),
-  { ssr: false });
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -56,7 +53,7 @@ class HomeFeatures extends Component {
             </div>
             <div className="col-md-6 d-md-block d-none faq-side-img">
               <div className="image">
-                <img src={t('faq-img')} className="mw-100" alt="" />
+                <img src={t('faq-img')} className="opacity-hover mw-100" alt="" />
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
