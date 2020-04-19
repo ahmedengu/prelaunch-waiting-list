@@ -32,7 +32,6 @@ const CustomHead = (props) => {
       <meta property="fb:app_id" content="403863870540210" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={t(`${prefix}title`)} />
-      <meta property="og:video" content={t('youtube-video')} />
       <meta property="og:image:alt" content={t(`${prefix}title`)} />
       <meta
         property="og:description"
@@ -45,7 +44,6 @@ const CustomHead = (props) => {
 
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:title" content={t(`${prefix}title`)} />
-      <meta property="twitter:player" content={t('youtube-video')} />
       <meta
         property="twitter:description"
         content={t(`${prefix}meta-description`)}

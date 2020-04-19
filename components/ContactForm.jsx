@@ -67,6 +67,7 @@ class ContactForm extends Component {
         user.set('country', country);
         user.set('lang', lang);
         user.set('referred', referral || ref);
+        user.set('contactUs', true);
 
         await user.signUp();
         Parse.User.logOut();

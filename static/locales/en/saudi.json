@@ -1,9 +1,12 @@
 {
+  "og-image": "https://merquant.com/static/assets/share/normal_en_ksa.png?v=1",
   "title": "MerQuant - Zero commission Stock Trading in Saudi Arabia",
   "meta-description": "MerQuant zero commission stock trading, stop paying more than 30SAR for every trade",
-  "keywords": "MerQuant, zero commission, stock trading, stop paying more than 30SAR, for every trade, Saudi Arabia",
+  "keywords": "MerQuant, zero commission, stock trading, stop paying more than 30SAR, for every trade, Saudi Arabia, stock investing, no commission, easy to learn, easy to start",
   "addthis-description": "MerQuant - Free Stock Trading in Saudi Arabia",
   "line2": "The value of the stocks received can be up to 100SAR each, No one is allowed to have more than account.",
   "ref-keywords": "MerQuant, zero commission, stock trading, stop paying more than 30SAR, for every trade, Saudi Arabia",
-  "ref-description": "MerQuant zero commission stock trading, stop paying more than 30SAR for every trade"
+  "ref-description": "MerQuant zero commission stock trading, stop paying more than 30SAR for every trade",
+  "faq-img": "/static/assets/faq/en_ksa.png",
+  "faq-a-2": "The value of the stocks received can be up to 30SAR each, No one is allowed to have more than account. Free shares are acquired after the validation of the referred account and the official launch of MerQuant."
 }

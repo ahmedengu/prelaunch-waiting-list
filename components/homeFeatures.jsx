@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import YouTube from '@u-wave/react-youtube';
+import dynamic from 'next/dynamic';
 import ContactForm from './ContactForm';
+import FaqQuestionCard from './faqQuestionCard';
+import BlogSection from './blogSection';
+
+const YouTube = dynamic(() => import('@u-wave/react-youtube'),
+  { ssr: false });
 
 const backToSignup = () => {
   window.$('html').animate({
@@ -18,16 +23,6 @@ class HomeFeatures extends Component {
     this.video = {};
   }
 
-  // componentDidMount() {
-  //   const { setPlay, playVideo } = this.props;
-  //
-  //   document.addEventListener('scroll', () => {
-  //     if (!playVideo && window.$('#merquant-video') && window.$('#merquant-video').offset() && window.pageYOffset > window.$('#merquant-video').offset().top - 150) {
-  //       setPlay(true);
-  //     }
-  //   });
-  // }
-
   componentDidUpdate(prevProps) {
     const { playVideo } = this.props;
     if (!prevProps.playVideo && playVideo && this.video && typeof this.video.playVideo === 'function') {
@@ -35,8 +30,51 @@ class HomeFeatures extends Component {
     }
   }
 
+  renderFaqList = (index = 1, list = []) => {
+    const { t } = this.props;
+    const key = `faq-q-${index}`;
+    if (t(key) === key) {
+      return list.map((({ faq, key: id }) => (
+        <FaqQuestionCard key={id} id={id} faq={faq} />
+      )));
+    }
+    const faq = {
+      q: t(`faq-q-${index}`),
+      a: t(`faq-a-${index}`),
+    };
+    return this.renderFaqList(index + 1, [...list, { key, faq }]);
+  }
+
+  renderFaqSection = () => {
+    const { t } = this.props;
+    return (
+      <section id="faq" className="faq ts-block text-center">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12 ts-title text-center">
+              <h2 className="faq-heading typography-head">{t('faq-section-title')}</h2>
+            </div>
+            <div className="col-md-6 d-md-block d-none faq-side-img">
+              <div className="image">
+                <img src={t('faq-img')} className="mw-100" alt="" />
+              </div>
+            </div>
+            <div className="col-md-6 col-sm-12">
+              <div className="faq-wrapper">
+                <div className="faq-group">
+                  {this.renderFaqList()}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   render() {
     const { t } = this.props;
+    const FaqSection = this.renderFaqSection;
     return (
       <>
         <section
@@ -237,7 +275,8 @@ class HomeFeatures extends Component {
             </div>
           </div>
         </section>
-
+        <BlogSection t={t} />
+        <FaqSection />
         <section id="bottomSignup" className="ts-block ts-shape-mask__up ts-shape-mask__down">
           <div className="container">
             <div className="row">
@@ -274,7 +313,7 @@ class HomeFeatures extends Component {
               <div className="row">
                 <div className="col-sm-4">
                   <div className="ts-promo-number text-center">
-                    <h2 data-animate="ts-zoomIn" className="typography-head">3000+</h2>
+                    <h2 data-animate="ts-zoomIn" className="typography-head">8000+</h2>
                     <h3 className="mb-0 ts-opacity__50">{t('clients')}</h3>
                     <span className="ts-promo-number-divider" />
                   </div>

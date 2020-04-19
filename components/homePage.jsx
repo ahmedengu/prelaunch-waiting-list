@@ -21,7 +21,7 @@ const HomePage = ({
           "@type": "Organization",
           "name": "${t('merquant')}",
           "url": "https://merquant.com",
-          "logo": "${t('og-image')}",
+          "logo": "${t('logo_sq')}",
           "address": "Alexandria, Egypt",
           "sameAs": [
             "https://www.facebook.com/merquant",

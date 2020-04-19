@@ -3554,7 +3554,7 @@ a.mx-2:hover {
     text-align: right;
   }
 
-  select, .push-image-container {
+  select, .push-image-container, .cta {
     direction: rtl;
   }
 
@@ -4144,4 +4144,101 @@ button#form-contact-submit:disabled {
     transition: .3s all ease-in-out;
   }
 
+}
+
+/* -----------------------------------------------
+====================  FAQ ========================
+-------------------------------------------------- */
+.faq {
+  &-side-img {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    .image {
+      max-width: 80%;
+      height: auto;
+      margin: auto;
+    }
+  }
+  &-heading {
+  }
+  &-wrapper {
+    position: relative;
+    // &:before {
+    //   content: "";
+    //   background: linear-gradient(-45deg, #ffab03b8, #ffab03b8);
+    //   height: calc(100% - 60px);
+    //   left: -41px;
+    //   position: absolute;
+    //   top: 39px;
+    //   width: 2px;
+    //   border-radius: 50%;
+    // }
+  }
+  &-group {
+
+  }
+  &-panel {
+    position: relative;
+    padding: 20px 30px;
+    &:before {
+      content: "";
+      background: linear-gradient(-45deg, #ffab03b8, #ffab03b8);
+      height: 100%;
+      left: -2px;
+      position: absolute;
+      top: 0;
+      width: 2px;
+    }
+    & + & {
+      margin-top: 30px;
+    }
+    &-heading {
+      display: flex;
+      align-items: center;
+      // &:before {
+      //   border-radius: 50px;
+      //   border: 2px solid #ffab03b8;
+      //   background: #fff;
+      //   content: "";
+      //   height: 15px;
+      //   left: -48px;
+      //   position: absolute;
+      //   top: 50%;
+      //   transform: translateY(-50%);
+      //   width: 15px;
+      // }
+    }
+    &-heading-label {
+      margin: auto auto auto 15px;
+      &:hover {
+        color: inherit;
+      }
+    }
+    &-toggle-button {
+      background: transparent;
+      padding: 0px;
+      border: none;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      &:hover {
+        color: #fdb736;
+      }
+      &[aria-expanded=true] {
+        .faq-panel-heading-label {
+          color: #fdb736
+        }
+      }
+    }
+    &-desc {
+      display: flex;
+      align-items: center;
+      margin: 15px 15px auto;
+      overflow: hidden;
+      transition: height 0.1s;
+    }
+  }
 }
