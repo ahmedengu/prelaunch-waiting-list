@@ -310,7 +310,7 @@ class HomeFeatures extends Component {
               <div className="row">
                 <div className="col-sm-4">
                   <div className="ts-promo-number text-center">
-                    <h2 data-animate="ts-zoomIn" className="typography-head">8000+</h2>
+                    <h2 data-animate="ts-zoomIn" className="typography-head">3000+</h2>
                     <h3 className="mb-0 ts-opacity__50">{t('clients')}</h3>
                     <span className="ts-promo-number-divider" />
                   </div>
