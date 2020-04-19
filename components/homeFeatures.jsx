@@ -56,7 +56,7 @@ class HomeFeatures extends Component {
             </div>
             <div className="col-md-6 d-md-block d-none faq-side-img">
               <div className="image">
-                <img src={t('faq-img')} className="mw-100" alt="" />
+                <img src={t('faq-img')} className="opacity-hover mw-100" alt="" />
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
