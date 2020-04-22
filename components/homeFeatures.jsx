@@ -21,9 +21,13 @@ class HomeFeatures extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { playVideo } = this.props;
-    if (!prevProps.playVideo && playVideo && this.video && typeof this.video.playVideo === 'function') {
-      this.video.playVideo();
+    const { t, playVideo } = this.props;
+    if (!prevProps.playVideo && playVideo) {
+      if (this.video && typeof this.video.playVideo === 'function') {
+        this.video.playVideo();
+      } else {
+        window.open((t('youtube-video') || '').replace('/embed/', '/watch?v='), '_blank');
+      }
     }
   }
 

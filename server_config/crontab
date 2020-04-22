@@ -1,0 +1,2 @@
+*/10 * * * *  [ -f /srv/deploy/current/deployMe ] && sh /srv/deploy/deploy.sh >$
+0 0 * * * sh /srv/deploy/backup.sh >> /srv/deploy/backup_last.log 2>&1

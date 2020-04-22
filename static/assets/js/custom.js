@@ -45,14 +45,14 @@ function documentReady() {
     }
   });
 
-  $('body').imagesLoaded(() => {
+  setTimeout(() => {
     $('body').addClass('loading-done');
     const $animatedWaves = $('.ts-animated-waves');
     $animatedWaves.css('transform', `translateX( calc( -100% + ${$(window).width() + 5}px )`);
     $animatedWaves.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
       $(this).toggleClass('repeat');
     });
-  });
+  }, 200);
 
   $(document).on('click', () => {
     $('.navbar-collapse').collapse('hide');

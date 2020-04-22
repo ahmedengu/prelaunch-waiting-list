@@ -1,7 +1,13 @@
 const HoneybadgerSourceMapPlugin = require('@honeybadger-io/webpack');
 const withSass = require('@zeit/next-sass');
+const withPurgeCss = require('next-purgecss');
 
-module.exports = withSass({
+module.exports = withSass(withPurgeCss({
+  purgeCssEnabled: ({ dev, isServer }) => (!dev && !isServer),
+  purgeCss: {
+    whitelist: ['iframe', 'show', 'in'],
+    whitelistPatterns: [/owl*./, /embed*./, /.*loading*./, /.*collaps*./, /.*oast*./],
+  },
   webpack: (config, {
     buildId, dev, isServer, defaultLoaders, webpack,
   }) => {
@@ -14,4 +20,4 @@ module.exports = withSass({
     }
     return config;
   },
-});
+}));
