@@ -86,7 +86,7 @@ const Footer = ({ t }) => (
       </div>
     </section>
 
-    <script src="/static/assets/js/bundle.js?v=1" />
+    <script src="/static/assets/js/bundle.js?v=2" />
   </footer>
 );
 
